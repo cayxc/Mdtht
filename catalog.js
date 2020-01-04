@@ -436,7 +436,14 @@ window.onload = function () {
     }
 
     //执行，注意执行顺序
-    // createContainer();
-    creatCatalogue();
+    /*createContainer();
+    creatCatalogue();*/
+
+    /*
+    * ----------------------------------------
+    * 样式控制
+    * ----------------------------------------
+
+
 
 };
