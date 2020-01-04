@@ -18,15 +18,52 @@ window.onload = function () {
         leftBlock.id = 'left-container';
         rigthBlock.id = 'right-container';
         //3.设置目录父级元素的内容结构
-        leftBlock.innerHTML = '\n<a class="log" href="" target="_blank">\n' +
-            '<img src="myLogo-ico.png" alt="log">\n' +
-            '</a>\n' +
-            '<div class="catalogue-button">\n' +
-            '<span>☰☷≡</span>\n' +
-            '</div>\n' +
-            '<div id="list-container">\n' +
-            // '<ul id="list"></ul>\n' +
-            '</div>\n';
+        leftBlock.innerHTML = '\n<div class="top-container">\n' +
+            '        <i class="catalog-button iconfont icon-mulu"></i>\n' +
+            '        <div class="search-container">\n' +
+            '            <input type="text" class="search" placeholder="输入关键字搜索">\n' +
+            '        </div>\n' +
+            '    </div>\n' +
+            '    <div id="list-container">\n' +
+            '        <div class="list-wrapper">\n' +
+            '            <i class="catalog-button iconfont icon-jia"></i>\n' +
+            '            \n' +
+            '        </div>\n' +
+            '    </div>\n' +
+            '    <div class="bottom-container">\n' +
+            '        <div class="mode-container">\n' +
+            '            <div class="mode">\n' +
+            '                <i class="iconfont icon-yejianduoyun"></i>\n' +
+            '            </div>\n' +
+            '            <div class="index">\n' +
+            '                <i class="iconfont icon-bianhao"></i>\n' +
+            '            </div>\n' +
+            '            <div class="structure">\n' +
+            '                <i class="iconfont icon-liucheng"></i>\n' +
+            '                <ul class="structure-child">\n' +
+            '                    <li>\n' +
+            '                        <input type="radio" id="styleA" name="value" checked>\n' +
+            '                        <label for="styleA">样式 A</label>\n' +
+            '                    </li>\n' +
+            '                    <li>\n' +
+            '                        <input type="radio" id="styleB" name="value">\n' +
+            '                        <label for="styleB">样式 B</label>\n' +
+            '                    </li>\n' +
+            '                    <li>\n' +
+            '                        <input type="radio" id="styleC" name="value">\n' +
+            '                        <label for="styleC">样式 C</label>\n' +
+            '                    </li>\n' +
+            '                </ul>\n' +
+            '            </div>\n' +
+            '            <div class="color">\n' +
+            '                <i class="iconfont icon-yanse"></i>\n' +
+            '                <div class="color-child">\n' +
+            '                    <span>自定义颜色</span>\n' +
+            '                    <input type="color">\n' +
+            '                </div>\n' +
+            '            </div>\n' +
+            '        </div>\n' +
+            '    </div>\n';
         //4.设置内容父级元素的内容结构
         rigthBlock.innerHTML = '\n<div id="content">\n' +
             oldContent +
@@ -363,7 +400,7 @@ window.onload = function () {
             }
         }
         // 目录父容器
-        let catalogueBlock = document.getElementById('list-container');
+        let catalogueBlock = document.querySelector('.list-wrapper');
         // 创建其余子目录
         let ulElement = document.createElement('ul');
         for (let j = 1; j <= maxLevel; j++) {
@@ -376,11 +413,12 @@ window.onload = function () {
                         '<span>' + levelArr[k].innerText + '</span>' +
                         '</a>\n';
                     ulElement.appendChild(liElement);
+                    // 追加目录到目录容器中
+                    catalogueBlock.appendChild(ulElement);
                 }
             }
             if (j > 1) {
                 for (let n = 0; n < levelArr.length; n++) {
-                    // let ulElement2 = document.createElement('ul');
                     // 上一级目录
                     // 2.追加 ul 到该 上级目录的 li 中
                     let prevLevelArr = levelTagArr(j - 1);
@@ -392,27 +430,34 @@ window.onload = function () {
                         // 找到所属的上一级目录
                         if (currentId === prevId) {
                             // 找到父目录 li 并添加 class
-                            let childUlElement = document.createElement('ul');
                             let className = prevLevelArr[m].id;
                             let prevElement = document.getElementsByClassName(className)[0].parentNode;
                             prevElement.setAttribute('class', 'parent-level');
-
                             let liElement = document.createElement('li');
                             liElement.innerHTML = '\n<a href="#' + levelArr[n].id + '" class=' + levelArr[n].id + '>\n' +
                                 '<p>' + levelArr[n].id.slice(6) + '</p>\n' +
                                 '<span>' + levelArr[n].innerText + '</span>' +
                                 '</a>\n';
-                            childUlElement.appendChild(liElement);
-                            prevElement.appendChild(childUlElement);
+                            let currentUlElement = prevElement.querySelector('ul');
+                            console.log(status);
+                            if(currentUlElement !== null){
+                                currentUlElement.appendChild(liElement);
+                            }else{
+                                // 创建父目录的 ul
+                                currentUlElement =  document.createElement('ul');
+                                currentUlElement.appendChild(liElement);
+                                prevElement.appendChild(currentUlElement);
+                            }
                             break;
                         }
                     }
                 }
+                // prevElement.appendChild(childUlElement);
 
             }
 
             // 追加目录到目录容器中
-            catalogueBlock.appendChild(ulElement);
+            // catalogueBlock.appendChild(ulElement);
         }
     }
 
@@ -436,14 +481,14 @@ window.onload = function () {
     }
 
     //执行，注意执行顺序
-    /*createContainer();
-    creatCatalogue();*/
+    createContainer();
+    creatCatalogue();
 
     /*
     * ----------------------------------------
     * 样式控制
     * ----------------------------------------
-
+     */
 
 
 };
