@@ -19,7 +19,7 @@ window.onload = function () {
         rigthBlock.id = 'right-container';
         //3.设置目录父级元素的内容结构
         leftBlock.innerHTML = '\n<div class="top-container">\n' +
-            '        <i class="catalog-button iconfont icon-mulu"></i>\n' +
+            '        <i class="catalog-button iconfont icon-catalogOpen"></i>\n' +
             '        <div class="search-container">\n' +
             '            <input type="text" class="search" placeholder="输入关键字搜索">\n' +
             '        </div>\n' +
@@ -31,13 +31,13 @@ window.onload = function () {
             '    <div class="bottom-container">\n' +
             '        <div class="mode-container">\n' +
             '            <div class="mode">\n' +
-            '                <i class="iconfont icon-yejianduoyun"></i>\n' +
+            '                <i class="iconfont icon-sun"></i>\n' +
             '            </div>\n' +
             '            <div class="index">\n' +
-            '                <i class="iconfont icon-bianhao"></i>\n' +
+            '                <i class="iconfont icon-indexA"></i>\n' +
             '            </div>\n' +
             '            <div class="structure">\n' +
-            '                <i class="iconfont icon-liucheng"></i>\n' +
+            '                <i class="iconfont icon-process"></i>\n' +
             '                <ul class="structure-child">\n' +
             '                    <li>\n' +
             '                        <input type="radio" id="styleA" name="value" checked>\n' +
@@ -54,14 +54,17 @@ window.onload = function () {
             '                </ul>\n' +
             '            </div>\n' +
             '            <div class="color">\n' +
-            '                <i class="iconfont icon-yanse"></i>\n' +
+            '                <i class="iconfont icon-color"></i>\n' +
             '                <div class="color-child">\n' +
             '                    <span>自定义颜色</span>\n' +
             '                    <input type="color">\n' +
             '                </div>\n' +
             '            </div>\n' +
             '        </div>\n' +
-            '    </div>\n';
+            '    </div>\n' +
+            '   <div id="switch-button">\n' +
+            '   <div>\n<i class="iconfont icon-arrLeft"></i>\n</div>\n' +
+            '   </div>\n';
         //4.设置内容父级元素的内容结构
         rigthBlock.innerHTML = '\n<div id="content">\n' +
             oldContent +
@@ -446,7 +449,7 @@ window.onload = function () {
                                 prevElement.appendChild(currentUlElement);
                                 // 创建 父目录样式
                                 let parentStyle = document.createElement('i');
-                                parentStyle.setAttribute('class', 'iconfont icon-jia');
+                                parentStyle.setAttribute('class', 'iconfont icon-redcude');
                                 prevElement.insertBefore(parentStyle, prevElement.childNodes[0]);
                             }
                             break;
@@ -483,22 +486,70 @@ window.onload = function () {
 
     /*
     * ----------------------------------------
-    * 点击目录图标
+    * 点击左侧隐藏图标
     * ----------------------------------------
      */
 
-    let catalogBOx = document.querySelector('#list-container');
+    let leftElement = document.querySelector('#left-container');
+    let rightElement = document.querySelector('#right-container');
+    let topElement = document.querySelector('.top-container');
+    let listElement = document.querySelector('#list-container');
+    let bottomElement = document.querySelector('.bottom-container');
+    let contentmElement = document.querySelector('#container');
+
+    let switchButton = document.querySelector('#switch-button');
+
+    function switchCatalog() {
+
+        switchButton.onclick = function () {
+            let isActive = switchButton.querySelector('.active');
+            let browsertWidth = document.documentElement.clientWidth;
+            if (isActive) {
+                if(browsertWidth > 750){
+                    leftElement.style.width = '270px';
+                }else{
+                    leftElement.style.width = '60%';
+                }
+                leftElement.classList.remove('js-switch-button');
+                this.children[0].children[0].setAttribute('class','iconfont icon-arrLeft');
+                rightElement.style.padding = '15px 15px 0 285px';
+                // rightElement.style.padding('full-padding');
+            } else {
+                leftElement.classList.add('js-switch-button');
+                leftElement.style.width = '0';
+                leftElement.style.padding = '0';
+                leftElement.classList.add('js-switch-button');
+                this.children[0].children[0].setAttribute('class','iconfont icon-arrRight active');
+                rightElement.style.padding = '15px 15px 0';
+            }
+        }
+    }
+
+    switchCatalog();
+
+
+    //border-color
+    switchButton.onmouseover = function () {
+        leftElement.style.borderColor = '#3cae7c';
+    }
+    switchButton.onmouseout = function () {
+        leftElement.style.borderColor = '#ccc';
+    }
+
+    /*let catalogBOx = document.querySelector('#list-container');
+    let allIcon = catalogBOx.querySelectorAll('.iconfont');
     document.querySelector('.catalog-button').onclick = function () {
         this.classList.remove('icon-mulu');
         this.classList.add('icon-mulu1');
-        let allUl = catalogBOx.querySelectorAll('ul');
+        let allUl = catalogBOx.querySelectorAll('li ul');
         for (let i = 0; i < allUl.length; i++) {
             allUl[i].style.display = 'block';
+            allUl[i].parentElement.children[0].setAttribute('class', 'iconfont icon-jian');
+        }
+        for (let j = 0; j< allIcon.length; j++) {
+            allIcon[j].setAttribute('class', 'iconfont icon-jian');
         }
     };
-
-
-    let allIcon = catalogBOx.querySelectorAll('.iconfont');
 
     function indexClick() {
         for (let i = 0; i < allIcon.length; i++) {
@@ -510,7 +561,7 @@ window.onload = function () {
         }
     }
 
-    indexClick();
+    indexClick();*/
 
 
 };

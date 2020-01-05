@@ -317,10 +317,10 @@ img {
 ==================*/
 @font-face {
     font-family: "iconfont";
-    src: url('https://gitee.com/yangxingcai/markdownpad2-auto-catalog/tree/master/ali-iconfont/ali-iconfont/iconfont.eot?t=1578058647933'); /* IE9 */
-    src: url('https://gitee.com/yangxingcai/markdownpad2-auto-catalog/tree/master/ali-iconfont/ali-iconfont/iconfont.eot?t=1578058647933#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('data:application/x-font-woff2;charset=utf-8;base64,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') format('woff2'),
-    url('https://gitee.com/yangxingcai/markdownpad2-auto-catalog/tree/master/ali-iconfont/ali-iconfont/iconfont.woff?t=1578058647933') format('woff'),
-    url('https://gitee.com/yangxingcai/markdownpad2-auto-catalog/tree/master/ali-iconfont/ali-iconfont/iconfont.ttf?t=1578058647933') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */ url('https://gitee.com/yangxingcai/markdownpad2-auto-catalog/tree/master/ali-iconfont/ali-iconfont/iconfont.svg?t=1578058647933#iconfont') format('svg'); /* iOS 4.1- */
+    src: url('https://gitee.com/yangxingcai/markdownpad2-auto-catalog/tree/master/ali-iconfont/iconfont.eot?t=1578247195047'); /* IE9 */
+    src: url('https://gitee.com/yangxingcai/markdownpad2-auto-catalog/tree/master/ali-iconfont/iconfont.eot?t=1578247195047#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('data:application/x-font-woff2;charset=utf-8;base64,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') format('woff2'),
+    url('https://gitee.com/yangxingcai/markdownpad2-auto-catalog/tree/master/ali-iconfont/iconfont.woff?t=1578247195047') format('woff'),
+    url('https://gitee.com/yangxingcai/markdownpad2-auto-catalog/tree/master/ali-iconfont/iconfont.ttf?t=1578247195047') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */ url('https://gitee.com/yangxingcai/markdownpad2-auto-catalog/tree/master/ali-iconfont/iconfont.svg?t=1578247195047#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -331,61 +331,70 @@ img {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-fangkuang:before {
-    content: "\e758";
+.icon-catalogClose:before {
+    content: "\e64c";
 }
 
-.icon-list:before {
+.icon-indexB:before {
     content: "\e743";
 }
 
-.icon-liucheng:before {
+.icon-catalogOpen:before {
+    content: "\e692";
+}
+
+.icon-process:before {
     content: "\e675";
 }
 
-.icon-yejianduoyun:before {
+.icon-color:before {
+    content: "\e69a";
+}
+
+.icon-night:before {
     content: "\e673";
 }
 
-.icon-mulu:before {
-    content: "\e647";
+.icon-roundReduce:before {
+    content: "\e625";
 }
 
-.icon-mulu1:before {
-    content: "\e601";
+.icon-roundAdd:before {
+    content: "\e626";
 }
 
-.icon-baitian:before {
-    content: "\e655";
+.icon-arrRight:before {
+    content: "\e690";
 }
 
-.icon-jian:before {
-    content: "\e60a";
-}
-
-.icon-yanse:before {
+.icon-arrLeft:before {
     content: "\e600";
 }
 
-.icon-jia:before {
+.icon-redcude:before {
+    content: "\e60a";
+}
+
+.icon-arrTop:before {
+    content: "\ea03";
+}
+
+.icon-add:before {
     content: "\e60b";
 }
 
-.icon-jia1:before {
-    content: "\e643";
+.icon-arrBottom:before {
+    content: "\e601";
 }
 
-.icon-sanjiao_xia:before {
-    content: "\e618";
+.icon-sun:before {
+    content: "\e744";
 }
 
-.icon-icon-up:before {
-    content: "\e640";
-}
-
-.icon-bianhao:before {
+.icon-indexA:before {
     content: "\e65b";
 }
+
 
 /* ALI-ICONFONT END
 ====================================================*/
@@ -397,7 +406,7 @@ img {
     top: 0;
     left: 0;
     background: white;
-    overflow: hidden;
+    /*overflow: hidden;*/
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -405,22 +414,29 @@ img {
 }
 
 #left-container {
-    top: 0;
-    width: 260px;
-    max-width: 340px;
+    width: 270px;
     height: 100%;
+    top: 0;
     border-right: 1px solid #ccc;
     z-index: 21;
     color: #999999;
-    /*background: yellow;*/
+    transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
 }
-
+#left-container .top-container,
+#left-container .bottom-container,
+#left-container #list-container{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 #left-container .top-container {
     position: absolute;
     top: 15px;
-    left: 15px;
-    padding: 0 30px 0 0;
-    box-sizing: border-box;
+    left: 0;
+    padding: 0 15px 0 15px;
     z-index: 25;
     /*background: plum;*/
     width: 100%;
@@ -430,14 +446,12 @@ img {
 
 #left-container #list-container {
     position: absolute;
-    top: 66px;
-    left: 15px;
+    top: 55px;
+    left: 0;
     bottom: 41px;
-    padding: 0 15px 0 0;
+    padding: 0 0 0 15px;
     z-index: 24;
-    width: 100%;
     overflow: auto;
-    /*background: red;*/
 }
 
 #left-container .bottom-container {
@@ -445,9 +459,8 @@ img {
     position: absolute;
     left: 15px;
     bottom: 0;
-    padding: 0 30px 0 0;
+    padding: 0 0 0 15px;
     z-index: 24;
-    width: 100%;
     height: 40px;
     border-top: 1px solid #ccc;
 }
@@ -455,10 +468,13 @@ img {
 #right-container {
     width: 100%;
     height: 100%;
-    padding: 15px;
-    padding-left: 275px;
+    padding: 15px 15px 0 285px;
     background: #3cae7c;
     overflow: auto;
+    transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
 }
 
 #content {
@@ -471,28 +487,6 @@ img {
     background: yellow;
 }
 
-@media screen and (max-width: 1440px) {
-    #content {
-        width: 100%;
-        max-width: 960px;
-    }
-}
-
-@media screen and (max-width: 750px) {
-    #left-container {
-        width: 100%;
-        max-width: 100%;
-        height: 40px;
-        padding: 0 15px 8px;
-        border-bottom: 1px solid #ccc;
-    }
-
-    #right-container {
-        padding-left: 15px;
-        top: 40px;
-    }
-}
-
 /* Structural Framework End
 =====================================================*/
 
@@ -502,7 +496,7 @@ img {
 .catalog-button {
     display: inline-block;
     float: left;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 31px;
     cursor: pointer;
     position: relative;
@@ -543,10 +537,13 @@ img {
 
 /* list-container Start
 ===========================*/
-#list-container .list-wrapper {
+#list-container{
     width: 100%;
+}
+#list-container .list-wrapper {
     height: 100%;
-    margin-right: 15px;
+    width: 100%;
+    /*margin-right: 15px;*/
     /*padding: 0;*/
     /*background: #0db600;*/
     overflow: auto;
@@ -555,9 +552,9 @@ img {
 
 }
 
-.list-wrapper ul {
+.list-wrapper > ul {
     margin: 0;
-    padding: 0 0 0 20px;
+    padding: 10px 15px 10px 20px;
     display: block;
     z-index: 30;
 }
@@ -587,27 +584,18 @@ img {
 }
 
 .list-wrapper ul li a p {
-    padding-left: 2px;
-}
-
-.list-wrapper ul li a span {
-    padding-left: 8px;
+    padding: 0 5px;
 }
 
 .list-wrapper li i {
     display: block;
     float: left;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1;
-    margin-top: 9px;
-    /*position: absolute;*/
+    margin-top: 8px;
     margin-left: -20px;
     background: white;
     cursor: pointer;
-}
-
-.parent-level ul {
-    display: none;
 }
 
 .list-wrapper li:hover {
@@ -622,7 +610,6 @@ img {
 /* bottom-container Start
 ===========================*/
 .bottom-container {
-    width: 100%;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -662,6 +649,9 @@ img {
     border-top-right-radius: 3px;
     overflow: hidden;
     transition: height 0.4s;
+    -moz-transition: height 0.4s;
+    -webkit-transition: height 0.4s;
+    -o-transition: height 0.4s;
 }
 
 .structure-child li {
@@ -748,3 +738,92 @@ a:hover {
 }
 
 
+/*switch-button*/
+#switch-button {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+}
+
+#switch-button div {
+    display: block;
+    width: 1px;
+    height: 90px;
+    position: absolute;
+    top: -45px;
+    right: -1px;
+    border-right: 1px solid #ccc;
+    cursor: pointer;
+    z-index: 1000;
+    background: white;
+    color: #999999;
+}
+
+#switch-button div i {
+    position: absolute;
+    z-index: 1001;
+    display: block;
+    width: 18px;
+    height: 50px;
+    top: 20px;
+    left: 1px;
+    border: 1px solid #ccc;
+    background: white;
+    overflow: hidden;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: none;
+    text-align: left;
+    line-height: 50px;
+    font-size: 18px;
+}
+
+#switch-button i:hover {
+    color: #3cae7c;
+    border-color: #3cae7c;
+}
+
+#switch-button div:hover {
+    border-color: #3cae7c;
+}
+
+@media screen and (max-width: 1440px) {
+    #content {
+        width: 100%;
+        max-width: 960px;
+        margin: auto;
+    }
+}
+@media screen and (max-width: 750px) {
+    #left-container {
+        width: 60%;
+        padding: 0 15px 8px;
+        background: white;
+    }
+    #right-container {
+        padding: 15px 15px 0;
+    }
+
+}
+
+/* Js Controller
+===========================*/
+.js-switch-button{
+    width: 0;
+    padding: 0;
+}
+.js-switch-button .top-container,
+.js-switch-button #list-container,
+.js-switch-button .bottom-container
+{
+    padding: 0;
+    display: none;
+}
+.full-padding{
+    padding: 15px 15px 0;
+}
