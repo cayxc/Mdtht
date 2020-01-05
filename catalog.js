@@ -26,8 +26,6 @@ window.onload = function () {
             '    </div>\n' +
             '    <div id="list-container">\n' +
             '        <div class="list-wrapper">\n' +
-            '            <i class="catalog-button iconfont icon-jia"></i>\n' +
-            '            \n' +
             '        </div>\n' +
             '    </div>\n' +
             '    <div class="bottom-container">\n' +
@@ -439,25 +437,24 @@ window.onload = function () {
                                 '<span>' + levelArr[n].innerText + '</span>' +
                                 '</a>\n';
                             let currentUlElement = prevElement.querySelector('ul');
-                            console.log(status);
-                            if(currentUlElement !== null){
+                            if (currentUlElement !== null) {
                                 currentUlElement.appendChild(liElement);
-                            }else{
+                            } else {
                                 // 创建父目录的 ul
-                                currentUlElement =  document.createElement('ul');
+                                currentUlElement = document.createElement('ul');
                                 currentUlElement.appendChild(liElement);
                                 prevElement.appendChild(currentUlElement);
+                                // 创建 父目录样式
+                                let parentStyle = document.createElement('i');
+                                parentStyle.setAttribute('class', 'iconfont icon-jia');
+                                prevElement.insertBefore(parentStyle, prevElement.childNodes[0]);
                             }
                             break;
                         }
                     }
                 }
-                // prevElement.appendChild(childUlElement);
 
             }
-
-            // 追加目录到目录容器中
-            // catalogueBlock.appendChild(ulElement);
         }
     }
 
@@ -486,9 +483,34 @@ window.onload = function () {
 
     /*
     * ----------------------------------------
-    * 样式控制
+    * 点击目录图标
     * ----------------------------------------
      */
+
+    let catalogBOx = document.querySelector('#list-container');
+    document.querySelector('.catalog-button').onclick = function () {
+        this.classList.remove('icon-mulu');
+        this.classList.add('icon-mulu1');
+        let allUl = catalogBOx.querySelectorAll('ul');
+        for (let i = 0; i < allUl.length; i++) {
+            allUl[i].style.display = 'block';
+        }
+    };
+
+
+    let allIcon = catalogBOx.querySelectorAll('.iconfont');
+
+    function indexClick() {
+        for (let i = 0; i < allIcon.length; i++) {
+            allIcon[i].onclick = function () {
+                this.classList.remove('icon-jia');
+                this.classList.add('icon-jian');
+                this.parentElement.children[2].style.display = 'block';
+            };
+        }
+    }
+
+    indexClick();
 
 
 };
