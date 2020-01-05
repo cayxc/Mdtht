@@ -62,11 +62,32 @@
       "unicode_decimal": 58918
     },
     {
+      "icon_id": "3088955",
+      "name": "三角下标（正方形）",
+      "font_class": "arrRight",
+      "unicode": "e690",
+      "unicode_decimal": 59024
+    },
+    {
+      "icon_id": "3566506",
+      "name": "三角下标（正方形）",
+      "font_class": "arrLeft",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
       "icon_id": "4101204",
       "name": "减",
       "font_class": "redcude",
       "unicode": "e60a",
       "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "6376997",
+      "name": "三角下标（正方形）",
+      "font_class": "arrTop",
+      "unicode": "ea03",
+      "unicode_decimal": 59907
     },
     {
       "icon_id": "6655237",
@@ -76,18 +97,11 @@
       "unicode_decimal": 58891
     },
     {
-      "icon_id": "8032625",
+      "icon_id": "7782255",
       "name": "三角下标（正方形）",
-      "font_class": "triangleLower",
-      "unicode": "e618",
-      "unicode_decimal": 58904
-    },
-    {
-      "icon_id": "9185555",
-      "name": "三角下标（正方形）",
-      "font_class": "triangleUp",
-      "unicode": "e640",
-      "unicode_decimal": 58944
+      "font_class": "arrBottom",
+      "unicode": "e601",
+      "unicode_decimal": 58881
     },
     {
       "icon_id": "11631666",
