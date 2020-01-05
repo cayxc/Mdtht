@@ -39,6 +39,11 @@ html, body {
     overflow: hidden;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 /* BLOCKS
 =============================================================================*/
 
@@ -387,12 +392,12 @@ img {
 
 /* Structural Framework Start
 ====================================================*/
-#left-container, #right-container,#list-container {
+#left-container, #right-container, #list-container {
     position: absolute;
     top: 0;
     left: 0;
     background: white;
-    /*overflow: hidden;*/
+    overflow: hidden;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -410,11 +415,11 @@ img {
     /*background: yellow;*/
 }
 
-#left-container .top-container{
+#left-container .top-container {
     position: absolute;
     top: 15px;
     left: 15px;
-    padding:0 30px 0 0;
+    padding: 0 30px 0 0;
     box-sizing: border-box;
     z-index: 25;
     /*background: plum;*/
@@ -422,24 +427,25 @@ img {
     height: 40px;
     border-bottom: 1px solid #ccc;
 }
-#left-container #list-container{
+
+#left-container #list-container {
     position: absolute;
     top: 66px;
     left: 15px;
     bottom: 41px;
-    padding:0 15px 0 0;
+    padding: 0 15px 0 0;
     z-index: 24;
     width: 100%;
     overflow: auto;
-    background: red;
+    /*background: red;*/
 }
 
-#left-container .bottom-container{
+#left-container .bottom-container {
     /*background: plum;*/
     position: absolute;
     left: 15px;
     bottom: 0;
-    padding:0 30px 0 0;
+    padding: 0 30px 0 0;
     z-index: 24;
     width: 100%;
     height: 40px;
@@ -462,7 +468,7 @@ img {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    /*background: yellow;*/
+    background: yellow;
 }
 
 @media screen and (max-width: 1440px) {
@@ -472,7 +478,7 @@ img {
     }
 }
 
-@media screen and (max-width: 750px){
+@media screen and (max-width: 750px) {
     #left-container {
         width: 100%;
         max-width: 100%;
@@ -480,18 +486,20 @@ img {
         padding: 0 15px 8px;
         border-bottom: 1px solid #ccc;
     }
+
     #right-container {
-       padding-left: 15px;
-       top: 40px;
+        padding-left: 15px;
+        top: 40px;
     }
 }
+
 /* Structural Framework End
 =====================================================*/
 
 
 /* top-container Start
 ===========================*/
-.catalog-button{
+.catalog-button {
     display: inline-block;
     float: left;
     font-size: 24px;
@@ -501,7 +509,7 @@ img {
     z-index: 30;
 }
 
-.search-container, .search{
+.search-container, .search {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -515,6 +523,7 @@ img {
     padding-right: 35px;
     position: relative;
 }
+
 .search {
     display: block;
     width: 100%;
@@ -527,73 +536,84 @@ img {
     border-radius: 3px;
     outline: none;
 }
+
 /* top-container End
 ===========================*/
 
 
 /* list-container Start
 ===========================*/
-#list-container .list-wrapper{
+#list-container .list-wrapper {
     width: 100%;
     height: 100%;
     margin-right: 15px;
-    background: #0db600;
+    /*padding: 0;*/
+    /*background: #0db600;*/
     overflow: auto;
     /*margin-top: 12px;*/
+    position: relative;
+
 }
-.list-wrapper ul{
-    padding: 0;
+
+.list-wrapper ul {
     margin: 0;
-    background: yellowgreen;
+    padding: 0 0 0 20px;
     display: block;
-    /*overflow: hidden;*/
+    z-index: 30;
 }
-.list-wrapper ul li{
+
+.list-wrapper ul li {
     list-style: none;
     display: block;
-    /*overflow: hidden;*/
-    margin: 0;
-    padding: 0;
-    line-height: 20px;
-}
-.list-wrapper ul > li{
-    /*height: 24px;*/
-    /*padding: 4px 0;*/
-    /*padding-left: 10px;*/
-    /*position: relative;*/
-}
-/*.list-wrapper ul > li:before{
-    content: '';
-    display: block;
     width: 100%;
-    height: 12px;
-    position: relative;
-    top: -12px;
-    left: -10px;
-    border-top: 1px  #ccc dashed;
-
-}*/
-.list-wrapper ul > li > a{
-    display: inline-block;
-    overflow: hidden;
-    paddinf: 2px 0;
-    background: #3cae7c;
-}
-.list-wrapper ul > li > a >p{
-    display: inline-block;
+    /*overflow: hidden;*/
+    /*position: relative;*/
+    margin: 0 0 0 0;
     padding: 0;
-    margin: 0 3px 0 0;
+    cursor: pointer
 }
 
-.list-wrapper ul > li > ul{
-    /*margin-left: 24px;
-    margin-top: -12px;
-    background: #00A2E8;*/
-    border-left: 1px solid #ccc;
+.list-wrapper ul li a {
+    display: table-cell;
+    padding: 3px 0;
+    margin: 0;
+    z-index: 50;
 }
-.list-wrapper ul > li > ul > li{
-    /*padding: 4px 0;*/
+
+.list-wrapper ul li a p, .list-wrapper ul li a span {
+    display: table-cell;
+    word-break: normal;
+    word-wrap: break-word;
 }
+
+.list-wrapper ul li a p {
+    padding-left: 2px;
+}
+
+.list-wrapper ul li a span {
+    padding-left: 8px;
+}
+
+.list-wrapper li i {
+    display: block;
+    float: left;
+    font-size: 14px;
+    line-height: 1;
+    margin-top: 9px;
+    /*position: absolute;*/
+    margin-left: -20px;
+    background: white;
+    cursor: pointer;
+}
+
+.parent-level ul {
+    display: none;
+}
+
+.list-wrapper li:hover {
+    color: #3cae7c;
+}
+
 
 /* list-container End
 ===========================*/
@@ -611,6 +631,7 @@ img {
     box-sizing: border-box;
     z-index: 30;
 }
+
 .mode-container > div {
     position: relative;
     float: left;
@@ -654,9 +675,11 @@ img {
     position: relative;
     cursor: pointer;
 }
-.structure-child li label{
+
+.structure-child li label {
     cursor: pointer;
 }
+
 .structure-child input[type='radio'], .structure-child li label {
     position: absolute;
     top: 0;
@@ -683,10 +706,10 @@ img {
     outline: 1px solid #3cae7c;
     color: #777;
 }
+
 .mode-container > div:hover i,
 .structure ul li:hover,
-.catalog-button:hover
-{
+.catalog-button:hover {
     color: #3cae7c;
 }
 
@@ -701,6 +724,7 @@ img {
     border-bottom: none;
     height: 87px;
 }
+
 /* bottom-container End
 ===========================*/
 a {
