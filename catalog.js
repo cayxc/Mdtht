@@ -107,8 +107,8 @@ window.onload = function () {
                 // 替换内容
                 h1Tag[i].parentNode.replaceChild(newTag, h1Tag[i]);
             }
-            for(let j = 0;j<otherTag.length; j++){
-                let tagName = 'h'+eval(parseInt(otherTag[j].nodeName.slice(1))+1);
+            for (let j = 0; j < otherTag.length; j++) {
+                let tagName = 'h' + eval(parseInt(otherTag[j].nodeName.slice(1)) + 1);
                 let newTag2 = document.createElement(tagName);
                 newTag2.innerHTML = otherTag[j].innerHTML;
                 // 替换内容
@@ -262,11 +262,11 @@ window.onload = function () {
         if (str.lastIndexOf('.') === -1) { //如果是一级目录形式 level-1000
             let newValue = parseInt(str.slice(6)) + 1;
             return 'level-' + newValue;
-        }else{
+        } else {
             //如果是大于一级的目录形式 level-1.1 level-1.1.1 ...
             let lastIndex = str.lastIndexOf('.');
-            let oldValue = str.slice(0,lastIndex);
-            let newValue = parseInt(str.slice(lastIndex+1)) + 1;
+            let oldValue = str.slice(0, lastIndex);
+            let newValue = parseInt(str.slice(lastIndex + 1)) + 1;
             return oldValue + '.' + newValue;
         }
 
@@ -492,35 +492,38 @@ window.onload = function () {
 
     /*
     * ----------------------------------------
-    * 点击左侧隐藏图标
+    * 样式控制
     * ----------------------------------------
-     */
-
+    */
     let leftElement = document.querySelector('#left-container');
     let rightElement = document.querySelector('#right-container');
     let topElement = document.querySelector('.top-container');
-    let listElement = document.querySelector('#list-container');
+    let listElement = document.querySelector('.list-wrapper');
     let bottomElement = document.querySelector('.bottom-container');
     let contentmElement = document.querySelector('#container');
-
     let switchButton = document.querySelector('#switch-button');
 
+    /*
+   * ----------------------------------------
+   * 点击左侧隐藏图标
+   * ----------------------------------------
+   */
     function switchCatalog() {
         let status = 0;
         switchButton.onclick = function () {
             let browsertWidth = document.documentElement.clientWidth;
             if (status === 1) {
-                this.children[0].children[0].setAttribute('class','iconfont icon-arrLeft');
-                if(browsertWidth > 750){
+                this.children[0].children[0].setAttribute('class', 'iconfont icon-arrLeft');
+                if (browsertWidth > 750) {
                     leftElement.style.width = '300px';
-                }else{
+                } else {
                     leftElement.style.width = '60%';
                 }
                 leftElement.classList.remove('js-switch-button');
                 rightElement.style.padding = '15px 15px 0 295px';
                 status = 0;
-            }else{
-                this.children[0].children[0].setAttribute('class','iconfont icon-arrRight');
+            } else {
+                this.children[0].children[0].setAttribute('class', 'iconfont icon-arrRight');
                 leftElement.style.width = '0';
                 leftElement.style.padding = '0';
                 leftElement.classList.add('js-switch-button');
@@ -532,6 +535,46 @@ window.onload = function () {
     }
 
     switchCatalog();
+
+    /*
+    * ----------------------------------------
+    * 目录列表展开关闭
+    * ----------------------------------------
+    */
+    function swicthCatalogList(){
+        let status = 0;
+        let switchListButton = document.querySelector('.catalog-button');
+        let allChildLevel = listElement.children[0].querySelectorAll('ul');
+        switchListButton.onclick = function () {
+            if (status === 1) {
+                // 改变当前目录列表按钮 class
+                this.setAttribute('class', 'catalog-button iconfont icon-catalogOpen');
+                // 改变所有父级目录中 i 的 class
+                let allIcon = document.querySelectorAll('.icon-add');
+                for(let i = 0; i<allIcon.length; i++){
+                    allIcon[i].setAttribute('class','iconfont icon-redcude');
+                }
+                // 打开其所有子目录
+                for(let j = 0; j<allChildLevel.length; j++){
+                    allChildLevel[j].style.display = 'block';
+                }
+                status = 0;
+            } else {
+                this.setAttribute('class', 'catalog-button iconfont icon-catalogClose');
+                // 改变所有父级目录中 i 的 class
+                let allIcon = document.querySelectorAll('.icon-redcude');
+                for(let i = 0; i<allIcon.length; i++){
+                    allIcon[i].setAttribute('class','iconfont icon-add');
+                }
+                // 关闭其所有子目录
+                for(let j = 0; j<allChildLevel.length; j++){
+                    allChildLevel[j].style.display = 'none';
+                }
+                status = 1;
+            }
+        }
+    }
+    swicthCatalogList();
 
     //border-color
     switchButton.onmouseover = function () {
