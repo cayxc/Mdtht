@@ -492,7 +492,7 @@ img {
     display: inline-block;
     float: left;
     font-size: 22px;
-    line-height: 31px;
+    line-height: 32px;
     cursor: pointer;
     position: relative;
     z-index: 30;
@@ -558,6 +558,13 @@ img {
     cursor: pointer
 }
 
+.list-wrapper ul li > ul{
+    margin: 0;
+    padding-left: 20px;
+    display: block;
+    z-index: 30;
+}
+
 .list-wrapper ul li a {
     display: table-cell;
     padding: 3px 0;
@@ -572,7 +579,7 @@ img {
 }
 
 .list-wrapper ul li a p {
-    padding: 0 5px;
+    padding: 0 6px 0 4px;
 }
 
 .list-wrapper li i {
