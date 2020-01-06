@@ -78,8 +78,8 @@ window.onload = function () {
         let msg = '<p style="font-size:' +
             ' 14px;color:#999999;margin-top:60px;padding-top: 10px;border-top:1px' +
             ' solid #ccc;">' +
-            ' 提示：目录生成插件默认将 h1 标签作为文档的题目，不作为标题，当检测到有多个 h1 标签时，会将除了第一个 h1' +
-            ' 标签（标题）外的所有 h1 标签自动转换为 h2 标签。该插件仅在使用 MarkDown 软件将 .md 文件转为 .html' +
+            ' 提示：目录生成插件默认将第一个 h1 标签作为文档的题目，当检测到有多个 h1 标签时，会将除了第一个 h1' +
+            ' 外的所有 h1 标签自动转换为 h2 标签，其余标签自动向下转一级。该插件仅在使用 MarkDown 软件将 .md 文件转为 .html' +
             ' 文件时生效，且不影响 MarkDown 源文件。' +
             '<br/>如有问题请联系： cayang512@163.com&emsp;<a href="https://github.com/CayangPro/MarkdownPad2_UI" target="_blank">目录生成插件 GitHub 地址</p>';
         //5.追加结构元素到页面
@@ -91,22 +91,28 @@ window.onload = function () {
 
     /*
     * ----------------------------------------
-    * 将多余的 H1 转为 H2，并依次将其他h标签降一级
+    * 将除了第一个外的 H1 转为 H2，并依次将其他 h 标签降一级，h6 不变
     * ----------------------------------------
     */
     function changeTag() {
         let h1Tag = document.querySelectorAll('h1');
+        let otherTag = document.querySelectorAll('h2,h3,h4,h5');
+
+        //转换 h1
         if (h1Tag.length > 1) {
-            for (let j = 1; j < 6; j++) {
-                let tagOld = 'h' + j;
-                let tagNew = 'h' + eval(j + 1);
-                let tagSet = document.querySelectorAll(tagOld);
-                for (let i = 1; i < tagSet.length; i++) {
-                    let newNode = document.createElement(tagNew);
-                    // 替换内容
-                    newNode.innerHTML = tagSet[i].innerHTML;
-                    content.replaceChild(newNode, tagSet[i]);
-                }
+            for (let i = 1; i < h1Tag.length; i++) {
+                console.log(h1Tag[i]);
+                let newTag = document.createElement('h2');
+                newTag.innerHTML = h1Tag[i].innerHTML;
+                // 替换内容
+                h1Tag[i].parentNode.replaceChild(newTag, h1Tag[i]);
+            }
+            for(let j = 0;j<otherTag.length; j++){
+                let tagName = 'h'+eval(parseInt(otherTag[j].nodeName.slice(1))+1);
+                let newTag2 = document.createElement(tagName);
+                newTag2.innerHTML = otherTag[j].innerHTML;
+                // 替换内容
+                otherTag[j].parentNode.replaceChild(newTag2, otherTag[j]);
             }
         }
     }
@@ -127,6 +133,122 @@ window.onload = function () {
 
     /**
      * ----------------------------------------
+     * 判断目录等级，最大为 5 级即 h6 标签
+     * 根据指 id 属性中 level- 中 "." 字符出现的次数判断
+     * 0为一级，1为二级，依次类推
+     * ----------------------------------------
+     * @param str string 需要在哪个字符串中查找
+     * @param char string 要查找的字符串
+     * @return number 返回指定字符char出现的数字
+     */
+
+    function findStrFre(str, char) {
+        if ((typeof str) !== 'string' || (typeof str) !== 'string') {
+            return 'findStrFre() 调用时参数类型错误！';
+        }
+        let index = str.indexOf(char);
+        let number = 0;
+        while (index !== -1) {
+            number++; // 每出现一次 次数加一
+            // 从字符串出现的位置的下一位置开始继续查找
+            index = str.indexOf(char, index + 1);
+        }
+        return number;
+    }
+
+    /**
+     * ----------------------------------------
+     * 寻找指定等级的目录的集合
+     * ----------------------------------------
+     *
+     * @param level number 第几级目录，最大 5
+     *
+     */
+    function levelTagArr(level) {
+        if (level < 1 || level > 5 || (typeof level) !== 'number') {
+            return 'levelTagArr() 调用时参数类型错误！';
+        }
+        // 所有目录集合
+        let allTag = document.querySelectorAll('h2,h3,h4,h5,h6');
+        let level1 = [];
+        let level2 = [];
+        let level3 = [];
+        let level4 = [];
+        let level5 = [];
+        for (let i = 0; i < allTag.length; i++) {
+            let number = findStrFre(allTag[i].id, '.');
+            switch (number) {
+                case 0:
+                    level1.push(allTag[i]);
+                    break;
+                case 1:
+                    level2.push(allTag[i]);
+                    break;
+                case 2:
+                    level3.push(allTag[i]);
+                    break;
+                case 3:
+                    level4.push(allTag[i]);
+                    break;
+                case 4:
+                    level5.push(allTag[i]);
+                    break;
+                default:
+                    i++;
+            }
+        }
+        switch (level) {
+            case 1:
+                return level1;
+            case 2:
+                return level2;
+            case 3:
+                return level3;
+            case 4:
+                return level4;
+            case 5:
+                return level5;
+            default:
+                return;
+        }
+    }
+
+    /**
+     * ----------------------------------------
+     * 根据父目录找到其下的第一级子目录集合
+     * ----------------------------------------
+     * @param tagObj obj 父目录标签对象
+     *
+     */
+    function childTagArr(tagObj) {
+        if ((typeof tagObj) !== 'object') {
+            return 'childTagArr() 调用时参数类型错误，必须是一个 h 标签的对象集合';
+        }
+        let result = [];
+        // 判断父级目录 tagObj 是第几级目录
+        let level = findStrFre(tagObj.id, '.') + 1; // findStrFre() 0为一级
+        if (level === 5) { // 第五级目录
+            result.push(tagObj);
+        } else {
+            //找到该父级目录的下一级目录的所有同级目录
+            let allChildTag = levelTagArr(level + 1);
+            let faTagId = tagObj.id.slice(6); //父级目录id编号
+            // 找到该目录下的子目录
+            for (let i = 0; i < allChildTag.length; i++) {
+                //子目录中去掉id值中最后一个 "." 后与父级相同就是该父级的子目录
+                // 父目录: level-1.1 子目录：level-1.1.1  level-1.1.23
+                let chTagId = allChildTag[i].id.slice(6,
+                    allChildTag[i].id.lastIndexOf('.'));
+                if (chTagId === faTagId) {
+                    result.push(allChildTag[i]);
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * ----------------------------------------
      * 设置递增的 level 编号
      * ----------------------------------------
      * @param tag obj 标签对象
@@ -137,14 +259,14 @@ window.onload = function () {
             return 'setLevelNumber() 调用时参数类型错误，必须是一个h标签的对象集合！';
         }
         let str = tag.id;
-        if (str.length <= 7) { //如果是 level-1 形式
-            let newValue = parseInt(str.slice(-1)) + 1;
-            return str.slice(0, -1) + newValue;
-        }
-        if (str.length > 7) { //如果是 level-1.1 level-1.1.1 ... 形式
+        if (str.lastIndexOf('.') === -1) { //如果是一级目录形式 level-1000
+            let newValue = parseInt(str.slice(6)) + 1;
+            return 'level-' + newValue;
+        }else{
+            //如果是大于一级的目录形式 level-1.1 level-1.1.1 ...
             let lastIndex = str.lastIndexOf('.');
-            let oldValue = str.slice(0, lastIndex);
-            let newValue = parseInt(str.slice(lastIndex + 1)) + 1;
+            let oldValue = str.slice(0,lastIndex);
+            let newValue = parseInt(str.slice(lastIndex+1)) + 1;
             return oldValue + '.' + newValue;
         }
 
@@ -266,122 +388,6 @@ window.onload = function () {
      </ul>
   *
   */
-
-    /**
-     * ----------------------------------------
-     * 判断目录等级，最大为 5 级即 h6 标签
-     * 根据指 id 属性中 level- 中 "." 字符出现的次数判断
-     * 0为一级，1为二级，依次类推
-     * ----------------------------------------
-     * @param str string 需要在哪个字符串中查找
-     * @param char string 要查找的字符串
-     * @return number 返回指定字符char出现的数字
-     */
-
-    function findStrFre(str, char) {
-        if ((typeof str) !== 'string' || (typeof str) !== 'string') {
-            return 'findStrFre() 调用时参数类型错误！';
-        }
-        let index = str.indexOf(char);
-        let number = 0;
-        while (index !== -1) {
-            number++; // 每出现一次 次数加一
-            // 从字符串出现的位置的下一位置开始继续查找
-            index = str.indexOf(char, index + 1);
-        }
-        return number;
-    }
-
-    /**
-     * ----------------------------------------
-     * 寻找指定等级的目录的集合
-     * ----------------------------------------
-     *
-     * @param level number 第几级目录，最大 5
-     *
-     */
-    function levelTagArr(level) {
-        if (level < 1 || level > 5 || (typeof level) !== 'number') {
-            return 'levelTagArr() 调用时参数类型错误！';
-        }
-        // 所有目录集合
-        let allTag = document.querySelectorAll('h2,h3,h4,h5,h6');
-        let level1 = [];
-        let level2 = [];
-        let level3 = [];
-        let level4 = [];
-        let level5 = [];
-        for (let i = 0; i < allTag.length; i++) {
-            let number = findStrFre(allTag[i].id, '.');
-            switch (number) {
-                case 0:
-                    level1.push(allTag[i]);
-                    break;
-                case 1:
-                    level2.push(allTag[i]);
-                    break;
-                case 2:
-                    level3.push(allTag[i]);
-                    break;
-                case 3:
-                    level4.push(allTag[i]);
-                    break;
-                case 4:
-                    level5.push(allTag[i]);
-                    break;
-                default:
-                    i++;
-            }
-        }
-        switch (level) {
-            case 1:
-                return level1;
-            case 2:
-                return level2;
-            case 3:
-                return level3;
-            case 4:
-                return level4;
-            case 5:
-                return level5;
-            default:
-                return;
-        }
-    }
-
-    /**
-     * ----------------------------------------
-     * 根据父目录找到其下的第一级子目录集合
-     * ----------------------------------------
-     * @param tagObj obj 父目录标签对象
-     *
-     */
-    function childTagArr(tagObj) {
-        if ((typeof tagObj) !== 'object') {
-            return 'childTagArr() 调用时参数类型错误，必须是一个 h 标签的对象集合';
-        }
-        let result = [];
-        // 判断父级目录 tagObj 是第几级目录
-        let level = findStrFre(tagObj.id, '.') + 1; // findStrFre() 0为一级
-        if (level === 5) { // 第五级目录
-            result.push(tagObj);
-        } else {
-            //找到该父级目录的下一级目录的所有同级目录
-            let allChildTag = levelTagArr(level + 1);
-            let faTagId = tagObj.id.slice(6); //父级目录id编号
-            // 找到该目录下的子目录
-            for (let i = 0; i < allChildTag.length; i++) {
-                //子目录中去掉id值中最后一个 "." 后与父级相同就是该父级的子目录
-                // 父目录: level-1.1 子目录：level-1.1.1  level-1.1.23
-                let chTagId = allChildTag[i].id.slice(6,
-                    allChildTag[i].id.lastIndexOf('.'));
-                if (chTagId === faTagId) {
-                    result.push(allChildTag[i]);
-                }
-            }
-        }
-        return result;
-    }
 
     /*
      * ----------------------------------------
@@ -506,7 +512,7 @@ window.onload = function () {
             let browsertWidth = document.documentElement.clientWidth;
             if (isActive) {
                 if(browsertWidth > 750){
-                    leftElement.style.width = '270px';
+                    leftElement.style.width = '300px';
                 }else{
                     leftElement.style.width = '60%';
                 }
@@ -535,33 +541,5 @@ window.onload = function () {
     switchButton.onmouseout = function () {
         leftElement.style.borderColor = '#ccc';
     }
-
-    /*let catalogBOx = document.querySelector('#list-container');
-    let allIcon = catalogBOx.querySelectorAll('.iconfont');
-    document.querySelector('.catalog-button').onclick = function () {
-        this.classList.remove('icon-mulu');
-        this.classList.add('icon-mulu1');
-        let allUl = catalogBOx.querySelectorAll('li ul');
-        for (let i = 0; i < allUl.length; i++) {
-            allUl[i].style.display = 'block';
-            allUl[i].parentElement.children[0].setAttribute('class', 'iconfont icon-jian');
-        }
-        for (let j = 0; j< allIcon.length; j++) {
-            allIcon[j].setAttribute('class', 'iconfont icon-jian');
-        }
-    };
-
-    function indexClick() {
-        for (let i = 0; i < allIcon.length; i++) {
-            allIcon[i].onclick = function () {
-                this.classList.remove('icon-jia');
-                this.classList.add('icon-jian');
-                this.parentElement.children[2].style.display = 'block';
-            };
-        }
-    }
-
-    indexClick();*/
-
 
 };
