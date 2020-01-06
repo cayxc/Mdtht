@@ -5,6 +5,7 @@
 
 /* RESET
 =============================================================================*/
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
@@ -412,7 +413,7 @@ img {
 }
 
 #left-container {
-    width: 300px;
+    width: 280px;
     height: 100%;
     top: 0;
     border-right: 1px solid #ccc;
@@ -437,13 +438,13 @@ img {
     padding: 0 15px 0 15px;
     z-index: 25;
     width: 100%;
-    height: 40px;
+    height: 42px;
     border-bottom: 1px solid #ccc;
 }
 
 #left-container #list-container {
     position: absolute;
-    top: 55px;
+    top: 57px;
     left: 0;
     bottom: 41px;
     padding: 0 0 0 15px;
@@ -464,7 +465,7 @@ img {
 #right-container {
     width: 100%;
     height: 100%;
-    padding: 15px 15px 0 315px;
+    padding: 15px 15px 0 295px;
     overflow: auto;
     transition: all 0.4s;
     -moz-transition: all 0.4s;
@@ -505,7 +506,7 @@ img {
 
 .search-container {
     width: 100%;
-    height: 30px;
+    height: 32px;
     margin-left: 35px;
     padding-right: 35px;
     position: relative;
@@ -514,7 +515,7 @@ img {
 .search {
     display: block;
     width: 100%;
-    height: 30px;
+    height: 32px;
     border: 1px solid #ccc;
     background: white;
     padding-left: 5px;
@@ -731,15 +732,15 @@ a:hover {
     height: 100%;
     position: absolute;
     right: 0;
-    top: 50%;
+    top: 0;
 }
 
 #switch-button div {
     display: block;
-    width: 1px;
+    width: 2px;
     height: 90px;
     position: absolute;
-    top: -45px;
+    top: 36px;
     right: -1px;
     border-right: 1px solid #ccc;
     cursor: pointer;
@@ -752,10 +753,10 @@ a:hover {
     position: absolute;
     z-index: 1001;
     display: block;
-    width: 18px;
+    width: 16px;
     height: 50px;
     top: 20px;
-    left: 1px;
+    left: 2px;
     border: 1px solid #ccc;
     background: white;
     overflow: hidden;
