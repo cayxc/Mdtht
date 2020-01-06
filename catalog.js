@@ -506,33 +506,32 @@ window.onload = function () {
     let switchButton = document.querySelector('#switch-button');
 
     function switchCatalog() {
-
+        let status = 0;
         switchButton.onclick = function () {
-            let isActive = switchButton.querySelector('.active');
             let browsertWidth = document.documentElement.clientWidth;
-            if (isActive) {
+            if (status === 1) {
+                this.children[0].children[0].setAttribute('class','iconfont icon-arrLeft');
                 if(browsertWidth > 750){
                     leftElement.style.width = '300px';
                 }else{
                     leftElement.style.width = '60%';
                 }
                 leftElement.classList.remove('js-switch-button');
-                this.children[0].children[0].setAttribute('class','iconfont icon-arrLeft');
-                rightElement.style.padding = '15px 15px 0 285px';
-                // rightElement.style.padding('full-padding');
-            } else {
-                leftElement.classList.add('js-switch-button');
+                rightElement.style.padding = '15px 15px 0 295px';
+                status = 0;
+            }else{
+                this.children[0].children[0].setAttribute('class','iconfont icon-arrRight');
                 leftElement.style.width = '0';
                 leftElement.style.padding = '0';
                 leftElement.classList.add('js-switch-button');
-                this.children[0].children[0].setAttribute('class','iconfont icon-arrRight active');
+                leftElement.classList.add('js-switch-button');
                 rightElement.style.padding = '15px 15px 0';
+                status = 1;
             }
         }
     }
 
     switchCatalog();
-
 
     //border-color
     switchButton.onmouseover = function () {
