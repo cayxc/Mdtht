@@ -418,7 +418,6 @@ img {
     top: 0;
     border-right: 1px solid #ccc;
     z-index: 21;
-    color: #999999;
     transition: all 0.4s;
     -moz-transition: all 0.4s;
     -webkit-transition: all 0.4s;
@@ -561,7 +560,6 @@ img {
 .list-wrapper ul li > ul{
     margin: 0;
     padding-left: 20px;
-    display: block;
     z-index: 30;
 }
 
@@ -724,6 +722,10 @@ a:hover {
     color: #3cae7c;
 }
 
+i{
+    color: #999;
+}
+
 .parent-level > a:hover:before {
     border-color: transparent transparent transparent #3cae7c;
 }
@@ -752,8 +754,6 @@ a:hover {
     border-right: 1px solid #ccc;
     cursor: pointer;
     z-index: 1000;
-    background: white;
-    color: #999999;
 }
 
 #switch-button div i {
@@ -821,4 +821,17 @@ a:hover {
 }
 .full-padding{
     padding: 15px 15px 0;
+}
+
+.js-close{
+    display: none;
+}
+.js-open{
+    display: block;
+}
+.js-active > i{
+    color: #3cae7c;
+}
+.js-active > a{
+    color: #3cae7c;
 }
