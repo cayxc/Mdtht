@@ -101,7 +101,7 @@ window.onload = function () {
         //转换 h1
         if (h1Tag.length > 1) {
             for (let i = 1; i < h1Tag.length; i++) {
-                console.log(h1Tag[i]);
+                // console.log(h1Tag[i]);
                 let newTag = document.createElement('h2');
                 newTag.innerHTML = h1Tag[i].innerHTML;
                 // 替换内容
@@ -282,7 +282,7 @@ window.onload = function () {
         changeTag();
         // 获取所有h2~h6标签，h1作为文档的题目，不作为目录标签
         let allTag = document.querySelectorAll('h2,h3,h4,h5,h6');
-        console.log(allTag);
+        // console.log(allTag);
         //判断目录数量，确定第一、二个标题的层级
         if (allTag.length === 0) {
             let msg = '<p style="color:#cccccc;font-size:' +
@@ -491,9 +491,7 @@ window.onload = function () {
     creatCatalogue();
 
     /*
-    * ----------------------------------------
-    * 样式控制
-    * ----------------------------------------
+    * 样式控制  ===========================================
     */
     let leftElement = document.querySelector('#left-container');
     let rightElement = document.querySelector('#right-container');
@@ -502,6 +500,12 @@ window.onload = function () {
     let bottomElement = document.querySelector('.bottom-container');
     let contentmElement = document.querySelector('#container');
     let switchButton = document.querySelector('#switch-button');
+
+    let switchListButton = document.querySelector('.catalog-button');
+    let allIcon = listElement.children[0].querySelectorAll('i');
+    let allChildLevel = listElement.children[0].querySelectorAll('ul');
+    let allCatalogElement = listElement.querySelectorAll('a');
+    let parentlist = document.querySelectorAll('.parent-level');
 
     /*
    * ----------------------------------------
@@ -541,9 +545,6 @@ window.onload = function () {
     * 目录列表展开关闭
     * ----------------------------------------
     */
-    let switchListButton = document.querySelector('.catalog-button');
-    let allIcon = listElement.children[0].querySelectorAll('i');
-    let allChildLevel = listElement.children[0].querySelectorAll('ul');
     function swicthCatalogList(){
         let status = 0;
         switchListButton.onclick = function () {
@@ -551,25 +552,23 @@ window.onload = function () {
                 // 改变当前目录列表按钮 class
                 this.setAttribute('class', 'catalog-button iconfont icon-catalogOpen');
                 // 改变所有父级目录中 i 的 class
-                // let allIcon = document.querySelectorAll('.icon-add');
                 for(let i = 0; i<allIcon.length; i++){
                     allIcon[i].setAttribute('class','iconfont icon-redcude');
                 }
                 // 打开其所有子目录
                 for(let j = 0; j<allChildLevel.length; j++){
-                    allChildLevel[j].style.display = 'block';
+                    allChildLevel[j].setAttribute('class','js-open');
                 }
                 status = 0;
             } else {
                 this.setAttribute('class', 'catalog-button iconfont icon-catalogClose');
                 // 改变所有父级目录中 i 的 class
-                // let allIcon = document.querySelectorAll('.icon-redcude');
                 for(let i = 0; i<allIcon.length; i++){
                     allIcon[i].setAttribute('class','iconfont icon-add');
                 }
                 // 关闭其所有子目录
                 for(let j = 0; j<allChildLevel.length; j++){
-                    allChildLevel[j].style.display = 'none';
+                    allChildLevel[j].setAttribute('class','js-close');
                 }
                 status = 1;
             }
@@ -577,6 +576,68 @@ window.onload = function () {
     }
     swicthCatalogList();
 
+    /*
+    * ----------------------------------------
+    * 父目录展开、收起
+    * ----------------------------------------
+    */
+    function switchParentCatalog(){
+        for(let i = 0; i<allIcon.length; i++){
+            allIcon[i].onclick = function(){
+                let status = allIcon[i].nextElementSibling.nextElementSibling.getAttribute('class');
+                if(status == 'js-open' || status == null){ // 子目录已展开
+                    allIcon[i].setAttribute('class','iconfont icon-add');
+                    allIcon[i].nextElementSibling.nextElementSibling.setAttribute('class','js-close');
+                }else{ // 子目录已收起
+                    allIcon[i].setAttribute('class','iconfont icon-redcude');
+                    allIcon[i].nextElementSibling.nextElementSibling.setAttribute('class','js-open');
+                }
+            }
+        }
+
+    }
+    switchParentCatalog();
+
+    /**
+     * ----------------------------------------
+     * 递归改变父级目录样式
+     * ----------------------------------------
+     * @param itemLi 需要寻找父目录的当前 li 元素对象
+     * @return {string|boolean}
+     */
+    function changeParentColor(itemLi){
+        if((typeof itemLi) !== 'object'){
+            return 'changeParentColor() 参数必须是一个标签对象！';
+        }
+        console.log(itemLi);
+        itemLi.classList.add('js-active');
+        if(itemLi.parentElement.parentElement.nodeName === 'LI'){
+            changeParentColor(itemLi.parentElement.parentElement);
+        }
+    }
+    /*
+    * ----------------------------------------
+    * 单个目录点击
+    * ----------------------------------------
+    */
+    function singLeCatalogClick(){
+        // 第一个目录样式
+        listElement.querySelector('li').classList.add('js-active');
+        for(let i = 0; i<allCatalogElement.length;i++){
+            allCatalogElement[i].onclick = function () {
+                // 其他目录恢复原始颜色
+                let oldACrtiveElement = listElement.querySelectorAll('.js-active');
+                for(let j = 0;j<oldACrtiveElement.length;j++){
+                    oldACrtiveElement[j].classList.remove('js-active');
+                }
+                // 当前目录改变颜色
+                allCatalogElement[i].parentElement.classList.add('js-active');
+                changeParentColor(allCatalogElement[i].parentElement);
+            }
+        }
+    }
+    singLeCatalogClick();
+    
     //border-color
     switchButton.onmouseover = function () {
         leftElement.style.borderColor = '#3cae7c';
