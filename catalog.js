@@ -541,16 +541,17 @@ window.onload = function () {
     * 目录列表展开关闭
     * ----------------------------------------
     */
+    let switchListButton = document.querySelector('.catalog-button');
+    let allIcon = listElement.children[0].querySelectorAll('i');
+    let allChildLevel = listElement.children[0].querySelectorAll('ul');
     function swicthCatalogList(){
         let status = 0;
-        let switchListButton = document.querySelector('.catalog-button');
-        let allChildLevel = listElement.children[0].querySelectorAll('ul');
         switchListButton.onclick = function () {
             if (status === 1) {
                 // 改变当前目录列表按钮 class
                 this.setAttribute('class', 'catalog-button iconfont icon-catalogOpen');
                 // 改变所有父级目录中 i 的 class
-                let allIcon = document.querySelectorAll('.icon-add');
+                // let allIcon = document.querySelectorAll('.icon-add');
                 for(let i = 0; i<allIcon.length; i++){
                     allIcon[i].setAttribute('class','iconfont icon-redcude');
                 }
@@ -562,7 +563,7 @@ window.onload = function () {
             } else {
                 this.setAttribute('class', 'catalog-button iconfont icon-catalogClose');
                 // 改变所有父级目录中 i 的 class
-                let allIcon = document.querySelectorAll('.icon-redcude');
+                // let allIcon = document.querySelectorAll('.icon-redcude');
                 for(let i = 0; i<allIcon.length; i++){
                     allIcon[i].setAttribute('class','iconfont icon-add');
                 }
