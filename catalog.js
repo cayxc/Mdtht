@@ -84,9 +84,6 @@ window.onload = function () {
         noteTips('div', msg, 'content');
     }
 
-    //内容区父容器
-    var content = document.getElementById('content');
-
     /*
     * ----------------------------------------
     * 将除了第一个外的 H1 转为 H2，并依次将其他 h 标签降一级，h6 不变
@@ -493,10 +490,10 @@ window.onload = function () {
     */
     let leftElement = document.querySelector('#left-container');
     let rightElement = document.querySelector('#right-container');
+    let content = document.querySelector('#content');
     let topElement = document.querySelector('.top-container');
     let listElement = document.querySelector('.list-wrapper');
     let bottomElement = document.querySelector('.bottom-container');
-    let contentmElement = document.querySelector('#container');
     let switchButton = document.querySelector('#switch-button');
 
     let switchListButton = document.querySelector('.catalog-button');
@@ -626,12 +623,13 @@ window.onload = function () {
         for (let i = 0; i < allCatalogElement.length; i++) {
             allCatalogElement[i].onclick = function () {
                 // 其他目录恢复原始颜色
-                let oldACrtiveElement = listElement.querySelectorAll('.js-active');
-                for (let j = 0; j < oldACrtiveElement.length; j++) {
-                    oldACrtiveElement[j].classList.remove('js-active');
+                let oldActiveElement = listElement.querySelectorAll('.js-active');
+                for (let j = 0; j < oldActiveElement.length; j++) {
+                    oldActiveElement[j].classList.remove('js-active');
                 }
                 // 当前目录改变颜色
                 allCatalogElement[i].parentElement.classList.add('js-active');
+                // 当前父目录添加样式
                 changeParentColor(allCatalogElement[i].parentElement);
             }
         }
@@ -688,10 +686,10 @@ window.onload = function () {
     }
 
     /*
-   * ----------------------------------------
-   * 是否显示目录序号
-   * ----------------------------------------
-   */
+     * ----------------------------------------
+     * 是否显示目录序号
+     * ----------------------------------------
+     */
     let showIndex = document.querySelector('.index');
     let allIndex = listElement.querySelectorAll('p');
     function showCatalogIndex(){
@@ -715,7 +713,43 @@ window.onload = function () {
     }
     showCatalogIndex();
 
+    /*
+     * ----------------------------------------
+     * 根据内容区阅读位置自动追踪目录
+     * ----------------------------------------
+     */
 
+    function catalogTrack(){
+        //获取内容区所有 h2~h6 标题及它们距离浏览器顶部的距离
+        let allTag = content.querySelectorAll('h2,h3,h4,h5,h6');
+        let allHTitle = [];
+        let allTtitleDistance = [];
 
+        for (let i = 0; i < allTag.length; i++) {
+            allHTitle.push(allTag[i].getAttribute('id'));
+            allTtitleDistance.push(allTag[i].offsetTop);
+        }
+
+        //滑动正文内容时
+        content.onscroll = function (e) {
+            e = e || window.event;
+            let top = eval(content.scrollTop+50);
+            for(let i = 0; i<allTtitleDistance.length;i++){
+                if(top >= allTtitleDistance[i]){
+                    // 其他目录恢复原始颜色
+                    let oldActiveElement = listElement.querySelectorAll('.js-active');
+                    for (let j = 0; j < oldActiveElement.length; j++) {
+                        oldActiveElement[j].classList.remove('js-active');
+                    }
+                    // 当前目录改变颜色
+                    allCatalogElement[i].parentElement.classList.add('js-active');
+                    // 当前父目录添加样式
+                    changeParentColor(allCatalogElement[i].parentElement);
+                }
+            }
+        }
+
+    }
+    catalogTrack();
 
 };
