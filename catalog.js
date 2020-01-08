@@ -21,7 +21,7 @@ window.onload = function () {
         leftBlock.innerHTML = '\n<div class="top-container">\n' +
             '        <i class="catalog-button iconfont icon-catalogOpen"></i>\n' +
             '        <div class="search-container">\n' +
-            '            <input type="text" class="search" placeholder="输入关键字搜索">\n' +
+            '            <input type="text" class="search" placeholder="输入关键字搜索 . . .">\n' +
             '        </div>\n' +
             '    </div>\n' +
             '    <div id="list-container">\n' +
@@ -75,13 +75,11 @@ window.onload = function () {
         document.body.appendChild(rigthBlock);
 
         //6.底部提示
-        let msg = '<p style="font-size:' +
-            ' 14px;color:#999999;margin-top:60px;padding-top: 10px;border-top:1px' +
-            ' solid #ccc;">' +
+        let msg = '\n<p class="note-tips">\n' +
             ' 提示：目录生成插件默认将第一个 h1 标签作为文档的题目，当检测到有多个 h1 标签时，会将除了第一个 h1' +
             ' 外的所有 h1 标签自动转换为 h2 标签，其余标签自动向下转一级。该插件仅在使用 MarkDown 软件将 .md 文件转为 .html' +
             ' 文件时生效，且不影响 MarkDown 源文件。' +
-            '<br/>如有问题请联系： cayang512@163.com&emsp;<a href="https://github.com/CayangPro/MarkdownPad2_UI" target="_blank">目录生成插件 GitHub 地址</p>';
+            '<br/>如有问题请联系： cayang512@163.com&emsp;<a href="https://github.com/CayangPro/MarkdownPad2_UI" target="_blank">目录生成插件 GitHub 地址</p>\n';
         //5.追加结构元素到页面
         noteTips('div', msg, 'content');
     }
@@ -516,7 +514,7 @@ window.onload = function () {
         let status = 0;
         switchButton.onclick = function () {
             let browsertWidth = document.documentElement.clientWidth;
-            if (status === 1) {
+            if (status == 1) {
                 this.children[0].children[0].setAttribute('class', 'iconfont icon-arrLeft');
                 if (browsertWidth > 750) {
                     leftElement.style.width = '300px';
@@ -545,35 +543,36 @@ window.onload = function () {
     * 目录列表展开关闭
     * ----------------------------------------
     */
-    function swicthCatalogList(){
+    function swicthCatalogList() {
         let status = 0;
         switchListButton.onclick = function () {
             if (status === 1) {
                 // 改变当前目录列表按钮 class
                 this.setAttribute('class', 'catalog-button iconfont icon-catalogOpen');
                 // 改变所有父级目录中 i 的 class
-                for(let i = 0; i<allIcon.length; i++){
-                    allIcon[i].setAttribute('class','iconfont icon-redcude');
+                for (let i = 0; i < allIcon.length; i++) {
+                    allIcon[i].setAttribute('class', 'iconfont icon-redcude');
                 }
                 // 打开其所有子目录
-                for(let j = 0; j<allChildLevel.length; j++){
-                    allChildLevel[j].setAttribute('class','js-open');
+                for (let j = 0; j < allChildLevel.length; j++) {
+                    allChildLevel[j].setAttribute('class', 'js-open');
                 }
                 status = 0;
             } else {
                 this.setAttribute('class', 'catalog-button iconfont icon-catalogClose');
                 // 改变所有父级目录中 i 的 class
-                for(let i = 0; i<allIcon.length; i++){
-                    allIcon[i].setAttribute('class','iconfont icon-add');
+                for (let i = 0; i < allIcon.length; i++) {
+                    allIcon[i].setAttribute('class', 'iconfont icon-add');
                 }
                 // 关闭其所有子目录
-                for(let j = 0; j<allChildLevel.length; j++){
-                    allChildLevel[j].setAttribute('class','js-close');
+                for (let j = 0; j < allChildLevel.length; j++) {
+                    allChildLevel[j].setAttribute('class', 'js-close');
                 }
                 status = 1;
             }
         }
     }
+
     swicthCatalogList();
 
     /*
@@ -581,21 +580,22 @@ window.onload = function () {
     * 父目录展开、收起
     * ----------------------------------------
     */
-    function switchParentCatalog(){
-        for(let i = 0; i<allIcon.length; i++){
-            allIcon[i].onclick = function(){
+    function switchParentCatalog() {
+        for (let i = 0; i < allIcon.length; i++) {
+            allIcon[i].onclick = function () {
                 let status = allIcon[i].nextElementSibling.nextElementSibling.getAttribute('class');
-                if(status == 'js-open' || status == null){ // 子目录已展开
-                    allIcon[i].setAttribute('class','iconfont icon-add');
-                    allIcon[i].nextElementSibling.nextElementSibling.setAttribute('class','js-close');
-                }else{ // 子目录已收起
-                    allIcon[i].setAttribute('class','iconfont icon-redcude');
-                    allIcon[i].nextElementSibling.nextElementSibling.setAttribute('class','js-open');
+                if (status == 'js-open' || status == null) { // 子目录已展开
+                    allIcon[i].setAttribute('class', 'iconfont icon-add');
+                    allIcon[i].nextElementSibling.nextElementSibling.setAttribute('class', 'js-close');
+                } else { // 子目录已收起
+                    allIcon[i].setAttribute('class', 'iconfont icon-redcude');
+                    allIcon[i].nextElementSibling.nextElementSibling.setAttribute('class', 'js-open');
                 }
             }
         }
 
     }
+
     switchParentCatalog();
 
     /**
@@ -605,29 +605,30 @@ window.onload = function () {
      * @param itemLi 需要寻找父目录的当前 li 元素对象
      * @return {string|boolean}
      */
-    function changeParentColor(itemLi){
-        if((typeof itemLi) !== 'object'){
+    function changeParentColor(itemLi) {
+        if ((typeof itemLi) !== 'object') {
             return 'changeParentColor() 参数必须是一个标签对象！';
         }
         console.log(itemLi);
         itemLi.classList.add('js-active');
-        if(itemLi.parentElement.parentElement.nodeName === 'LI'){
+        if (itemLi.parentElement.parentElement.nodeName === 'LI') {
             changeParentColor(itemLi.parentElement.parentElement);
         }
     }
+
     /*
     * ----------------------------------------
     * 单个目录点击
     * ----------------------------------------
     */
-    function singLeCatalogClick(){
+    function singLeCatalogClick() {
         // 第一个目录样式
         listElement.querySelector('li').classList.add('js-active');
-        for(let i = 0; i<allCatalogElement.length;i++){
+        for (let i = 0; i < allCatalogElement.length; i++) {
             allCatalogElement[i].onclick = function () {
                 // 其他目录恢复原始颜色
                 let oldACrtiveElement = listElement.querySelectorAll('.js-active');
-                for(let j = 0;j<oldACrtiveElement.length;j++){
+                for (let j = 0; j < oldACrtiveElement.length; j++) {
                     oldACrtiveElement[j].classList.remove('js-active');
                 }
                 // 当前目录改变颜色
@@ -636,14 +637,58 @@ window.onload = function () {
             }
         }
     }
+
     singLeCatalogClick();
-    
-    //border-color
+
+    /*
+    * ----------------------------------------
+    * 夜览模式
+    * ----------------------------------------
+    */
+    let viewModeButton = document.querySelector('.mode');
+    let allFont = document.querySelectorAll('font');
+
+    function nightView() {
+        let status = 0;
+        viewModeButton.onclick = function () {
+            if (status == 0) {
+                viewModeButton.children[0].setAttribute('class', 'iconfont icon-night');
+                document.body.classList.add('js-night-view');
+                status = 1;
+                leftElement.style.borderColor = '#B2CCD6';
+                //将红色字体改为 #43d6de
+                if (allFont.length > 1) {
+                    for (let i = 0; i < allFont.length; i++) {
+                        allFont[i].classList.add('change-red');
+                    }
+                }
+            } else {
+                viewModeButton.children[0].setAttribute('class', 'iconfont icon-sun');
+                document.body.classList.remove('js-night-view');
+                status = 0;
+                leftElement.style.borderColor = '#ccc';
+                //将红色字体颜色恢复
+                let allRedFont = document.querySelectorAll('.change-red');
+                if (allRedFont.length > 1) {
+                    for (let i = 0; i < allRedFont.length; i++) {
+                        allRedFont[i].classList.remove('change-red');
+                    }
+                }
+            }
+        }
+
+    }
+
+    nightView();
+
+    //left-container border-color
+    let leftBdColor = leftElement.getAttribute('border-color');
     switchButton.onmouseover = function () {
         leftElement.style.borderColor = '#3cae7c';
     }
     switchButton.onmouseout = function () {
-        leftElement.style.borderColor = '#ccc';
+        leftElement.style.borderColor = leftBdColor;
     }
+
 
 };
