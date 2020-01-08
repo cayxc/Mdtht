@@ -513,6 +513,7 @@ window.onload = function () {
             let browsertWidth = document.documentElement.clientWidth;
             if (status == 1) {
                 this.children[0].children[0].setAttribute('class', 'iconfont icon-arrLeft');
+                this.children[0].classList.remove('hidden-style');
                 if (browsertWidth > 750) {
                     leftElement.style.width = '300px';
                 } else {
@@ -523,6 +524,7 @@ window.onload = function () {
                 status = 0;
             } else {
                 this.children[0].children[0].setAttribute('class', 'iconfont icon-arrRight');
+                this.children[0].classList.add('hidden-style');
                 leftElement.style.width = '0';
                 leftElement.style.padding = '0';
                 leftElement.classList.add('js-switch-button');
@@ -536,7 +538,7 @@ window.onload = function () {
 
     /*
     * ----------------------------------------
-    * 目录列表展开关闭
+    * 整个目录列表展开关闭
     * ----------------------------------------
     */
     function swicthCatalogList() {
@@ -698,13 +700,13 @@ window.onload = function () {
             if(status == 1){ //显示目录序号
                 this.children[0].setAttribute('class','iconfont icon-indexA');
                 for(let i = 0; i<allIndex.length;i++){
-                    allIndex[i].classList.remove('js-display-none');
+                    allIndex[i].classList.remove('js-close');
                 }
                 status = 0;
             }else{ //关闭目录序号
                 this.children[0].setAttribute('class','iconfont icon-indexB');
                 for(let i = 0; i<allIndex.length;i++){
-                    allIndex[i].classList.add('js-display-none');
+                    allIndex[i].classList.add('js-close');
                 }
                 status = 1;
             }
