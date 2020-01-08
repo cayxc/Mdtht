@@ -797,18 +797,33 @@ i:hover{
     height: 50px;
     background-color: white;
     top: 20px;
-    left: 2px;
+    right: 0;
     border: 1px solid #ccc;
     overflow: hidden;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-left: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
     text-align: left;
     line-height: 50px;
     font-size: 18px;
+}
+#switch-button .hidden-style {
+    top: 42px;
+    right: -1px;
+}
+
+#switch-button .hidden-style i {
+    right: -18px;
+    border-right: 1px solid #ccc;
+    border-left: none;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 #switch-button i:hover {
@@ -857,8 +872,9 @@ i:hover{
 .full-padding{
     padding: 15px 15px 0;
 }
-
-.js-close{
+.js-close,
+.list-wrapper ul li a .js-close
+{
     display: none;
 }
 .js-open{
@@ -975,8 +991,3 @@ i:hover{
     color: #B2CCD6;
 }
 /*night-veiw End*/
-
-.js-display-none,
-.list-wrapper ul li a .js-display-none{
-    display: none;
-}
