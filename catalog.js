@@ -535,7 +535,6 @@ window.onload = function () {
             }
         }
     }
-
     switchCatalog();
 
     /*
@@ -637,7 +636,6 @@ window.onload = function () {
             }
         }
     }
-
     singLeCatalogClick();
 
     /*
@@ -678,7 +676,6 @@ window.onload = function () {
         }
 
     }
-
     nightView();
 
     //left-container border-color
@@ -689,6 +686,36 @@ window.onload = function () {
     switchButton.onmouseout = function () {
         leftElement.style.borderColor = leftBdColor;
     }
+
+    /*
+   * ----------------------------------------
+   * 是否显示目录序号
+   * ----------------------------------------
+   */
+    let showIndex = document.querySelector('.index');
+    let allIndex = listElement.querySelectorAll('p');
+    function showCatalogIndex(){
+        let status = 0;
+        showIndex.onclick = function () {
+            if(status == 1){ //显示目录序号
+                this.children[0].setAttribute('class','iconfont icon-indexA');
+                for(let i = 0; i<allIndex.length;i++){
+                    allIndex[i].classList.remove('js-display-none');
+                }
+                status = 0;
+            }else{ //关闭目录序号
+                this.children[0].setAttribute('class','iconfont icon-indexB');
+                for(let i = 0; i<allIndex.length;i++){
+                    allIndex[i].classList.add('js-display-none');
+                }
+                status = 1;
+            }
+        }
+
+    }
+    showCatalogIndex();
+
+
 
 
 };
