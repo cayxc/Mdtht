@@ -18,12 +18,16 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 body {
     font-family: Helvetica, arial, freesans, clean, sans-serif;
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.8;
     color: #333;
     background-color: #fff;
     padding: 20px;
     max-width: 960px;
     margin: 0 auto;
+    transition: background-color 0.4s;
+    -moz-transition: background-color 0.4s;
+    -webkit-transition: background-color 0.4s;
+    -o-transition: background-color 0.4s;
 }
 
 body > *:first-child {
@@ -202,7 +206,9 @@ code, tt {
     white-space: nowrap;
     border: 1px solid #263238;
     background-color: #263238;
-    border-radius: 3px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
 }
 
 pre > code {
@@ -219,9 +225,11 @@ pre {
     font-size: 16px;
     line-height: 19px;
     overflow: auto;
-    padding: 6px 10px;
-    border-radius: 3px;
+    padding: 10px 12px;
     color: white;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
 }
 
 pre code, pre tt {
@@ -234,26 +242,30 @@ kbd {
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
-    background-color: #263238;
     background-image: linear-gradient(#F1F1F1, #DDDDDD);
     background-repeat: repeat-x;
-    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-color: #CCCCCC;
     border-image: none;
-    border-radius: 2px 2px 2px 2px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
     border-style: solid;
     border-width: 1px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 10px;
-    padding: 1px 4px;
+    padding: 6px 12px;
 }
 
 /* QUOTES
 =============================================================================*/
 
 blockquote {
-    border-left: 4px solid #DDD;
-    padding: 0 15px;
+    border-left: 4px solid #ccc;
+    padding: 10px 15px;
     color: #777;
+    background: #f1f1f1;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
 }
 
 blockquote > :first-child {
@@ -405,7 +417,7 @@ img {
     position: absolute;
     top: 0;
     left: 0;
-    background: white;
+    /*background: white;*/
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -418,6 +430,7 @@ img {
     top: 0;
     border-right: 1px solid #ccc;
     z-index: 21;
+    background: #fff;
     transition: all 0.4s;
     -moz-transition: all 0.4s;
     -webkit-transition: all 0.4s;
@@ -437,13 +450,14 @@ img {
     padding: 0 15px 0 15px;
     z-index: 25;
     width: 100%;
-    height: 42px;
+    height: 48px;
     border-bottom: 1px solid #ccc;
+    overflow: hidden;
 }
 
 #left-container #list-container {
     position: absolute;
-    top: 57px;
+    top: 62px;
     left: 0;
     bottom: 41px;
     padding: 0 0 0 15px;
@@ -491,7 +505,7 @@ img {
     display: inline-block;
     float: left;
     font-size: 22px;
-    line-height: 32px;
+    line-height: 34px;
     cursor: pointer;
     position: relative;
     z-index: 30;
@@ -505,7 +519,7 @@ img {
 
 .search-container {
     width: 100%;
-    height: 32px;
+    height: 34px;
     margin-left: 35px;
     padding-right: 35px;
     position: relative;
@@ -514,16 +528,26 @@ img {
 .search {
     display: block;
     width: 100%;
-    height: 32px;
+    height: 34px;
     border: 1px solid #ccc;
-    background: white;
-    padding-left: 5px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
+    padding-left: 8px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
     outline: none;
 }
-
+input::-webkit-input-placeholder { /* WebKit browsers */
+    color: #999999;
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #999999;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #999999;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #999999;
+}
 /* top-container End
 ===========================*/
 
@@ -565,7 +589,6 @@ img {
 
 .list-wrapper ul li a {
     display: table-cell;
-    padding: 3px 0;
     margin: 0;
     z-index: 50;
 }
@@ -587,14 +610,12 @@ img {
     line-height: 1;
     margin-top: 8px;
     margin-left: -20px;
-    background: white;
     cursor: pointer;
 }
 
 .list-wrapper li:hover {
-    color: #3cae7c;
+    color:  #3cae7c;
 }
-
 
 /* list-container End
 ===========================*/
@@ -686,7 +707,8 @@ img {
 }
 
 .search:focus {
-    outline: 1px solid #3cae7c;
+    outline: none;
+    border-color: #3cae7c;
     color: #777;
 }
 
@@ -707,15 +729,20 @@ img {
     border-bottom: none;
     height: 87px;
 }
-
 /* bottom-container End
 ===========================*/
-a {
-    color: #333;
+
+.note-tips{
+    font-size: 14px;
+    color: #999;
+    margin-top:60px;
+    padding-top: 10px;
+    border-top:1px solid #ccc;
 }
 
-#content a {
-    color: #4183C4;
+
+a {
+    color: #333;
 }
 
 a:hover {
@@ -725,15 +752,18 @@ a:hover {
 i{
     color: #999;
 }
+i:hover{
+    color: #3cae7c;
+    border-color:  #3cae7c;
+}
 
-.parent-level > a:hover:before {
-    border-color: transparent transparent transparent #3cae7c;
+#content a {
+    color: #4183C4;
 }
 
 #list-container a {
     text-decoration: none;
 }
-
 
 /*switch-button*/
 #switch-button {
@@ -749,7 +779,7 @@ i{
     width: 2px;
     height: 90px;
     position: absolute;
-    top: 36px;
+    top: 42px;
     right: -1px;
     border-right: 1px solid #ccc;
     cursor: pointer;
@@ -762,14 +792,14 @@ i{
     display: block;
     width: 16px;
     height: 50px;
+    background-color: white;
     top: 20px;
     left: 2px;
     border: 1px solid #ccc;
-    background: white;
     overflow: hidden;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border-left: none;
@@ -798,7 +828,6 @@ i{
     #left-container {
         width: 60%;
         padding: 0 15px 8px;
-        background: white;
     }
     #right-container {
         padding: 15px 15px 0;
@@ -808,6 +837,9 @@ i{
 
 /* Js Controller
 ===========================*/
+.change-red{
+    color:  #43d6de;
+}
 .js-switch-button{
     width: 0;
     padding: 0;
@@ -829,9 +861,115 @@ i{
 .js-open{
     display: block;
 }
-.js-active > i{
+/*click*/
+.js-active,
+.js-active > i,
+.js-active > a
+{
     color: #3cae7c;
 }
-.js-active > a{
+/*night-veiw Start*/
+.js-night-view,
+.js-night-view #left-container,
+.js-night-view input,
+.js-night-view .mode-container > div,
+.js-night-view .structure-child, .color-child,
+.js-night-view #switch-button div i
+{
+    background-color: #263238;
+    color:  #B2CCD6;
+    border-color: #B2CCD6;
+}
+.js-night-view h1,
+.js-night-view h2,
+.js-night-view h3,
+.js-night-view h4,
+.js-night-view h5,
+.js-night-view h6,
+.js-night-view span,
+.js-night-view p,
+.js-night-view i
+{
+    color: #B2CCD6;
+}
+.js-night-view .list-wrapper li i:hover,
+.js-night-view .list-wrapper li a:hover p,
+.js-night-view .list-wrapper li a:hover span
+{
+    color: #3cae7c;
+    border-color: #3cae7c;
+}
+.js-night-view .js-active > i,
+.js-night-view .js-active > a,
+.js-night-view .js-active > a p,
+.js-night-view .js-active > a span
+{
     color: #3cae7c;
 }
+.js-night-view .search{
+    color: #B2CCD6;
+}
+.js-night-view .note-tips{
+    color: #708792;
+}
+.js-night-view h2,
+.js-night-view #left-container,
+.js-night-view #left-container .top-container,
+.js-night-view .search,
+.js-night-view #left-container .bottom-container,
+.js-night-view #left-container .bottom-container div,
+.js-night-view  #switch-button div
+{
+    border-color: #B2CCD6;
+}
+.js-night-view #switch-button i:hover {
+    color: #3cae7c;
+    border-color: #3cae7c;
+}
+
+.js-night-view #switch-button div:hover {
+    border-color: #3cae7c;
+}
+
+.js-night-view  table th, .js-night-view  table td {
+    border: 1px solid #B2CCD6;
+}
+
+.js-night-view table tr {
+    border-top: 1px solid #B2CCD6;
+    background-color: #263238;
+}
+
+.js-night-view table tr:nth-child(2n) {
+    background-color: #385053;
+}
+.js-night-view pre {
+    background-color: #161d21;
+    border: 1px solid #385053;
+    color: #B2CCD6;
+    /*background: #385053;*/
+}
+.js-night-view kbd {
+    background-color: #385053;
+    background-image: linear-gradient(#385053, #263238);
+    border-color: #161d21;
+}
+.js-night-view blockquote {
+    border-left: 4px solid #43d6de;
+    color: #B2CCD6;
+    background: #385053;
+}
+
+.js-night-view  input::-webkit-input-placeholder {
+    color: #B2CCD6;
+}
+.js-night-view input:-moz-placeholder {
+    color: #B2CCD6;
+}
+.js-night-view  input::-moz-placeholder {
+    color: #B2CCD6;
+}
+.js-night-view input:-ms-input-placeholder {
+    color: #B2CCD6;
+}
+/*night-veiw End*/
