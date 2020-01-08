@@ -792,7 +792,6 @@ i:hover{
     display: block;
     width: 16px;
     height: 50px;
-    background-color: white;
     top: 20px;
     left: 2px;
     border: 1px solid #ccc;
@@ -873,8 +872,7 @@ i:hover{
 .js-night-view #left-container,
 .js-night-view input,
 .js-night-view .mode-container > div,
-.js-night-view .structure-child, .color-child,
-.js-night-view #switch-button div i
+.js-night-view .structure-child, .color-child
 {
     background-color: #263238;
     color:  #B2CCD6;
@@ -917,8 +915,7 @@ i:hover{
 .js-night-view #left-container .top-container,
 .js-night-view .search,
 .js-night-view #left-container .bottom-container,
-.js-night-view #left-container .bottom-container div,
-.js-night-view  #switch-button div
+.js-night-view #left-container .bottom-container div
 {
     border-color: #B2CCD6;
 }
