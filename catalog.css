@@ -590,6 +590,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 .list-wrapper ul li a {
     display: table-cell;
     margin: 0;
+    padding-left: 2px;
     z-index: 50;
 }
 
@@ -599,8 +600,8 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     word-wrap: break-word;
 }
 
-.list-wrapper ul li a p {
-    padding: 0 6px 0 4px;
+.list-wrapper ul li a p{
+    padding-right: 6px;
 }
 
 .list-wrapper li i {
@@ -608,7 +609,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     float: left;
     font-size: 16px;
     line-height: 1;
-    margin-top: 8px;
+    margin-top: 6px;
     margin-left: -20px;
     cursor: pointer;
 }
@@ -792,6 +793,7 @@ i:hover{
     display: block;
     width: 16px;
     height: 50px;
+    background-color: white;
     top: 20px;
     left: 2px;
     border: 1px solid #ccc;
@@ -872,7 +874,8 @@ i:hover{
 .js-night-view #left-container,
 .js-night-view input,
 .js-night-view .mode-container > div,
-.js-night-view .structure-child, .color-child
+.js-night-view .structure-child, .color-child,
+.js-night-view #switch-button div i
 {
     background-color: #263238;
     color:  #B2CCD6;
@@ -970,3 +973,8 @@ i:hover{
     color: #B2CCD6;
 }
 /*night-veiw End*/
+
+.js-display-none,
+.list-wrapper ul li a .js-display-none{
+    display: none;
+}
