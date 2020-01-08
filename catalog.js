@@ -79,7 +79,7 @@ window.onload = function () {
             ' 提示：目录生成插件默认将第一个 h1 标签作为文档的题目，当检测到有多个 h1 标签时，会将除了第一个 h1' +
             ' 外的所有 h1 标签自动转换为 h2 标签，其余标签自动向下转一级。该插件仅在使用 MarkDown 软件将 .md 文件转为 .html' +
             ' 文件时生效，且不影响 MarkDown 源文件。' +
-            '<br/>如有问题请联系： cayang512@163.com&emsp;<a href="https://github.com/CayangPro/MarkdownPad2_UI" target="_blank">目录生成插件 GitHub 地址</p>\n';
+            '<br/>如有问题请联系： cayang512@163.com&emsp;插件获取地址:&emsp;<a href="https://github.com/cayxc/markdownpad2-auto-catalog" target="_blank"> GitHub地址</a>&emsp;<a href="https://gitee.com/yangxingcai/markdownpad2-auto-catalog" target="_blank">Gitee地址</a></p>\n';
         //5.追加结构元素到页面
         noteTips('div', msg, 'content');
     }
@@ -653,7 +653,7 @@ window.onload = function () {
                 viewModeButton.children[0].setAttribute('class', 'iconfont icon-night');
                 document.body.classList.add('js-night-view');
                 status = 1;
-                leftElement.style.borderColor = '#B2CCD6';
+                leftElement.style.borderColor = '#DCECF5';
                 //将红色字体改为 #43d6de
                 if (allFont.length > 1) {
                     for (let i = 0; i < allFont.length; i++) {
@@ -724,18 +724,15 @@ window.onload = function () {
     function catalogTrack(){
         //获取内容区所有 h2~h6 标题及它们距离浏览器顶部的距离
         let allTag = content.querySelectorAll('h2,h3,h4,h5,h6');
-        let allHTitle = [];
         let allTtitleDistance = [];
-
         for (let i = 0; i < allTag.length; i++) {
-            allHTitle.push(allTag[i].getAttribute('id'));
             allTtitleDistance.push(allTag[i].offsetTop);
         }
 
         //滑动正文内容时
-        content.onscroll = function (e) {
+        rightElement.onscroll = function (e) {
             e = e || window.event;
-            let top = eval(content.scrollTop+50);
+            let top = eval(rightElement.scrollTop+50);
             for(let i = 0; i<allTtitleDistance.length;i++){
                 if(top >= allTtitleDistance[i]){
                     // 其他目录恢复原始颜色
