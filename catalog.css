@@ -487,13 +487,13 @@ img {
 
 #content {
     width: 100%;
-    height: 100%;
+    /*height: 100%;*/
     max-width: 1200px;
     margin: 0 auto;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    overflow: auto;
+    /*overflow: auto;*/
 
 }
 
@@ -896,8 +896,8 @@ i:hover{
 .js-night-view #switch-button div i
 {
     background-color: #263238;
-    color:  #B2CCD6;
-    border-color: #B2CCD6;
+    color:  #DCECF5;
+    border-color: #DCECF5;
 }
 .js-night-view h1,
 .js-night-view h2,
@@ -909,7 +909,7 @@ i:hover{
 .js-night-view p,
 .js-night-view i
 {
-    color: #B2CCD6;
+    color: #DCECF5;
 }
 .js-night-view .list-wrapper li i:hover,
 .js-night-view .list-wrapper li a:hover p,
@@ -926,7 +926,7 @@ i:hover{
     color: #3cae7c;
 }
 .js-night-view .search{
-    color: #B2CCD6;
+    color: #DCECF5;
 }
 .js-night-view .note-tips{
     color: #708792;
@@ -938,7 +938,7 @@ i:hover{
 .js-night-view #left-container .bottom-container,
 .js-night-view #left-container .bottom-container div
 {
-    border-color: #B2CCD6;
+    border-color: #DCECF5;
 }
 .js-night-view #switch-button i:hover {
     color: #3cae7c;
@@ -950,11 +950,11 @@ i:hover{
 }
 
 .js-night-view  table th, .js-night-view  table td {
-    border: 1px solid #B2CCD6;
+    border: 1px solid #DCECF5;
 }
 
 .js-night-view table tr {
-    border-top: 1px solid #B2CCD6;
+    border-top: 1px solid #DCECF5;
     background-color: #263238;
 }
 
@@ -964,7 +964,7 @@ i:hover{
 .js-night-view pre {
     background-color: #161d21;
     border: 1px solid #385053;
-    color: #B2CCD6;
+    color: #DCECF5;
     /*background: #385053;*/
 }
 .js-night-view kbd {
@@ -974,20 +974,20 @@ i:hover{
 }
 .js-night-view blockquote {
     border-left: 4px solid #43d6de;
-    color: #B2CCD6;
+    color: #DCECF5;
     background: #385053;
 }
 
 .js-night-view  input::-webkit-input-placeholder {
-    color: #B2CCD6;
+    color: #DCECF5;
 }
 .js-night-view input:-moz-placeholder {
-    color: #B2CCD6;
+    color: #DCECF5;
 }
 .js-night-view  input::-moz-placeholder {
-    color: #B2CCD6;
+    color: #DCECF5;
 }
 .js-night-view input:-ms-input-placeholder {
-    color: #B2CCD6;
+    color: #DCECF5;
 }
 /*night-veiw End*/
