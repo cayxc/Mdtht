@@ -653,7 +653,7 @@ window.onload = function () {
                 viewModeButton.children[0].setAttribute('class', 'iconfont icon-night');
                 document.body.classList.add('js-night-view');
                 status = 1;
-                leftElement.style.borderColor = '#DCECF5';
+                leftElement.style.borderColor = '#3E3D42';
                 //将红色字体改为 #43d6de
                 if (allFont.length > 1) {
                     for (let i = 0; i < allFont.length; i++) {

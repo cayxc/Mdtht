@@ -203,8 +203,8 @@ code, tt {
     margin: 0 0px;
     padding: 0px 0px;
     white-space: nowrap;
-    border: 1px solid #263238;
-    background-color: #263238;
+    border: 1px solid #212123;
+    background-color: #212123;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
@@ -219,8 +219,8 @@ pre > code {
 }
 
 pre {
-    background-color: #263238;
-    border: 1px solid #263238;
+    background-color: #212123;
+    border: 1px solid #212123;
     font-size: 16px;
     line-height: 19px;
     overflow: auto;
@@ -466,7 +466,8 @@ img {
 
 #left-container .bottom-container {
     position: absolute;
-    left: 15px;
+    left: 0;
+    right: 0;
     bottom: 0;
     padding: 0 0 0 15px;
     z-index: 24;
@@ -580,7 +581,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     width: 100%;
     margin: 0 0 0 0;
     padding: 0;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .list-wrapper ul li > ul{
@@ -594,6 +595,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     margin: 0;
     padding-left: 2px;
     z-index: 50;
+    color: #333333;
 }
 
 .list-wrapper ul li a p, .list-wrapper ul li a span {
@@ -606,7 +608,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     padding-right: 6px;
 }
 
-.list-wrapper li i {
+.list-wrapper ul li i {
     display: block;
     float: left;
     font-size: 16px;
@@ -614,22 +616,26 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     margin-top: 6px;
     margin-left: -20px;
     cursor: pointer;
+    color: #999999;
 }
 
-.list-wrapper li:hover {
+.list-wrapper ul li a:hover {
     color:  #3cae7c;
 }
+.list-wrapper li i:hover{
+    color: #3cae7c;
+    border-color:  #3cae7c;
+}
 
-/* list-container End
-===========================*/
+
+    /* list-container End
+    ===========================*/
 
 
 /* bottom-container Start
 ===========================*/
 .bottom-container {
     position: absolute;
-    bottom: 0;
-    right: 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -740,24 +746,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     color: #999;
     margin-top:60px;
     padding-top: 10px;
-    border-top:1px solid #ccc;
-}
-
-
-a {
-    color: #333;
-}
-
-a:hover {
-    color: #3cae7c;
-}
-
-i{
-    color: #999;
-}
-i:hover{
-    color: #3cae7c;
-    border-color:  #3cae7c;
+    border-top:1px solid #cccccc;
 }
 
 #content a {
@@ -783,8 +772,7 @@ i:hover{
     height: 90px;
     position: absolute;
     top: 42px;
-    right: -1px;
-    border-right: 1px solid #ccc;
+    right: 0;
     cursor: pointer;
     z-index: 1000;
 }
@@ -809,10 +797,11 @@ i:hover{
     text-align: left;
     line-height: 50px;
     font-size: 18px;
+    color: #999999;
 }
 #switch-button .hidden-style {
     top: 42px;
-    right: -1px;
+    right: 0;
 }
 
 #switch-button .hidden-style i {
@@ -880,37 +869,57 @@ i:hover{
 .js-open{
     display: block;
 }
+
 /*click*/
 .js-active,
 .js-active > i,
-.js-active > a
+.js-active > a,
+.js-active > a p,
+.js-active > a span
 {
     color: #3cae7c;
 }
+
 /*night-veiw Start*/
+.js-night-view,
+.js-night-view h2,
+.js-night-view .search,
+.js-night-view .list-wrapper ul li > a,
+.js-night-view blockquote,
+.js-night-view pre
+{
+    color: #cccccc;
+}
+.js-night-view input:-ms-input-placeholder,
+.js-night-view input::-moz-placeholder,
+.js-night-view input:-moz-placeholder,
+.js-night-view input::-webkit-input-placeholder
+{
+    color: #c3c3c3c3;
+}
 .js-night-view,
 .js-night-view #left-container,
 .js-night-view input,
 .js-night-view .mode-container > div,
 .js-night-view .structure-child, .color-child,
-.js-night-view #switch-button div i
-{
-    background-color: #263238;
-    color:  #DCECF5;
-    border-color: #DCECF5;
+.js-night-view #switch-button div i{
+    background-color: #212123;
 }
-.js-night-view h1,
 .js-night-view h2,
-.js-night-view h3,
-.js-night-view h4,
-.js-night-view h5,
-.js-night-view h6,
-.js-night-view span,
-.js-night-view p,
-.js-night-view i
+.js-night-view #left-container,
+.js-night-view #left-container .top-container,
+.js-night-view .search,
+.js-night-view #left-container .bottom-container,
+.js-night-view #left-container .bottom-container div,
+.js-night-view #left-container .bottom-container ul,
+.js-night-view #switch-button div,
+.js-night-view #switch-button div i,
+.js-night-view  table th, .js-night-view  table td,
+.js-night-view .note-tips
 {
-    color: #DCECF5;
+    border-color: #3E3D42;
 }
+
 .js-night-view .list-wrapper li i:hover,
 .js-night-view .list-wrapper li a:hover p,
 .js-night-view .list-wrapper li a:hover span
@@ -925,21 +934,7 @@ i:hover{
 {
     color: #3cae7c;
 }
-.js-night-view .search{
-    color: #DCECF5;
-}
-.js-night-view .note-tips{
-    color: #708792;
-}
-.js-night-view h2,
-.js-night-view #left-container,
-.js-night-view #left-container .top-container,
-.js-night-view .search,
-.js-night-view #left-container .bottom-container,
-.js-night-view #left-container .bottom-container div
-{
-    border-color: #DCECF5;
-}
+
 .js-night-view #switch-button i:hover {
     color: #3cae7c;
     border-color: #3cae7c;
@@ -949,45 +944,26 @@ i:hover{
     border-color: #3cae7c;
 }
 
-.js-night-view  table th, .js-night-view  table td {
-    border: 1px solid #DCECF5;
-}
-
 .js-night-view table tr {
-    border-top: 1px solid #DCECF5;
-    background-color: #263238;
+    border-top: 1px solid #3E3D42;
+    background-color: #212123;
 }
 
 .js-night-view table tr:nth-child(2n) {
-    background-color: #385053;
+    background-color: #1C1B20;
 }
+
 .js-night-view pre {
-    background-color: #161d21;
-    border: 1px solid #385053;
-    color: #DCECF5;
-    /*background: #385053;*/
+    background-color: #010101;
+    border: 1px solid #3E3D42;
 }
 .js-night-view kbd {
-    background-color: #385053;
-    background-image: linear-gradient(#385053, #263238);
-    border-color: #161d21;
+    background-color: #010101;
+    background-image: linear-gradient(#1C1B20, #212123);
+    border-color: #3E3D42;
 }
 .js-night-view blockquote {
     border-left: 4px solid #43d6de;
-    color: #DCECF5;
-    background: #385053;
-}
-
-.js-night-view  input::-webkit-input-placeholder {
-    color: #DCECF5;
-}
-.js-night-view input:-moz-placeholder {
-    color: #DCECF5;
-}
-.js-night-view  input::-moz-placeholder {
-    color: #DCECF5;
-}
-.js-night-view input:-ms-input-placeholder {
-    color: #DCECF5;
+    background: #3e3d42;
 }
 /*night-veiw End*/
