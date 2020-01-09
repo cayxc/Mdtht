@@ -50,21 +50,21 @@
     {
       "icon_id": "2842713",
       "name": "圆减",
-      "font_class": "roundReduce",
+      "font_class": "openB",
       "unicode": "e625",
       "unicode_decimal": 58917
     },
     {
       "icon_id": "2842722",
       "name": "圆加",
-      "font_class": "roundAdd",
+      "font_class": "closeB",
       "unicode": "e626",
       "unicode_decimal": 58918
     },
     {
       "icon_id": "3088955",
       "name": "三角下标（正方形）",
-      "font_class": "arrRight",
+      "font_class": "closeC",
       "unicode": "e690",
       "unicode_decimal": 59024
     },
@@ -78,7 +78,7 @@
     {
       "icon_id": "4101204",
       "name": "减",
-      "font_class": "redcude",
+      "font_class": "openA",
       "unicode": "e60a",
       "unicode_decimal": 58890
     },
@@ -92,14 +92,14 @@
     {
       "icon_id": "6655237",
       "name": "加",
-      "font_class": "add",
+      "font_class": "closeA",
       "unicode": "e60b",
       "unicode_decimal": 58891
     },
     {
       "icon_id": "7782255",
       "name": "三角下标（正方形）",
-      "font_class": "arrBottom",
+      "font_class": "openC",
       "unicode": "e601",
       "unicode_decimal": 58881
     },
