@@ -53,7 +53,7 @@ window.onload = function () {
             '                    </li>\n' +
             '                </ul>\n' +
             '            </div>\n' +
-            '            <div class="color">\n' +
+            '            <div class="color" style="display: none;">\n' +
             '                <i class="iconfont icon-color"></i>\n' +
             '                <div class="color-child">\n' +
             '                    <span>自定义颜色</span>\n' +
@@ -515,7 +515,7 @@ window.onload = function () {
                 this.children[0].children[0].setAttribute('class', 'iconfont icon-arrLeft');
                 this.children[0].classList.remove('hidden-style');
                 if (browsertWidth > 750) {
-                    leftElement.style.width = '300px';
+                    leftElement.style.width = '280px';
                 } else {
                     leftElement.style.width = '60%';
                 }
