@@ -485,6 +485,10 @@ img {
     -moz-transition: all 0.4s;
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
+    /*火狐和IE下滚动条样式*/
+    scrollbar-color: #C1C1C1 #F1F1F1;
+    scrollbar-track-color: #C1C1C1;
+    -ms-scrollbar-track-color: #C1C1C1;
 }
 
 #content {
@@ -496,7 +500,6 @@ img {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     /*overflow: auto;*/
-
 }
 
 /* Structural Framework End
@@ -551,18 +554,6 @@ input, textarea {
     border-radius: 4px;
     outline: none;
 }
-input::-webkit-input-placeholder { /* WebKit browsers */
-    color: #999999;
-}
-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: #999999;
-}
-input::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #999999;
-}
-input:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: #999999;
-}
 /* top-container End
 ===========================*/
 
@@ -571,6 +562,10 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 ===========================*/
 #list-container{
     width: 100%;
+    /*火狐和IE下滚动条样式*/
+    scrollbar-color: #C1C1C1 #F1F1F1;
+    scrollbar-track-color: #C1C1C1;
+    -ms-scrollbar-track-color: #C1C1C1;
 }
 #list-container .list-wrapper {
     height: 100%;
@@ -862,6 +857,58 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     }
 
 }
+/*  Custom input placeholder
+===========================*/
+input::-webkit-input-placeholder { /* WebKit browsers */
+    color: #999999;
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #999999;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #999999;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #999999;
+}
+
+/*  Custom Scroll
+===========================*/
+/*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+/*隐藏滚动条，当IE下溢出，仍然可以滚动*/
+#right-container::-webkit-scrollbar,
+.list-wrapper::-webkit-scrollbar
+{
+    width: 6px; /*对垂直流动条有效*/
+    height: 6px; /*对水平流动条有效*/
+}
+/*定义滚动条的轨道颜色、内阴影及圆角*/
+#right-container::-webkit-scrollbar-track,
+.list-wrapper::-webkit-scrollbar-track{
+    background-color: #F1F1F1;
+}
+
+/*定义滑块颜色、内阴影及圆角*/
+#right-container::-webkit-scrollbar-thumb,
+.list-wrapper::-webkit-scrollbar-thumb
+{
+    border-radius: 3px;
+    background-color: #C1C1C1;
+}
+
+/*定义两端按钮的样式*/
+#right-container::-webkit-scrollbar-button,
+.list-wrapper::-webkit-scrollbar-button
+{
+    display: none;
+}
+
+/*定义右下角汇合处的样式*/
+#right-container::-webkit-scrollbar-corner,
+.list-wrapper::-webkit-scrollbar-corner
+{
+    background:#C1C1C1;
+}
 
 /* Js Controller
 ===========================*/
@@ -1023,4 +1070,30 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     border-left: 4px solid #43d6de;
     background: #3e3d42;
 }
+.js-night-view #right-container,
+.js-night-view .list-wrapper{
+    /*火狐和IE下滚动条样式*/
+    scrollbar-color: #3E3D42 #212123;
+    scrollbar-track-color: #3E3D42;
+    -ms-scrollbar-track-color: #3E3D42;
+}
+.js-night-view #right-container::-webkit-scrollbar-track,
+.js-night-view .list-wrapper::-webkit-scrollbar-track{
+    background-color: #212123;
+}
+
+/*定义滑块颜色、内阴影及圆角*/
+.js-night-view #right-container::-webkit-scrollbar-thumb,
+.js-night-view .list-wrapper::-webkit-scrollbar-thumb
+{
+    border-radius: 3px;
+    background-color: #3E3D42;
+}
+/*定义右下角汇合处的样式*/
+.js-night-view #right-container::-webkit-scrollbar-corner,
+.js-night-view .list-wrapper::-webkit-scrollbar-corner
+{
+    background:#3E3D42;
+}
+
 /*night-veiw End*/
