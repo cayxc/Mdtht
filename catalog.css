@@ -259,7 +259,7 @@ kbd {
 =============================================================================*/
 
 blockquote {
-    border-left: 4px solid #ccc;
+    border-left: 4px solid #3cae7c;
     padding: 10px 15px;
     color: #777;
     background: #f1f1f1;
@@ -515,7 +515,10 @@ img {
     z-index: 30;
 }
 
-.search-container, .search {
+.search-container,
+.search,
+input,
+textarea {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -534,7 +537,15 @@ img {
     width: 100%;
     height: 34px;
     border: 1px solid #ccc;
-    padding-left: 8px;
+    padding-left: 6px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    outline: none;
+}
+input, textarea {
+    border: 1px solid #ccc;
+    padding: 0 6px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
@@ -580,7 +591,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     list-style: none;
     display: block;
     width: 100%;
-    margin: 0 0 0 0;
+    margin: -8px 0 0 0;
     padding: 0;
     cursor: pointer;
 }
@@ -592,11 +603,14 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 
 .list-wrapper ul li a {
-    display: table-cell;
+    display: inline-block;
+    width: 100%;
     margin: 0;
-    padding-left: 2px;
     z-index: 50;
     color: #333333;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
 }
 
 .list-wrapper ul li a p, .list-wrapper ul li a span {
@@ -607,16 +621,21 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 
 .list-wrapper ul li a p{
     padding-right: 6px;
+    padding-left: 2px;
 }
 
 .list-wrapper ul li i {
     display: block;
+    padding: 6px 0 6px 0;
     float: left;
     font-size: 16px;
     line-height: 1;
-    margin-top: 6px;
+    margin-top: 0;
     margin-left: -20px;
     cursor: pointer;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
 }
 .list-wrapper i{
     color: #999999;
@@ -882,6 +901,19 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     color: #3cae7c;
 }
 
+#list-container .js-active > a{
+    background: #f1f1f1;
+}
+#list-container .js-active > a p{
+    padding-left: 6px;
+}
+#list-container .js-active > i
+{
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-right: -4px;
+    background: #f1f1f1;
+}
 /*night-veiw Start*/
 .js-night-view,
 .js-night-view h2,
@@ -890,7 +922,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 .js-night-view blockquote,
 .js-night-view pre
 {
-    color: #cccccc;
+    color: #dddddd;
 }
 .js-night-view input:-ms-input-placeholder,
 .js-night-view input::-moz-placeholder,
@@ -908,7 +940,24 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 .js-night-view #switch-button div i{
     background-color: #212123;
 }
+.js-night-view h1,
 .js-night-view h2,
+.js-night-view h3,
+.js-night-view h4,
+.js-night-view h5,
+.js-night-view h6,
+.js-night-view div,
+.js-night-view ul,
+.js-night-view li,
+.js-night-view ol,
+.js-night-view dl,
+.js-night-view dt,
+.js-night-view dd,
+.js-night-view a,
+.js-night-view p,
+.js-night-view span,
+.js-night-view input,
+.js-night-view textarea,
 .js-night-view #left-container,
 .js-night-view #left-container .top-container,
 .js-night-view .search,
@@ -922,7 +971,10 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 {
     border-color: #3E3D42;
 }
-
+.js-night-view #list-container .js-active > a,
+.js-night-view #list-container .js-active > i{
+    background: #3E3D42;
+}
 .js-night-view .list-wrapper li i:hover,
 .js-night-view .list-wrapper li a:hover p,
 .js-night-view .list-wrapper li a:hover span
@@ -943,7 +995,9 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     border-color: #3cae7c;
 }
 
-.js-night-view #switch-button div:hover {
+.js-night-view #switch-button div:hover,
+.js-night-view .search:focus
+{
     border-color: #3cae7c;
 }
 
