@@ -13,6 +13,13 @@
       "unicode_decimal": 58956
     },
     {
+      "icon_id": "554488",
+      "name": "月亮",
+      "font_class": "night",
+      "unicode": "e74d",
+      "unicode_decimal": 59213
+    },
+    {
       "icon_id": "1190154",
       "name": "体验-目录",
       "font_class": "indexB",
@@ -25,6 +32,13 @@
       "font_class": "catalogOpen",
       "unicode": "e692",
       "unicode_decimal": 59026
+    },
+    {
+      "icon_id": "1583540",
+      "name": "搜索",
+      "font_class": "search",
+      "unicode": "e669",
+      "unicode_decimal": 58985
     },
     {
       "icon_id": "1586777",
@@ -41,23 +55,16 @@
       "unicode_decimal": 59034
     },
     {
-      "icon_id": "2512590",
-      "name": "夜间多云",
-      "font_class": "night",
-      "unicode": "e673",
-      "unicode_decimal": 58995
-    },
-    {
       "icon_id": "2842713",
       "name": "圆减",
-      "font_class": "openB",
+      "font_class": "openD",
       "unicode": "e625",
       "unicode_decimal": 58917
     },
     {
       "icon_id": "2842722",
       "name": "圆加",
-      "font_class": "closeB",
+      "font_class": "closeD",
       "unicode": "e626",
       "unicode_decimal": 58918
     },
@@ -81,6 +88,20 @@
       "font_class": "openA",
       "unicode": "e60a",
       "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "4315952",
+      "name": "取消",
+      "font_class": "cancel",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "4868258",
+      "name": "图书",
+      "font_class": "closeB",
+      "unicode": "e6dd",
+      "unicode_decimal": 59101
     },
     {
       "icon_id": "6376997",
@@ -109,6 +130,13 @@
       "font_class": "sun",
       "unicode": "e744",
       "unicode_decimal": 59204
+    },
+    {
+      "icon_id": "11651541",
+      "name": "目录",
+      "font_class": "openB",
+      "unicode": "e629",
+      "unicode_decimal": 58921
     },
     {
       "icon_id": "11988496",
