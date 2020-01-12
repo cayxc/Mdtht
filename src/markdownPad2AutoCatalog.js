@@ -29,6 +29,7 @@ window.onload = function () {
      * ----------------------------------------
     */
     var startTime = +new Date();
+
     function createContainer() {
         //获取已有正文内容
         let oldContent = document.body.innerHTML;
@@ -126,7 +127,7 @@ window.onload = function () {
                 h1Tag[i].parentNode.replaceChild(newTag, h1Tag[i]);
             }
             let otherTag = document.querySelectorAll('h2,h3,h4,h5');
-            for (let j = 0, len = otherTag.length;  j < len; j++) {
+            for (let j = 0, len = otherTag.length; j < len; j++) {
                 let tagName = 'h' + eval(parseInt(otherTag[j].nodeName.slice(1)) + 1);
                 let newTag2 = document.createElement(tagName);
                 newTag2.innerHTML = otherTag[j].innerHTML;
@@ -321,7 +322,7 @@ window.onload = function () {
             return false;
         }
 
-        let tagLength = allTag.length-1;
+        let tagLength = allTag.length - 1;
         for (let i = 2, len = tagLength; i < len; i++) {
             let currentTagNumber = getTagNumber(allTag[i]);
             let prevTagNumber = getTagNumber(allTag[i - 1]);
@@ -431,8 +432,8 @@ window.onload = function () {
         for (let j = 1; j <= 5; j++) {
             let levelArr = levelTagArr(j); // 指定等级的目录集合
             let levelLength = levelArr.length;
-            if(levelLength == 0){
-                continue;
+            if (levelLength == 0) {
+                break;
             }
             if (j == 1) {
                 for (let k = 0, len = levelLength; k < len; k++) {
@@ -473,6 +474,7 @@ window.onload = function () {
                             } else {
                                 // 创建父目录的 ul
                                 currentUlElement = document.createElement('ul');
+                                currentUlElement.setAttribute('class','js-open');
                                 currentUlElement.appendChild(liElement);
                                 prevElement.appendChild(currentUlElement);
                                 // 创建 父目录样式
@@ -521,8 +523,9 @@ window.onload = function () {
     let topElement = document.querySelector('.top-container');
     let listElement = document.querySelector('.list-wrapper');
     let switchButton = document.querySelector('#switch-button');
-
     let switchListButton = document.querySelector('.catalog-button');
+    let viewModeButton = document.querySelector('.mode');
+
     let allIcon = listElement.children[0].querySelectorAll('i');
     let allChildLevel = listElement.children[0].querySelectorAll('ul');
     let allCatalogElement = listElement.querySelectorAll('a');
@@ -566,17 +569,23 @@ window.onload = function () {
     * ----------------------------------------
     */
     function swicthCatalogList() {
-        let status = 0;
         switchListButton.onclick = function () {
             let indexNumber = getStyleIndex();
+            let status;
+            let haveOpen = listElement.children[0].querySelector('.js-close');
+            if (haveOpen) {
+                status = 1;
+            } else {
+                status = 0;
+            }
             if (status == 1) {
                 // 改变当前目录列表按钮 class
                 this.setAttribute('class', 'catalog-button iconfont icon-catalogOpen');
                 // 改变所有父级目录中 i 的 class
                 for (let i = 0, len = allIcon.length; i < len; i++) {
-                    if (indexNumber == '1') {
+                    if (indexNumber == 1) {
                         allIcon[i].setAttribute('class', 'iconfont icon-openA');
-                    } else if (indexNumber == '2') {
+                    } else if (indexNumber == 2) {
                         allIcon[i].setAttribute('class', 'iconfont icon-openB');
                     } else {
                         allIcon[i].setAttribute('class', 'iconfont icon-openC');
@@ -586,14 +595,13 @@ window.onload = function () {
                 for (let j = 0, chLen = allChildLevel.length; j < chLen; j++) {
                     allChildLevel[j].setAttribute('class', 'js-open');
                 }
-                status = 0;
             } else {
                 this.setAttribute('class', 'catalog-button iconfont icon-catalogClose');
                 // 改变所有父级目录中 i 的 class
                 for (let i = 0, allLen = allIcon.length; i < allLen; i++) {
-                    if (indexNumber == '1') {
+                    if (indexNumber == 1) {
                         allIcon[i].setAttribute('class', 'iconfont icon-closeA');
-                    } else if (indexNumber == '2') {
+                    } else if (indexNumber == 2) {
                         allIcon[i].setAttribute('class', 'iconfont icon-closeB');
                     } else {
                         allIcon[i].setAttribute('class', 'iconfont icon-closeC');
@@ -603,7 +611,6 @@ window.onload = function () {
                 for (let j = 0, allChLen = allChildLevel.length; j < allChLen; j++) {
                     allChildLevel[j].setAttribute('class', 'js-close');
                 }
-                status = 1;
             }
         }
 
@@ -624,10 +631,10 @@ window.onload = function () {
                 let closeClass = '';
                 let openClass = '';
                 // 确定目录样式
-                if (indexNumber == '1') {
+                if (indexNumber == 1) {
                     closeClass = 'iconfont icon-closeA';
                     openClass = 'iconfont icon-openA';
-                } else if (indexNumber == '2') {
+                } else if (indexNumber == 2) {
                     closeClass = 'iconfont icon-closeB';
                     openClass = 'iconfont icon-openB';
                 } else {
@@ -635,7 +642,7 @@ window.onload = function () {
                     openClass = 'iconfont icon-openC';
                 }
                 let status = allIcon[i].nextElementSibling.nextElementSibling.getAttribute('class');
-                if (status == 'js-open' || status == null) { // 子目录已展开
+                if (status == 'js-open') { // 子目录已展开
                     allIcon[i].setAttribute('class', closeClass);
                     allIcon[i].nextElementSibling.nextElementSibling.setAttribute('class', 'js-close');
                 } else { // 子目录已收起
@@ -649,7 +656,7 @@ window.onload = function () {
                 }
                 // 目录是否已经全部展开
                 let isAllOpen = listElement.querySelector('.js-close');
-                if (!isAllOpen) {
+                if(!isAllOpen){
                     topElement.children[0].setAttribute('class', 'catalog-button iconfont icon-catalogOpen');
                 }
             }
@@ -673,6 +680,8 @@ window.onload = function () {
         itemLi.classList.add('js-active');
         if (itemLi.parentElement.parentElement.nodeName == 'LI') {
             changeParentColor(itemLi.parentElement.parentElement);
+        } else {
+            return;
         }
     }
 
@@ -698,6 +707,7 @@ window.onload = function () {
             }
         }
     }
+
     singLeCatalogClick();
 
     /*
@@ -733,6 +743,7 @@ window.onload = function () {
         }
 
     }
+
     catalogTrack();
 
     /*
@@ -740,9 +751,6 @@ window.onload = function () {
     * 夜览模式
     * ----------------------------------------
     */
-    let viewModeButton = document.querySelector('.mode');
-    let allFont = document.querySelectorAll('font');
-
     function nightView() {
         let status = 0;
         viewModeButton.onclick = function () {
@@ -769,6 +777,7 @@ window.onload = function () {
         }
 
     }
+
     nightView();
 
     /*
@@ -790,13 +799,14 @@ window.onload = function () {
                 status = 0;
             } else { //关闭目录序号
                 this.children[0].setAttribute('class', 'iconfont icon-indexB');
-                for (let i = 0, len = allIndex.length;  i < len; i++) {
+                for (let i = 0, len = allIndex.length; i < len; i++) {
                     allIndex[i].classList.add('js-close');
                 }
                 status = 1;
             }
         }
     }
+
     showCatalogIndex();
 
     /*
@@ -810,27 +820,25 @@ window.onload = function () {
         for (let i = 0, len1 = allStyle.length; i < len1; i++) {
             allStyle[i].onclick = function () {
                 for (let j = 0, len2 = allIcon.length; j < len2; j++) {
-                    let childLevelStatus = (allIcon[j].parentElement).querySelector('.js-close');
+                    let isClose = allIcon[j].nextElementSibling.nextElementSibling.getAttribute('class');
                     if (i == 0) {
-                        if (childLevelStatus) { //子目录处于关闭状态
+                        if (isClose == 'js-close') { //子目录处于关闭状态
                             allIcon[j].setAttribute('class', 'iconfont icon-closeA');
                         } else { //子目录处于打开状态
                             allIcon[j].setAttribute('class', 'iconfont icon-openA');
                         }
                     } else if (i == 1) {
-                        if (childLevelStatus) { //子目录处于关闭状态
+                        if (isClose == 'js-close') { //子目录处于关闭状态
                             allIcon[j].setAttribute('class', 'iconfont icon-closeB');
                         } else { //子目录处于打开状态
                             allIcon[j].setAttribute('class', 'iconfont icon-openB');
                         }
-                        styleIndex = 1;
                     } else {
-                        if (childLevelStatus) { //子目录处于关闭状态
+                        if (isClose == 'js-close') { //子目录处于关闭状态
                             allIcon[j].setAttribute('class', 'iconfont icon-closeC');
                         } else { //子目录处于打开状态
                             allIcon[j].setAttribute('class', 'iconfont icon-openC');
                         }
-                        styleIndex = 2;
                     }
                 }
                 for (let k = 0, len3 = allRadio.length; k < len3; k++) {
@@ -842,6 +850,7 @@ window.onload = function () {
             }
         }
     }
+
     catalogStyle();
 
 
@@ -904,15 +913,15 @@ window.onload = function () {
                     searchResultElement.style.display = 'block';
                     searchIconElement.style.display = 'block';
                     let result = comparison(searchNewValue);
-                    searchResultElement.innerHTML=result;
+                    searchResultElement.innerHTML = result;
                     // 记录当前已点选过的搜索结果
                     let allSearch = searchResultElement.querySelectorAll('a');
-                    for(let j =0, len = allSearch.length; j < len; j++){
+                    for (let j = 0, len = allSearch.length; j < len; j++) {
                         allSearch[j].onclick = function () {
                             allSearch[j].classList.add('js-active');
                         }
                     }
-                }else{
+                } else {
                     searchResultElement.style.display = 'none';
                     searchIconElement.style.display = 'none';
                 }
@@ -926,8 +935,9 @@ window.onload = function () {
         }
 
     }
+
     searchCatalog();
     var endTime = +new Date();
-    console.log('脚本执行时间：'+eval(endTime-startTime)+"ms毫秒");
+    console.log('脚本执行时间：' + eval(endTime - startTime) + "ms毫秒");
 };
 
