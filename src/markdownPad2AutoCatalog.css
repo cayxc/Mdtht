@@ -35,7 +35,6 @@ body > *:last-child {
 
 html, body {
     height: 100%;
-    overflow: hidden;
 }
 
 * {

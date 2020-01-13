@@ -21,20 +21,20 @@
 | Gitee https://gitee.com/yangxingcai
 |
 */
-
 window.onload = function () {
     /*
      * ----------------------------------------
      * 创建新的目录、内容和底部提示 布局结构
      * ----------------------------------------
     */
-    var startTime = +new Date();
-
     function createContent() {
         //获取已有正文内容
         let oldContent = document.body.innerHTML;
         //清空已有内容
         document.body.innerHTML = '';
+        // 如果写在将 body{overflow:hidden;} 样式写在 css中,
+        // 会出现在 MarkdownPad2 编辑器中预览时，超出屏幕的内容无法滑动的 bug
+        document.body.style.overflow = 'hidden';
         //创建左侧目录、右侧内容结构元素
         //1.创建目录、内容结构父级空元素
         let leftBlock = document.createElement('div');
@@ -932,9 +932,6 @@ window.onload = function () {
         }
 
     }
-
     searchCatalog();
-    var endTime = +new Date();
-    console.log('脚本执行时间：' + eval(endTime - startTime) + "ms毫秒");
-};
+}
 
