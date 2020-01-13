@@ -528,10 +528,23 @@ window.onload = function () {
     let allCatalogElement = listElement.querySelectorAll('a');
 
     /*
-   * ----------------------------------------
-   * 点击隐藏左侧
-   * ----------------------------------------
-   */
+    * ----------------------------------------
+    * 没有子目录时改变最外层 ul 的 padding-left的值
+    * ----------------------------------------
+    */
+    function haveChileLevel(){
+        let childLevel = listElement.querySelector('parent-level');
+        if(!childLevel){
+            listElement.children[0].style.paddingLeft = '0';
+        }
+    }
+    haveChileLevel();
+
+    /*
+    * ----------------------------------------
+    * 点击隐藏左侧
+    * ----------------------------------------
+    */
     function switchCatalog() {
         let status = 0;
         switchButton.onclick = function () {
