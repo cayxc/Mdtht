@@ -30,7 +30,7 @@ window.onload = function () {
     */
     var startTime = +new Date();
 
-    function createContainer() {
+    function createContent() {
         //获取已有正文内容
         let oldContent = document.body.innerHTML;
         //清空已有内容
@@ -103,9 +103,9 @@ window.onload = function () {
 
         //6.底部提示
         let msg = '\n<p class="note-tips">\n' +
-            ' 提示：在生成目录时，当检测到有多个 h1 标签时，会将除了第一个 h1 标签（文档标题）' +
-            ' 外的所有 h1 标签自动转换为 h2 标签，其余标签自动向下转一级。该插件仅在使用 MarkDown 软件将 .md 文件转为 .html' +
-            ' 文件时生效，且不影响 MarkDown 源文件。' +
+            ' 提示：在生成目录时，当检测到有多个 h1 标签时，会将除了第一个 h1 标签外的所有 h1 标签自动转换为 h2 标签，其余标签自动向下转一级（h3 转为 h4，以此类推），' +
+            ' 此操作会影响目录的生成速度，推荐使用一个 h1 标签作为文档标题，h2 作为一级目录。' +
+            ' 该插件仅在使用 MarkDownPad2 软件将 .md 导出为 .html 文件时生效，且不影响 MarkDown 源文件。' +
             '<br/>如有问题请联系： cayang512@163.com&emsp;插件获取地址:&emsp;<a href="https://github.com/cayxc/MarkdownPad2AutoCatalog" target="_blank"> GitHub地址</a>&emsp;<a href="https://gitee.com/yangxingcai/markdownpad2-auto-catalog" target="_blank">Gitee地址</a></p>\n';
         //5.追加结构元素到页面
         noteTips('div', msg, 'content');
@@ -120,15 +120,15 @@ window.onload = function () {
         let h1Tag = document.querySelectorAll('h1');
         //转换 h1
         if (h1Tag.length > 1) {
+            let otherTag = document.querySelectorAll('h2,h3,h4,h5');
             for (let i = 1, len = h1Tag.length; i < len; i++) {
                 let newTag = document.createElement('h2');
                 newTag.innerHTML = h1Tag[i].innerHTML;
                 // 替换内容
                 h1Tag[i].parentNode.replaceChild(newTag, h1Tag[i]);
             }
-            let otherTag = document.querySelectorAll('h2,h3,h4,h5');
             for (let j = 0, len = otherTag.length; j < len; j++) {
-                let tagName = 'h' + eval(parseInt(otherTag[j].nodeName.slice(1)) + 1);
+                let tagName = 'h' + (parseInt(otherTag[j].nodeName.slice(1)) + 1);
                 let newTag2 = document.createElement(tagName);
                 newTag2.innerHTML = otherTag[j].innerHTML;
                 // 替换内容
@@ -511,7 +511,7 @@ window.onload = function () {
     }
 
     //执行，注意执行顺序
-    createContainer();
+    createContent();
     creatCatalogue();
 
     /*
