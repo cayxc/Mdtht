@@ -1,7 +1,6 @@
 /* RESET
 =============================================================================*/
-
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+* {
     margin: 0;
     padding: 0;
     border: 0;
@@ -25,21 +24,11 @@ body {
     -o-transition: background-color 0.3s;
 }
 
-body > *:first-child {
-    margin-top: 0 !important;
-}
-
-body > *:last-child {
-    margin-bottom: 0 !important;
-}
-
 html, body {
     height: 100%;
-}
-
-* {
-    margin: 0;
-    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* BLOCKS
@@ -68,11 +57,12 @@ h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 30px;
+    font-size: 28px;
     padding-bottom: 20px;
     color: #000;
 }
-h1:nth-of-type(1){
+
+h1:nth-of-type(1) {
     margin-top: 0;
 }
 
@@ -100,15 +90,6 @@ h6 {
     font-size: 16px;
 }
 
-body > h2:first-child, body > h1:first-child, body > h1:first-child + h2, body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
-    margin-top: 0;
-    padding-top: 0;
-}
 
 h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
     margin-top: 10px;
@@ -131,23 +112,6 @@ a:hover {
 
 ul, ol {
     padding-left: 40px;
-}
-
-ul li > :first-child,
-ol li > :first-child,
-ul li ul:first-of-type,
-ol li ol:first-of-type,
-ul li ol:first-of-type,
-ol li ul:first-of-type {
-    margin-top: 0px;
-}
-
-ul ul, ul ol, ol ol, ol ul {
-    margin-bottom: 0;
-}
-
-dl {
-    padding: 0;
 }
 
 dl dt {
@@ -646,18 +610,30 @@ input, textarea {
     list-style: none;
     display: block;
     width: 100%;
-    margin: -8px 0 0 0;
+    margin: 1px 0 0 0;
     padding: 0;
     cursor: pointer;
+    line-height: 26px;
 }
 
 .list-wrapper ul li > ul {
-    margin: 0;
+    margin: 1px 0 0 0;
     padding-left: 20px;
     z-index: 30;
 }
 
-.list-wrapper ul li a {
+/*火狐浏览器下单独设置样式*/
+@-moz-document url-prefix() {
+    .list-wrapper ul li{
+        margin-bottom: -8px;
+    }
+    .list-wrapper ul li ul{
+        margin-top: -8px;
+    }
+
+}
+
+.list-wrapper ul li > a {
     display: inline-block;
     width: 100%;
     margin: 0;
@@ -668,24 +644,24 @@ input, textarea {
     border-radius: 4px;
 }
 
-.list-wrapper ul li a p, .list-wrapper ul li a span {
+.list-wrapper ul li > a p, .list-wrapper ul li > a span {
     display: table-cell;
     word-break: normal;
     word-wrap: break-word;
 }
 
-.list-wrapper ul li a p {
+.list-wrapper ul li > a p {
     padding-left: 8px;
 }
 
-.list-wrapper ul li a span {
+.list-wrapper ul li > a span {
     padding-left: 8px;
     padding-right: 6px;
 }
 
 .list-wrapper ul li i {
     display: block;
-    padding: 6px 0 6px 4px;
+    padding: 5px 0 5px 4px;
     margin-right: -4px;
     float: left;
     font-size: 16px;
@@ -839,7 +815,7 @@ input, textarea {
 }
 
 #content a {
-    color: #4183C4;
+    color: #3cae7c;
 }
 
 #list-container a {
@@ -925,7 +901,8 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 ===========================*/
 div,
 ul,
-pre
+pre,
+code
 {
     /*火狐和IE下滚动条样式*/
     scrollbar-color: #C1C1C1 #F1F1F1;
@@ -940,8 +917,8 @@ pre
 /*隐藏滚动条，当IE下溢出，仍然可以滚动*/
 div::-webkit-scrollbar,
 ul::-webkit-scrollbar,
-pre::-webkit-scrollbar
-{
+pre::-webkit-scrollbar,
+code::-webkit-scrollbar {
     width: 6px; /*对垂直流动条有效*/
     height: 6px; /*对水平流动条有效*/
 }
@@ -949,15 +926,16 @@ pre::-webkit-scrollbar
 /*定义滚动条的轨道颜色、内阴影及圆角*/
 div::-webkit-scrollbar-track,
 ul::-webkit-scrollbar-track,
-pre::-webkit-scrollbar-track
-{
+pre::-webkit-scrollbar-track,
+code::-webkit-scrollbar-track {
     background-color: #F1F1F1;
 }
 
 /*定义滑块颜色、内阴影及圆角*/
 div::-webkit-scrollbar-thumb,
 ul::-webkit-scrollbar-thumb,
-pre::-webkit-scrollbar-thumb
+pre::-webkit-scrollbar-thumb,
+code::-webkit-scrollbar-thumb
 {
     border-radius: 3px;
     background-color: #C1C1C1;
@@ -966,7 +944,8 @@ pre::-webkit-scrollbar-thumb
 /*定义两端按钮的样式*/
 div::-webkit-scrollbar-button,
 ul::-webkit-scrollbar-button,
-pre::-webkit-scrollbar-button
+pre::-webkit-scrollbar-button,
+code::-webkit-scrollbar-button
 {
     display: none;
 }
@@ -974,7 +953,8 @@ pre::-webkit-scrollbar-button
 /*定义右下角汇合处的样式*/
 div::-webkit-scrollbar-corner,
 ul::-webkit-scrollbar-corner,
-pre::-webkit-scrollbar-corner
+pre::-webkit-scrollbar-corner,
+code::-webkit-scrollbar-corner
 {
     background: #C1C1C1;
 }
@@ -1181,7 +1161,9 @@ pre::-webkit-scrollbar-corner
 
 .js-night-view div,
 .js-night-view ul,
-.js-night-view pre {
+.js-night-view pre,
+.js-night-view code
+{
     /*火狐和IE下滚动条样式*/
     scrollbar-color: #3E3D42 #212123;
     scrollbar-track-color: #3E3D42;
@@ -1192,14 +1174,18 @@ pre::-webkit-scrollbar-corner
 
 .js-night-view div::-webkit-scrollbar-track,
 .js-night-view ul::-webkit-scrollbar-track,
-.js-night-view pre::-webkit-scrollbar-track {
+.js-night-view pre::-webkit-scrollbar-track,
+.js-night-view code::-webkit-scrollbar-track
+{
     background-color: #212123;
 }
 
 /*定义滑块颜色、内阴影及圆角*/
 .js-night-view div::-webkit-scrollbar-thumb,
 .js-night-view ul::-webkit-scrollbar-thumb,
-.js-night-view pre::-webkit-scrollbar-thumb {
+.js-night-view pre::-webkit-scrollbar-thumb,
+.js-night-view code::-webkit-scrollbar-thumb
+{
     border-radius: 3px;
     background-color: #3E3D42;
 }
@@ -1207,7 +1193,9 @@ pre::-webkit-scrollbar-corner
 /*定义右下角汇合处的样式*/
 .js-night-view div::-webkit-scrollbar-corner,
 .js-night-view ul::-webkit-scrollbar-corner,
-.js-night-view pre::-webkit-scrollbar-corner {
+.js-night-view pre::-webkit-scrollbar-corner,
+.js-night-view code::-webkit-scrollbar-corner
+{
     background: #3E3D42;
 }
 
@@ -1332,4 +1320,5 @@ pre::-webkit-scrollbar-corner
 .js-night-view .hljs-link {
     text-decoration: underline;
 }
+
 /*highlightjs-atom-one-dark.css End*/

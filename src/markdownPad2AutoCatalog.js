@@ -103,10 +103,8 @@ window.onload = function () {
 
         //6.底部提示
         let msg = '\n<p class="note-tips">\n' +
-            ' 提示：在生成目录时，当检测到有多个 h1 标签时，会将除了第一个 h1 标签外的所有 h1 标签自动转换为 h2 标签，其余标签自动向下转一级（h3 转为 h4，以此类推），' +
-            ' 此操作会影响目录的生成速度，推荐用一个 h1 标签作为文档标题，h2 作为一级标题。' +
-            ' 该插件仅在使用 MarkDownPad2 软件将 .md 导出为 .html 文件时生效，且不影响源文件。' +
-            '<br/>如有问题请联系： cayang512@163.com&emsp;插件获取地址:&emsp;<a href="https://github.com/cayxc/MarkdownPad2AutoCatalog" target="_blank"> GitHub地址</a>&emsp;<a href="https://gitee.com/yangxingcai/markdownpad2-auto-catalog" target="_blank">Gitee地址</a></p>\n';
+            ' 本文档经过 MarkdownPad2AutoCatalog 目录生成插件转换生成。&emsp;' +
+            '作者： cayang512@163.com&emsp;插件详情：&emsp;<a href="https://github.com/cayxc/MarkdownPad2AutoCatalog" target="_blank"> GitHub地址</a>&emsp;<a href="https://gitee.com/yangxingcai/markdownpad2-auto-catalog" target="_blank">Gitee地址</a></p>\n';
         //5.追加结构元素到页面
         noteTips('div', msg, 'content');
     }
@@ -147,7 +145,8 @@ window.onload = function () {
      */
     function getTagNumber(tag) {
         if ((typeof tag) != 'object') {
-            return 'getTagNumber() 调用时参数类型错误，必须是一个h标签的对象集合！';
+            console.log('getTagNumber() 调用时参数类型错误，必须是一个h标签的对象集合！');
+            return;
         }
         return Number(tag.nodeName.slice(1));
     }
@@ -165,7 +164,8 @@ window.onload = function () {
 
     function findStrFre(str, char) {
         if ((typeof str) !== 'string' || (typeof str) !== 'string') {
-            return 'findStrFre() 调用时参数类型错误！';
+            console.log('findStrFre() 调用时参数类型错误！');
+            return;
         }
         let index = str.indexOf(char);
         let number = 0;
@@ -187,7 +187,8 @@ window.onload = function () {
      */
     function levelTagArr(level) {
         if (level < 1 || level > 5 || (typeof level) !== 'number') {
-            return 'levelTagArr() 调用时参数类型错误！';
+            console.log('levelTagArr() 调用时参数类型错误！');
+            return;
         }
         // 所有目录集合
         let allTag = document.querySelectorAll('h2,h3,h4,h5,h6');
@@ -215,7 +216,7 @@ window.onload = function () {
                     level5.push(allTag[i]);
                     break;
                 default:
-                    i++;
+                    return;
             }
         }
         switch (level) {
@@ -243,7 +244,8 @@ window.onload = function () {
      */
     function childTagArr(tagObj) {
         if ((typeof tagObj) !== 'object') {
-            return 'childTagArr() 调用时参数类型错误，必须是一个 h 标签的对象集合';
+            console.log('childTagArr() 调用时参数类型错误，必须是一个 h 标签的对象集合');
+            return;
         }
         let result = [];
         // 判断父级目录 tagObj 是第几级目录
@@ -277,7 +279,8 @@ window.onload = function () {
      */
     function setLevelNumber(tag) {
         if ((typeof tag) != 'object') {
-            return 'setLevelNumber() 调用时参数类型错误，必须是一个h标签的对象集合！';
+            console.log('setLevelNumber() 调用时参数类型错误，必须是一个h标签的对象集合！');
+            return;
         }
         let str = tag.id;
         if (str.lastIndexOf('.') == -1) { //如果是一级目录形式 level-1000
@@ -303,15 +306,20 @@ window.onload = function () {
         changeTag();
         // 获取所有h2~h6标签，h1作为文档的题目，不作为目录标签
         let allTag = document.querySelectorAll('h2,h3,h4,h5,h6');
+        let tagLength = allTag.length;
         //判断目录数量，确定第一、二个标题的层级
-        if (allTag.length == 0) {
-            let msg = '<p style="color:#cccccc;font-size:' +
-                ' 14px;text-align: center;">啊...<br/>文档中未发现 h2~h6 标签<br/>无法生成目录</p>';
-            noteTips('div', msg, 'list-container');
-            return false;
-        } else if (allTag.length == 1) {
+        if (tagLength == 0) {
+            let container = document.querySelector('.list-wrapper');
+            container.innerHTML = '<ul>\n'+
+                '<li style="text-align:center;color: #ccc;font-size:14px;">\n'+
+                '抱歉...<br/>文档中未发现 h1~h6 标签<br/>无法生成目录</p>\n</li>\n'+
+                '</ul>\n';
+            return;
+        }
+        if (tagLength == 1) {
             allTag[0].id = 'level-' + '1'; //第一个标签肯定为一级标题
-        } else if (allTag.length > 1) {
+        }
+        if (tagLength > 1) {
             allTag[0].id = 'level-' + '1';
             let result = getTagNumber(allTag[1]) - getTagNumber(allTag[0]);
             if (result <= 0) {  //第二个与第一个属于同级标题
@@ -319,50 +327,53 @@ window.onload = function () {
             } else {  // 第二个是第一个的子标题
                 allTag[1].id = allTag[0].id + '.1';
             }
-        } else {
-            return false;
-        }
-
-        let tagLength = allTag.length - 1;
-        for (let i = 2, len = tagLength; i < len; i++) {
-            let currentTagNumber = getTagNumber(allTag[i]);
-            let prevTagNumber = getTagNumber(allTag[i - 1]);
-            if (currentTagNumber < prevTagNumber) {
-                for (let j = i - 1; j >= 0; j--) {
-                    //如果两个标签的数字值相差 等于 1 或 0，代表这两个标签是同级
-                    let status = getTagNumber(allTag[j]) - currentTagNumber;
-                    if (status == 1) {
-                        if (j > 0) {
-                            // 类似 h3 h4 h3 的特殊情况
-                            if (getTagNumber(allTag[j - 1]) == currentTagNumber) {
-                                allTag[i].id = setLevelNumber(allTag[j - 1]);
+            for (let i = 2, len = tagLength - 1; i < len; i++) {
+                let currentTagNumber = getTagNumber(allTag[i]);
+                let prevTagNumber = getTagNumber(allTag[i - 1]);
+                if (currentTagNumber < prevTagNumber) {
+                    for (let j = i - 1; j >= 0; j--) {
+                        //如果两个标签的数字值相差 等于 1 或 0，代表这两个标签是同级
+                        let status = getTagNumber(allTag[j]) - currentTagNumber;
+                        if (status == 1) {
+                            if (j > 0) {
+                                // 类似 h3 h4 h3 的特殊情况
+                                if (getTagNumber(allTag[j - 1]) == currentTagNumber) {
+                                    allTag[i].id = setLevelNumber(allTag[j - 1]);
+                                    break;
+                                }
+                            } else {
+                                allTag[i].id = setLevelNumber(allTag[j]);
                                 break;
                             }
-                        } else {
+                        }
+                        if (status == 0) {
                             allTag[i].id = setLevelNumber(allTag[j]);
                             break;
                         }
                     }
-                    if (status == 0) {
-                        allTag[i].id = setLevelNumber(allTag[j]);
-                        break;
-                    }
+                }
+
+                if (currentTagNumber > prevTagNumber) {
+                    allTag[i].id = allTag[i - 1].id + '.1';
+                }
+
+                if (currentTagNumber == prevTagNumber) {
+                    allTag[i].id = setLevelNumber(allTag[i-1]);
                 }
             }
-
-            if (currentTagNumber > prevTagNumber) {
-                allTag[i].id = allTag[i - 1].id + '.1';
+            //确定最后一个标题 allTag[tagLength-1] 的层级
+            if(tagLength > 2){
+                // 与之相同的标签集合
+                let lasTagArr = document.querySelectorAll(allTag[tagLength-1].nodeName);
+                if(lasTagArr.length > 1){
+                    allTag[tagLength-1].id = setLevelNumber(lasTagArr[lasTagArr.length - 2]);
+                }else{
+                    allTag[tagLength-1].id = allTag[tagLength-2].id + '.1';
+                }
             }
-
-            if (currentTagNumber == prevTagNumber) {
-                allTag[i].id = setLevelNumber(allTag[i - 1]);
-            }
+        } else {
+            return;
         }
-
-        //确定最后一个标题的层级
-        let tagSet = document.querySelectorAll(allTag[tagLength - 1].nodeName);
-        allTag[tagLength - 1].id = setLevelNumber(tagSet[tagSet.length - 2]);
-
     }
 
     /*
@@ -417,7 +428,6 @@ window.onload = function () {
     function creatCatalogue() {
         // 设置所有 h 标签的等级 id
         setTagLevel();
-
         // 目录父容器
         let catalogueBlock = document.querySelector('.list-wrapper');
         // 创建其余子目录
@@ -428,7 +438,7 @@ window.onload = function () {
             if (levelLength == 0) {
                 break;
             }
-            if (j == 1) {
+            if(j == 1){
                 for (let k = 0, len = levelLength; k < len; k++) {
                     let liElement = document.createElement('li');
                     liElement.innerHTML = '\n<a href="#' + levelArr[k].id + '" class=' + levelArr[k].id + '>\n' +
@@ -495,7 +505,8 @@ window.onload = function () {
     function noteTips(tag, msg, id) {
         if ((typeof tag) !== 'string' || (typeof msg) !== 'string' ||
             (typeof id) !== 'string') {
-            return 'noteTips() 调用时参数类型错误！';
+            console.log('noteTips() 调用时参数类型错误！');
+            return;
         }
         let exp = document.createElement(tag);
         exp.innerHTML = msg;
@@ -506,9 +517,14 @@ window.onload = function () {
     // 生成修改后的内容及目录，注意执行顺序
     //防止重复生成
     let isCreated = document.body.children[0].getAttribute('id');
-    if(isCreated != 'left-container' || isCreated == null){
+    if(isCreated != 'left-container'){
         createContent();
-        creatCatalogue();
+        let allTags = document.querySelectorAll('h2,h3,h4,h5,h6');
+        if(allTags){
+            creatCatalogue();
+            // 第一个目录默认样式
+            (document.querySelector('.list-wrapper')).querySelector('li').classList.add('js-active');
+        }
     }
 
     /*
@@ -533,7 +549,7 @@ window.onload = function () {
     * ----------------------------------------
     */
     function haveChileLevel(){
-        let childLevel = listElement.querySelector('parent-level');
+        let childLevel = listElement.querySelector('.parent-level');
         if(!childLevel){
             listElement.children[0].style.paddingLeft = '0';
         }
@@ -685,7 +701,8 @@ window.onload = function () {
      */
     function changeParentColor(itemLi) {
         if ((typeof itemLi) !== 'object') {
-            return 'changeParentColor() 参数必须是一个标签对象！';
+            console.log( 'changeParentColor() 参数必须是一个标签对象！');
+            return  false;
         }
         itemLi.classList.add('js-active');
         if (itemLi.parentElement.parentElement.nodeName == 'LI') {
@@ -701,8 +718,6 @@ window.onload = function () {
     * ----------------------------------------
     */
     function singLeCatalogClick() {
-        // 第一个目录样式
-        listElement.querySelector('li').classList.add('js-active');
         for (let i = 0, len = allCatalogElement.length; i < len; i++) {
             allCatalogElement[i].onclick = function () {
                 // 其他目录恢复原始颜色
@@ -711,7 +726,7 @@ window.onload = function () {
                     oldActiveElement[j].classList.remove('js-active');
                 }
                 // 当前目录改变颜色
-                allCatalogElement[i].parentElement.classList.add('js-active');
+                this.parentElement.classList.add('js-active');
                 // 当前父目录添加样式
                 changeParentColor(allCatalogElement[i].parentElement);
             }
@@ -719,6 +734,7 @@ window.onload = function () {
     }
 
     singLeCatalogClick();
+
 
     /*
      * ----------------------------------------
@@ -730,18 +746,17 @@ window.onload = function () {
         let allTag = content.querySelectorAll('h2,h3,h4,h5,h6');
         let allTtitleDistance = [];
         for (let i = 0, len = allTag.length; i < len; i++) {
-            allTtitleDistance.push(allTag[i].offsetTop);
+            allTtitleDistance.push(allTag[i].offsetTop - 50);
         }
 
         //滑动正文内容时
-        rightElement.onscroll = function (e) {
-            e = e || window.event;
-            let top = eval(rightElement.scrollTop + 50);
+        rightElement.onscroll = function () {
+            let roll = rightElement.scrollTop;
             for (let i = 0, len = allTtitleDistance.length; i < len; i++) {
-                if (top >= allTtitleDistance[i]) {
+                if (allTtitleDistance[i] <= roll) {
                     // 其他目录恢复原始颜色
                     let oldActiveElement = listElement.querySelectorAll('.js-active');
-                    for (let j = 0; j < oldActiveElement.length; j++) {
+                    for (let j = 0, len2 = oldActiveElement.length; j < len2; j++) {
                         oldActiveElement[j].classList.remove('js-active');
                     }
                     // 当前目录改变颜色
@@ -755,6 +770,7 @@ window.onload = function () {
     }
 
     catalogTrack();
+
 
     /*
     * ----------------------------------------
@@ -887,7 +903,8 @@ window.onload = function () {
      */
     function comparison(value) {
         if ((typeof value) != 'string') {
-            return 'comparison() 参数必须是一个字符串';
+            console.log( 'comparison() 参数必须是一个字符串');
+            return  false;
         }
         value = value.toLowerCase();
         let result = '';
@@ -903,8 +920,6 @@ window.onload = function () {
         }
         return result;
     }
-
-    comparison();
 
     /*
      * ----------------------------------------
@@ -922,8 +937,8 @@ window.onload = function () {
                 if (searchNewValue) { // 不为空时
                     searchResultElement.style.display = 'block';
                     searchIconElement.style.display = 'block';
-                    let result = comparison(searchNewValue);
-                    searchResultElement.innerHTML = result;
+                    let results = comparison(searchNewValue);
+                    searchResultElement.innerHTML = results;
                     // 记录当前已点选过的搜索结果
                     let allSearch = searchResultElement.querySelectorAll('a');
                     for (let j = 0, len = allSearch.length; j < len; j++) {
