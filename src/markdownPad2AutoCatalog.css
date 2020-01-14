@@ -107,6 +107,7 @@ a:hover {
     text-decoration: underline;
 }
 
+
 /* LISTS
 =============================================================================*/
 
@@ -1198,7 +1199,9 @@ code::-webkit-scrollbar-corner
 {
     background: #3E3D42;
 }
-
+.js-night-view strong{
+    color: #3cae7c;
+}
 /*night-veiw End*/
 
 /*
