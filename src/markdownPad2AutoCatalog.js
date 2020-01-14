@@ -103,7 +103,7 @@ window.onload = function () {
 
         //6.底部提示
         let msg = '\n<p class="note-tips">\n' +
-            ' 本文档经过 MarkdownPad2AutoCatalog 目录生成插件转换生成。&emsp;' +
+            ' 本文档经过 MarkdownPad2AutoCatalog 目录生成插件转换生成&emsp;' +
             '作者： cayang512@163.com&emsp;插件详情：&emsp;<a href="https://github.com/cayxc/MarkdownPad2AutoCatalog" target="_blank"> GitHub地址</a>&emsp;<a href="https://gitee.com/yangxingcai/markdownpad2-auto-catalog" target="_blank">Gitee地址</a></p>\n';
         //5.追加结构元素到页面
         noteTips('div', msg, 'content');
