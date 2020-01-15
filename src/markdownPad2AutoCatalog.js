@@ -17,8 +17,8 @@
 | 8. 整个左侧栏目可展开和收起
 |
 | 作者: YXC (cayang512@163.com )
-| GitHub https://github.com/cayxc
-| Gitee https://gitee.com/yangxingcai
+| GitHub https://github.com/cayxc/MarkdownPad2AutoCatalog
+| Gitee https://gitee.com/cayxc/MarkdownPad2AutoCatalog
 |
 */
 window.onload = function () {
@@ -104,7 +104,7 @@ window.onload = function () {
         //6.底部提示
         let msg = '\n<p class="note-tips">\n' +
             ' 本文档经过 MarkdownPad2AutoCatalog 目录生成插件转换生成&emsp;' +
-            '作者： cayang512@163.com&emsp;插件详情：&emsp;<a href="https://github.com/cayxc/MarkdownPad2AutoCatalog" target="_blank"> GitHub地址</a>&emsp;<a href="https://gitee.com/yangxingcai/markdownpad2-auto-catalog" target="_blank">Gitee地址</a></p>\n';
+            '作者： cayang512@163.com&emsp;插件详情：&emsp;<a href="https://github.com/cayxc/MarkdownPad2AutoCatalog" target="_blank"> GitHub地址</a>&emsp;<a href="https://gitee.com/cayxc/MarkdownPad2AutoCatalog" target="_blank">Gitee地址</a></p>\n';
         //5.追加结构元素到页面
         noteTips('div', msg, 'content');
     }
