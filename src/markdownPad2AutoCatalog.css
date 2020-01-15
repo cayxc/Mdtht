@@ -611,27 +611,16 @@ input, textarea {
     list-style: none;
     display: block;
     width: 100%;
-    margin: 1px 0 0 0;
+    margin: 0 0 -8px 0;
     padding: 0;
     cursor: pointer;
     line-height: 26px;
 }
 
-.list-wrapper ul li > ul {
-    margin: 1px 0 0 0;
+.list-wrapper ul li ul {
+    margin: -7px 0 0 0;
     padding-left: 20px;
     z-index: 30;
-}
-
-/*火狐浏览器下单独设置样式*/
-@-moz-document url-prefix() {
-    .list-wrapper ul li{
-        margin-bottom: -8px;
-    }
-    .list-wrapper ul li ul{
-        margin-top: -8px;
-    }
-
 }
 
 .list-wrapper ul li > a {
