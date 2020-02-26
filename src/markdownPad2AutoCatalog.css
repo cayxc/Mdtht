@@ -10,7 +10,7 @@
 =============================================================================*/
 
 body {
-    font-family: Helvetica, arial, freesans, clean, sans-serif;
+    font-family: PingFang SC, PingFang, Helvetica, arial, freesans, clean, sans-serif;
     font-size: 16px;
     line-height: 1.5;
     color: #333;
@@ -618,7 +618,7 @@ input, textarea {
 }
 
 .list-wrapper ul li ul {
-    margin: -7px 0 0 0;
+    margin: -6px 0 0 0;
     padding-left: 20px;
     z-index: 30;
 }
