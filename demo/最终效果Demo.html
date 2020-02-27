@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MarkdownPad2AutoCatalog-最终效果Demo</title>
+    <link rel="stylesheet" href="../src/markdownPad2AutoCatalog.css">
+    <script src="../src/markdownPad2AutoCatalog.js"></script>
+    <script src="../src/highlight.js"></script>
+</head>
+<body screen_capture_injected="true" style="overflow: hidden;">
+<div id="left-container">
+    <div class="top-container">
+        <i class="catalog-button iconfont icon-catalogOpen"></i>
+        <div class="search-container">
+            <input type="text" class="search" name="search" placeholder="输入关键字搜索 . . .">
+            <i class="search-icon iconfont icon-cancel"></i>
+        </div>
+        <div class="search-result"></div>
+    </div>
+    <div id="list-container">
+        <div class="list-wrapper">
+            <ul>
+                <li class="">
+                    <a href="#level-1" class="level-1">
+                        <p>1</p>
+                        <span>实现的功能</span></a>
+                </li>
+                <li class="parent-level js-active"><i class="iconfont icon-openA"></i>
+                    <a href="#level-2" class="level-2">
+                        <p>2</p>
+                        <span>最终效果</span></a>
+                    <ul class="js-open">
+                        <li class="">
+                            <a href="#level-2.1" class="level-2.1">
+                                <p>2.1</p>
+                                <span>整体效果：</span></a>
+                        </li>
+                        <li class="">
+                            <a href="#level-2.2" class="level-2.2">
+                                <p>2.2</p>
+                                <span>夜览模式：</span></a>
+                        </li>
+                        <li class="js-active">
+                            <a href="#level-2.3" class="level-2.3">
+                                <p>2.3</p>
+                                <span>目录收起效果：</span></a>
+                        </li>
+                        <li class="">
+                            <a href="#level-2.4" class="level-2.4">
+                                <p>2.4</p>
+                                <span>3 种目录样式及隐藏目录编号：</span></a>
+                        </li>
+                        <li class="">
+                            <a href="#level-2.5" class="level-2.5">
+                                <p>2.5</p>
+                                <span>搜索功能效果：</span></a>
+                        </li>
+                        <li class="">
+                            <a href="#level-2.6" class="level-2.6">
+                                <p>2.6</p>
+                                <span>代码高亮：</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#level-3" class="level-3">
+                        <p>3</p>
+                        <span>如何使用</span></a>
+                </li>
+                <li>
+                    <a href="#level-4" class="level-4">
+                        <p>4</p>
+                        <span>注意事项（避坑指南-必看）</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="bottom-container">
+        <div class="mode-container">
+            <div class="mode">
+                <i class="iconfont icon-sun"></i>
+            </div>
+            <div class="index">
+                <i class="iconfont icon-indexA"></i>
+            </div>
+            <div class="structure">
+                <i class="iconfont icon-process"></i>
+                <ul class="structure-child">
+                    <li>
+                        <input type="radio" id="styleA" name="catalogStyle" value="1" checked="checked">
+                        <label for="styleA">样式 A</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="styleB" value="2" name="catalogStyle">
+                        <label for="styleB">样式 B</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="styleC" value="3" name="catalogStyle">
+                        <label for="styleC">样式 C</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="color" style="display: none;">
+                <i class="iconfont icon-color"></i>
+                <div class="color-child">
+                    <span>自定义颜色</span>
+                    <input type="color">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="switch-button">
+        <i class="iconfont icon-arrLeft"></i>
+    </div>
+</div>
+<div id="right-container">
+    <div id="content">
+
+        <h1>MarkdownPad2AutoCatalog</h1>
+        <p>MarkdownPad2 编辑器导出 html 文件时自动生成目录、自定义风格样式及代码高亮显示整合。</p>
+        <p>代码高亮显示采用的是<strong>highlightjs</strong>插件，有需要的可以去下此地址查看：<a href="https://highlightjs.org" title="highlightjs">highlightjs官网</a>
+        </p>
+        <h2 id="level-1">实现的功能</h2>
+        <ol>
+            <li>根据 html 文档中 h1~h6 标签自动生成对应的目录</li>
+            <li>自动生成目录编号，可选择是否显示目录编号</li>
+            <li>提供三种目录样式，可自由选择</li>
+            <li>提供白天和夜间 2 种阅读模式</li>
+            <li>根据当前阅读位置，自动显示所在目录及父级目录</li>
+            <li>目录搜索功能，全文搜索使用浏览器自带的 Ctrl+F</li>
+            <li>一键展开收起目录列表</li>
+            <li>整个左侧栏目可展开和收起</li>
+            <li>代码高亮显示 highlightjs 插件整合</li>
+        </ol>
+        <h2 id="level-2">最终效果</h2>
+        <h5 id="level-2.1">整体效果：</h5>
+        <p><img src="https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-1.png" alt="整体效果">
+        </p>
+        <h5 id="level-2.2">夜览模式：</h5>
+        <p><img src="https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-2.png" alt="夜览模式">
+        </p>
+        <h5 id="level-2.3">目录收起效果：</h5>
+        <p><img src="https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-4.png"
+                alt="目录收起效果"></p>
+        <h5 id="level-2.4">3 种目录样式及隐藏目录编号：</h5>
+        <p><img src="https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-3.png"
+                alt="3 种目录样式"></p>
+        <h5 id="level-2.5">搜索功能效果：</h5>
+        <p><img src="https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-5.png"
+                alt="搜索功能效果"></p>
+        <h5 id="level-2.6">代码高亮：</h5>
+        <pre>    <code class="hljs xml">// html 结构
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span
+        class="hljs-string">"app"</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">v-text</span>=<span
+             class="hljs-string">"text"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">v-html</span>=<span
+             class="hljs-string">"content"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> Vue({
+        <span class="hljs-attr">el</span>:<span class="hljs-string">"#app"</span>,
+        <span class="hljs-attr">data</span>:{
+           <span class="hljs-attr">text</span>: <span class="hljs-string">"this is a content..."</span>
+           <span class="hljs-attr">content</span>: <span class="hljs-string">"&lt;a href='http://www.baidu.com' target='_blank'&gt;百度一下&lt;/a&gt;"</span>
+        }
+    })
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code>
+</pre>
+
+        <h2 id="level-3">如何使用</h2>
+        <p>使用 <strong>MarkdownPad2AutoCatalog</strong> 目录自动生成非常简单，你只需要将 dist 文件夹中的样式文件 markdownPad2AutoCatalog.min.css
+            加载到编辑器中并引入 markdownPad2AutoCatalog.min.js 和 highlight.min.js 到编辑器的 Html Head头中即可，具体步骤如下：</p>
+        <ol>
+            <li>复制 dist 文件夹中的 <u>markdownPad2AutoCatalog.min.css</u> 的代码</li>
+            <li>打开 MarkdownPad2 — 工具 — 选项 — 样式表 — 添加，然后粘贴 markdownPad2AutoCatalog.min.css 的代码 — 给样式表取一个以.css结尾的名字 —
+                保存并关闭
+            </li>
+            <li>复制 dist 文件夹中的 <u>markdownPad2AutoCatalog.min.js</u>的代码。</li>
+            <li>打开 MarkdownPad2 — 工具 — 选项 — 高级 — Html Head编辑器 — 在代码编辑器中输入
+                <script></script>
+                标签对 — ，然后粘贴 markdownPad2AutoCatalog.min.js 的代码到
+                <script></script>
+                标签对中 — 保存并关闭
+            </li>
+            <li>重复第 4 步，将 dist 文件夹中的 <u>highlight.min.js</u> 的代码复制到代码编辑器中</li>
+            <li>保存并关闭，完成</li>
+        </ol>
+        <h2 id="level-4">注意事项（避坑指南-必看）</h2>
+        <p>使用时请注意以下 4 点：</p>
+        <ol>
+            <li>自动生成的目录和代码高亮显示功能在 MarkdownPad2 编辑器中<strong>预览界面中是不会生效的</strong>，只有当你将文件导出为 Html 后，在浏览器中打开该 Html
+                文件，目录和代码高亮显才可正常使用。
+            </li>
+            <li>在 MarkdownPad2 编辑器中按 F6 可以快速生成一个 Html 文件，此时目录会正常显示，但是点击目录并不会做相应的跳转，而是会跳转到该文件所在的目录，使用时还请注意。</li>
+            <li><strong>在生成目录时，当检测到有多个 h1 标签时，会将除了第一个 h1 标签外的所有 h1 标签自动转换为 h2 标签，其余标签自动向下转一级（h3 转为
+                h4，以此类推），由于此操作会影响目录的生成速度，推荐用一个 h1 标签作为文档标题，h2 作为一级标题。</strong></li>
+            <li>内容不要出现: &lt; script &gt; 标签，否则之后的内容将不会显示。</li>
+        </ol>
+
+
+        <div>
+            <p class="note-tips">
+                本文档经过 MarkdownPad2AutoCatalog 目录生成插件转换生成 作者： cayang512@163.com 插件详情： <a
+                    href="https://github.com/cayxc/MarkdownPad2AutoCatalog" target="_blank"> GitHub地址</a> <a
+                    href="https://gitee.com/cayxc/MarkdownPad2AutoCatalog" target="_blank">Gitee地址</a></p>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
