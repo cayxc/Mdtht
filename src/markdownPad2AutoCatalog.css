@@ -208,9 +208,8 @@ kbd {
     border-width: 1px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 10px;
-    padding: 6px 12px;
+    padding: 1px 4px;
 }
-li kbd {padding: 1px 4px;}
 /* QUOTES
 =============================================================================*/
 
