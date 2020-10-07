@@ -38,10 +38,10 @@ window.onload = function () {
     //创建左侧目录、右侧内容结构元素
     //1.创建目录、内容结构父级空元素
     let leftBlock = document.createElement('div');
-    let rigthBlock = document.createElement('div');
+    let rightBlock = document.createElement('div');
     //2.设置目录、内容父级元素id属性
     leftBlock.id = 'left-container';
-    rigthBlock.id = 'right-container';
+    rightBlock.id = 'right-container';
     //3.设置目录父级元素的内容结构
     leftBlock.innerHTML = '\n<div class="top-container">\n' +
       '        <i class="catalog-button iconfont icon-catalogOpen"></i>\n' +
@@ -93,13 +93,13 @@ window.onload = function () {
       '   <i class="iconfont icon-arrLeft"></i>\n' +
       '   </div>\n';
     //4.设置内容父级元素的内容结构
-    rigthBlock.innerHTML = '\n<div id="content">\n' +
+    rightBlock.innerHTML = '\n<div id="content">\n' +
       oldContent +
       '\n</div>\n' + '</div>\n';
 
     //5.追加结构元素到页面
     document.body.appendChild(leftBlock);
-    document.body.appendChild(rigthBlock);
+    document.body.appendChild(rightBlock);
 
     //6.底部提示
     let msg = '\n<p class="note-tips">\n' +
