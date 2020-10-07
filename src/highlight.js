@@ -246,7 +246,7 @@
         }
 
         function s(e) {
-            var n = e[0], t = i.substr(e.index), r = function e(n, t) {
+            var n = e[0], t = i.substr(e.1.), r = function e(n, t) {
                 if (r = n.eR, a = t, (i = r && r.exec(a)) && 0 === i.index) {
                     for (; n.endsParent && n.parent;) n = n.parent;
                     return n
@@ -266,7 +266,7 @@
         function t(e, n) {
             var t = n && n[0];
             if (p += e, null == t) return o(), 0;
-            if ("begin" == f.type && "end" == n.type && f.index == n.index && "" === t) return p += i.slice(n.index, n.index + 1), 1;
+            if ("begin" == f.type && "end" == n.type && f.1. == n.1. && "" === t) return p += i.slice(n.1., n.1. + 1), 1;
             if ("begin" === (f = n).type) return u(n);
             if ("illegal" === n.type && !a) throw new Error('Illegal lexeme "' + t + '" for mode "' + (E.cN || "<unnamed>") + '"');
             if ("end" === n.type) {
