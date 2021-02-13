@@ -236,7 +236,7 @@ blockquote > :last-child {
 hr {
     clear: both;
     margin: 15px 0;
-    height: 0px;
+    height: 0;
     overflow: hidden;
     border: none;
     background: transparent;
@@ -907,10 +907,16 @@ div::-webkit-scrollbar,
 ul::-webkit-scrollbar,
 pre::-webkit-scrollbar,
 code::-webkit-scrollbar {
-    width: 6px; /*对垂直流动条有效*/
-    height: 6px; /*对水平流动条有效*/
+    width: 4px; /*对垂直流动条有效*/
+    height: 4px; /*对水平流动条有效*/
 }
 
+body::-webkit-scrollbar,
+#right-container::-webkit-scrollbar
+{
+    width: 10px; /*对垂直流动条有效*/
+    height: 10px; /*对水平流动条有效*/
+}
 /*定义滚动条的轨道颜色、内阴影及圆角*/
 div::-webkit-scrollbar-track,
 ul::-webkit-scrollbar-track,
@@ -925,8 +931,14 @@ ul::-webkit-scrollbar-thumb,
 pre::-webkit-scrollbar-thumb,
 code::-webkit-scrollbar-thumb
 {
-    border-radius: 3px;
+    border-radius: 2px;
     background-color: #C1C1C1;
+}
+
+body::-webkit-scrollbar-thumb,
+#right-container::-webkit-scrollbar-thumb
+{
+    border-radius: 5px;
 }
 
 /*定义两端按钮的样式*/
@@ -1174,7 +1186,14 @@ code::-webkit-scrollbar-corner
 .js-night-view pre::-webkit-scrollbar-thumb,
 .js-night-view code::-webkit-scrollbar-thumb
 {
-    border-radius: 3px;
+    border-radius: 2px;
+    background-color: #3E3D42;
+}
+
+.js-night-view::-webkit-scrollbar-thumb,
+.js-night-view #right-container::-webkit-scrollbar-thumb
+{
+    border-radius: 5px;
     background-color: #3E3D42;
 }
 
