@@ -904,7 +904,6 @@ window.onload = function () {
       searchResultElement.style.display = 'none';
       searchElement.value = '';
     }
-
   }
   searchCatalog();
 }
