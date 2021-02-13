@@ -18,7 +18,7 @@
 |
 | 作者: YXC (cayang512@163.com )
 | GitHub https://github.com/cayxc/MarkdownPad2AutoCatalog
-| Gitee https://gitee.com/cayxc/MarkdownPad2AutoCatalog
+| Gitee  https://gitee.com/cayxc/MarkdownPad2AutoCatalog
 |
 */
 window.onload = function () {
@@ -32,7 +32,7 @@ window.onload = function () {
     let oldContent = document.body.innerHTML;
     //清空已有内容
     document.body.innerHTML = '';
-    // 如果写在将 body{overflow:hidden;} 样式写在 css中,
+    // 如果将 body{overflow:hidden;} 样式写在 css中,
     // 会出现在 MarkdownPad2 编辑器中预览时，超出屏幕的内容无法滑动的 bug
     document.body.style.overflow = 'hidden';
     //创建左侧目录、右侧内容结构元素
@@ -341,6 +341,26 @@ window.onload = function () {
     }
   }
 
+  /**
+   * ----------------------------------------
+   * 提示说明
+   * ----------------------------------------
+   * @param tag sting 提示消息的标签 div p
+   * @param msg string 提示消息
+   * @param id string 父容器，要追加到哪个父容器中的id
+   */
+  function noteTips(tag, msg, id) {
+    if ((typeof tag) !== 'string' || (typeof msg) !== 'string' ||
+      (typeof id) !== 'string') {
+      console.log('noteTips() 调用时参数类型错误！');
+      return;
+    }
+    let exp = document.createElement(tag);
+    exp.innerHTML = msg;
+    //5.追加结构元素到页面
+    document.getElementById(id).appendChild(exp);
+  }
+
   /*
 * 目录结构
 *
@@ -454,43 +474,22 @@ window.onload = function () {
             }
           }
         }
-
       }
     }
   }
 
-  /**
-   * ----------------------------------------
-   * 提示说明
-   * ----------------------------------------
-   * @param tag sting 提示消息的标签 div p
-   * @param msg string 提示消息
-   * @param id string 父容器，要追加到哪个父容器中的id
-   */
-  function noteTips(tag, msg, id) {
-    if ((typeof tag) !== 'string' || (typeof msg) !== 'string' ||
-      (typeof id) !== 'string') {
-      console.log('noteTips() 调用时参数类型错误！');
-      return;
-    }
-    let exp = document.createElement(tag);
-    exp.innerHTML = msg;
-    //5.追加结构元素到页面
-    document.getElementById(id).appendChild(exp);
-  }
-
-  // 生成修改后的内容及目录，注意执行顺序
-  //防止重复生成
-  let isCreated = document.body.children[0].getAttribute('id');
-  if(isCreated != 'left-container'){
-    createContent();
-    let allTags = document.querySelectorAll('h2,h3,h4,h5,h6');
-    if(allTags){
+  //替换旧文档，防止重复生成
+  let isNew = false;
+  function replaceOld() {
+    if(!isNew){
+      createContent();
       creatCatalogue();
       // 第一个目录默认样式
       (document.querySelector('.list-wrapper')).querySelector('li').classList.add('js-active');
+      isNew = true;
     }
   }
+  replaceOld();
 
   /*
   * 样式控制  =============================
