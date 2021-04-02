@@ -44,7 +44,7 @@ window.onload = function () {
     rightBlock.id = 'right-container';
     //3.设置目录父级元素的内容结构
     leftBlock.innerHTML = '\n<div class="top-container">\n' +
-      '        <i class="catalog-button iconfont icon-catalogOpen"></i>\n' +
+      '        <i class="catalog-button iconfont icon-catalogClose"></i>\n' +
       '        <div class="search-container">\n' +
       '            <input type="text" class="search" name="search" placeholder="输入关键字搜索 . . .">\n' +
       '            <i class="search-icon iconfont icon-cancel"></i>\n' +
@@ -462,12 +462,12 @@ window.onload = function () {
               } else {
                 // 创建父目录的 ul
                 currentUlElement = document.createElement('ul');
-                currentUlElement.setAttribute('class','js-open');
+                currentUlElement.setAttribute('class','js-close');
                 currentUlElement.appendChild(liElement);
                 prevElement.appendChild(currentUlElement);
                 // 创建 父目录样式
                 let parentStyle = document.createElement('i');
-                parentStyle.setAttribute('class', 'iconfont icon-openA');
+                parentStyle.setAttribute('class', 'iconfont icon-closeA');
                 prevElement.insertBefore(parentStyle, prevElement.childNodes[0]);
               }
               break;
