@@ -2,7 +2,7 @@
 
 MarkdownPad2 编辑器导出 html 文件时自动生成目录、自定义风格样式及代码高亮显示整合。
 
-代码高亮显示采用的是**highlightjs**插件，有需要的可以去下此地址查看：[highlightjs官网](https://highlightjs.org "highlightjs")
+代码高亮显示采用的是**highlightjs**插件，有需要的可以去此地址查看：[highlightjs官网](https://highlightjs.org "highlightjs")
 
 ## 实现的功能
 
