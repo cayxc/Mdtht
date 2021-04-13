@@ -292,7 +292,7 @@ window.onload = function () {
       } else {  // 第二个是第一个的子标题
         allTag[1].id = allTag[0].id + '.1';
       }
-      for (let i = 2, len = tagLength - 1; i < len; i++) {
+      for (let i = 2, len = tagLength - 1; i <= len; i++) {
         let currentTagNumber = getTagNumber(allTag[i]);
         let prevTagNumber = getTagNumber(allTag[i - 1]);
         if (currentTagNumber < prevTagNumber) {
@@ -324,16 +324,6 @@ window.onload = function () {
 
         if (currentTagNumber == prevTagNumber) {
           allTag[i].id = setLevelNumber(allTag[i-1]);
-        }
-      }
-      //确定最后一个标题 allTag[tagLength-1] 的层级
-      if(tagLength > 2){
-        // 与之相同的标签集合
-        let lasTagArr = document.querySelectorAll(allTag[tagLength-1].nodeName);
-        if(lasTagArr.length > 1){
-          allTag[tagLength-1].id = setLevelNumber(lasTagArr[lasTagArr.length - 2]);
-        }else{
-          allTag[tagLength-1].id = allTag[tagLength-2].id + '.1';
         }
       }
     } else {
