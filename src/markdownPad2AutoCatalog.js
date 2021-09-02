@@ -416,7 +416,7 @@ window.onload = function () {
       if(j == 1){
         for (let k = 0, len = levelLength; k < len; k++) {
           let liElement = document.createElement('li');
-          liElement.innerHTML = '\n<a href="'+window.location.href+'#'+levelArr[k].id+'"'+" class=" + levelArr[k].id + '>\n' +
+          liElement.innerHTML = '\n<a href="'+window.location.pathname+'#'+levelArr[k].id+'"'+" class=" + levelArr[k].id + '>\n' +
             '<p>' + levelArr[k].id.slice(6) + '</p>\n' +
             '<span>' + levelArr[k].innerText + '</span>' +
             '</a>\n';
@@ -442,7 +442,7 @@ window.onload = function () {
               let prevElement = document.getElementsByClassName(className)[0].parentNode;
               prevElement.setAttribute('class', 'parent-level');
               let liElement = document.createElement('li');
-              liElement.innerHTML = '\n<a href="'+window.location.href+'#'+levelArr[n].id+'"'+" class=" + levelArr[n].id + '>\n' +
+              liElement.innerHTML = '\n<a href="'+window.location.pathname+'#'+levelArr[n].id+'"'+" class=" + levelArr[n].id + '>\n' +
                 '<p>' + levelArr[n].id.slice(6) + '</p>\n' +
                 '<span>' + levelArr[n].innerText + '</span>' +
                 '</a>\n';
