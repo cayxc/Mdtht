@@ -1,6 +1,6 @@
 # MarkdownPad2AutoCatalog 
 
-该项目是使用 Javascript和CSS为MarkdownPad2编辑器开发的一款插件。目的是在将文件导出为html文件或预览时，自动生成导航目录、自定义网页样式。
+MarkdownPad2AutoCatalog 是使用 Javascript和CSS为MarkdownPad2编辑器开发的一款插件。目的是在将文件导出为html文件或预览时，自动生成导航目录、自定义网页样式。
 
 提供了自动生成目录，自动排序编号、目录样式切换、目录搜索、提供高亮和暗黑两种文档风格样式等功能。
 
