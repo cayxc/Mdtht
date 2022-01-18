@@ -1,6 +1,8 @@
 # MarkdownPad2AutoCatalog 
 
-MarkdownPad2 编辑器导出 html 文件时自动生成目录、自定义风格样式及代码高亮显示整合。
+MarkdownPad2AutoCatalog 是使用 Javascript和CSS为MarkdownPad2编辑器开发的一款插件。目的是在将文件导出为html文件或预览时，自动生成导航目录、自定义网页样式。
+
+提供了自动生成目录，自动排序编号、目录样式切换、目录搜索、提供高亮和暗黑两种文档风格样式等功能。
 
 代码高亮显示采用的是**highlightjs**插件，有需要的可以去此地址查看：[highlightjs官网](https://highlightjs.org "highlightjs")
 
