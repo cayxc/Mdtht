@@ -16,7 +16,7 @@
 | 7. 一键展开收起目录列表
 | 8. 整个左侧栏目可展开和收起
 |
-| 作者: YXC (cayang512@163.com )
+| 作者: YXC (cayxc512@163.com )
 | GitHub https://github.com/cayxc/MarkdownPad2AutoCatalog
 | Gitee  https://gitee.com/cayxc/MarkdownPad2AutoCatalog
 |
