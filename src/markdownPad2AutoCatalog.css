@@ -186,6 +186,11 @@ pre {
     -moz-border-radius: 4px;
     border-radius: 4px;
 }
+pre pre {
+    margin: 0;
+    padding: 2px 0;
+    border: none;
+}
 
 pre code, pre tt {
     background-color: transparent;
@@ -1041,7 +1046,11 @@ code::-webkit-scrollbar-corner
 .js-night-view tt {
     color: #ffffff;
 }
-
+.js-night-view pre pre{
+    margin: 0;
+    padding: 2px 0;
+    border: none;
+}
 .js-night-view input:-ms-input-placeholder,
 .js-night-view input::-moz-placeholder,
 .js-night-view input:-moz-placeholder,
