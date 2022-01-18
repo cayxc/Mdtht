@@ -53,6 +53,13 @@ MarkdownPad2AutoCatalog 是使用 Javascript和CSS为MarkdownPad2编辑器开发
 5. 重复第 4 步，将 dist 文件夹中的 <u>highlight.min.js</u> 的代码复制到代码编辑器中
 6. 保存并关闭，完成
 
+## 由Typora编辑器导出的.html 文件如何自动生成目录
+
+ 1. 下载 dist 文件夹到你本地
+ 2. 打开Typora编辑器，导出要转为.html的.md文档，**建议注意导出时选 HTML(without styles) 选项**，可省去手动删除Typora编辑器自带样式文件这一步
+ 3. 在ide中编辑导出的.html文件，在 head 中引入刚刚下载的 dist 中的 css 和 js 文件，引入文件的顺序随意
+ 4. 保存并关闭，完成
+
 ## 注意事项（避坑指南-必看） 
 
 使用时请注意以下 4 点：
