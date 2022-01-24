@@ -27,6 +27,7 @@
 */
 let objThis;
 let indexStyleNumber;
+let originShowIndex;
 class MarkdownPad2AutoCatalog {
   //openDark   是否开启夜览模式
   //showIndex  是否显示目录序号
@@ -37,12 +38,14 @@ class MarkdownPad2AutoCatalog {
       this.openDark = false;
       this.showIndex = true;
       this.indexStyle = 1;
+      originShowIndex = true;
       indexStyleNumber = 1; //当前的目录样式序号
       console.error('传入参数类型有误，已按照默认配置执行，三个参数类型依次为：Boolean, Boolean, Number');
     } else {
       this.openDark = openDark;
       this.showIndex = showIndex;
       this.indexStyle = indexStyle;
+      originShowIndex = showIndex;
       indexStyleNumber = indexStyle;
     }
     //目录构建
@@ -91,8 +94,13 @@ class MarkdownPad2AutoCatalog {
     // 会出现在 MarkdownPad2 编辑器中预览时，超出屏幕的内容无法滑动的 bug
     document.body.style.overflow = 'hidden';
     //是否开启夜览模式
+    let modeStyleClass;
     if (this.openDark) {
       document.body.className = 'js-night-view';
+      modeStyleClass = 'icon-night';
+    }else{
+      document.body.className = '';
+      modeStyleClass = 'icon-sun';
     }
     //创建左侧目录、右侧内容结构元素
     //1.创建目录、内容结构父级空元素
@@ -134,7 +142,7 @@ class MarkdownPad2AutoCatalog {
       '    <div class="bottom-container">\n' +
       '        <div class="mode-container">\n' +
       '            <div class="mode">\n' +
-      '                <i class="iconfont icon-sun"></i>\n' +
+      '                <i class="iconfont '+modeStyleClass+'"></i>\n' +
       '            </div>\n' +
       '            <div class="index">\n' + indexItem +
       '            \n</div>\n' +
@@ -839,21 +847,21 @@ class MarkdownPad2AutoCatalog {
    * ----------------------------------------
    */
   showCatalogIndex() {
-    let status = 0;
+    let status = originShowIndex;
     let allIndex = this.allIndex;
     this.showIndex.onclick = function () {
-      if (status == 1) { //显示目录序号
+      if (!status) { //显示目录序号
         this.children[0].setAttribute('class', 'iconfont icon-indexA');
         for (let i = 0, len = allIndex.length; i < len; i++) {
           allIndex[i].classList.remove('js-close');
         }
-        status = 0;
+        status = true;
       } else { //关闭目录序号
         this.children[0].setAttribute('class', 'iconfont icon-indexB');
         for (let i = 0, len = allIndex.length; i < len; i++) {
           allIndex[i].classList.add('js-close');
         }
-        status = 1;
+        status = false;
       }
     }
   }
