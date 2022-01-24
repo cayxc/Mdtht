@@ -6,6 +6,8 @@ MarkdownPad2AutoCatalog 是使用 Javascript和CSS为MarkdownPad2编辑器开发
 
 代码高亮显示采用的是**highlightjs**插件，有需要的可以去此地址查看：[highlightjs官网](https://highlightjs.org "highlightjs")
 
+> **新增个性化自定义配置，方便高效地根据个人偏好自由配置；可自定义阅读模式、是否显示目录编号和自定义目录样式**
+
 ## 实现的功能
 
 1. 根据 html 文档中 h1~h6 标签自动生成对应的目录
@@ -17,6 +19,7 @@ MarkdownPad2AutoCatalog 是使用 Javascript和CSS为MarkdownPad2编辑器开发
 7. 一键展开收起目录列表
 8. 整个左侧栏目可展开和收起
 9. 代码高亮显示 highlightjs 插件整合
+10. 方便的初始化设置，可自定义阅读模式、是否显示目录编号和自定义目录样式
 
 
 ## 最终效果
@@ -52,6 +55,37 @@ MarkdownPad2AutoCatalog 是使用 Javascript和CSS为MarkdownPad2编辑器开发
 4. 打开 MarkdownPad2 — 工具 — 选项 — 高级 — Html Head编辑器 — 在代码编辑器中输入 <script></script> 标签对 — ，然后粘贴 markdownPad2AutoCatalog.min.js 的代码到 <script></script> 标签对中 — 保存并关闭
 5. 重复第 4 步，将 dist 文件夹中的 <u>highlight.min.js</u> 的代码复制到代码编辑器中
 6. 保存并关闭，完成
+
+## 如何自定义初始化配置
+
+目前提供三个初始化配置项：
+
+- 设置默认阅读模式【默认白天模式】
+- 设置是否显示目录编号【默认显示目录编号】
+- 设置自定义目录样式【默认样式1】
+
+
+### 初始化参数说明 
+
+`new MarkdownPad2AutoCatalog(openDark，showIndex，indexStyle);`
+
+参数 | 类型 | 默认值 | 说明
+:- | :- | :- | :-
+openDark | Boolean | fasle | 是否开启为黑夜模式，false 为白天模式，true 为黑夜模式
+showIndex | Boolean | true | 是否显示目录编号
+indexStyle | Number | 1 | 目录样式编号，**该值只有：1，2，3**三个选项
+
+### 自定义初始化设置示例
+
+1. 在js文件的最后位置找到 **new MarkdownPad2AutoCatalog()**
+2. 根据自身需求按上面的参数说明依次传入3个参数，**注：3个参数都要正确传入，否则自定义无效**
+
+示例：
+
+	//默认开启黑夜模式，不显示目录编号，目录样式选择样式2
+	new MarkdownPad2AutoCatalog(true，false，2)；
+
+
 
 ## 由Typora编辑器导出的.html文件如何自动生成目录
 

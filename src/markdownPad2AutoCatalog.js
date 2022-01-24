@@ -1,5 +1,6 @@
 /*
 |--------------------------------------------------------------------------
+| MarkdownPad2AutoCatalog
 | MarkdownPad2 编辑器导出 html 文件时自动生成左侧目录插件
 |--------------------------------------------------------------------------
 |
@@ -7,16 +8,19 @@
 | 目录生成时默认将第一个 h1 标签作为文档的题目，当检测到有多个 h1 标签时，
 | 会将除了第一个 h1 外的所有 h1 标签自动转换为 h2 标签，其余标签自动向下转一级
 | 实现的功能：
-| 1. 根据 Html 文档中 h1~h6 标签自动生成对应的目录
+| 1. 根据 html 文档中 h1~h6 标签自动生成对应的目录
 | 2. 自动生成目录编号，可选择是否显示目录编号
-| 3. 目录搜索功能，全文搜索使用浏览器自带的 Ctrl+F
-| 4. 提供三种目录样式，可自由选择
-| 5. 提供白天和夜间 2 种阅读模式
-| 6. 根据当前阅读位置，自动显示所在目录及父级目录
+| 3. 提供三种目录样式，可自由选择
+| 4. 提供白天和夜间 2 种阅读模式
+| 5. 根据当前阅读位置，自动显示所在目录及父级目录
+| 6. 目录搜索功能，全文搜索使用浏览器自带的 Ctrl+F
 | 7. 一键展开收起目录列表
 | 8. 整个左侧栏目可展开和收起
+| 9. 代码高亮显示 highlightjs 插件整合
+| 10. 方便的初始化设置，可自定义阅读模式、是否显示目录编号和自定义目录样式
 |
 | 作者: YXC (cayxc512@163.com )
+| 插件地址：
 | GitHub https://github.com/cayxc/MarkdownPad2AutoCatalog
 | Gitee  https://gitee.com/cayxc/MarkdownPad2AutoCatalog
 |
@@ -26,7 +30,7 @@ let indexStyleNumber;
 class MarkdownPad2AutoCatalog {
   //openDark   是否开启夜览模式
   //showIndex  是否显示目录序号
-  //indexStyle 目录样式 A, B, C
+  //indexStyle 目录样式 1, 2, 3
   constructor(openDark = false, showIndex = true, indexStyle = 1) {
     objThis = this; //当前对象的 this
     if ((typeof openDark) !== 'boolean' || (typeof showIndex) !== 'boolean' || (typeof indexStyle) !== 'number') {
