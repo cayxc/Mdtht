@@ -60,27 +60,26 @@ MarkdownPad2AutoCatalog 是使用 Javascript和CSS为MarkdownPad2编辑器开发
 
 ### 初始化参数说明 
 
-`new MarkdownPad2AutoCatalog(openDark, showIndex, indexStyle);`
+`new MarkdownPad2AutoCatalog(showIndex, indexStyle, openDark);`
 
 参数 | 类型 | 默认值 | 说明
 :- | :- | :- | :-
-openDark | Boolean | fasle | 是否开启为黑夜模式，false 为白天模式，true 为黑夜模式
 showIndex | Boolean | true | 是否显示目录编号，默认显示目录编号
 indexStyle | Number | 1 | 目录样式，**该值只有：1，2，3** 三个选项，默认样式 1
+openDark | Boolean | fasle | 是否开启为黑夜模式，false 为白天模式，true 为黑夜模式
 
 ### 自定义初始化设置示例
 
 1. 在 src/markdownPad2AutoCatalog.js 文件中的最后位置找到 **new MarkdownPad2AutoCatalog()**
-2. 根据自身需求按上面的参数说明依次传入3个参数，**注：3个参数都要正确传入，否则自定义无效**
+2. 根据自身需求按上面的参数说明依次传入参数
 3. 将修改后的文件按照前面 *“如何使用”第4步* 的方法复制到编辑器中，修改后的js文件是否压缩看个人意愿 
 
 **注：src/markdownPad2AutoCatalog.min.js 由于是经过压缩处理过，修改不方便 ，所以需要自定义时请直接复制 src/markdownPad2AutoCatalog.js 文件，然后修改，修改后的js文件是否需要压缩处理完全看个人意愿**
 
 示例：
 
-	//默认开启黑夜模式，不显示目录编号，目录样式选择样式2
-	new MarkdownPad2AutoCatalog(true, false, 2);
-
+	//默认不显示目录编号，目录样式选择样式2，开启黑夜模式
+	new MarkdownPad2AutoCatalog(true, 2, true);
 
 ## 由Typora编辑器导出的.html文件如何自动生成目录
 

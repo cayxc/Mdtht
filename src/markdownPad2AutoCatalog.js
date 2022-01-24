@@ -28,26 +28,32 @@
 let objThis;
 let indexStyleNumber;
 let originShowIndex;
+
 class MarkdownPad2AutoCatalog {
-  //openDark   是否开启夜览模式
   //showIndex  是否显示目录序号
   //indexStyle 目录样式 1, 2, 3
-  constructor(openDark = false, showIndex = true, indexStyle = 1) {
+  //openDark   是否开启夜览模式
+  constructor(showIndex = true, indexStyle = 1, openDark = false,) {
     objThis = this; //当前对象的 this
-    if ((typeof openDark) !== 'boolean' || (typeof showIndex) !== 'boolean' || (typeof indexStyle) !== 'number') {
-      this.openDark = false;
+    this.showIndex = showIndex;
+    this.indexStyle = indexStyle;
+    this.openDark = openDark;
+
+    if ((typeof showIndex) !== 'boolean') {
       this.showIndex = true;
-      this.indexStyle = 1;
-      originShowIndex = true;
-      indexStyleNumber = 1; //当前的目录样式序号
-      console.error('传入参数类型有误，已按照默认配置执行，三个参数类型依次为：Boolean, Boolean, Number');
-    } else {
-      this.openDark = openDark;
-      this.showIndex = showIndex;
-      this.indexStyle = indexStyle;
-      originShowIndex = showIndex;
-      indexStyleNumber = indexStyle;
+      console.error('传入参数类型有误，已按照默认配置执行，该参数类型依次为：Boolean');
     }
+    if ((typeof indexStyle) !== 'number') {
+      this.indexStyle = 1;
+      console.error('传入参数类型有误，已按照默认配置执行，该参数类型依次为：Number');
+    }
+    if ((typeof openDark) !== 'boolean') {
+      this.openDark = false;
+      console.error('传入参数类型有误，已按照默认配置执行，该参数类型依次为：Boolean');
+    }
+    originShowIndex = showIndex;
+    indexStyleNumber = indexStyle;
+
     //目录构建
     if ((document.querySelector("#left-container")) == null) { //替换文档内容，防止重复生成
       this.replaceOld();
@@ -64,7 +70,7 @@ class MarkdownPad2AutoCatalog {
     this.allIcon = this.listElement.children[0].querySelectorAll('i');
     this.allChildLevel = this.listElement.children[0].querySelectorAll('ul');
     this.allCatalogElement = this.listElement.querySelectorAll('a');
-    this.showIndex = document.querySelector('.index');
+    this.showIndexEl = document.querySelector('.index');
     this.allIndex = this.listElement.querySelectorAll('p');
     //样式控制
     this.haveChileLevel();
@@ -98,7 +104,7 @@ class MarkdownPad2AutoCatalog {
     if (this.openDark) {
       document.body.className = 'js-night-view';
       modeStyleClass = 'icon-night';
-    }else{
+    } else {
       document.body.className = '';
       modeStyleClass = 'icon-sun';
     }
@@ -142,7 +148,7 @@ class MarkdownPad2AutoCatalog {
       '    <div class="bottom-container">\n' +
       '        <div class="mode-container">\n' +
       '            <div class="mode">\n' +
-      '                <i class="iconfont '+modeStyleClass+'"></i>\n' +
+      '                <i class="iconfont ' + modeStyleClass + '"></i>\n' +
       '            </div>\n' +
       '            <div class="index">\n' + indexItem +
       '            \n</div>\n' +
@@ -708,9 +714,9 @@ class MarkdownPad2AutoCatalog {
         // 所有一级目录下的 ul 的 class 集合
         for (let j = 0, len = topLevel.length; j < len; j++) {
           let el = topLevel[j].querySelector('ul');
-          if(el == null){
+          if (el == null) {
             topLevelClass[j] = null;
-          }else{
+          } else {
             topLevelClass[j] = el.getAttribute('class');
           }
         }
@@ -849,7 +855,7 @@ class MarkdownPad2AutoCatalog {
   showCatalogIndex() {
     let status = originShowIndex;
     let allIndex = this.allIndex;
-    this.showIndex.onclick = function () {
+    this.showIndexEl.onclick = function () {
       if (!status) { //显示目录序号
         this.children[0].setAttribute('class', 'iconfont icon-indexA');
         for (let i = 0, len = allIndex.length; i < len; i++) {
