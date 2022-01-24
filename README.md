@@ -74,12 +74,21 @@ openDark | Boolean | fasle | 是否开启为黑夜模式，false 为白天模式
 2. 根据自身需求按上面的参数说明依次传入参数
 3. 将修改后的文件按照前面 *“如何使用”第4步* 的方法复制到编辑器中，修改后的js文件是否压缩看个人意愿 
 
-**注：src/markdownPad2AutoCatalog.min.js 由于是经过压缩处理过，修改不方便 ，所以需要自定义时请直接复制 src/markdownPad2AutoCatalog.js 文件，然后修改，修改后的js文件是否需要压缩处理完全看个人意愿**
+自定义配置示例：
 
-示例：
+**1. 在markdownPad2AutoCatalog.js文件中配置示例:**
 
-	//默认不显示目录编号，目录样式选择样式2，开启黑夜模式
+    //1.在代码最后处找到 new MarkdownPad2AutoCatalog();
+	//2.默认不显示目录编号，目录样式选择样式2，开启黑夜模式
 	new MarkdownPad2AutoCatalog(true, 2, true);
+	
+**2. 在markdownPad2AutoCatalog.min.js文件中配置示例:**
+
+    //1.在代码最后处找到 window.onload=function(){new r}}]);
+    //2.开始配置：默认不显示目录编号，目录样式选择样式2，开启黑夜模式
+    window.onload=function(){new r(false, 2, true)}}]);
+    
+> **以上两种方法任选其一即可**
 
 ## 由Typora编辑器导出的.html文件如何自动生成目录
 
