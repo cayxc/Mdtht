@@ -107,7 +107,6 @@ a:hover {
     text-decoration: underline;
 }
 
-
 /* LISTS
 =============================================================================*/
 
@@ -386,6 +385,10 @@ img {
 
 /* Structural Framework Start
 ====================================================*/
+.active{
+    color: #3cae7c;
+}
+
 #left-container, #right-container, #list-container {
     position: absolute;
     top: 0;
@@ -639,17 +642,18 @@ input, textarea {
 
 .list-wrapper ul li > a p, .list-wrapper ul li > a span {
     display: table-cell;
-    word-break: normal;
     word-wrap: break-word;
 }
 
 .list-wrapper ul li > a p {
     padding-left: 8px;
+    word-break: normal;
 }
 
 .list-wrapper ul li > a span {
     padding-left: 8px;
     padding-right: 6px;
+    word-break: break-all;
 }
 
 .list-wrapper ul li i {
@@ -745,20 +749,43 @@ input, textarea {
     position: relative;
     cursor: pointer;
 }
-
+.structure-child li span{
+    margin-left: 18px;
+}
+.structure-child li span::before,
+.structure-child .active span::before,
+.structure-child .active span::after
+{
+    content: '';
+    display: inline-block;
+    position: absolute;
+    box-sizing: border-box;
+    border-radius: 50%;
+}
+.structure-child li span::before{
+    top: 0;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #ccc;
+    background: transparent;
+}
+.structure-child .active span::before{
+    top: 0;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    border: 2px solid #3cae7c;
+}
+.structure-child .active span::after{
+    top: 4px;
+    left: 4px;
+    width: 6px;
+    height: 6px;
+    background: #3cae7c;
+}
 .structure-child li label {
     cursor: pointer;
-}
-
-.structure-child input[type='radio'], .structure-child li label {
-    position: absolute;
-    top: 0;
-    left: -5px;
-}
-
-.structure-child li label {
-    top: -1px;
-    left: 26px;
 }
 
 .color-child input {
