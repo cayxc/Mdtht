@@ -79,7 +79,7 @@ indexStyle | Number | 1 | 目录样式，**该值只有：1，2，3** 三个选�
 示例：
 
 	//默认开启黑夜模式，不显示目录编号，目录样式选择样式2
-	new MarkdownPad2AutoCatalog(true, false, 2)；
+	new MarkdownPad2AutoCatalog(true, false, 2);
 
 
 ## 由Typora编辑器导出的.html文件如何自动生成目录
