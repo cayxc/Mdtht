@@ -35,24 +35,23 @@ class MarkdownPad2AutoCatalog {
   //openDark   是否开启夜览模式
   constructor(showIndex = true, indexStyle = 1, openDark = false,) {
     objThis = this; //当前对象的 this
+    if ((typeof showIndex) !== 'boolean') {
+      showIndex = true;
+      console.error('传入参数类型有误，已按照默认配置执行，该参数类型为：Boolean');
+    }
+    if ((typeof indexStyle) !== 'number') {
+      indexStyle = 1;
+      console.error('传入参数类型有误，已按照默认配置执行，该参数类型为：Number');
+    }
+    if ((typeof openDark) !== 'boolean') {
+      openDark = false;
+      console.error('传入参数类型有误，已按照默认配置执行，该参数类型为：Boolean');
+    }
     this.showIndex = showIndex;
     this.indexStyle = indexStyle;
     this.openDark = openDark;
-
-    if ((typeof showIndex) !== 'boolean') {
-      this.showIndex = true;
-      console.error('传入参数类型有误，已按照默认配置执行，该参数类型依次为：Boolean');
-    }
-    if ((typeof indexStyle) !== 'number') {
-      this.indexStyle = 1;
-      console.error('传入参数类型有误，已按照默认配置执行，该参数类型依次为：Number');
-    }
-    if ((typeof openDark) !== 'boolean') {
-      this.openDark = false;
-      console.error('传入参数类型有误，已按照默认配置执行，该参数类型依次为：Boolean');
-    }
-    originShowIndex = showIndex;
     indexStyleNumber = indexStyle;
+    originShowIndex = showIndex;
 
     //目录构建
     if ((document.querySelector("#left-container")) == null) { //替换文档内容，防止重复生成
