@@ -6,11 +6,11 @@ It offers features such as automatic generation of the table of contents, automa
 
 Code highlighting is achieved using the highlightjs plugin. Those interested can visit the official website at [highlightjs](https://highlightjs.org "highlightjs").
 
-> **Added personalized custom configuration, allowing users to freely configure according to their preferences; it includes options for customizing the reading mode, displaying table of contents numbering, and customizing table of contents style.**
+ **Added personalized custom configuration, allowing users to freely configure according to their preferences; it includes options for customizing the reading mode, displaying table of contents numbering, and customizing table of contents style.**
 
 ## The implemented functionalities.
 
-1. Automatically generate corresponding table of contents based on the <h1> to <h6> tags in the HTML documen.
+1. Automatically generate corresponding table of contents based on the **< h1 > to < h6 >** tags in the HTML documen.
 2. Automatically generate table of contents numbering, with the option to choose whether to display the numbering.
 3. Provide three styles for the table of contents, with the freedom to choose.
 4. Offer two reading modes: light mode and dark mode.
@@ -88,7 +88,7 @@ Custom Configuration Example：
     // 2. Start Configuration: By default, table of contents numbering is disabled, table of contents style is set to style 2, and dark mode is enabled.
     window.onload=function(){new r(false, 2, true)}}]);
     
-> **You can choose either of the above methods**
+**You can choose either of the above methods**
 
 ## How to automatically generate a table of contents in an .html file exported from the Typora editor
 
