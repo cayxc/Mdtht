@@ -68,7 +68,7 @@ showIndex | Boolean | true | Whether to display table of contents numbering. Def
 indexStyle | Number | 1 | Table of Contents Style，**This value has only three options: 1, 2, 3**. The default style is 1.
 openDark | Boolean | fasle | Whether to enable dark mode. False for light mode, true for dark mode.
 
-### "Custom Initialization Settings Example"
+### Custom Initialization Settings Example
 
 1. At the end of the `src/markdownPad2AutoCatalog.js` file, locate **new MarkdownPad2AutoCatalog()**.
 2. Pass parameters according to your own needs following the parameter explanations above.
