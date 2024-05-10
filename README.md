@@ -78,13 +78,13 @@ Custom Configuration Example：
 
 **1. Example of Configuration in the markdownPad2AutoCatalog.js File:**
 
-    // 1. Find **new MarkdownPad2AutoCatalog();** at the end of the code.
+    // 1. Find new MarkdownPad2AutoCatalog(); at the end of the code.
     // 2. By default, table of contents numbering is disabled, table of contents style is set to style 2, and dark mode is enabled.
 	new MarkdownPad2AutoCatalog(true, 2, true);
 	
 **2. Configuration Example in markdownPad2AutoCatalog.min.js:**
 
-    // 1. Find **window.onload=function(){new r}}]);** at the end of the code.
+    // 1. Find window.onload=function(){new r}}]); at the end of the code.
     // 2. Start Configuration: By default, table of contents numbering is disabled, table of contents style is set to style 2, and dark mode is enabled.
     window.onload=function(){new r(false, 2, true)}}]);
     
