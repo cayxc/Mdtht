@@ -6,7 +6,7 @@ It offers features such as automatic generation of the table of contents, automa
 
 Code highlighting is achieved using the highlightjs plugin. Those interested can visit the official website at [highlightjs](https://highlightjs.org "highlightjs").
 
- **Added personalized custom configuration, allowing users to freely configure according to their preferences; it includes options for customizing the reading mode, displaying table of contents numbering, and customizing table of contents style.**
+ > **Added personalized custom configuration, allowing users to freely configure according to their preferences; it includes options for customizing the reading mode, displaying table of contents numbering, and customizing table of contents style.**
 
 ## The implemented functionalities.
 
