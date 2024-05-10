@@ -1,112 +1,112 @@
 # MarkdownPad2AutoCatalog 
 
-MarkdownPad2AutoCatalog 是使用 Javascript和CSS为MarkdownPad2编辑器开发的一款插件。目的是在将文件导出为html文件或预览时，自动生成导航目录、自定义网页样式。
+MarkdownPad2AutoCatalog is a plugin developed for the MarkdownPad2 editor using JavaScript and CSS. Its purpose is to automatically generate a navigation menu and customize webpage styles when exporting files to HTML or previewing them.
 
-提供了自动生成目录，自动排序编号、目录样式切换、目录搜索、提供高亮和暗黑两种文档风格样式等功能。
+It offers features such as automatic generation of the table of contents, automatic sorting and numbering, style switching for the table of contents, search within the table of contents, and providing both light and dark document style options with highlighting.
 
-代码高亮显示采用的是**highlightjs**插件，有需要的可以去此地址查看：[highlightjs官网](https://highlightjs.org "highlightjs")
+Code highlighting is achieved using the highlightjs plugin. Those interested can visit the official website at [highlightjs](https://highlightjs.org "highlightjs").
 
-> **新增个性化自定义配置，可根据个人偏好自由配置；可自定义阅读模式、是否显示目录编号和自定义目录样式**
+> **Added personalized custom configuration, allowing users to freely configure according to their preferences; it includes options for customizing the reading mode, displaying table of contents numbering, and customizing table of contents style.**
 
-## 实现的功能
+## The implemented functionalities.
 
-1. 根据 html 文档中 h1~h6 标签自动生成对应的目录
-2. 自动生成目录编号，可选择是否显示目录编号
-3. 提供三种目录样式，可自由选择
-4. 提供白天和夜间 2 种阅读模式
-5. 根据当前阅读位置，自动显示所在目录及父级目录
-6. 目录搜索功能，全文搜索使用浏览器自带的 Ctrl+F
-7. 一键展开收起目录列表
-8. 整个左侧栏目可展开和收起
-9. 代码高亮显示 highlightjs 插件整合
-10. 方便的初始化设置，可自定义阅读模式、是否显示目录编号和自定义目录样式
-
-
-## 最终效果
-
-##### 整体效果：
-
-![整体效果](https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-1.png)
-
-##### 夜览模式：
-
-![夜览模式](https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-2.png)
-
-##### 目录收起效果：
-
-![目录收起效果](https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-4.png)
-
-##### 3 种目录样式及隐藏目录编号：
-
-![3 种目录样式](https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-3.png)
-
-##### 搜索功能效果：
-
-![搜索功能效果](https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-5.png)
+1. Automatically generate corresponding table of contents based on the <h1> to <h6> tags in the HTML documen.
+2. Automatically generate table of contents numbering, with the option to choose whether to display the numbering.
+3. Provide three styles for the table of contents, with the freedom to choose.
+4. Offer two reading modes: light mode and dark mode.
+5. Automatically display the current section in the table of contents and its parent sections based on the current reading position.
+6. Table of contents search function; full-text search is performed using the browser's built-in Ctrl+F feature.
+7. One-click expand/collapse functionality for the table of contents.
+8. Ability to expand or collapse the entire left sidebar.
+9. Integration of the highlight.js plugin for code highlighting.
+10. Convenient initialization settings allowing customization of reading mode, display of table of contents numbering, and customization of table of contents style.
 
 
-## 如何使用 
+## The final result
 
-使用 **MarkdownPad2AutoCatalog** 目录自动生成非常简单，你只需要将 dist 文件夹中的样式文件 markdownPad2AutoCatalog.min.css 加载到编辑器中并引入 markdownPad2AutoCatalog.min.js 和 highlight.min.js 到编辑器的 Html Head头中即可，具体步骤如下：
+##### The overall effect：
 
-1. 复制 dist 文件夹中的 <u>markdownPad2AutoCatalog.min.css</u> 的代码
-2. 打开 MarkdownPad2 — 工具 — 选项 — 样式表 — 添加，然后粘贴 markdownPad2AutoCatalog.min.css 的代码 — 给样式表取一个以.css结尾的名字 — 保存并关闭 
-3. 复制 dist 文件夹中的 <u>markdownPad2AutoCatalog.min.js</u>的代码。
-4. 打开 MarkdownPad2 — 工具 — 选项 — 高级 — Html Head编辑器 — 在代码编辑器中输入 < script ></ script > 标签对 — ，然后粘贴 markdownPad2AutoCatalog.min.js 的代码到 <script></script> 标签对中 — 保存并关闭
-5. 重复第 4 步，将 dist 文件夹中的 <u>highlight.min.js</u> 的代码复制到代码编辑器中
-6. 保存并关闭，完成
+![The overall effect](https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-1.png)
 
-## 如何自定义初始化配置
+##### Night mode：
 
-### 初始化参数说明 
+![Night mode](https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-2.png)
+
+##### Effect of collapsing the table of contents.：
+
+![Effect of collapsing the table of contents.](https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-4.png)
+
+##### Three styles of table of contents and hiding table of contents numbering：
+
+![3 table of contents styles](https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-3.png)
+
+##### Effect of the search functionality.：
+
+![Effect of the search functionality.](https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-5.png)
+
+
+## How to use it 
+
+Using **MarkdownPad2AutoCatalog** for automatic table of contents generation is straightforward. Just follow these steps:
+
+1. Copy the code from the <u>markdownPad2AutoCatalog.min.css</u> file in the dist folder.
+2. Open MarkdownPad2, go to Tools > Options > Stylesheets > Add, then paste the code from markdownPad2AutoCatalog.min.css - Name the stylesheet with a .css extension - Save and close.
+3. Copy the code from the <u>markdownPad2AutoCatalog.min.js</u> file in the dist folder.
+4. Open MarkdownPad2, go to Tools > Options > Advanced > Html Head Editor - Input <script></script> tags in the code editor - Paste the code from markdownPad2AutoCatalog.min.js between the <script></script> tags - Save and close.
+5. Repeat step 4, copying the code from <u>highlight.min.js</u> in the dist folder to the code editor.
+6. Save and close to finish.
+
+## How to customize initialization configuration
+
+### Explanation of initialization parameters. 
 
 `new MarkdownPad2AutoCatalog(showIndex, indexStyle, openDark);`
 
-参数 | 类型 | 默认值 | 说明
+Parameter | Type | Default Value | Description
 :- | :- | :- | :-
-showIndex | Boolean | true | 是否显示目录编号，默认显示目录编号
-indexStyle | Number | 1 | 目录样式，**该值只有：1，2，3** 三个选项，默认样式 1
-openDark | Boolean | fasle | 是否开启为黑夜模式，false 为白天模式，true 为黑夜模式
+showIndex | Boolean | true | Whether to display table of contents numbering. Default is to display table of contents numbering.
+indexStyle | Number | 1 | Table of Contents Style，**This value has only three options: 1, 2, 3**. The default style is 1.
+openDark | Boolean | fasle | Whether to enable dark mode. False for light mode, true for dark mode.
 
-### 自定义初始化设置示例
+### "Custom Initialization Settings Example"
 
-1. 在 src/markdownPad2AutoCatalog.js 文件中的最后位置找到 **new MarkdownPad2AutoCatalog()**
-2. 根据自身需求按上面的参数说明依次传入参数
-3. 将修改后的文件按照前面 *“如何使用”第4步* 的方法复制到编辑器中，修改后的js文件是否压缩看个人意愿 
+1. At the end of the `src/markdownPad2AutoCatalog.js` file, locate **new MarkdownPad2AutoCatalog()**.
+2. Pass parameters according to your own needs following the parameter explanations above.
+3. Copy the modified file into the editor following the method outlined in step 4 of "How to Use". Whether to compress the modified JavaScript file is up to personal preference.
 
-自定义配置示例：
+Custom Configuration Example：
 
-**1. 在markdownPad2AutoCatalog.js文件中配置示例:**
+**1. Example of Configuration in the markdownPad2AutoCatalog.js File:**
 
-    //1.在代码最后处找到 new MarkdownPad2AutoCatalog();
-	//2.默认不显示目录编号，目录样式选择样式2，开启黑夜模式
+    // 1. Find **new MarkdownPad2AutoCatalog();** at the end of the code.
+    // 2. By default, table of contents numbering is disabled, table of contents style is set to style 2, and dark mode is enabled.
 	new MarkdownPad2AutoCatalog(true, 2, true);
 	
-**2. 在markdownPad2AutoCatalog.min.js文件中配置示例:**
+**2. Configuration Example in markdownPad2AutoCatalog.min.js:**
 
-    //1.在代码最后处找到 window.onload=function(){new r}}]);
-    //2.开始配置：默认不显示目录编号，目录样式选择样式2，开启黑夜模式
+    // 1. Find **window.onload=function(){new r}}]);** at the end of the code.
+    // 2. Start Configuration: By default, table of contents numbering is disabled, table of contents style is set to style 2, and dark mode is enabled.
     window.onload=function(){new r(false, 2, true)}}]);
     
-> **以上两种方法任选其一即可**
+> **You can choose either of the above methods**
 
-## 由Typora编辑器导出的.html文件如何自动生成目录
+## How to automatically generate a table of contents in an .html file exported from the Typora editor
 
- 1. 下载 dist 文件中的 .js 和 .css 文件到你本地，如果需要自定义配置项，请下载 src 文件夹中的 .js 和 .css文件
- 2. 打开Typora编辑器，导出要转为.html的.md文档，**建议注意导出时选 HTML(without styles) 选项**，可省去手动删除Typora编辑器自带样式文件这一步
- 3. 在ide中编辑导出的.html文件，在 head 中引入刚刚下载的 .css 和 .js 文件，引入文件的顺序随意
- 4. 保存并关闭，完成
+1. Download the .js and .css files from the dist folder to your local machine. If you need to customize configuration options, download the .js and .css files from the src folder.
+2. Open the Typora editor, export the .md document you want to convert to .html. **It is recommended to choose the HTML (without styles) option when exporting**, which can save you the step of manually removing the default style files provided by the Typora editor.
+3. Edit the exported .html file in your IDE. In the `<head>` section, include the downloaded .css and .js files. The order of including the files is arbitrary.
+4. Save and close to finish.
 
-## 注意事项（避坑指南-必看） 
+## Tips and Considerations (Must-Read Pitfall Guide) 
 
-使用时请注意以下 4 点：
+When using, please pay attention to the following 4 points:
 
-1. 自动生成的目录和代码高亮显示功能在 MarkdownPad2 编辑器中**预览界面中是不会生效的**，只有当你将文件导出为 Html 后，在浏览器中打开该 Html 文件，目录和代码高亮显才可正常使用。
-2. **在生成目录时，当检测到有多个 h1 标签时，会将除了第一个 h1 标签外的所有 h1 标签自动转换为 h2 标签，其余标签自动向下转一级（h3 转为 h4，以此类推），由于此操作会影响目录的生成速度，推荐用一个 h1 标签作为文档标题，h2 作为一级标题。**
-3. 内容不要出现: < script > 标签，否则之后的内容将不会显示。
-4. 插入代码的用法：
-   1. 使用：< pre >< code class="xxx" >你的代码</ code >< /pre >,xxx是代码类型如：js
-   2. 直接在需要设置为代码的内容前面添加空格键，一个空格不够就多来几个空格，直到空格后面的内容变色就可以了，比较方便，我最爱的方式^_^
+1. The automatically generated table of contents and code highlighting functions will not take effect in the preview pane of the MarkdownPad2 editor. They will only work properly when you export the file as HTML and open the HTML file in a browser.
+2. **When generating the table of contents, if multiple `<h1>` tags are detected, all `<h1>` tags except the first one will be automatically converted to `<h2>` tags, and all subsequent tags will be downgraded by one level (e.g., `<h3>` becomes `<h4>`, and so on). Since this operation may affect the speed of generating the table of contents, it is recommended to use only one `<h1>` tag as the document title and `<h2>` tags as first-level headings.**
+3. Avoid using `<script>` tags in your content, as this can prevent subsequent content from displaying properly.
+4. Usage of inserting code:
+   1. Use: `<pre><code class="xxx">Your code</code></pre>`, where xxx is the code type, such as "js".
+   2. Simply add spaces before the content you want to set as code. If one space is not enough, add more spaces until the content after the spaces changes color. This method is more convenient, and it's my favorite way ^_^
 
 
 
