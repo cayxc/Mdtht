@@ -1,0 +1,264 @@
+@import "global";
+
+//root
+*{
+  margin: 0;
+  padding: 0;
+}
+:root{
+  font-family: PingFang SC, PingFang, Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 62.5%;
+  background-color: $body-bg-color;
+  color: $text-color;
+}
+body{
+  font-size: $size-16;
+  line-height: 2.6rem;
+  padding: 0 3.2rem 3.6rem 3.2rem;
+  box-sizing: border-box;
+  text-align: justify;
+}
+//dark style
+html[theme=dark]{
+  &{
+    background-color: $dark-bag;
+    color: $text-dark;
+  }
+  h1,h2,h3,h4,h5,h6{
+    color: $text-dark;
+  }
+  h1{
+    @include border-bottom($color:$grey-color-dark);
+    &:first-of-type{
+      border: none;
+    }
+  }
+  hr{
+    background: $grey-color-dark;
+  }
+  kbd{
+    background-color: $code-bg-dark;
+  }
+  code{
+    background-color: $code-bg-dark;
+    border: none;
+  }
+  pre{
+    background-color: $code-bg-dark;
+    //border-color: red;
+    border: none;
+  }
+  table{
+    @include table-style($bd-color:$grey-color-dark,$bg-color:$code-bg-dark);
+  }
+}
+
+
+//标题
+h1,h2,h3,h4,h5,h6{
+  margin: 3.6rem 0 1.8rem;
+  color: $title-color;
+}
+h1{ //文章标题
+  font-size: 3rem;
+  padding-bottom: $size-12;
+  @include border-bottom($color:$grey-color);
+  &:first-of-type{
+    border: none;
+    padding-bottom: 0;
+  }
+}
+h2{
+  font-size: 3rem;
+}
+h3{
+  font-size: 2.6rem;
+}
+h4{
+  font-size: 2.2rem;
+}
+h5{
+  font-size: 1.8rem;
+}
+h6{
+  font-size: 1.6rem;
+}
+
+h5,h6 {
+  & + p {
+    margin-top: -0.8rem;
+  }
+}
+hr{
+  border: none;
+  height: .1rem;
+  margin: $size-18 0;
+  background: $grey-color;
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+  color: $green;
+  font-weight: bold;
+  cursor:pointer;
+  &:hover{
+    color: $red;
+  }
+}
+strong{
+  font-weight: bold;
+  color: $orange;
+}
+u{
+  text-decoration-color: $green;
+  -moz-text-decoration-color:$green;
+}
+del{
+  color: $text-grey;
+  text-decoration: line-through;
+  text-decoration-color: $red;
+  -moz-text-decoration-color: $red;
+}
+p{
+  margin: $size-18 0 0;
+}
+mark{
+  background-color: rgb($green,0.7);
+  padding: 0.2rem 1rem;
+  @include border-radius(0.4rem)
+}
+kbd {
+  display: inline-block;
+  line-height: $size-22;
+  border: none;
+  background: $grey-color;
+  border-image: none;
+  @include border-radius(.4rem);
+  padding: 0 .6rem;
+  margin-right: 0.6rem;
+  vertical-align: text-bottom;
+
+}
+img{
+  width: 100%;
+  @include border-radius();
+}
+//列表
+ul li,ol li, dl dt, dl dd{
+  margin-left: 3.7rem;
+  input,p{
+    display: inline-block;
+  }
+  input{
+    margin-right: $size-10;
+  }
+  p{
+    margin: 0;
+  }
+  &:has(input[type="checkbox"]),&:has(input[type="radio"]){
+    list-style: none;
+    margin-left: 2.4rem;
+  }
+}
+li dl{
+  margin-left: -1.6rem;
+}
+dl dd{
+  margin-left: 5.6rem;
+}
+/*code*/
+pre{
+  @include code-box();
+  @include border-radius();
+}
+p code,code{
+  @include code-box();
+  @include border-radius(0.6rem);
+  padding: .3rem 1rem;
+  vertical-align: middle;
+}
+/*sup,sub*/
+sup,sub{
+  font-size: $size-12;
+}
+/*blockquote*/
+blockquote{
+  @include code-box($padding:2rem,$font-size:$size-16);
+  @include border-radius;
+  border-left:.5rem solid $green;
+  border-bottom: none;
+  border-top: none;
+  border-right: none;
+  background-color: rgb($green,0.06);
+  overflow: hidden;
+  code{
+    @include code-box();
+    @include border-radius(0.6rem);
+    padding: .3rem 1rem;
+    background: $grey-color;
+    vertical-align: middle;
+  }
+  p:first-child{
+    margin-top: 0;
+  }
+}
+/*table*/
+table{
+  @include table-style;
+}
+
+/*input checketbox*/
+input[type='checkbox'],input[type="radio"]{
+  @extend .input-checkebox;
+}
+
+input[type='checkbox']{
+  @include border-radius($size:0.3rem);
+  &:checked{
+    content: '';
+    display: inline-block;
+    background: $green;
+    border-color: transparent;
+    font-size: 1.5rem;
+    text-align: center;
+    color: white;
+    &:after{
+      content: '\2713'; /*2713、2714都是勾，一个粗一个细*/
+      vertical-align: super;
+    }
+  }
+}
+/*input radio*/
+input[type='radio']{
+  @include border-default($color:$green);
+  @include border-radius($size:50%);
+  &:checked{
+    &:after{
+      content: ''; /*2713、2714都是勾，一个粗一个细*/
+      display: block;
+      width: 8px;
+      height: 8px;
+      margin: 3px auto;
+      background: $green;
+      @include border-radius($size:50%);
+    }
+  }
+}
+
+/*@media*/
+@media screen and (max-width: 768px){
+  body{
+    width: 768px;
+  }
+}
+@media screen and (min-width: 1900px){
+  body{
+    width: 1900px;
+  }
+}
+@media (prefers-color-scheme:dark){
+  /*body{
+    background: $dark-bag;
+    color: #fffdfd;
+  }*/
+}
