@@ -1,132 +1,129 @@
 @import "global";
 
 //root
-*{
+* {
   margin: 0;
   padding: 0;
 }
-:root{
+
+:root {
   font-family: PingFang SC, PingFang, Helvetica, arial, freesans, clean, sans-serif;
   font-size: 62.5%;
   background-color: $body-bg-color;
   color: $text-color;
+  height: 100%;
+  overflow: hidden;
 }
-body{
+
+body {
+  width: 100vw;
+  height: 100vh;
   font-size: $size-16;
   line-height: 2.6rem;
-  padding: 0 3.2rem 3.6rem 3.2rem;
   box-sizing: border-box;
   text-align: justify;
-}
-//dark style
-html[theme=dark]{
-  &{
-    background-color: $dark-bag;
-    color: $text-dark;
-  }
-  h1,h2,h3,h4,h5,h6{
-    color: $text-dark;
-  }
-  h1{
-    @include border-bottom($color:$grey-color-dark);
-    &:first-of-type{
-      border: none;
-    }
-  }
-  hr{
-    background: $grey-color-dark;
-  }
-  kbd{
-    background-color: $code-bg-dark;
-  }
-  code{
-    background-color: $code-bg-dark;
-    border: none;
-  }
-  pre{
-    background-color: $code-bg-dark;
-    //border-color: red;
-    border: none;
-  }
-  table{
-    @include table-style($bd-color:$grey-color-dark,$bg-color:$code-bg-dark);
-  }
+  display: grid;
+  grid-template-columns: 28rem auto;
+  grid-gap: 0;
 }
 
+//dark style
+html[theme=dark] {
+  @include theme-dark;
+}
 
 //标题
-h1,h2,h3,h4,h5,h6{
+h1, h2, h3, h4, h5, h6 {
   margin: 3.6rem 0 1.8rem;
   color: $title-color;
 }
-h1{ //文章标题
+
+h1 { //文章标题
   font-size: 3rem;
   padding-bottom: $size-12;
-  @include border-bottom($color:$grey-color);
-  &:first-of-type{
+  @include border-bottom($color: $grey-color);
+
+  &:first-of-type {
     border: none;
     padding-bottom: 0;
   }
 }
-h2{
+
+h2 {
   font-size: 3rem;
 }
-h3{
+
+h3 {
   font-size: 2.6rem;
 }
-h4{
+
+h4 {
   font-size: 2.2rem;
 }
-h5{
+
+h5 {
   font-size: 1.8rem;
 }
-h6{
+
+h6 {
   font-size: 1.6rem;
 }
 
-h5,h6 {
+h5, h6 {
   & + p {
     margin-top: -0.8rem;
   }
 }
-hr{
+
+hr {
   border: none;
   height: .1rem;
   margin: $size-18 0;
   background: $grey-color;
   box-sizing: border-box;
 }
-a{
+
+a {
   text-decoration: none;
   color: $green;
-  font-weight: bold;
-  cursor:pointer;
-  &:hover{
+  cursor: pointer;
+
+  &:hover {
     color: $red;
   }
 }
-strong{
+
+p a {
+  font-weight: bold;
+}
+
+strong {
   font-weight: bold;
   color: $orange;
 }
-u{
+
+u {
   text-decoration-color: $green;
-  -moz-text-decoration-color:$green;
+  -moz-text-decoration-color: $green;
 }
-del{
+
+del {
   color: $text-grey;
   text-decoration: line-through;
   text-decoration-color: $red;
   -moz-text-decoration-color: $red;
 }
-p{
-  margin: $size-18 0 0;
+
+p {
+  margin: $size-10 0 0;
 }
-mark{
-  background-color: rgb($green,0.7);
+
+mark {
+  background-color: rgb($green, 0.7);
   padding: 0.2rem 1rem;
   @include border-radius(0.4rem)
 }
+
 kbd {
   display: inline-block;
   line-height: $size-22;
@@ -139,82 +136,99 @@ kbd {
   vertical-align: text-bottom;
 
 }
-img{
+
+img {
   width: 100%;
   @include border-radius();
 }
+
 //列表
-ul li,ol li, dl dt, dl dd{
-  margin-left: 3.7rem;
-  input,p{
+ul li, ol li, dl dt, dl dd {
+  margin-left: 3.8rem;
+
+  input, p {
     display: inline-block;
   }
-  input{
+
+  input {
     margin-right: $size-10;
   }
-  p{
+
+  p {
     margin: 0;
   }
-  &:has(input[type="checkbox"]),&:has(input[type="radio"]){
+
+  &:has(input[type="checkbox"]), &:has(input[type="radio"]) {
     list-style: none;
     margin-left: 2.4rem;
   }
 }
-li dl{
+
+li dl {
   margin-left: -1.6rem;
 }
-dl dd{
+
+dl dd {
   margin-left: 5.6rem;
 }
+
 /*code*/
-pre{
+pre {
   @include code-box();
   @include border-radius();
+  overflow: auto;
 }
-p code,code{
+
+p code {
   @include code-box();
   @include border-radius(0.6rem);
   padding: .3rem 1rem;
   vertical-align: middle;
 }
+
 /*sup,sub*/
-sup,sub{
+sup, sub {
   font-size: $size-12;
 }
+
 /*blockquote*/
-blockquote{
-  @include code-box($padding:2rem,$font-size:$size-16);
+blockquote {
+  @include code-box($padding: 2rem, $font-size: $size-16);
   @include border-radius;
-  border-left:.5rem solid $green;
+  border-left: .5rem solid $green;
   border-bottom: none;
   border-top: none;
   border-right: none;
-  background-color: rgb($green,0.06);
+  background-color: rgb($green, 0.06);
   overflow: hidden;
-  code{
+
+  code {
     @include code-box();
     @include border-radius(0.6rem);
     padding: .3rem 1rem;
     background: $grey-color;
     vertical-align: middle;
   }
-  p:first-child{
+
+  p:first-child {
     margin-top: 0;
   }
 }
+
 /*table*/
-table{
+table {
   @include table-style;
 }
 
 /*input checketbox*/
-input[type='checkbox'],input[type="radio"]{
+input[type='checkbox'], input[type="radio"] {
   @extend .input-checkebox;
 }
 
-input[type='checkbox']{
-  @include border-radius($size:0.3rem);
-  &:checked{
+input[type='checkbox'] {
+  @include border-radius($size: 0.3rem);
+
+  &:checked {
     content: '';
     display: inline-block;
     background: $green;
@@ -222,43 +236,361 @@ input[type='checkbox']{
     font-size: 1.5rem;
     text-align: center;
     color: white;
-    &:after{
+
+    &:after {
       content: '\2713'; /*2713、2714都是勾，一个粗一个细*/
       vertical-align: super;
     }
   }
 }
+
 /*input radio*/
-input[type='radio']{
-  @include border-default($color:$green);
-  @include border-radius($size:50%);
-  &:checked{
-    &:after{
-      content: ''; /*2713、2714都是勾，一个粗一个细*/
+input[type='radio'] {
+  @include border-default($color: $green);
+  @include border-radius($size: 50%);
+
+  &:checked {
+    &:after {
+      content: '';
       display: block;
       width: 8px;
       height: 8px;
       margin: 3px auto;
       background: $green;
-      @include border-radius($size:50%);
+      @include border-radius($size: 50%);
+    }
+  }
+}
+
+/*right-containe*/
+#right-container {
+  background: white;
+  overflow: auto;
+  height: 100%;
+}
+
+#content {
+  width: 100rem;
+  margin: 2rem auto;
+  //background: red;
+}
+
+/*left-containe*/
+#left-container {
+  background: white;
+  border-right: 1px solid $border-color;
+  padding: 0 0 1.6rem 0;
+  z-index: 20;
+  position: relative;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+/*top-container*/
+.top-container {
+  width: 100%;
+  height: 6.2rem;
+  border-bottom: 1px solid $border-color;
+  color: $text-grey;
+  padding: 1.6rem;
+  top:0;
+  left: 0;
+  position: absolute;
+  box-sizing: border-box;
+  z-index: 25;
+  line-height: 3.2rem;
+  background: white;
+}
+
+.catalog-button {
+  font-size: 2.2rem;
+  cursor: pointer;
+
+  &:hover {
+    color: $green;
+  }
+}
+
+.search-container {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.6rem;
+}
+
+.search {
+  height: 3.2rem;
+  width: 21rem;
+  @extend .input-text;
+  float: right;
+
+  &:focus {
+    outline: none;
+    border-color: $green;
+  }
+}
+
+.search-icon {
+  position: absolute;
+  font-size: $size-22;
+  right: .4rem;
+  top: .4rem;
+  cursor: pointer;
+  display: none;
+  line-height: 2.3rem;
+
+  &:hover {
+    color: $green;
+  }
+}
+
+.search-result {
+  @include border-default();
+  @include border-radius($size: 0.4rem);
+  background: white;
+  padding: 1.4rem 1.8rem;
+  overflow: auto;
+  color: $text-grey;
+  font-size: $size-14;
+  line-height: 1.2;
+  @include box-shadow-1;
+  display: none;
+
+  a {
+    color: $text-grey;
+
+    &:hover {
+      color: $green;
+    }
+  }
+}
+
+.search-result a,
+.search-result i,
+.search-result span {
+  display: block;
+  margin: 0 0 6px 0;
+}
+
+.search-result a {
+  cursor: pointer;
+}
+
+.search-result .js-active,
+.search-result a:hover {
+  color: $green;
+}
+
+.search-result i {
+  text-align: center;
+  font-size: 2.6rem;
+}
+
+.search-result span {
+  text-align: center;
+}
+
+/*list-container*/
+#list-container{
+  width: 100%;
+  position: absolute;
+  top: 6.2rem;
+  left: 0;
+  bottom: 4.1rem;
+  z-index: 24;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 1.6rem;
+}
+.list-wrapper {
+  font-size: $size-16;
+
+  ul {
+    display: block;
+    position: relative;
+    overflow: hidden;
+
+    &:before {
+      @include pseudo-element($w: 1rem, $h: 95%, $p: absolute);
+      box-sizing: border-box;
+      margin-left: 0.8rem;
+      bottom: 0.8rem;
+      border: 1px solid $border-color;
+      border-right: none;
+      border-top: none;
+      border-right: none;
+      //border-bottom: none;
+
+      //bottom:0.8rem;
+      //left: 0.8rem;
+      //background: $border-color;
+    }
+  }
+
+  ul li {
+    list-style: none;
+    margin-left: 0 !important;
+    position: relative;
+    line-height: 1;
+    margin-top: .8rem;
+  }
+}
+
+.list-wrapper a {
+  position: relative;
+  font-weight: normal;
+  color: $grey-color-dark;
+  &:hover{
+    color: $green;
+  }
+}
+
+.list-wrapper ul li > a p,
+.list-wrapper ul li > a span {
+  display: table-cell;
+  word-wrap: break-word;
+}
+
+.list-wrapper ul li a p {
+  padding-left: 2rem;
+}
+
+.list-wrapper ul li a span {
+  padding-left: .5rem;
+  word-break: normal;
+  &::before {
+    @include pseudo-element($w: .9rem);
+    background: $border-color;
+    left: .9rem;
+    top: 1.1rem;
+    position: absolute;
+  }
+}
+.list-wrapper ul li:last-of-type{
+  & a span::before{
+    display: none;
+  }
+}
+.list-wrapper > ul > li:first-of-type{
+  & a::before{
+    @include pseudo-element($w: .8rem,$h:1.8rem);
+    background: white;
+    left: .4rem;
+    bottom: 1.1rem;
+    position: absolute;
+  }
+}
+
+.list-wrapper ul li ul {
+  margin-left: 2rem !important;
+}
+
+.list-wrapper ul li i {
+  display: inline-block;
+  background: white;
+  margin-right: -2rem;
+  position: relative;
+  z-index: 30;
+}
+
+/*bottom-container*/
+.bottom-container {
+  width: 100%;
+  height: 4rem;
+  position: absolute;
+  z-index: 30;
+  bottom: 0;
+  background: white;
+  padding: 0 1.6rem;
+  box-sizing: border-box;
+  border-top: 1px solid $border-color;
+  color: $text-grey;
+
+  .mode, .index, .structure {
+    float: left;
+    margin-right: 3rem;
+    position: relative;
+  }
+
+  .iconfont {
+    font-size: 2rem;
+    line-height: 4rem;
+
+    &:hover {
+      color: $green;
+      cursor: pointer;
+    }
+  }
+}
+
+.structure-child {
+  background: white;
+  @include border-default();
+  @include border-radius($size: 0.5rem);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-color: white;
+  position: absolute;
+  bottom: 4rem;
+  left: -4.1rem;
+  width: 10rem;
+  padding: 0.5rem 0 0 0;
+
+  li {
+    text-align: center;
+    margin-left: 0 !important;
+  }
+
+  li label {
+    font-size: 1.2rem !important;
+    vertical-align: middle;
+  }
+
+  li input[type='radio'] {
+    width: $size-12;
+    height: $size-12;
+    margin-right: 0.6rem !important;
+    @include border-default($color: $green);
+    @include border-radius($size: 50%);
+
+    &:checked {
+      &:after {
+        content: '';
+        display: block;
+        width: 6px;
+        height: 6px;
+        margin: 2px auto;
+        background: $green;
+        @include border-radius($size: 50%);
+      }
     }
   }
 }
 
 /*@media*/
-@media screen and (max-width: 768px){
-  body{
+@media (prefers-color-scheme: dark) {
+  html {
+    @include theme-dark;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
     width: 768px;
   }
 }
-@media screen and (min-width: 1900px){
-  body{
+
+@media screen and (max-width: 1200px) {
+  /* #right-container{
+     padding: 0 3.2rem 3.2rem 31.2rem;
+   }*/
+}
+
+@media screen and (min-width: 1900px) {
+  body {
     width: 1900px;
   }
+  /* #right-container{
+     padding: 0 21rem 3.2rem 49rem;
+   }*/
 }
-@media (prefers-color-scheme:dark){
-  /*body{
-    background: $dark-bag;
-    color: #fffdfd;
-  }*/
-}
+

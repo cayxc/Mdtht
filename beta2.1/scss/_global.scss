@@ -99,16 +99,16 @@
 
 /*colors*/
 $body-bg-color: #ffffff;
-$border-color: #f1f3f4;
+$border-color: #d0d0d0;
 $grey-color: #d9d9d9;
-$text-grey: #777777;
+$text-grey: #999999;
 $code-bg-color: rgb(246, 246, 246);
 $green: rgb(40, 180, 115);
 $red: #e82323;
 $orange: #ff5900;
 $text-color: #000000;
 $title-color: rgb(39, 56, 75);
-$dark-bag: rgb(22, 27, 31);  //rgb(22, 27, 31);
+$dark-bag: rgb(22, 27, 31); //rgb(22, 27, 31);
 $dark-bag2: rgb(32, 45, 50);
 $text-dark: rgb(245, 255, 255);
 $code-bg-dark: rgb(29, 38, 43);
@@ -127,6 +127,41 @@ $size-16: 1.6rem;
 $size-14: 1.4rem;
 $size-12: 1.2rem;
 $size-10: 1.0rem;
+
+/*theme dark style*/
+@mixin theme-dark {
+  & {
+    background-color: $dark-bag;
+    color: $text-dark;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    color: $text-dark;
+  }
+  h1 {
+    @include border-bottom($color: $grey-color-dark);
+    &:first-of-type {
+      border: none;
+    }
+  }
+  hr {
+    background: $grey-color-dark;
+  }
+  kbd {
+    background-color: $code-bg-dark;
+  }
+  code {
+    background-color: $code-bg-dark;
+    border: none;
+  }
+  pre {
+    background-color: $code-bg-dark;
+    //border-color: red;
+    border: none;
+  }
+  table {
+    @include table-style($bd-color: $grey-color-dark, $bg-color: $code-bg-dark);
+  }
+}
 
 /*border*/
 @mixin border-default($width:1px,$style:solid,$color:$border-color) {
@@ -152,6 +187,7 @@ $size-10: 1.0rem;
   background: $bag;
   font-size: $font-size;
 }
+
 /*table style*/
 @mixin table-style($bd-color:$grey-color,$bg-color:$code-bg-color,$bd-radius:0.8rem) {
   width: 100%;
@@ -191,7 +227,17 @@ $size-10: 1.0rem;
   }
 }
 
-/*input no-style*/
+/*after/before content style*/
+@mixin pseudo-element($c:"",$w:1rem,$h:.1rem,$p:relative) {
+  content: $c;
+  display: inline-block;
+  width: $w;
+  height: $h;
+  position: $p;
+  z-index: 20;
+}
+
+/*input checkbox no-style*/
 .input-checkebox {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -210,5 +256,34 @@ $size-10: 1.0rem;
   margin-bottom: 0.3rem;
   margin-right: 1.2rem;
   box-sizing: border-box;
+}
+
+/*input text no-style*/
+.input-text {
+  display: inline-block;
+  border: 1px solid $border-color;
+  padding: 0 .6rem;
+  -webkit-border-radius: .4rem;
+  -moz-border-radius: .4rem;
+  border-radius: .4rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+//box-shadow-1
+@mixin box-shadow-1 {
+  -webkit-box-shadow: 0 2px 4px -2px $grey-color;
+  -moz-box-shadow: 0 2px 4px -2px $grey-color;
+  box-shadow: 0 2px 4px -2px $grey-color;
+}
+
+/*  Custom input placeholder
+===========================*/
+input::-webkit-input-placeholder, /* WebKit browsers */
+input:-moz-placeholder, /* Mozilla Firefox 4 to 18 */
+input::-moz-placeholder, /* Mozilla Firefox 19+ */
+input:-ms-input-placeholder /* Internet Explorer 10+ */
+{
+  color: $text-grey;
 }
 

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./scss/index.css">
     <script src="./js/main.js"></script>
 </head>
-<body><h1 id='这是文章标题'>这是文章标题</h1>
+<!--<body><h1 id='这是文章标题'>这是文章标题</h1>
 <p>这是一段正文内容这是一段正文内容这是一段正文内容这是一段正文内容这是一段正文内容这是一段正文内容这是一段正文内容这是一段正文内容这是一段正文内容。这是一段正文内容这是一段正文内容这是一段正文内容这是一段正文内容这是一段正文内容这是一段正文内容这是一段正文内容。</p>
 <p>这是一段正文内容这是一段正文内容这是一段正文内容这是一段正文内容这是一段正文内容这是一段正文内容。是一段正文内容这是一段正文内容这是一段正文内容这是一段正文内容这是一段正文内容这是一段正文内容这是一段正文内容这是一段正文......</p>
 <h1 id='一级标题'>一级标题 </h1>
@@ -117,7 +117,7 @@
 <p><u>下划线下划线下划线下划线下划线</u></p>
 <p>这是上标<sup>上标上标上标上标上标上标上标上标</sup></p>
 <p>这是下标<sub>下标下标下标下标下标下标下标下标</sub></p>
-<!--这是注释这是注释这是注释这是注释-->
+&lt;!&ndash;这是注释这是注释这是注释这是注释&ndash;&gt;
 
 <p>H<sub>2</sub>O is是液体。
     2<sup>10</sup> 运算结果是 1024。</p>
@@ -141,7 +141,7 @@ nav {
 <p><img src="img/11.jpeg" referrerpolicy="no-referrer"></p>
 <p><img src="img/22.jpeg" referrerpolicy="no-referrer" alt="jkgkj"></p>
 <p>注释内容：</p>
-<pre><code class='language-scss' lang='scss'>/* 这是多行注释  --- 静默注释
+<pre><code class='language-scss' lang='scss'>/* 这是多行注释  -&#45;&#45; 静默注释
 
  * 会输出到变异后的 css 文件中
  * ......
@@ -180,20 +180,20 @@ cond(no)-&gt;io-&gt;ed
 </code></pre>
 <p>这是带样式流程图mermaid：</p>
 <pre><code class='language-mermaid' lang='mermaid'>graph LR
-    A[开始] --然后---&gt;B(起床)
-    B --天气不好--- C&gt;干活]
+    A[开始] &#45;&#45;然后-&#45;&#45;&gt;B(起床)
+    B &#45;&#45;天气不好-&#45;&#45; C&gt;干活]
     C ==&gt; D{休息时间到了}
     D -.yes.-&gt; E((休息))
     D -.no.-&gt; C
-    E --&gt; F(吃饭)
+    E &#45;&#45;&gt; F(吃饭)
 </code></pre>
 <pre><code class='language-mermaid' lang='mermaid'>graph TD
-    A(开始) --&gt;B(起床)
-    B --天气不好--- C&gt;干活]
+    A(开始) &#45;&#45;&gt;B(起床)
+    B &#45;&#45;天气不好-&#45;&#45; C&gt;干活]
     C ==&gt; D{休息时间到了}
     D -.yes.-&gt; E((休息))
     D -.no.-&gt; C
-    E --&gt; F(吃饭)
+    E &#45;&#45;&gt; F(吃饭)
 </code></pre>
 <hr />
 <p>这是甘特图：</p>
@@ -224,7 +224,7 @@ cond(no)-&gt;io-&gt;ed
 <p>这是标准时序图sequence：</p>
 <pre><code class='language-sequence' lang='sequence'>Title:时序图示例
 客户端-&gt;服务端: 我想找你拿下数据 SYN
-服务端--&gt;客户端: 我收到你的请求啦 ACK+SYN
+服务端&#45;&#45;&gt;客户端: 我收到你的请求啦 ACK+SYN
 客户端-&gt;&gt;服务端: 我收到你的确认啦，我们开始通信吧 ACK
 Note right of 服务端: 我是一个服务端
 Note left of 客户端: 我是一个客户端
@@ -239,7 +239,7 @@ participant 观察者
 loop 思考
     对象A-&gt;对象A: 努力搜索
 end
-对象A--&gt;&gt;对象B: 火锅？
+对象A&#45;&#45;&gt;&gt;对象B: 火锅？
 对象B-&gt;&gt;对象A: 可以
 Note left of 对象A: 我是一个对象A
 Note right of 对象B: 我是一个对象B
@@ -289,5 +289,1177 @@ Note over 对象C: 我自己说了算
 <p>
     <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="22.103ex" height="7.034ex" role="img" focusable="false" viewBox="0 -983.7 9769.6 3108.8" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -4.808ex;"><defs><path id="MJX-42-TEX-I-1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path id="MJX-42-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-42-TEX-I-1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path id="MJX-42-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-42-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-42-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-42-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-42-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-42-TEX-N-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path id="MJX-42-TEX-N-2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D465" xlink:href="#MJX-42-TEX-I-1D465"></use></g><g data-mml-node="mo" transform="translate(849.8,0)"><use data-c="3D" xlink:href="#MJX-42-TEX-N-3D"></use></g><g data-mml-node="msub" transform="translate(1905.6,0)"><g data-mml-node="mi"><use data-c="1D44E" xlink:href="#MJX-42-TEX-I-1D44E"></use></g><g data-mml-node="mn" transform="translate(562,-150) scale(0.707)"><use data-c="30" xlink:href="#MJX-42-TEX-N-30"></use></g></g><g data-mml-node="mo" transform="translate(3093.3,0)"><use data-c="2B" xlink:href="#MJX-42-TEX-N-2B"></use></g><g data-mml-node="mfrac" transform="translate(4093.6,0)"><g data-mml-node="msup" transform="translate(2506.9,394) scale(0.707)"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-42-TEX-N-31"></use></g><g data-mml-node="mn" transform="translate(533,363) scale(0.707)"><use data-c="32" xlink:href="#MJX-42-TEX-N-32"></use></g></g><g data-mml-node="mrow" transform="translate(220,-596.1) scale(0.707)"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D44E" xlink:href="#MJX-42-TEX-I-1D44E"></use></g><g data-mml-node="mn" transform="translate(562,-150) scale(0.707)"><use data-c="31" xlink:href="#MJX-42-TEX-N-31"></use></g></g><g data-mml-node="mo" transform="translate(965.6,0)"><use data-c="2B" xlink:href="#MJX-42-TEX-N-2B"></use></g><g data-mml-node="mfrac" transform="translate(1743.6,0)"><g data-mml-node="msup" transform="translate(2447.7,394) scale(0.707)"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-42-TEX-N-32"></use></g><g data-mml-node="mn" transform="translate(533,289)"><use data-c="32" xlink:href="#MJX-42-TEX-N-32"></use></g></g><g data-mml-node="mrow" transform="translate(220,-793.9) scale(0.707)"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D44E" xlink:href="#MJX-42-TEX-I-1D44E"></use></g><g data-mml-node="mn" transform="translate(562,-312.4)"><use data-c="32" xlink:href="#MJX-42-TEX-N-32"></use></g></g><g data-mml-node="mo" transform="translate(1112,0)"><use data-c="2B" xlink:href="#MJX-42-TEX-N-2B"></use></g><g data-mml-node="mfrac" transform="translate(1890,0)"><g data-mml-node="msup" transform="translate(2205.5,394)"><g data-mml-node="mn"><use data-c="33" xlink:href="#MJX-42-TEX-N-33"></use></g><g data-mml-node="mn" transform="translate(533,289)"><use data-c="32" xlink:href="#MJX-42-TEX-N-32"></use></g></g><g data-mml-node="mrow" transform="translate(220,-1189)"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D44E" xlink:href="#MJX-42-TEX-I-1D44E"></use></g><g data-mml-node="mn" transform="translate(562,-311.4)"><use data-c="33" xlink:href="#MJX-42-TEX-N-33"></use></g></g><g data-mml-node="mo" transform="translate(1112,0)"><use data-c="2B" xlink:href="#MJX-42-TEX-N-2B"></use></g><g data-mml-node="mfrac" transform="translate(1890,0)"><g data-mml-node="msup" transform="translate(1040.5,394)"><g data-mml-node="mn"><use data-c="34" xlink:href="#MJX-42-TEX-N-34"></use></g><g data-mml-node="mn" transform="translate(533,289)"><use data-c="32" xlink:href="#MJX-42-TEX-N-32"></use></g></g><g data-mml-node="mrow" transform="translate(220,-423)"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D44E" xlink:href="#MJX-42-TEX-I-1D44E"></use></g><g data-mml-node="mn" transform="translate(562,-323.4)"><use data-c="34" xlink:href="#MJX-42-TEX-N-34"></use></g></g><g data-mml-node="mo" transform="translate(1112,0)"><use data-c="2B" xlink:href="#MJX-42-TEX-N-2B"></use></g><g data-mml-node="mo" transform="translate(1890,0)"><use data-c="2E" xlink:href="#MJX-42-TEX-N-2E"></use></g><g data-mml-node="mo" transform="translate(2168,0)"><use data-c="2E" xlink:href="#MJX-42-TEX-N-2E"></use></g><g data-mml-node="mo" transform="translate(2446,0)"><use data-c="2E" xlink:href="#MJX-42-TEX-N-2E"></use></g></g><rect width="2924" height="60" x="120" y="220"></rect></g></g><rect width="5254" height="60" x="120" y="220"></rect></g></g><rect width="5421.3" height="60" x="120" y="220"></rect></g></g><rect width="5436" height="60" x="120" y="220"></rect></g></g></g></svg></mjx-container><script type="math/tex">x=a_0 + \frac{1^2}{a_ 1+\frac{2^2}{a_2+\frac{3^2}{a_3+ \frac{4^2}{a_4+...}}}}</script>
 </p>
-</body>
+</body>-->
+<div id="left-container">
+    <div class="top-container">
+        <i class="catalog-button iconfont icon-catalogOpen"></i>
+        <div class="search-container">
+            <input type="text" class="search" name="search" placeholder="输入关键字搜索 . . .">
+            <i class="search-icon iconfont icon-cancel"></i>
+        </div>
+        <div class="search-result">
+            <i class="iconfont icon-search"></i>
+            <span>目录中暂无相关搜索结果</span>
+            <span>试试 Ctrl+F  在全文档搜索</span>
+            <a href="#level-2.1">2.1	整体效果：</a>
+
+            <a href="#level-2.2">2.2	夜览模式：</a>
+
+            <a href="#level-2.3">2.3	目录收起效果：</a>
+
+            <a href="#level-2.4">2.4	3 种目录样式及隐藏目录编号：</a>
+
+            <a href="#level-2.5">2.5	搜索功能效果：</a>
+
+            <a href="#level-2.6">2.6	代码高亮：</a>
+        </div>
+    </div>
+    <div id="list-container">
+        <div class="list-wrapper">
+            <ul><li class="parent-level js-active"><i class="iconfont icon-closeA"></i>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-1" class="level-1">
+                    <p class="">1</p>
+                    <span>安装</span></a>
+                <ul class="js-close"><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-1.1" class="level-1.1">
+                        <p class="">1.1</p>
+                        <span>通过composer安装</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-1.2" class="level-1.2">
+                        <p class="">1.2</p>
+                        <span>安装laravel-debugbar调试工具</span></a>
+                </li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-1.3" class="level-1.3">
+                        <p class="">1.3</p>
+                        <span>laravel-ide-helper</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-1.3.1" class="level-1.3.1">
+                            <p class="">1.3.1</p>
+                            <span>使用composer安装插件</span></a>
+                    </li></ul></li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-1.4" class="level-1.4">
+                        <p class="">1.4</p>
+                        <span>其他插件</span></a>
+                </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-2" class="level-2">
+                    <p class="">2</p>
+                    <span>目录结构</span></a>
+                <ul class="js-close"><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-2.1" class="level-2.1">
+                        <p class="">2.1</p>
+                        <span>主要目录结构</span></a>
+                </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-3" class="level-3">
+                    <p class="">3</p>
+                    <span>CSRF攻击</span></a>
+                <ul class="js-close"><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-3.1" class="level-3.1">
+                        <p class="">3.1</p>
+                        <span>什么是CSRF</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-3.2" class="level-3.2">
+                        <p class="">3.2</p>
+                        <span>Laravel如何处理CSRF</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-3.3" class="level-3.3">
+                        <p class="">3.3</p>
+                        <span>排除指定路由中不进行CSRF验证</span></a>
+                </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4" class="level-4">
+                    <p class="">4</p>
+                    <span>Laravel路由</span></a>
+                <ul class="js-close"><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.1" class="level-4.1">
+                        <p class="">4.1</p>
+                        <span>什么是路由</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.2" class="level-4.2">
+                        <p class="">4.2</p>
+                        <span>路由配置文件</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.3" class="level-4.3">
+                        <p class="">4.3</p>
+                        <span>4种基础路由的定义【重要】</span></a>
+                </li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.4" class="level-4.4">
+                        <p class="">4.4</p>
+                        <span>其他路由的定义</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.4.1" class="level-4.4.1">
+                            <p class="">4.4.1</p>
+                            <span>一次多个请求类型</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.4.2" class="level-4.4.2">
+                            <p class="">4.4.2</p>
+                            <span>所有请求类型</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.4.3" class="level-4.4.3">
+                            <p class="">4.4.3</p>
+                            <span>重定向路由</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.4.4" class="level-4.4.4">
+                            <p class="">4.4.4</p>
+                            <span>视图路由</span></a>
+                    </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.5" class="level-4.5">
+                        <p class="">4.5</p>
+                        <span>路由参数</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.5.1" class="level-4.5.1">
+                            <p class="">4.5.1</p>
+                            <span>必填参数</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.5.2" class="level-4.5.2">
+                            <p class="">4.5.2</p>
+                            <span>可选参数</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.5.3" class="level-4.5.3">
+                            <p class="">4.5.3</p>
+                            <span>参数限制</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.5.4" class="level-4.5.4">
+                            <p class="">4.5.4</p>
+                            <span>全局约束</span></a>
+                    </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.6" class="level-4.6">
+                        <p class="">4.6</p>
+                        <span>路由别名【掌握】</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.6.1" class="level-4.6.1">
+                            <p class="">4.6.1</p>
+                            <span>定义路由别名</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.6.2" class="level-4.6.2">
+                            <p class="">4.6.2</p>
+                            <span>使用路由别名</span></a>
+                    </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.7" class="level-4.7">
+                        <p class="">4.7</p>
+                        <span>路由分组</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.7.1" class="level-4.7.1">
+                            <p class="">4.7.1</p>
+                            <span>路由前缀</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.7.2" class="level-4.7.2">
+                            <p class="">4.7.2</p>
+                            <span>分组命名空间</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.7.3" class="level-4.7.3">
+                            <p class="">4.7.3</p>
+                            <span>子域名路由</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.7.4" class="level-4.7.4">
+                            <p class="">4.7.4</p>
+                            <span>路由名称前缀</span></a>
+                    </li></ul></li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.8" class="level-4.8">
+                        <p class="">4.8</p>
+                        <span>查看定义好的路由</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4.9" class="level-4.9">
+                        <p class="">4.9</p>
+                        <span>访问当前路由</span></a>
+                </li></ul></li><li>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-5" class="level-5">
+                    <p class="">5</p>
+                    <span>表单方法伪造</span></a>
+            </li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-6" class="level-6">
+                    <p class="">6</p>
+                    <span>控制器</span></a>
+                <ul class="js-close"><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-6.1" class="level-6.1">
+                        <p class="">6.1</p>
+                        <span>控制器文件位置</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-6.2" class="level-6.2">
+                        <p class="">6.2</p>
+                        <span>控制器命名规范</span></a>
+                </li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-6.3" class="level-6.3">
+                        <p class="">6.3</p>
+                        <span>控制器创建</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-6.3.1" class="level-6.3.1">
+                            <p class="">6.3.1</p>
+                            <span>一般控制器的创建</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-6.3.2" class="level-6.3.2">
+                            <p class="">6.3.2</p>
+                            <span>资源控制器的创建</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-6.3.3" class="level-6.3.3">
+                            <p class="">6.3.3</p>
+                            <span>分目录下创建控制器</span></a>
+                    </li></ul></li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-6.4" class="level-6.4">
+                        <p class="">6.4</p>
+                        <span>定义路由访问控制器中的方法</span></a>
+                </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-7" class="level-7">
+                    <p class="">7</p>
+                    <span>请求</span></a>
+                <ul class="js-close"><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-7.1" class="level-7.1">
+                        <p class="">7.1</p>
+                        <span>Input类来获取数据</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-7.2" class="level-7.2">
+                        <p class="">7.2</p>
+                        <span>Request获取数据【掌握】</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-7.3" class="level-7.3">
+                        <p class="">7.3</p>
+                        <span>辅助函数 request() 获取数据</span></a>
+                </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-8" class="level-8">
+                    <p class="">8</p>
+                    <span>响应</span></a>
+                <ul class="js-close"><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-8.1" class="level-8.1">
+                        <p class="">8.1</p>
+                        <span>返回字符串</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-8.2" class="level-8.2">
+                        <p class="">8.2</p>
+                        <span>设置cookie</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-8.3" class="level-8.3">
+                        <p class="">8.3</p>
+                        <span>重定向</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-8.4" class="level-8.4">
+                        <p class="">8.4</p>
+                        <span>Json数据返回</span></a>
+                </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9" class="level-9">
+                    <p class="">9</p>
+                    <span>视图</span></a>
+                <ul class="js-close"><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.1" class="level-9.1">
+                        <p class="">9.1</p>
+                        <span>视图目录位置</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.2" class="level-9.2">
+                        <p class="">9.2</p>
+                        <span>视图命名</span></a>
+                </li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.3" class="level-9.3">
+                        <p class="">9.3</p>
+                        <span>分配数据到模板</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.3.1" class="level-9.3.1">
+                            <p class="">9.3.1</p>
+                            <span>关联数组的形式传值</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.3.2" class="level-9.3.2">
+                            <p class="">9.3.2</p>
+                            <span>compact【推荐】</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.3.3" class="level-9.3.3">
+                            <p class="">9.3.3</p>
+                            <span>with</span></a>
+                    </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.4" class="level-9.4">
+                        <p class="">9.4</p>
+                        <span>模板中输出变量</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.4.1" class="level-9.4.1">
+                            <p class="">9.4.1</p>
+                            <span>三元运算</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.4.2" class="level-9.4.2">
+                            <p class="">9.4.2</p>
+                            <span>未转义输出</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.4.3" class="level-9.4.3">
+                            <p class="">9.4.3</p>
+                            <span>原始形态输出</span></a>
+                    </li></ul></li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.5" class="level-9.5">
+                        <p class="">9.5</p>
+                        <span>使用函数</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.6" class="level-9.6">
+                        <p class="">9.6</p>
+                        <span>if语句</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.7" class="level-9.7">
+                        <p class="">9.7</p>
+                        <span>Switch语句</span></a>
+                </li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.8" class="level-9.8">
+                        <p class="">9.8</p>
+                        <span>循环</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.8.1" class="level-9.8.1">
+                            <p class="">9.8.1</p>
+                            <span>for循环</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.8.2" class="level-9.8.2">
+                            <p class="">9.8.2</p>
+                            <span>foreach循环</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.8.3" class="level-9.8.3">
+                            <p class="">9.8.3</p>
+                            <span>forelse循环</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.8.4" class="level-9.8.4">
+                            <p class="">9.8.4</p>
+                            <span>while循环</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.8.5" class="level-9.8.5">
+                            <p class="">9.8.5</p>
+                            <span>循环其他事项</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.8.6" class="level-9.8.6">
+                            <p class="">9.8.6</p>
+                            <span>循环变量</span></a>
+                    </li></ul></li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.9" class="level-9.9">
+                        <p class="">9.9</p>
+                        <span>模板包含</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-9.10" class="level-9.10">
+                        <p class="">9.10</p>
+                        <span>模板继承</span></a>
+                </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-10" class="level-10">
+                    <p class="">10</p>
+                    <span>表单验证</span></a>
+                <ul class="js-close"><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-10.1" class="level-10.1">
+                        <p class="">10.1</p>
+                        <span>验证规则</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-10.2" class="level-10.2">
+                        <p class="">10.2</p>
+                        <span>表单的CSRF验证</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-10.3" class="level-10.3">
+                        <p class="">10.3</p>
+                        <span>$this-&gt;validate() 验证</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-10.4" class="level-10.4">
+                        <p class="">10.4</p>
+                        <span>独立方式验证</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-10.5" class="level-10.5">
+                        <p class="">10.5</p>
+                        <span>验证器方式验证【推荐】</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-10.6" class="level-10.6">
+                        <p class="">10.6</p>
+                        <span>模板中输出错误信息</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-10.7" class="level-10.7">
+                        <p class="">10.7</p>
+                        <span>错误提示换成中文</span></a>
+                </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11" class="level-11">
+                    <p class="">11</p>
+                    <span>数据库</span></a>
+                <ul class="js-close"><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.1" class="level-11.1">
+                        <p class="">11.1</p>
+                        <span>Laravel支持的数据库类型</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.2" class="level-11.2">
+                        <p class="">11.2</p>
+                        <span>配置连接数据库信息</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.3" class="level-11.3">
+                        <p class="">11.3</p>
+                        <span>检查数据库配置是否正确</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.4" class="level-11.4">
+                        <p class="">11.4</p>
+                        <span>DB类执行原生SQL语句</span></a>
+                </li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.5" class="level-11.5">
+                        <p class="">11.5</p>
+                        <span>查询构造器操作数据库</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.5.1" class="level-11.5.1">
+                            <p class="">11.5.1</p>
+                            <span>查询</span></a>
+                    </li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.5.2" class="level-11.5.2">
+                            <p class="">11.5.2</p>
+                            <span>添加</span></a>
+                        <ul class="js-close"><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.5.2.1" class="level-11.5.2.1">
+                                <p class="">11.5.2.1</p>
+                                <span>自增 ID</span></a>
+                        </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.5.3" class="level-11.5.3">
+                            <p class="">11.5.3</p>
+                            <span>更新</span></a>
+                        <ul class="js-close"><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.5.3.1" class="level-11.5.3.1">
+                                <p class="">11.5.3.1</p>
+                                <span>更新 JSON 字段</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.5.3.2" class="level-11.5.3.2">
+                                <p class="">11.5.3.2</p>
+                                <span>自增与自减</span></a>
+                        </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.5.4" class="level-11.5.4">
+                            <p class="">11.5.4</p>
+                            <span>删除</span></a>
+                        <ul class="js-close"><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.5.4.1" class="level-11.5.4.1">
+                                <p class="">11.5.4.1</p>
+                                <span>悲观锁</span></a>
+                        </li></ul></li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6" class="level-11.6">
+                        <p class="">11.6</p>
+                        <span>数据库迁移</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.1" class="level-11.6.1">
+                            <p class="">11.6.1</p>
+                            <span>生成与编写迁移</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.2" class="level-11.6.2">
+                            <p class="">11.6.2</p>
+                            <span>迁移结构</span></a>
+                    </li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.3" class="level-11.6.3">
+                            <p class="">11.6.3</p>
+                            <span>执行数据迁移</span></a>
+                        <ul class="js-close"><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.3.1" class="level-11.6.3.1">
+                                <p class="">11.6.3.1</p>
+                                <span>在生产环境强制执行迁移</span></a>
+                        </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.4" class="level-11.6.4">
+                            <p class="">11.6.4</p>
+                            <span>回滚迁移</span></a>
+                        <ul class="js-close"><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.4.1" class="level-11.6.4.1">
+                                <p class="">11.6.4.1</p>
+                                <span>使用单个命令来执行回滚或迁移</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.4.2" class="level-11.6.4.2">
+                                <p class="">11.6.4.2</p>
+                                <span>删除所有表 &amp; 迁移</span></a>
+                        </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.5" class="level-11.6.5">
+                            <p class="">11.6.5</p>
+                            <span>数据表</span></a>
+                        <ul class="js-close"><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.5.1" class="level-11.6.5.1">
+                                <p class="">11.6.5.1</p>
+                                <span>创建数据表</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.5.2" class="level-11.6.5.2">
+                                <p class="">11.6.5.2</p>
+                                <span>检查数据表 / 字段是否存在</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.5.3" class="level-11.6.5.3">
+                                <p class="">11.6.5.3</p>
+                                <span>数据库连接 &amp; 表选项</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.5.4" class="level-11.6.5.4">
+                                <p class="">11.6.5.4</p>
+                                <span>重命名 / 删除数据表</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.5.5" class="level-11.6.5.5">
+                                <p class="">11.6.5.5</p>
+                                <span>重命名带外键的数据表</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.5.6" class="level-11.6.5.6">
+                                <p class="">11.6.5.6</p>
+                                <span>创建字段</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.5.7" class="level-11.6.5.7">
+                                <p class="">11.6.5.7</p>
+                                <span>可用的字段类型</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.5.8" class="level-11.6.5.8">
+                                <p class="">11.6.5.8</p>
+                                <span>字段修饰</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.5.9" class="level-11.6.5.9">
+                                <p class="">11.6.5.9</p>
+                                <span>修改字段</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.5.10" class="level-11.6.5.10">
+                                <p class="">11.6.5.10</p>
+                                <span>更新字段属性</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.5.11" class="level-11.6.5.11">
+                                <p class="">11.6.5.11</p>
+                                <span>重命名字段</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.5.12" class="level-11.6.5.12">
+                                <p class="">11.6.5.12</p>
+                                <span>删除字段</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.5.13" class="level-11.6.5.13">
+                                <p class="">11.6.5.13</p>
+                                <span>可用的命令别名</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.5.14" class="level-11.6.5.14">
+                                <p class="">11.6.5.14</p>
+                                <span>索引</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.5.15" class="level-11.6.5.15">
+                                <p class="">11.6.5.15</p>
+                                <span>可用的索引类型</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.5.16" class="level-11.6.5.16">
+                                <p class="">11.6.5.16</p>
+                                <span>索引长度 &amp; MySQL / MariaDB</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.5.17" class="level-11.6.5.17">
+                                <p class="">11.6.5.17</p>
+                                <span>删除索引</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.6.5.18" class="level-11.6.5.18">
+                                <p class="">11.6.5.18</p>
+                                <span>外键约束</span></a>
+                        </li></ul></li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.7" class="level-11.7">
+                        <p class="">11.7</p>
+                        <span>数据填充</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.7.1" class="level-11.7.1">
+                            <p class="">11.7.1</p>
+                            <span>编写 Seeders</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.7.2" class="level-11.7.2">
+                            <p class="">11.7.2</p>
+                            <span>使用模型工厂</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.7.3" class="level-11.7.3">
+                            <p class="">11.7.3</p>
+                            <span>调用其它 Seeders</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-11.7.4" class="level-11.7.4">
+                            <p class="">11.7.4</p>
+                            <span>运行 Seeders</span></a>
+                    </li></ul></li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12" class="level-12">
+                    <p class="">12</p>
+                    <span>模型</span></a>
+                <ul class="js-close"><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.1" class="level-12.1">
+                        <p class="">12.1</p>
+                        <span>模型文件位置</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.2" class="level-12.2">
+                        <p class="">12.2</p>
+                        <span>定义模型</span></a>
+                </li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.3" class="level-12.3">
+                        <p class="">12.3</p>
+                        <span>模型限制</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.3.1" class="level-12.3.1">
+                            <p class="">12.3.1</p>
+                            <span>定义表名</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.3.2" class="level-12.3.2">
+                            <p class="">12.3.2</p>
+                            <span>定义主键</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.3.3" class="level-12.3.3">
+                            <p class="">12.3.3</p>
+                            <span>时间戳</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.3.4" class="level-12.3.4">
+                            <p class="">12.3.4</p>
+                            <span>数据库连接</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.3.5" class="level-12.3.5">
+                            <p class="">12.3.5</p>
+                            <span>批量赋值（
+与
+guarded）</span></a>
+                    </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4" class="level-12.4">
+                        <p class="">12.4</p>
+                        <span>CURD操作</span></a>
+                    <ul class="js-close"><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.1" class="level-12.4.1">
+                            <p class="">12.4.1</p>
+                            <span>添加数据</span></a>
+                        <ul class="js-close"><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.1.1" class="level-12.4.1.1">
+                                <p class="">12.4.1.1</p>
+                                <span>save()方法</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.1.2" class="level-12.4.1.2">
+                                <p class="">12.4.1.2</p>
+                                <span>insert()方法</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.1.3" class="level-12.4.1.3">
+                                <p class="">12.4.1.3</p>
+                                <span>create()方法</span></a>
+                        </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.2" class="level-12.4.2">
+                            <p class="">12.4.2</p>
+                            <span>查询数据</span></a>
+                        <ul class="js-close"><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.2.1" class="level-12.4.2.1">
+                                <p class="">12.4.2.1</p>
+                                <span>查询单条</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.2.2" class="level-12.4.2.2">
+                                <p class="">12.4.2.2</p>
+                                <span>查询多条</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.2.3" class="level-12.4.2.3">
+                                <p class="">12.4.2.3</p>
+                                <span>查询指定字段值</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.2.4" class="level-12.4.2.4">
+                                <p class="">12.4.2.4</p>
+                                <span>查询一列</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.2.5" class="level-12.4.2.5">
+                                <p class="">12.4.2.5</p>
+                                <span>查询总记录数</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.2.6" class="level-12.4.2.6">
+                                <p class="">12.4.2.6</p>
+                                <span>分页</span></a>
+                        </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.3" class="level-12.4.3">
+                            <p class="">12.4.3</p>
+                            <span>修改数据</span></a>
+                        <ul class="js-close"><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.3.1" class="level-12.4.3.1">
+                                <p class="">12.4.3.1</p>
+                                <span>方案一</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.3.2" class="level-12.4.3.2">
+                                <p class="">12.4.3.2</p>
+                                <span>方案二</span></a>
+                        </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.4" class="level-12.4.4">
+                            <p class="">12.4.4</p>
+                            <span>删除数据</span></a>
+                        <ul class="js-close"><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.4.1" class="level-12.4.4.1">
+                                <p class="">12.4.4.1</p>
+                                <span>真删除</span></a>
+                            <ul class="js-close"><li>
+                                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.4.1.1" class="level-12.4.4.1.1">
+                                    <p class="">12.4.4.1.1</p>
+                                    <span>delete 方法删除：</span></a>
+                            </li><li>
+                                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.4.1.2" class="level-12.4.4.1.2">
+                                    <p class="">12.4.4.1.2</p>
+                                    <span>通过主键删除</span></a>
+                            </li><li>
+                                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.4.1.3" class="level-12.4.4.1.3">
+                                    <p class="">12.4.4.1.3</p>
+                                    <span>通过查询删除</span></a>
+                            </li></ul></li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.4.2" class="level-12.4.4.2">
+                                <p class="">12.4.4.2</p>
+                                <span>软删除</span></a>
+                        </li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.4.3" class="level-12.4.4.3">
+                                <p class="">12.4.4.3</p>
+                                <span>查询软删除</span></a>
+                            <ul class="js-close"><li>
+                                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.4.3.1" class="level-12.4.4.3.1">
+                                    <p class="">12.4.4.3.1</p>
+                                    <span>查询所有包括软删除的数据</span></a>
+                            </li><li>
+                                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.4.3.2" class="level-12.4.4.3.2">
+                                    <p class="">12.4.4.3.2</p>
+                                    <span>只查询软删除的</span></a>
+                            </li></ul></li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.4.4" class="level-12.4.4.4">
+                                <p class="">12.4.4.4</p>
+                                <span>恢复软删除</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.4.4.5" class="level-12.4.4.5">
+                                <p class="">12.4.4.5</p>
+                                <span>永久删除</span></a>
+                        </li></ul></li></ul></li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.5" class="level-12.5">
+                        <p class="">12.5</p>
+                        <span>使用faker进行数据填充</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.6" class="level-12.6">
+                        <p class="">12.6</p>
+                        <span>使用faker加数据工厂进行数据填充</span></a>
+                </li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.7" class="level-12.7">
+                        <p class="">12.7</p>
+                        <span>faker本地化操作</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.7.1" class="level-12.7.1">
+                            <p class="">12.7.1</p>
+                            <span>方法一</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.7.2" class="level-12.7.2">
+                            <p class="">12.7.2</p>
+                            <span>方法二【推荐】</span></a>
+                    </li></ul></li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.8" class="level-12.8">
+                        <p class="">12.8</p>
+                        <span>模型事件</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-12.9" class="level-12.9">
+                        <p class="">12.9</p>
+                        <span>观察者</span></a>
+                </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-13" class="level-13">
+                    <p class="">13</p>
+                    <span>分页</span></a>
+                <ul class="js-close"><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-13.1" class="level-13.1">
+                        <p class="">13.1</p>
+                        <span>查询构造器分页</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-13.1.1" class="level-13.1.1">
+                            <p class="">13.1.1</p>
+                            <span>简单分页</span></a>
+                    </li></ul></li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-13.2" class="level-13.2">
+                        <p class="">13.2</p>
+                        <span>Eloquent 模型分页</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-13.3" class="level-13.3">
+                        <p class="">13.3</p>
+                        <span>手动创建分页</span></a>
+                </li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-13.4" class="level-13.4">
+                        <p class="">13.4</p>
+                        <span>显示分页结果</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-13.4.1" class="level-13.4.1">
+                            <p class="">13.4.1</p>
+                            <span>自定义分页器的 URI</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-13.4.2" class="level-13.4.2">
+                            <p class="">13.4.2</p>
+                            <span>附加参数到分页链接中</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-13.4.3" class="level-13.4.3">
+                            <p class="">13.4.3</p>
+                            <span>将结果转换为 JSON</span></a>
+                    </li></ul></li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-13.5" class="level-13.5">
+                        <p class="">13.5</p>
+                        <span>自定义分页视图</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-13.6" class="level-13.6">
+                        <p class="">13.6</p>
+                        <span>分页器实例方法</span></a>
+                </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-14" class="level-14">
+                    <p class="">14</p>
+                    <span>Session</span></a>
+                <ul class="js-close"><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-14.1" class="level-14.1">
+                        <p class="">14.1</p>
+                        <span>Session配置</span></a>
+                </li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-14.2" class="level-14.2">
+                        <p class="">14.2</p>
+                        <span>驱动程序先决条件</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-14.2.1" class="level-14.2.1">
+                            <p class="">14.2.1</p>
+                            <span>数据库</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-14.2.2" class="level-14.2.2">
+                            <p class="">14.2.2</p>
+                            <span>Redis</span></a>
+                    </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-14.3" class="level-14.3">
+                        <p class="">14.3</p>
+                        <span>使用 Session</span></a>
+                    <ul class="js-close"><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-14.3.1" class="level-14.3.1">
+                            <p class="">14.3.1</p>
+                            <span>获取数据</span></a>
+                        <ul class="js-close"><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-14.3.1.1" class="level-14.3.1.1">
+                                <p class="">14.3.1.1</p>
+                                <span>全局辅助函数 Session</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-14.3.1.2" class="level-14.3.1.2">
+                                <p class="">14.3.1.2</p>
+                                <span>获取所有的 Session 数据</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-14.3.1.3" class="level-14.3.1.3">
+                                <p class="">14.3.1.3</p>
+                                <span>判断 Session 中是否存在某个值</span></a>
+                        </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-14.3.2" class="level-14.3.2">
+                            <p class="">14.3.2</p>
+                            <span>存储数据</span></a>
+                        <ul class="js-close"><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-14.3.2.1" class="level-14.3.2.1">
+                                <p class="">14.3.2.1</p>
+                                <span>在 Session 数组中保存数据</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-14.3.2.2" class="level-14.3.2.2">
+                                <p class="">14.3.2.2</p>
+                                <span>检索 &amp; 删除一个项目</span></a>
+                        </li></ul></li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-14.3.3" class="level-14.3.3">
+                            <p class="">14.3.3</p>
+                            <span>闪存数据</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-14.3.4" class="level-14.3.4">
+                            <p class="">14.3.4</p>
+                            <span>删除数据</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-14.3.5" class="level-14.3.5">
+                            <p class="">14.3.5</p>
+                            <span>重新生成 Session ID</span></a>
+                    </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-14.4" class="level-14.4">
+                        <p class="">14.4</p>
+                        <span>添加自定义 Session 驱动</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-14.4.1" class="level-14.4.1">
+                            <p class="">14.4.1</p>
+                            <span>实现驱动</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-14.4.2" class="level-14.4.2">
+                            <p class="">14.4.2</p>
+                            <span>注册驱动</span></a>
+                    </li></ul></li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-15" class="level-15">
+                    <p class="">15</p>
+                    <span>中间件</span></a>
+                <ul class="js-close"><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-15.1" class="level-15.1">
+                        <p class="">15.1</p>
+                        <span>定义中间件</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-15.1.1" class="level-15.1.1">
+                            <p class="">15.1.1</p>
+                            <span>前置 &amp; 后置中间件</span></a>
+                    </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-15.2" class="level-15.2">
+                        <p class="">15.2</p>
+                        <span>注册中间件</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-15.2.1" class="level-15.2.1">
+                            <p class="">15.2.1</p>
+                            <span>全局中间件</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-15.2.2" class="level-15.2.2">
+                            <p class="">15.2.2</p>
+                            <span>为路由分配中间件</span></a>
+                    </li></ul></li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-15.3" class="level-15.3">
+                        <p class="">15.3</p>
+                        <span>中间件组</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-15.4" class="level-15.4">
+                        <p class="">15.4</p>
+                        <span>中间件参数</span></a>
+                </li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-15.5" class="level-15.5">
+                        <p class="">15.5</p>
+                        <span>Terminable 中间件</span></a>
+                </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-16" class="level-16">
+                    <p class="">16</p>
+                    <span>缓存</span></a>
+                <ul class="js-close"><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-16.1" class="level-16.1">
+                        <p class="">16.1</p>
+                        <span>缓存配置</span></a>
+                </li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-16.2" class="level-16.2">
+                        <p class="">16.2</p>
+                        <span>驱动的前提条件</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-16.2.1" class="level-16.2.1">
+                            <p class="">16.2.1</p>
+                            <span>数据库</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-16.2.2" class="level-16.2.2">
+                            <p class="">16.2.2</p>
+                            <span>Memcached</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-16.2.3" class="level-16.2.3">
+                            <p class="">16.2.3</p>
+                            <span>Redis</span></a>
+                    </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-16.3" class="level-16.3">
+                        <p class="">16.3</p>
+                        <span>缓存的使用</span></a>
+                    <ul class="js-close"><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-16.3.1" class="level-16.3.1">
+                            <p class="">16.3.1</p>
+                            <span>获取缓存实例</span></a>
+                        <ul class="js-close"><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-16.3.1.1" class="level-16.3.1.1">
+                                <p class="">16.3.1.1</p>
+                                <span>访问多个缓存存储</span></a>
+                        </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-16.3.2" class="level-16.3.2">
+                            <p class="">16.3.2</p>
+                            <span>从缓存中获取数据</span></a>
+                        <ul class="js-close"><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-16.3.2.1" class="level-16.3.2.1">
+                                <p class="">16.3.2.1</p>
+                                <span>确认项目是否存在</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-16.3.2.2" class="level-16.3.2.2">
+                                <p class="">16.3.2.2</p>
+                                <span>递增与递减值</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-16.3.2.3" class="level-16.3.2.3">
+                                <p class="">16.3.2.3</p>
+                                <span>获取和存储</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-16.3.2.4" class="level-16.3.2.4">
+                                <p class="">16.3.2.4</p>
+                                <span>获取和删除</span></a>
+                        </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-16.3.3" class="level-16.3.3">
+                            <p class="">16.3.3</p>
+                            <span>在缓存中存储数据</span></a>
+                        <ul class="js-close"><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-16.3.3.1" class="level-16.3.3.1">
+                                <p class="">16.3.3.1</p>
+                                <span>只存储没有的数据</span></a>
+                        </li><li>
+                            <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-16.3.3.2" class="level-16.3.3.2">
+                                <p class="">16.3.3.2</p>
+                                <span>数据永久存储</span></a>
+                        </li></ul></li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-16.3.4" class="level-16.3.4">
+                            <p class="">16.3.4</p>
+                            <span>删除缓存中的数据</span></a>
+                    </li></ul></li><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-16.4" class="level-16.4">
+                        <p class="">16.4</p>
+                        <span>cache() 辅助函数</span></a>
+                </li></ul></li><li>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-17" class="level-17">
+                    <p class="">17</p>
+                    <span>文件上传</span></a>
+            </li><li>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-18" class="level-18">
+                    <p class="">18</p>
+                    <span>auth登录</span></a>
+            </li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-19" class="level-19">
+                    <p class="">19</p>
+                    <span>模型关联</span></a>
+                <ul class="js-close"><li>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-19.1" class="level-19.1">
+                        <p class="">19.1</p>
+                        <span>定义关联</span></a>
+                </li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-19.2" class="level-19.2">
+                        <p class="">19.2</p>
+                        <span>一对一</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-19.2.1" class="level-19.2.1">
+                            <p class="">19.2.1</p>
+                            <span>定义反向关联</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-19.2.2" class="level-19.2.2">
+                            <p class="">19.2.2</p>
+                            <span>默认模型</span></a>
+                    </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-19.3" class="level-19.3">
+                        <p class="">19.3</p>
+                        <span>一对多</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-19.3.1" class="level-19.3.1">
+                            <p class="">19.3.1</p>
+                            <span>一对多（反向）</span></a>
+                    </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-19.4" class="level-19.4">
+                        <p class="">19.4</p>
+                        <span>多对多</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-19.4.1" class="level-19.4.1">
+                            <p class="">19.4.1</p>
+                            <span>定义反向关联</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-19.4.2" class="level-19.4.2">
+                            <p class="">19.4.2</p>
+                            <span>获取中间表字段</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-19.4.3" class="level-19.4.3">
+                            <p class="">19.4.3</p>
+                            <span>自定义 pivot 属性名称</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-19.4.4" class="level-19.4.4">
+                            <p class="">19.4.4</p>
+                            <span>通过中间表列过滤关系</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-19.4.5" class="level-19.4.5">
+                            <p class="">19.4.5</p>
+                            <span>定义自定义中间表模型</span></a>
+                    </li></ul></li><li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-19.5" class="level-19.5">
+                        <p class="">19.5</p>
+                        <span>预加载</span></a>
+                    <ul class="js-close"><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-19.5.1" class="level-19.5.1">
+                            <p class="">19.5.1</p>
+                            <span>预加载多个关联</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-19.5.2" class="level-19.5.2">
+                            <p class="">19.5.2</p>
+                            <span>嵌套预加载</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-19.5.3" class="level-19.5.3">
+                            <p class="">19.5.3</p>
+                            <span>预加载特定的列</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-19.5.4" class="level-19.5.4">
+                            <p class="">19.5.4</p>
+                            <span>约束预加载</span></a>
+                    </li><li>
+                        <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-19.5.5" class="level-19.5.5">
+                            <p class="">19.5.5</p>
+                            <span>延迟预加载</span></a>
+                    </li></ul></li></ul></li><li>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-20" class="level-20">
+                    <p class="">20</p>
+                    <span>自定义函数库</span></a>
+            </li><li>
+                <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-21" class="level-21">
+                    <p class="">21</p>
+                    <span>中间件防翻墙</span></a>
+            </li></ul></div>
+    </div>
+    <div class="bottom-container">
+        <div class="mode-container">
+            <div class="mode">
+                <i class="iconfont icon-sun"></i>
+            </div>
+            <div class="index">
+                <i class="iconfont icon-indexA"></i>
+            </div>
+            <div class="structure">
+                <i class="iconfont icon-process"></i>
+                <ul class="structure-child">
+                    <li>
+                        <input type="radio" id="styleA" name="catalogStyle" value="1" checked="checked">
+                        <label for="styleA">样式 A</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="styleB" value="2" name="catalogStyle">
+                        <label for="styleB">样式 B</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="styleC" value="3" name="catalogStyle">
+                        <label for="styleC">样式 C</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div id="switch-button">-->
+<!--    <i class="iconfont icon-arrLeft"></i>-->
+<!--</div>-->
+<div id="right-container">
+    <div id="content">
+        <h1>MarkdownPad2AutoCatalog</h1>
+        <p>MarkdownPad2 编辑器导出 html 文件时自动生成目录、自定义风格样式及代码高亮显示整合。</p>
+        <p>代码高亮显示采用的是<strong>highlightjs</strong>插件，有需要的可以去下此地址查看：<a href="https://highlightjs.org" title="highlightjs">highlightjs官网</a>
+        </p>
+        <h2 id="level-1">实现的功能</h2>
+        <ol>
+            <li>根据 html 文档中 h1~h6 标签自动生成对应的目录</li>
+            <li>自动生成目录编号，可选择是否显示目录编号</li>
+            <li>提供三种目录样式，可自由选择</li>
+            <li>提供白天和夜间 2 种阅读模式</li>
+            <li>根据当前阅读位置，自动显示所在目录及父级目录</li>
+            <li>目录搜索功能，全文搜索使用浏览器自带的 Ctrl+F</li>
+            <li>一键展开收起目录列表</li>
+            <li>整个左侧栏目可展开和收起</li>
+            <li>代码高亮显示 highlightjs 插件整合</li>
+        </ol>
+        <h2 id="level-2">最终效果</h2>
+        <h5 id="level-2.1">整体效果：</h5>
+        <p><img src="https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-1.png" alt="整体效果">
+        </p>
+        <h5 id="level-2.2">夜览模式：</h5>
+        <p><img src="https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-2.png" alt="夜览模式">
+        </p>
+        <h5 id="level-2.3">目录收起效果：</h5>
+        <p><img src="https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-4.png"
+                alt="目录收起效果"></p>
+        <h5 id="level-2.4">3 种目录样式及隐藏目录编号：</h5>
+        <p><img src="https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-3.png"
+                alt="3 种目录样式"></p>
+        <h5 id="level-2.5">搜索功能效果：</h5>
+        <p><img src="https://raw.githubusercontent.com/cayxc/MarkdownPad2AutoCatalog/master/img/mkdac-5.png"
+                alt="搜索功能效果"></p>
+        <h5 id="level-2.6">代码高亮：</h5>
+        <pre>    <code class="hljs xml">// html 结构
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span
+    class="hljs-string">"app"</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">v-text</span>=<span
+         class="hljs-string">"text"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">v-html</span>=<span
+         class="hljs-string">"content"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> Vue({
+        <span class="hljs-attr">el</span>:<span class="hljs-string">"#app"</span>,
+        <span class="hljs-attr">data</span>:{
+           <span class="hljs-attr">text</span>: <span class="hljs-string">"this is a content..."</span>
+           <span class="hljs-attr">content</span>: <span class="hljs-string">"&lt;a href='http://www.baidu.com' target='_blank'&gt;百度一下&lt;/a&gt;"</span>
+        }
+    })
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code>
+</pre>
+
+        <h2 id="level-3">如何使用</h2>
+        <p>使用 <strong>MarkdownPad2AutoCatalog</strong> 目录自动生成非常简单，你只需要将 dist 文件夹中的样式文件 markdownPad2AutoCatalog.min.css
+            加载到编辑器中并引入 markdownPad2AutoCatalog.min.js 和 highlight.min.js 到编辑器的 Html Head头中即可，具体步骤如下：</p>
+        <ol>
+            <li>复制 dist 文件夹中的 <u>markdownPad2AutoCatalog.min.css</u> 的代码</li>
+            <li>打开 MarkdownPad2 — 工具 — 选项 — 样式表 — 添加，然后粘贴 markdownPad2AutoCatalog.min.css 的代码 — 给样式表取一个以.css结尾的名字 —
+                保存并关闭
+            </li>
+            <li>复制 dist 文件夹中的 <u>markdownPad2AutoCatalog.min.js</u>的代码。</li>
+            <li>打开 MarkdownPad2 — 工具 — 选项 — 高级 — Html Head编辑器 — 在代码编辑器中输入
+                <script></script>
+                标签对 — ，然后粘贴 markdownPad2AutoCatalog.min.js 的代码到
+                <script></script>
+                标签对中 — 保存并关闭
+            </li>
+            <li>重复第 4 步，将 dist 文件夹中的 <u>highlight.min.js</u> 的代码复制到代码编辑器中</li>
+            <li>保存并关闭，完成</li>
+        </ol>
+        <h2 id="level-4">注意事项（避坑指南-必看）</h2>
+        <p>使用时请注意以下 4 点：</p>
+        <ol>
+            <li>自动生成的目录和代码高亮显示功能在 MarkdownPad2 编辑器中<strong>预览界面中是不会生效的</strong>，只有当你将文件导出为 Html 后，在浏览器中打开该 Html
+                文件，目录和代码高亮显才可正常使用。
+            </li>
+            <li>在 MarkdownPad2 编辑器中按 F6 可以快速生成一个 Html 文件，此时目录会正常显示，但是点击目录并不会做相应的跳转，而是会跳转到该文件所在的目录，使用时还请注意。</li>
+            <li><strong>在生成目录时，当检测到有多个 h1 标签时，会将除了第一个 h1 标签外的所有 h1 标签自动转换为 h2 标签，其余标签自动向下转一级（h3 转为
+                h4，以此类推），由于此操作会影响目录的生成速度，推荐用一个 h1 标签作为文档标题，h2 作为一级标题。</strong></li>
+            <li>内容不要出现: &lt; script &gt; 标签，否则之后的内容将不会显示。</li>
+        </ol>
+
+
+        <div>
+            <p class="note-tips">
+                本文档经过 MarkdownPad2AutoCatalog 目录生成插件转换生成 作者： cayang512@163.com 插件详情： <a
+                href="https://github.com/cayxc/MarkdownPad2AutoCatalog" target="_blank"> GitHub地址</a> <a
+                href="https://gitee.com/cayxc/MarkdownPad2AutoCatalog" target="_blank">Gitee地址</a></p>
+        </div>
+    </div>
+</div>
 </html>
