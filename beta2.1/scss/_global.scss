@@ -102,7 +102,7 @@ $body-bg-color: #ffffff;
 $border-color: #d0d0d0;
 $grey-color: #d9d9d9;
 $text-grey: #999999;
-$code-bg-color: rgb(246, 246, 246);
+$code-bg-color: rgb(238, 238, 238);
 $green: rgb(40, 180, 115);
 $red: #e82323;
 $orange: #ff5900;
@@ -235,6 +235,13 @@ $size-10: 1.0rem;
   height: $h;
   position: $p;
   z-index: 20;
+}
+.active{
+  background: $code-bg-color;
+  @include border-radius(.4rem);
+  position: relative;
+  z-index: 25;
+
 }
 
 /*input checkbox no-style*/

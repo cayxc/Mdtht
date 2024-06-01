@@ -21,7 +21,6 @@ body {
   font-size: $size-16;
   line-height: 2.6rem;
   box-sizing: border-box;
-  text-align: justify;
   display: grid;
   grid-template-columns: 28rem auto;
   grid-gap: 0;
@@ -116,6 +115,7 @@ del {
 
 p {
   margin: $size-10 0 0;
+  text-align: justify;
 }
 
 mark {
@@ -293,7 +293,7 @@ input[type='radio'] {
   border-bottom: 1px solid $border-color;
   color: $text-grey;
   padding: 1.6rem;
-  top:0;
+  top: 0;
   left: 0;
   position: absolute;
   box-sizing: border-box;
@@ -326,6 +326,10 @@ input[type='radio'] {
   &:focus {
     outline: none;
     border-color: $green;
+  }
+
+  &::placeholder {
+    color: $border-color;
   }
 }
 
@@ -390,7 +394,7 @@ input[type='radio'] {
 }
 
 /*list-container*/
-#list-container{
+#list-container {
   width: 100%;
   position: absolute;
   top: 6.2rem;
@@ -401,6 +405,7 @@ input[type='radio'] {
   box-sizing: border-box;
   padding: 1.6rem;
 }
+
 .list-wrapper {
   font-size: $size-16;
 
@@ -408,85 +413,111 @@ input[type='radio'] {
     display: block;
     position: relative;
     overflow: hidden;
-
+    z-index: 10;
     &:before {
-      @include pseudo-element($w: 1rem, $h: 95%, $p: absolute);
+      @include pseudo-element($w: .1rem, $h: 100%, $p: absolute);
       box-sizing: border-box;
-      margin-left: 0.8rem;
-      bottom: 0.8rem;
-      border: 1px solid $border-color;
-      border-right: none;
-      border-top: none;
-      border-right: none;
-      //border-bottom: none;
-
-      //bottom:0.8rem;
-      //left: 0.8rem;
-      //background: $border-color;
+      margin-left: .8rem;
+      bottom: 0;
+      top: -.5rem;
+      background: $green;
+      //z-index: 100;
     }
   }
-
-  ul li {
+  ul > li {
+    //background: rosybrown;
     list-style: none;
     margin-left: 0 !important;
     position: relative;
     line-height: 1;
-    margin-top: .8rem;
+    //margin-top: -.4rem;
+    //background: #efa8a8;
+    //overflow: hidden;
+    padding-left: .8rem;
+    box-sizing: border-box;
+    &:before {
+      @include pseudo-element($w: 1.3rem);
+      //background: $border-color;
+      background: $green;
+      left: .8rem;
+      top:1.3rem;
+      position: absolute;
+      z-index: 26;
+    }
+
+    /*&:last-of-type > a:before{
+      @include pseudo-element($w:.6rem,$h:100%,$p:absolute);
+      left: .5rem;
+      top:0.9rem;
+      background: #f8c059;
+    }*/
+    &:last-of-type:after{
+      @include pseudo-element($w:.3rem,$h:100%,$p:absolute);
+      left: .7rem;
+      top:1.4rem;
+      background: #ffffff;
+      z-index: 22;
+    }
   }
 }
-
-.list-wrapper a {
+.list-wrapper > ul > li:first-child{
+ margin-top: 0;
+}
+.list-wrapper > ul > li:first-child > a:before{
+  @include pseudo-element($w:.3rem,$h:100%,$p:absolute);
+  left: -0.1rem;
+  bottom:.8rem;
+  background: #ffffff;
+  z-index: 22;
+}
+.list-wrapper ul > li > ul {
+  margin-left: 1.2rem !important;
+  margin-top: -.5rem;
+  padding-top: .5rem;
+}
+.list-wrapper  ul > li > a {
+  display: block;
   position: relative;
   font-weight: normal;
   color: $grey-color-dark;
-  &:hover{
+  padding: .6rem .6rem .6rem .5rem;
+  margin-left: .1rem;
+  &:hover {
     color: $green;
+    @extend .active;
   }
 }
 
-.list-wrapper ul li > a p,
-.list-wrapper ul li > a span {
+.list-wrapper ul > li > a p,
+.list-wrapper ul > li > a span {
   display: table-cell;
-  word-wrap: break-word;
+  white-space: warp;
 }
 
-.list-wrapper ul li a p {
-  padding-left: 2rem;
+.list-wrapper ul > li > a div {
+  position: relative;
+  margin-left: .9rem;
 }
 
-.list-wrapper ul li a span {
+.list-wrapper ul > li > a span {
+  box-sizing: border-box;
   padding-left: .5rem;
-  word-break: normal;
-  &::before {
-    @include pseudo-element($w: .9rem);
-    background: $border-color;
-    left: .9rem;
-    top: 1.1rem;
-    position: absolute;
-  }
+  word-break: break-word;
+  //&::before {
+  //  @include pseudo-element($w: 1.3rem);
+  //  //background: $border-color;
+  //  background: $green;
+  //  left: 1.3rem;
+  //  top: 0.8rem;
+  //  position: absolute;
+  //}
 }
-.list-wrapper ul li:last-of-type{
-  & a span::before{
-    display: none;
-  }
-}
-.list-wrapper > ul > li:first-of-type{
-  & a::before{
-    @include pseudo-element($w: .8rem,$h:1.8rem);
-    background: white;
-    left: .4rem;
-    bottom: 1.1rem;
-    position: absolute;
-  }
-}
-
-.list-wrapper ul li ul {
-  margin-left: 2rem !important;
-}
-
-.list-wrapper ul li i {
-  display: inline-block;
+.list-wrapper ul > li > i {
+  //display: none;
+  float: left;
   background: white;
+  top: .6rem;
+  left: -.8rem;
   margin-right: -2rem;
   position: relative;
   z-index: 30;
@@ -534,6 +565,7 @@ input[type='radio'] {
   left: -4.1rem;
   width: 10rem;
   padding: 0.5rem 0 0 0;
+  display: none;
 
   li {
     text-align: center;
