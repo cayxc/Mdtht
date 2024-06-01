@@ -101,6 +101,15 @@
 /*code style*/
 /*table style*/
 /*after/before content style*/
+.active, .list-wrapper ul > li > a:hover {
+  background: rgb(238, 238, 238);
+  border-radius: 0.4rem;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  position: relative;
+  z-index: 25;
+}
+
 /*input checkbox no-style*/
 .input-checkebox, input[type=checkbox], input[type=radio] {
   -webkit-appearance: none;
@@ -163,7 +172,6 @@ body {
   font-size: 1.6rem;
   line-height: 2.6rem;
   box-sizing: border-box;
-  text-align: justify;
   display: grid;
   grid-template-columns: 28rem auto;
   grid-gap: 0;
@@ -312,6 +320,7 @@ del {
 
 p {
   margin: 1rem 0 0;
+  text-align: justify;
 }
 
 mark {
@@ -373,7 +382,7 @@ pre {
   margin: 1.6rem 0;
   padding: 1.6rem;
   border: 1px solid #d0d0d0;
-  background: rgb(246, 246, 246);
+  background: rgb(238, 238, 238);
   font-size: 1.6rem;
   border-radius: 0.8rem;
   -webkit-border-radius: 0.8rem;
@@ -385,7 +394,7 @@ p code {
   margin: 1.6rem 0;
   padding: 1.6rem;
   border: 1px solid #d0d0d0;
-  background: rgb(246, 246, 246);
+  background: rgb(238, 238, 238);
   font-size: 1.6rem;
   border-radius: 0.6rem;
   -webkit-border-radius: 0.6rem;
@@ -404,7 +413,7 @@ blockquote {
   margin: 1.6rem 0;
   padding: 2rem;
   border: 1px solid #d0d0d0;
-  background: rgb(246, 246, 246);
+  background: rgb(238, 238, 238);
   font-size: 1.6rem;
   border-radius: 0.8rem;
   -webkit-border-radius: 0.8rem;
@@ -420,7 +429,7 @@ blockquote code {
   margin: 1.6rem 0;
   padding: 1.6rem;
   border: 1px solid #d0d0d0;
-  background: rgb(246, 246, 246);
+  background: rgb(238, 238, 238);
   font-size: 1.6rem;
   border-radius: 0.6rem;
   -webkit-border-radius: 0.6rem;
@@ -442,7 +451,7 @@ table {
   border-spacing: 0;
 }
 table thead {
-  background-color: rgb(246, 246, 246);
+  background-color: rgb(238, 238, 238);
 }
 table thead tr th {
   border-top: 1px solid #d9d9d9;
@@ -468,7 +477,7 @@ table tr:last-child td:first-child {
   border-bottom-left-radius: 0.8rem;
 }
 table tbody tr:nth-child(even) {
-  background: rgb(246, 246, 246);
+  background: rgb(238, 238, 238);
 }
 
 /*input checketbox*/
@@ -572,6 +581,9 @@ input[type=radio]:checked:after {
   outline: none;
   border-color: rgb(40, 180, 115);
 }
+.search::placeholder {
+  color: #d0d0d0;
+}
 
 .search-icon {
   position: absolute;
@@ -654,90 +666,118 @@ input[type=radio]:checked:after {
   display: block;
   position: relative;
   overflow: hidden;
+  z-index: 10;
 }
 .list-wrapper ul:before {
   content: "";
   display: inline-block;
-  width: 1rem;
-  height: 95%;
+  width: 0.1rem;
+  height: 100%;
   position: absolute;
   z-index: 20;
   box-sizing: border-box;
   margin-left: 0.8rem;
-  bottom: 0.8rem;
-  border: 1px solid #d0d0d0;
-  border-right: none;
-  border-top: none;
-  border-right: none;
+  bottom: 0;
+  top: -0.5rem;
+  background: rgb(40, 180, 115);
 }
-.list-wrapper ul li {
+.list-wrapper ul > li {
   list-style: none;
   margin-left: 0 !important;
   position: relative;
   line-height: 1;
-  margin-top: 0.8rem;
+  padding-left: 0.8rem;
+  box-sizing: border-box;
+  /*&:last-of-type > a:before{
+    @include pseudo-element($w:.6rem,$h:100%,$p:absolute);
+    left: .5rem;
+    top:0.9rem;
+    background: #f8c059;
+  }*/
 }
-
-.list-wrapper a {
-  position: relative;
-  font-weight: normal;
-  color: rgb(42, 55, 60);
-}
-.list-wrapper a:hover {
-  color: rgb(40, 180, 115);
-}
-
-.list-wrapper ul li > a p,
-.list-wrapper ul li > a span {
-  display: table-cell;
-  word-wrap: break-word;
-}
-
-.list-wrapper ul li a p {
-  padding-left: 2rem;
-}
-
-.list-wrapper ul li a span {
-  padding-left: 0.5rem;
-  word-break: normal;
-}
-.list-wrapper ul li a span::before {
+.list-wrapper ul > li:before {
   content: "";
   display: inline-block;
-  width: 0.9rem;
+  width: 1.3rem;
   height: 0.1rem;
   position: relative;
   z-index: 20;
-  background: #d0d0d0;
-  left: 0.9rem;
-  top: 1.1rem;
+  background: rgb(40, 180, 115);
+  left: 0.8rem;
+  top: 1.3rem;
   position: absolute;
+  z-index: 26;
 }
-
-.list-wrapper ul li:last-of-type a span::before {
-  display: none;
-}
-
-.list-wrapper > ul > li:first-of-type a::before {
+.list-wrapper ul > li:last-of-type:after {
   content: "";
   display: inline-block;
-  width: 0.8rem;
-  height: 1.8rem;
-  position: relative;
-  z-index: 20;
-  background: white;
-  left: 0.4rem;
-  bottom: 1.1rem;
+  width: 0.3rem;
+  height: 100%;
   position: absolute;
+  z-index: 20;
+  left: 0.7rem;
+  top: 1.4rem;
+  background: #ffffff;
+  z-index: 22;
 }
 
-.list-wrapper ul li ul {
-  margin-left: 2rem !important;
+.list-wrapper > ul > li:first-child {
+  margin-top: 0;
 }
 
-.list-wrapper ul li i {
+.list-wrapper > ul > li:first-child > a:before {
+  content: "";
   display: inline-block;
+  width: 0.3rem;
+  height: 100%;
+  position: absolute;
+  z-index: 20;
+  left: -0.1rem;
+  bottom: 0.8rem;
+  background: #ffffff;
+  z-index: 22;
+}
+
+.list-wrapper ul > li > ul {
+  margin-left: 1.2rem !important;
+  margin-top: -0.5rem;
+  padding-top: 0.5rem;
+}
+
+.list-wrapper ul > li > a {
+  display: block;
+  position: relative;
+  font-weight: normal;
+  color: rgb(42, 55, 60);
+  padding: 0.6rem 0.6rem 0.6rem 0.5rem;
+  margin-left: 0.1rem;
+}
+.list-wrapper ul > li > a:hover {
+  color: rgb(40, 180, 115);
+}
+
+.list-wrapper ul > li > a p,
+.list-wrapper ul > li > a span {
+  display: table-cell;
+  white-space: warp;
+}
+
+.list-wrapper ul > li > a div {
+  position: relative;
+  margin-left: 0.9rem;
+}
+
+.list-wrapper ul > li > a span {
+  box-sizing: border-box;
+  padding-left: 0.5rem;
+  word-break: break-word;
+}
+
+.list-wrapper ul > li > i {
+  float: left;
   background: white;
+  top: 0.6rem;
+  left: -0.8rem;
   margin-right: -2rem;
   position: relative;
   z-index: 30;
@@ -784,6 +824,7 @@ input[type=radio]:checked:after {
   left: -4.1rem;
   width: 10rem;
   padding: 0.5rem 0 0 0;
+  display: none;
 }
 .structure-child li {
   text-align: center;
