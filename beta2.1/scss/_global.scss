@@ -107,10 +107,12 @@ $green: rgb(40, 180, 115);
 $red: #e82323;
 $orange: #ff5900;
 $text-color: #000000;
-$title-color: rgb(39, 56, 75);
-$dark-bag: rgb(22, 27, 31); //rgb(22, 27, 31);
+$title-color: rgb(40, 55, 75);
+$title-color2: rgb(52, 82, 115);
+$dark-bag: rgb(22, 27, 31);
 $dark-bag2: rgb(32, 45, 50);
-$text-dark: rgb(245, 255, 255);
+$text-dark: rgb(220, 220, 220);
+$text-grey-dark: rgb(55, 75, 80);
 $code-bg-dark: rgb(29, 38, 43);
 $grey-color-dark: rgb(42, 55, 60);
 
@@ -127,41 +129,6 @@ $size-16: 1.6rem;
 $size-14: 1.4rem;
 $size-12: 1.2rem;
 $size-10: 1.0rem;
-
-/*theme dark style*/
-@mixin theme-dark {
-  & {
-    background-color: $dark-bag;
-    color: $text-dark;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    color: $text-dark;
-  }
-  h1 {
-    @include border-bottom($color: $grey-color-dark);
-    &:first-of-type {
-      border: none;
-    }
-  }
-  hr {
-    background: $grey-color-dark;
-  }
-  kbd {
-    background-color: $code-bg-dark;
-  }
-  code {
-    background-color: $code-bg-dark;
-    border: none;
-  }
-  pre {
-    background-color: $code-bg-dark;
-    //border-color: red;
-    border: none;
-  }
-  table {
-    @include table-style($bd-color: $grey-color-dark, $bg-color: $code-bg-dark);
-  }
-}
 
 /*border*/
 @mixin border-default($width:1px,$style:solid,$color:$border-color) {
@@ -236,12 +203,40 @@ $size-10: 1.0rem;
   position: $p;
   z-index: 20;
 }
-.active{
+
+@mixin bag-border-dark($bag:$dark-bag2,$bor:$grey-color-dark){
+  background: $bag;
+  border-color: $bor;
+}
+
+//box-shadow-1
+@mixin box-shadow-1($color:$grey-color) {
+  -webkit-box-shadow: 0 .1rem .2rem .2rem $color;
+  -moz-box-shadow: 0 .1rem .2rem .2rem $color;
+  -o-box-shadow: 0 .1rem .2rem .2rem $color;
+  box-shadow:0 .1rem .2rem .2rem $color;
+}
+
+//box-shadow-2
+@mixin box-shadow-2($color:$grey-color) {
+  box-shadow: 0 -.2rem .2rem $color;
+  -webkit-box-shadow: 0 -.2rem .2rem $color;
+  -moz-box-shadow: 0 -.2rem .2rem $color;
+  -o-box-shadow: 0 -.2rem .2rem $color;
+}
+//box-shadow-3
+@mixin box-shadow-3($color:$grey-color) {
+  -webkit-box-shadow: 0 0 .2rem .2rem $color;
+  -moz-box-shadow: 0 0 .2rem .2rem $color;
+  -o-box-shadow: 0 0 .2rem .2rem $color;
+  box-shadow:0 0 .2rem .2rem $color;
+}
+
+.active {
   background: $code-bg-color;
   @include border-radius(.4rem);
   position: relative;
   z-index: 25;
-
 }
 
 /*input checkbox no-style*/
@@ -270,22 +265,12 @@ $size-10: 1.0rem;
   display: inline-block;
   border: 1px solid $border-color;
   padding: 0 .6rem;
-  -webkit-border-radius: .4rem;
-  -moz-border-radius: .4rem;
-  border-radius: .4rem;
+  @include border-radius(.5rem);
   outline: none;
   box-sizing: border-box;
 }
 
-//box-shadow-1
-@mixin box-shadow-1 {
-  -webkit-box-shadow: 0 2px 4px -2px $grey-color;
-  -moz-box-shadow: 0 2px 4px -2px $grey-color;
-  box-shadow: 0 2px 4px -2px $grey-color;
-}
-
-/*  Custom input placeholder
-===========================*/
+/*  Custom input placeholder*/
 input::-webkit-input-placeholder, /* WebKit browsers */
 input:-moz-placeholder, /* Mozilla Firefox 4 to 18 */
 input::-moz-placeholder, /* Mozilla Firefox 19+ */
@@ -293,4 +278,148 @@ input:-ms-input-placeholder /* Internet Explorer 10+ */
 {
   color: $text-grey;
 }
+
+/*  Custom input placeholder*/
+input::-webkit-input-placeholder { /* WebKit browsers */
+  color: #999999;
+}
+
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #999999;
+}
+
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #999999;
+}
+
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: #999999;
+}
+
+/*  Custom Scroll*/
+@mixin custom-scroll($color:$text-dark) {
+  /*非webkit内核浏览器*/
+  //scrollbar-color: $text-dark rgb($text-dark, 0.1);
+  //scrollbar-width: thin;
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-thumb {
+    width: .8rem;
+    height: .8rem;
+    border-radius: .4rem;
+  }
+
+  /* 滑块背景色 */
+  ::-webkit-scrollbar-thumb {
+    background: $text-dark;
+  }
+  /* 其余相关样式设置跟滑块一个背景色 */
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-corner,
+  ::-webkit-resizer,
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-track-piece {
+    background: rgb($text-dark, 0.1);
+  }
+
+  /* 隐藏滚动条按钮 */
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+}
+
+
+/*theme dark style*/
+@mixin theme-dark {
+  & {
+    background-color: $dark-bag;
+    color: $text-dark;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    color: $text-dark;
+  }
+  h1 {
+    @include border-bottom($color: $grey-color-dark);
+
+    &:first-of-type {
+      border: none;
+    }
+  }
+  hr {
+    background: $grey-color-dark;
+  }
+  kbd {
+    background-color: $title-color2;
+  }
+  code,pre {
+    @include bag-border-dark($code-bg-dark,$grey-color-dark);
+  }
+
+  table {
+    @include table-style($bd-color: $grey-color-dark, $bg-color: $code-bg-dark);
+  }
+  #right-container,
+  #left-container,
+  .top-container,
+  .bottom-container,
+  .list-wrapper ul > li > i {
+    background: $dark-bag;
+    color: $text-dark;
+    border-color: $grey-color-dark;
+  }
+  .catalog-button {
+    color: $grey-color-dark;
+
+    &:hover {
+      color: $green;
+    }
+  }
+  input {
+    @include bag-border-dark($dark-bag2,$grey-color-dark);
+    color: $text-dark;
+
+    &::placeholder {
+      color: $text-grey-dark;
+    }
+  }
+  .search-result{
+    @include bag-border-dark();
+    @include box-shadow-2($dark-bag);
+  }
+  .list-wrapper ul > li > i {
+    color: $dark-bag2;
+  }
+  .list-wrapper ul:before,
+  .list-wrapper ul > li:before {
+    background: $grey-color-dark;
+  }
+  .list-wrapper ul > li:last-of-type:after,
+  .list-wrapper > ul > li:first-child > a:before {
+    background: $dark-bag;
+  }
+  .list-wrapper a {
+    color: $text-dark;
+  }
+  .list-wrapper ul > li > a:hover {
+    background: $dark-bag2;
+  }
+  .structure-child {
+    @include bag-border-dark($dark-bag,$grey-color-dark);
+    border-bottom-color: $dark-bag;
+    @include box-shadow-2(rgb($green,.15));
+
+  }
+  /* 滑块背景色 */
+  ::-webkit-scrollbar-thumb {
+    background: $grey-color-dark;
+  }
+  /* 其余相关样式设置跟滑块一个背景色 */
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-corner,
+  ::-webkit-resizer,
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-track-piece {
+    background: rgb($grey-color-dark, 0.1);
+  }
+}
+
 

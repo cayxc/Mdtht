@@ -7,57 +7,50 @@
 }
 
 :root {
-  font-family: PingFang SC, PingFang, Helvetica, arial, freesans, clean, sans-serif;
+  font-family: "PingFang SC", "PingFang", "Helvetica", "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
   font-size: 62.5%;
   background-color: $body-bg-color;
   color: $text-color;
   height: 100%;
   overflow: hidden;
+  letter-spacing: .1rem;
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
   font-size: $size-16;
   line-height: 2.6rem;
   box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 28rem auto;
-  grid-gap: 0;
-}
-
-//dark style
-html[theme=dark] {
-  @include theme-dark;
 }
 
 //标题
 h1, h2, h3, h4, h5, h6 {
-  margin: 3.6rem 0 1.8rem;
+  margin: 4rem 0 2rem;
   color: $title-color;
+  letter-spacing: .2rem;
 }
 
-h1 { //文章标题
+h1 {
   font-size: 3rem;
   padding-bottom: $size-12;
   @include border-bottom($color: $grey-color);
 
   &:first-of-type {
     border: none;
-    padding-bottom: 0;
+    padding-bottom: 2rem;
+    text-align: center;
   }
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 2.7rem;
 }
 
 h3 {
-  font-size: 2.6rem;
+  font-size: 2.4rem;
 }
 
 h4 {
-  font-size: 2.2rem;
+  font-size: 2.1rem;
 }
 
 h5 {
@@ -82,6 +75,11 @@ hr {
   box-sizing: border-box;
 }
 
+::selection {
+  background: rgb($green,.75);
+  color: $text-color;
+}
+
 a {
   text-decoration: none;
   color: $green;
@@ -90,6 +88,11 @@ a {
   &:hover {
     color: $red;
   }
+}
+
+p {
+  margin: $size-18 0 0;
+  text-align: justify;
 }
 
 p a {
@@ -113,13 +116,8 @@ del {
   -moz-text-decoration-color: $red;
 }
 
-p {
-  margin: $size-10 0 0;
-  text-align: justify;
-}
-
 mark {
-  background-color: rgb($green, 0.7);
+  background-color: $green;
   padding: 0.2rem 1rem;
   @include border-radius(0.4rem)
 }
@@ -128,12 +126,14 @@ kbd {
   display: inline-block;
   line-height: $size-22;
   border: none;
-  background: $grey-color;
+  background: $title-color;
+  color: $grey-color;
   border-image: none;
   @include border-radius(.4rem);
   padding: 0 .6rem;
   margin-right: 0.6rem;
-  vertical-align: text-bottom;
+  vertical-align: inherit;
+  font-size: 1.4rem;
 
 }
 
@@ -179,11 +179,16 @@ pre {
   overflow: auto;
 }
 
-p code {
+code {
   @include code-box();
-  @include border-radius(0.6rem);
-  padding: .3rem 1rem;
-  vertical-align: middle;
+  @include border-radius(0.5rem);
+  padding: .2rem 1rem;
+  vertical-align: inherit;
+}
+
+pre code {
+  padding: .4rem 1rem;
+  border: none;
 }
 
 /*sup,sub*/
@@ -194,21 +199,13 @@ sup, sub {
 /*blockquote*/
 blockquote {
   @include code-box($padding: 2rem, $font-size: $size-16);
-  @include border-radius;
-  border-left: .5rem solid $green;
+  @include border-radius();
+  border-left: .4rem solid $green;
   border-bottom: none;
   border-top: none;
   border-right: none;
   background-color: rgb($green, 0.06);
   overflow: hidden;
-
-  code {
-    @include code-box();
-    @include border-radius(0.6rem);
-    padding: .3rem 1rem;
-    background: $grey-color;
-    vertical-align: middle;
-  }
 
   p:first-child {
     margin-top: 0;
@@ -262,21 +259,16 @@ input[type='radio'] {
   }
 }
 
-/*right-containe*/
-#right-container {
-  background: white;
-  overflow: auto;
-  height: 100%;
-}
-
-#content {
-  width: 100rem;
-  margin: 2rem auto;
-  //background: red;
+.body-container{
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /*left-containe*/
 #left-container {
+  width: 28rem;
+  float: left;
   background: white;
   border-right: 1px solid $border-color;
   padding: 0 0 1.6rem 0;
@@ -284,6 +276,33 @@ input[type='radio'] {
   position: relative;
   height: 100vh;
   box-sizing: border-box;
+  line-height: 2rem;
+  overflow: hidden;
+
+  a {
+    line-height: 2rem;
+  }
+}
+
+/*right-containe*/
+#right-container {
+  background: white;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-left: 28rem;
+  padding-bottom: 3.2rem;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+#content {
+  width: 100rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 /*top-container*/
@@ -303,23 +322,24 @@ input[type='radio'] {
 }
 
 .catalog-button {
-  font-size: 2.2rem;
+  font-size: 2.6rem;
+  margin-right: 1.6rem;
   cursor: pointer;
-
+  float: left;
+  margin-top: -.2rem;
   &:hover {
     color: $green;
   }
 }
 
 .search-container {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.6rem;
+  overflow: hidden;
+  margin-top: -.2rem;
 }
 
 .search {
   height: 3.2rem;
-  width: 21rem;
+  width: 100%;
   @extend .input-text;
   float: right;
 
@@ -351,16 +371,18 @@ input[type='radio'] {
   @include border-default();
   @include border-radius($size: 0.4rem);
   background: white;
-  padding: 1.4rem 1.8rem;
+  padding: 1.4rem 1.6rem;
   overflow: auto;
+  margin-top: .2rem;
   color: $text-grey;
   font-size: $size-14;
   line-height: 1.2;
   @include box-shadow-1;
   display: none;
-
   a {
     color: $text-grey;
+    cursor: pointer;
+    line-height: 1.8rem;
 
     &:hover {
       color: $green;
@@ -377,11 +399,6 @@ input[type='radio'] {
 
 .search-result a {
   cursor: pointer;
-}
-
-.search-result .js-active,
-.search-result a:hover {
-  color: $green;
 }
 
 .search-result i {
@@ -408,119 +425,110 @@ input[type='radio'] {
 
 .list-wrapper {
   font-size: $size-16;
-
+  overflow: hidden;
   ul {
     display: block;
     position: relative;
-    overflow: hidden;
     z-index: 10;
     &:before {
       @include pseudo-element($w: .1rem, $h: 100%, $p: absolute);
       box-sizing: border-box;
       margin-left: .8rem;
       bottom: 0;
-      top: -.5rem;
-      background: $green;
-      //z-index: 100;
+      top: -.1rem;
+      background: $border-color;
     }
   }
+
   ul > li {
-    //background: rosybrown;
+    width: 100%;
     list-style: none;
     margin-left: 0 !important;
     position: relative;
     line-height: 1;
-    //margin-top: -.4rem;
-    //background: #efa8a8;
-    //overflow: hidden;
     padding-left: .8rem;
     box-sizing: border-box;
+
     &:before {
-      @include pseudo-element($w: 1.3rem);
+      @include pseudo-element($w: 1.4rem);
       //background: $border-color;
-      background: $green;
+      background: $border-color;
       left: .8rem;
-      top:1.3rem;
+      top: 1.3rem;
       position: absolute;
       z-index: 26;
     }
 
-    /*&:last-of-type > a:before{
-      @include pseudo-element($w:.6rem,$h:100%,$p:absolute);
-      left: .5rem;
-      top:0.9rem;
-      background: #f8c059;
-    }*/
-    &:last-of-type:after{
-      @include pseudo-element($w:.3rem,$h:100%,$p:absolute);
+    &:last-of-type:after {
+      @include pseudo-element($w: .3rem, $h: 100%, $p: absolute);
       left: .7rem;
-      top:1.4rem;
+      top: 1.4rem;
       background: #ffffff;
       z-index: 22;
     }
   }
 }
-.list-wrapper > ul > li:first-child{
- margin-top: 0;
+
+.list-wrapper > ul > li:first-child {
+  margin-top: 0;
 }
-.list-wrapper > ul > li:first-child > a:before{
-  @include pseudo-element($w:.3rem,$h:100%,$p:absolute);
-  left: -0.1rem;
-  bottom:.8rem;
+
+.list-wrapper > ul > li:first-child > a:before {
+  @include pseudo-element($w: .2rem, $h: 100%, $p: absolute);
+  left: -0.2rem;
+  bottom: 1.3rem;
   background: #ffffff;
   z-index: 22;
 }
+
 .list-wrapper ul > li > ul {
   margin-left: 1.2rem !important;
-  margin-top: -.5rem;
-  padding-top: .5rem;
+  margin-top: -0.3rem;
+  padding-top: .3rem;
 }
-.list-wrapper  ul > li > a {
+
+.list-wrapper ul > li > a {
   display: block;
   position: relative;
+  z-index: 25;
   font-weight: normal;
   color: $grey-color-dark;
-  padding: .6rem .6rem .6rem .5rem;
+  padding: .3rem .3rem .3rem .2rem;
   margin-left: .1rem;
+  div {
+    position: relative;
+    margin-left: 1.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   &:hover {
     color: $green;
     @extend .active;
+    div {
+      white-space: wrap;
+    }
+    p {
+      float: left;
+      margin-right: .5rem;
+      display: table-cell;
+    }
+    span {
+      display: table-cell;
+      word-break: break-word;
+    }
   }
 }
 
-.list-wrapper ul > li > a p,
-.list-wrapper ul > li > a span {
-  display: table-cell;
-  white-space: warp;
-}
-
-.list-wrapper ul > li > a div {
-  position: relative;
-  margin-left: .9rem;
-}
-
-.list-wrapper ul > li > a span {
-  box-sizing: border-box;
-  padding-left: .5rem;
-  word-break: break-word;
-  //&::before {
-  //  @include pseudo-element($w: 1.3rem);
-  //  //background: $border-color;
-  //  background: $green;
-  //  left: 1.3rem;
-  //  top: 0.8rem;
-  //  position: absolute;
-  //}
-}
 .list-wrapper ul > li > i {
-  //display: none;
   float: left;
   background: white;
-  top: .6rem;
-  left: -.8rem;
+  top: 0.5rem;
+  left: -0.8rem;
   margin-right: -2rem;
   position: relative;
   z-index: 30;
+  @include border-radius(.3rem);
 }
 
 /*bottom-container*/
@@ -552,50 +560,85 @@ input[type='radio'] {
     }
   }
 }
-
+.structure:hover{
+  .structure-child{display: block;}
+}
 .structure-child {
+  width: 10rem;
   background: white;
+  position: absolute;
+  bottom: 4rem;
+  left: -4rem;
+  padding-top: .8rem;
   @include border-default();
   @include border-radius($size: 0.5rem);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-bottom-color: white;
-  position: absolute;
-  bottom: 4rem;
-  left: -4.1rem;
-  width: 10rem;
-  padding: 0.5rem 0 0 0;
+  @include box-shadow-2(rgb($grey-color,.7));
+  box-sizing: border-box;
   display: none;
-
   li {
     text-align: center;
     margin-left: 0 !important;
+    margin-bottom: .8rem;
+    cursor: pointer;
+    overflow: hidden;
+    &:hover{
+      color: $green;
+    }
   }
 
   li label {
     font-size: 1.2rem !important;
-    vertical-align: middle;
+    vertical-align: bottom;
+    cursor: pointer;
   }
 
   li input[type='radio'] {
     width: $size-12;
     height: $size-12;
-    margin-right: 0.6rem !important;
+    margin-right: .2rem !important;
     @include border-default($color: $green);
     @include border-radius($size: 50%);
+    cursor: pointer;
 
     &:checked {
       &:after {
         content: '';
         display: block;
-        width: 6px;
-        height: 6px;
-        margin: 2px auto;
+        width: .6rem;
+        height: .6rem;
+        margin: .2rem auto;
         background: $green;
         @include border-radius($size: 50%);
       }
     }
   }
+}
+/*switch-button*/
+#switch-button{
+  width: 4rem;
+  height: 4rem;
+  background: red;
+  position: absolute;
+  z-index: 100;
+  bottom: 0;
+  left: 28rem;
+}
+
+/*scroll style*/
+html {
+  /*一般用使用方法*/
+  //scrollbar-color: $text-dark rgb($text-dark, 0.1);
+  //scrollbar-color: $red rgb(red, 0.1);
+  //scrollbar-width: thin;
+  @include custom-scroll();
+}
+
+/*dark style*/
+html[theme=dark] {
+  @include theme-dark;
 }
 
 /*@media*/
@@ -606,23 +649,88 @@ input[type='radio'] {
 }
 
 @media screen and (max-width: 768px) {
-  body {
-    width: 768px;
+  .body-container{
+    height: 100vh;
+  }
+  #left-container{
+    width: 20rem;
+  }
+  #right-container {
+    padding-left: 23rem;
+    padding-right: 3rem;
+  }
+
+  #right-container {
+    padding: 0 3rem 1.4rem;
+  }
+  #content {
+    width: 100%;
+    color: green;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 992px){
+  .body-container{
+    height: 100vh;
+  }
+  #left-container{
+    width: 20rem;
+  }
+  #right-container {
+    padding-left: 23rem;
+    padding-right: 3rem;
+  }
+  #content {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+  .body-container{
+    height: 100vh;
+  }
+
+  #right-container {
+    padding-left: 33rem;
+    padding-right: 5rem;
+  }
+  #content {
+    width: 100%;
   }
 }
 
-@media screen and (max-width: 1200px) {
-  /* #right-container{
-     padding: 0 3.2rem 3.2rem 31.2rem;
-   }*/
-}
-
-@media screen and (min-width: 1900px) {
-  body {
-    width: 1900px;
+@media screen and (min-width: 1201px) and (max-width: 1920px) {
+  .body-container {
+    height: 100vh;
   }
-  /* #right-container{
-     padding: 0 21rem 3.2rem 49rem;
-   }*/
+  #right-container {
+    padding-left: 38rem;
+    padding-right: 10rem;
+    border: none;
+  }
+  #content {
+    width: 100%;
+    max-width: 120rem;
+  }
 }
 
+@media screen and (min-width: 1921px) {
+  .body-container {
+    width: 178rem;
+    height: 100vh;
+    margin: auto;
+  }
+  #left-container {
+    border-left-style: solid;
+    border-left-width: .1rem;
+  }
+  #right-container {
+    padding-left: 38rem;
+    padding-right: 10rem;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-left-width: .1rem;
+  }
+  #content {
+    width: 120rem;
+    margin: auto;
+  }
+}
