@@ -6,32 +6,81 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "688084",
+      "name": "排名 标签",
+      "font_class": "label",
+      "unicode": "e77e",
+      "unicode_decimal": 59262
+    },
+    {
+      "icon_id": "775453",
+      "name": "目录",
+      "font_class": "catalog-1",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "9512483",
+      "name": "目录",
+      "font_class": "catalog-2",
+      "unicode": "e6b2",
+      "unicode_decimal": 59058
+    },
+    {
+      "icon_id": "25637427",
+      "name": "表单,菜单,名单",
+      "font_class": "catalog-3",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "10694182",
+      "name": "退出",
+      "font_class": "quitB",
+      "unicode": "e6af",
+      "unicode_decimal": 59055
+    },
+    {
+      "icon_id": "12686933",
+      "name": "收起",
+      "font_class": "quit",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    },
+    {
+      "icon_id": "22334253",
+      "name": "展开",
+      "font_class": "launchB",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "40590638",
+      "name": "展开",
+      "font_class": "retractB",
+      "unicode": "e74b",
+      "unicode_decimal": 59211
+    },
+    {
       "icon_id": "40586686",
       "name": "launch-3",
-      "font_class": "launch-3",
+      "font_class": "launchC",
       "unicode": "e600",
       "unicode_decimal": 58880
     },
     {
       "icon_id": "40586374",
       "name": "retract-3",
-      "font_class": "retract-3",
+      "font_class": "retractC",
       "unicode": "e604",
       "unicode_decimal": 58884
     },
     {
       "icon_id": "40585526",
       "name": "launch-3-2",
-      "font_class": "launch-3-2",
+      "font_class": "launchC-2",
       "unicode": "e602",
       "unicode_decimal": 58882
-    },
-    {
-      "icon_id": "28715062",
-      "name": "quit",
-      "font_class": "quit",
-      "unicode": "e60d",
-      "unicode_decimal": 58893
     },
     {
       "icon_id": "6234270",
@@ -92,7 +141,7 @@
     {
       "icon_id": "25558388",
       "name": "收起",
-      "font_class": "retract-1",
+      "font_class": "retractA",
       "unicode": "e63b",
       "unicode_decimal": 58939
     },
@@ -113,23 +162,9 @@
     {
       "icon_id": "4191834",
       "name": "展开",
-      "font_class": "launch-1",
+      "font_class": "launchA",
       "unicode": "e748",
       "unicode_decimal": 59208
-    },
-    {
-      "icon_id": "40582376",
-      "name": "展开-2",
-      "font_class": "retract-2",
-      "unicode": "e74a",
-      "unicode_decimal": 59210
-    },
-    {
-      "icon_id": "40580350",
-      "name": "展开-2",
-      "font_class": "launch-2",
-      "unicode": "e749",
-      "unicode_decimal": 59209
     }
   ]
 }
