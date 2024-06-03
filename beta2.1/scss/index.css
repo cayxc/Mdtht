@@ -95,7 +95,6 @@
 
 /*colors*/
 /*size*/
-/*theme dark style*/
 /*border*/
 /*border-radius*/
 /*code style*/
@@ -122,7 +121,7 @@
   width: 1.6rem;
   height: 1.6rem;
   background-color: white;
-  border: 1px solid rgb(39, 56, 75);
+  border: 1px solid rgb(40, 55, 75);
   vertical-align: middle;
   font-size: 2rem;
   line-height: 1;
@@ -136,15 +135,14 @@
   display: inline-block;
   border: 1px solid #d0d0d0;
   padding: 0 0.6rem;
-  -webkit-border-radius: 0.4rem;
-  -moz-border-radius: 0.4rem;
-  border-radius: 0.4rem;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
   outline: none;
   box-sizing: border-box;
 }
 
-/*  Custom input placeholder
-===========================*/
+/*  Custom input placeholder*/
 input::-webkit-input-placeholder,
 input:-moz-placeholder,
 input::-moz-placeholder,
@@ -152,98 +150,50 @@ input:-ms-input-placeholder {
   color: #999999;
 }
 
+/*  Custom input placeholder*/
+input::-webkit-input-placeholder { /* WebKit browsers */
+  color: #999999;
+}
+
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #999999;
+}
+
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #999999;
+}
+
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: #999999;
+}
+
+/*  Custom Scroll*/
+/*theme dark style*/
 * {
   margin: 0;
   padding: 0;
 }
 
 :root {
-  font-family: PingFang SC, PingFang, Helvetica, arial, freesans, clean, sans-serif;
+  font-family: "PingFang SC", "PingFang", "Helvetica", "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
   font-size: 62.5%;
   background-color: #ffffff;
   color: #000000;
   height: 100%;
   overflow: hidden;
+  letter-spacing: 0.1rem;
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
   font-size: 1.6rem;
   line-height: 2.6rem;
   box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 28rem auto;
-  grid-gap: 0;
-}
-
-html[theme=dark] {
-  background-color: rgb(22, 27, 31);
-  color: rgb(245, 255, 255);
-}
-html[theme=dark] h1, html[theme=dark] h2, html[theme=dark] h3, html[theme=dark] h4, html[theme=dark] h5, html[theme=dark] h6 {
-  color: rgb(245, 255, 255);
-}
-html[theme=dark] h1 {
-  border-bottom: 1px solid rgb(42, 55, 60);
-}
-html[theme=dark] h1:first-of-type {
-  border: none;
-}
-html[theme=dark] hr {
-  background: rgb(42, 55, 60);
-}
-html[theme=dark] kbd {
-  background-color: rgb(29, 38, 43);
-}
-html[theme=dark] code {
-  background-color: rgb(29, 38, 43);
-  border: none;
-}
-html[theme=dark] pre {
-  background-color: rgb(29, 38, 43);
-  border: none;
-}
-html[theme=dark] table {
-  width: 100%;
-  margin-top: 1.6rem;
-  text-align: left;
-  border-collapse: separate;
-  border-spacing: 0;
-}
-html[theme=dark] table thead {
-  background-color: rgb(29, 38, 43);
-}
-html[theme=dark] table thead tr th {
-  border-top: 1px solid rgb(42, 55, 60);
-}
-html[theme=dark] table tr th, html[theme=dark] table tr td {
-  padding: 0.8rem 1rem;
-  border-right: 1px solid rgb(42, 55, 60);
-  border-bottom: 1px solid rgb(42, 55, 60);
-}
-html[theme=dark] table tr th:first-child, html[theme=dark] table tr td:first-child {
-  border-left: 1px solid rgb(42, 55, 60);
-}
-html[theme=dark] table tr:first-child th:first-child {
-  border-top-left-radius: 0.8rem;
-}
-html[theme=dark] table tr:first-child th:last-child {
-  border-top-right-radius: 0.8rem;
-}
-html[theme=dark] table tr:last-child td:last-child {
-  border-bottom-right-radius: 0.8rem;
-}
-html[theme=dark] table tr:last-child td:first-child {
-  border-bottom-left-radius: 0.8rem;
-}
-html[theme=dark] table tbody tr:nth-child(even) {
-  background: rgb(29, 38, 43);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 3.6rem 0 1.8rem;
-  color: rgb(39, 56, 75);
+  margin: 4rem 0 2rem;
+  color: rgb(40, 55, 75);
+  letter-spacing: 0.2rem;
 }
 
 h1 {
@@ -253,19 +203,20 @@ h1 {
 }
 h1:first-of-type {
   border: none;
-  padding-bottom: 0;
+  padding-bottom: 2rem;
+  text-align: center;
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 2.7rem;
 }
 
 h3 {
-  font-size: 2.6rem;
+  font-size: 2.4rem;
 }
 
 h4 {
-  font-size: 2.2rem;
+  font-size: 2.1rem;
 }
 
 h5 {
@@ -288,6 +239,11 @@ hr {
   box-sizing: border-box;
 }
 
+::selection {
+  background: rgba(40, 180, 115, 0.75);
+  color: #000000;
+}
+
 a {
   text-decoration: none;
   color: rgb(40, 180, 115);
@@ -295,6 +251,11 @@ a {
 }
 a:hover {
   color: #e82323;
+}
+
+p {
+  margin: 1.8rem 0 0;
+  text-align: justify;
 }
 
 p a {
@@ -318,13 +279,8 @@ del {
   -moz-text-decoration-color: #e82323;
 }
 
-p {
-  margin: 1rem 0 0;
-  text-align: justify;
-}
-
 mark {
-  background-color: rgba(40, 180, 115, 0.7);
+  background-color: rgb(40, 180, 115);
   padding: 0.2rem 1rem;
   border-radius: 0.4rem;
   -webkit-border-radius: 0.4rem;
@@ -335,14 +291,16 @@ kbd {
   display: inline-block;
   line-height: 2.2rem;
   border: none;
-  background: #d9d9d9;
+  background: rgb(40, 55, 75);
+  color: #d9d9d9;
   border-image: none;
   border-radius: 0.4rem;
   -webkit-border-radius: 0.4rem;
   -moz-border-radius: 0.4rem;
   padding: 0 0.6rem;
   margin-right: 0.6rem;
-  vertical-align: text-bottom;
+  vertical-align: inherit;
+  font-size: 1.4rem;
 }
 
 img {
@@ -390,17 +348,22 @@ pre {
   overflow: auto;
 }
 
-p code {
+code {
   margin: 1.6rem 0;
   padding: 1.6rem;
   border: 1px solid #d0d0d0;
   background: rgb(238, 238, 238);
   font-size: 1.6rem;
-  border-radius: 0.6rem;
-  -webkit-border-radius: 0.6rem;
-  -moz-border-radius: 0.6rem;
-  padding: 0.3rem 1rem;
-  vertical-align: middle;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  padding: 0.2rem 1rem;
+  vertical-align: inherit;
+}
+
+pre code {
+  padding: 0.4rem 1rem;
+  border: none;
 }
 
 /*sup,sub*/
@@ -418,25 +381,12 @@ blockquote {
   border-radius: 0.8rem;
   -webkit-border-radius: 0.8rem;
   -moz-border-radius: 0.8rem;
-  border-left: 0.5rem solid rgb(40, 180, 115);
+  border-left: 0.4rem solid rgb(40, 180, 115);
   border-bottom: none;
   border-top: none;
   border-right: none;
   background-color: rgba(40, 180, 115, 0.06);
   overflow: hidden;
-}
-blockquote code {
-  margin: 1.6rem 0;
-  padding: 1.6rem;
-  border: 1px solid #d0d0d0;
-  background: rgb(238, 238, 238);
-  font-size: 1.6rem;
-  border-radius: 0.6rem;
-  -webkit-border-radius: 0.6rem;
-  -moz-border-radius: 0.6rem;
-  padding: 0.3rem 1rem;
-  background: #d9d9d9;
-  vertical-align: middle;
 }
 blockquote p:first-child {
   margin-top: 0;
@@ -519,20 +469,16 @@ input[type=radio]:checked:after {
   -moz-border-radius: 50%;
 }
 
-/*right-containe*/
-#right-container {
-  background: white;
-  overflow: auto;
-  height: 100%;
-}
-
-#content {
-  width: 100rem;
-  margin: 2rem auto;
+.body-container {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /*left-containe*/
 #left-container {
+  width: 28rem;
+  float: left;
   background: white;
   border-right: 1px solid #d0d0d0;
   padding: 0 0 1.6rem 0;
@@ -540,6 +486,32 @@ input[type=radio]:checked:after {
   position: relative;
   height: 100vh;
   box-sizing: border-box;
+  line-height: 2rem;
+  overflow: hidden;
+}
+#left-container a {
+  line-height: 2rem;
+}
+
+/*right-containe*/
+#right-container {
+  background: white;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-left: 28rem;
+  padding-bottom: 3.2rem;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+#content {
+  width: 100rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 /*top-container*/
@@ -559,22 +531,24 @@ input[type=radio]:checked:after {
 }
 
 .catalog-button {
-  font-size: 2.2rem;
+  font-size: 2.6rem;
+  margin-right: 1.6rem;
   cursor: pointer;
+  float: left;
+  margin-top: -0.2rem;
 }
 .catalog-button:hover {
   color: rgb(40, 180, 115);
 }
 
 .search-container {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.6rem;
+  overflow: hidden;
+  margin-top: -0.2rem;
 }
 
 .search {
   height: 3.2rem;
-  width: 21rem;
+  width: 100%;
   float: right;
 }
 .search:focus {
@@ -604,18 +578,22 @@ input[type=radio]:checked:after {
   -webkit-border-radius: 0.4rem;
   -moz-border-radius: 0.4rem;
   background: white;
-  padding: 1.4rem 1.8rem;
+  padding: 1.4rem 1.6rem;
   overflow: auto;
+  margin-top: 0.2rem;
   color: #999999;
   font-size: 1.4rem;
   line-height: 1.2;
-  -webkit-box-shadow: 0 2px 4px -2px #d9d9d9;
-  -moz-box-shadow: 0 2px 4px -2px #d9d9d9;
-  box-shadow: 0 2px 4px -2px #d9d9d9;
+  -webkit-box-shadow: 0 0.1rem 0.2rem 0.2rem #d9d9d9;
+  -moz-box-shadow: 0 0.1rem 0.2rem 0.2rem #d9d9d9;
+  -o-box-shadow: 0 0.1rem 0.2rem 0.2rem #d9d9d9;
+  box-shadow: 0 0.1rem 0.2rem 0.2rem #d9d9d9;
   display: none;
 }
 .search-result a {
   color: #999999;
+  cursor: pointer;
+  line-height: 1.8rem;
 }
 .search-result a:hover {
   color: rgb(40, 180, 115);
@@ -630,11 +608,6 @@ input[type=radio]:checked:after {
 
 .search-result a {
   cursor: pointer;
-}
-
-.search-result .js-active,
-.search-result a:hover {
-  color: rgb(40, 180, 115);
 }
 
 .search-result i {
@@ -661,11 +634,11 @@ input[type=radio]:checked:after {
 
 .list-wrapper {
   font-size: 1.6rem;
+  overflow: hidden;
 }
 .list-wrapper ul {
   display: block;
   position: relative;
-  overflow: hidden;
   z-index: 10;
 }
 .list-wrapper ul:before {
@@ -678,31 +651,26 @@ input[type=radio]:checked:after {
   box-sizing: border-box;
   margin-left: 0.8rem;
   bottom: 0;
-  top: -0.5rem;
-  background: rgb(40, 180, 115);
+  top: -0.1rem;
+  background: #d0d0d0;
 }
 .list-wrapper ul > li {
+  width: 100%;
   list-style: none;
   margin-left: 0 !important;
   position: relative;
   line-height: 1;
   padding-left: 0.8rem;
   box-sizing: border-box;
-  /*&:last-of-type > a:before{
-    @include pseudo-element($w:.6rem,$h:100%,$p:absolute);
-    left: .5rem;
-    top:0.9rem;
-    background: #f8c059;
-  }*/
 }
 .list-wrapper ul > li:before {
   content: "";
   display: inline-block;
-  width: 1.3rem;
+  width: 1.4rem;
   height: 0.1rem;
   position: relative;
   z-index: 20;
-  background: rgb(40, 180, 115);
+  background: #d0d0d0;
   left: 0.8rem;
   top: 1.3rem;
   position: absolute;
@@ -728,59 +696,65 @@ input[type=radio]:checked:after {
 .list-wrapper > ul > li:first-child > a:before {
   content: "";
   display: inline-block;
-  width: 0.3rem;
+  width: 0.2rem;
   height: 100%;
   position: absolute;
   z-index: 20;
-  left: -0.1rem;
-  bottom: 0.8rem;
+  left: -0.2rem;
+  bottom: 1.3rem;
   background: #ffffff;
   z-index: 22;
 }
 
 .list-wrapper ul > li > ul {
   margin-left: 1.2rem !important;
-  margin-top: -0.5rem;
-  padding-top: 0.5rem;
+  margin-top: -0.3rem;
+  padding-top: 0.3rem;
 }
 
 .list-wrapper ul > li > a {
   display: block;
   position: relative;
+  z-index: 25;
   font-weight: normal;
   color: rgb(42, 55, 60);
-  padding: 0.6rem 0.6rem 0.6rem 0.5rem;
+  padding: 0.3rem 0.3rem 0.3rem 0.2rem;
   margin-left: 0.1rem;
+}
+.list-wrapper ul > li > a div {
+  position: relative;
+  margin-left: 1.3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .list-wrapper ul > li > a:hover {
   color: rgb(40, 180, 115);
 }
-
-.list-wrapper ul > li > a p,
-.list-wrapper ul > li > a span {
+.list-wrapper ul > li > a:hover div {
+  white-space: wrap;
+}
+.list-wrapper ul > li > a:hover p {
+  float: left;
+  margin-right: 0.5rem;
   display: table-cell;
-  white-space: warp;
 }
-
-.list-wrapper ul > li > a div {
-  position: relative;
-  margin-left: 0.9rem;
-}
-
-.list-wrapper ul > li > a span {
-  box-sizing: border-box;
-  padding-left: 0.5rem;
+.list-wrapper ul > li > a:hover span {
+  display: table-cell;
   word-break: break-word;
 }
 
 .list-wrapper ul > li > i {
   float: left;
   background: white;
-  top: 0.6rem;
+  top: 0.5rem;
   left: -0.8rem;
   margin-right: -2rem;
   position: relative;
   z-index: 30;
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
 }
 
 /*bottom-container*/
@@ -810,8 +784,17 @@ input[type=radio]:checked:after {
   cursor: pointer;
 }
 
+.structure:hover .structure-child {
+  display: block;
+}
+
 .structure-child {
+  width: 10rem;
   background: white;
+  position: absolute;
+  bottom: 4rem;
+  left: -4rem;
+  padding-top: 0.8rem;
   border: 1px solid #d0d0d0;
   border-radius: 0.5rem;
   -webkit-border-radius: 0.5rem;
@@ -819,50 +802,233 @@ input[type=radio]:checked:after {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-bottom-color: white;
-  position: absolute;
-  bottom: 4rem;
-  left: -4.1rem;
-  width: 10rem;
-  padding: 0.5rem 0 0 0;
+  box-shadow: 0 -0.2rem 0.2rem rgba(217, 217, 217, 0.7);
+  -webkit-box-shadow: 0 -0.2rem 0.2rem rgba(217, 217, 217, 0.7);
+  -moz-box-shadow: 0 -0.2rem 0.2rem rgba(217, 217, 217, 0.7);
+  -o-box-shadow: 0 -0.2rem 0.2rem rgba(217, 217, 217, 0.7);
+  box-sizing: border-box;
   display: none;
 }
 .structure-child li {
   text-align: center;
   margin-left: 0 !important;
+  margin-bottom: 0.8rem;
+  cursor: pointer;
+  overflow: hidden;
+}
+.structure-child li:hover {
+  color: rgb(40, 180, 115);
 }
 .structure-child li label {
   font-size: 1.2rem !important;
-  vertical-align: middle;
+  vertical-align: bottom;
+  cursor: pointer;
 }
 .structure-child li input[type=radio] {
   width: 1.2rem;
   height: 1.2rem;
-  margin-right: 0.6rem !important;
+  margin-right: 0.2rem !important;
   border: 1px solid rgb(40, 180, 115);
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
+  cursor: pointer;
 }
 .structure-child li input[type=radio]:checked:after {
   content: "";
   display: block;
-  width: 6px;
-  height: 6px;
-  margin: 2px auto;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin: 0.2rem auto;
   background: rgb(40, 180, 115);
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
 }
 
+/*switch-button*/
+#switch-button {
+  width: 4rem;
+  height: 4rem;
+  background: red;
+  position: absolute;
+  z-index: 100;
+  bottom: 0;
+  left: 28rem;
+}
+
+/*scroll style*/
+html {
+  /*一般用使用方法*/
+  /*非webkit内核浏览器*/
+  /* 滑块背景色 */
+  /* 其余相关样式设置跟滑块一个背景色 */
+  /* 隐藏滚动条按钮 */
+}
+html ::-webkit-scrollbar,
+html ::-webkit-scrollbar-thumb {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 0.4rem;
+}
+html ::-webkit-scrollbar-thumb {
+  background: rgb(220, 220, 220);
+}
+html ::-webkit-scrollbar,
+html ::-webkit-scrollbar-corner,
+html ::-webkit-resizer,
+html ::-webkit-scrollbar-track,
+html ::-webkit-scrollbar-track-piece {
+  background: rgba(220, 220, 220, 0.1);
+}
+html ::-webkit-scrollbar-button {
+  display: none;
+}
+
+/*dark style*/
+html[theme=dark] {
+  /* 滑块背景色 */
+  /* 其余相关样式设置跟滑块一个背景色 */
+}
+html[theme=dark] {
+  background-color: rgb(22, 27, 31);
+  color: rgb(220, 220, 220);
+}
+html[theme=dark] h1, html[theme=dark] h2, html[theme=dark] h3, html[theme=dark] h4, html[theme=dark] h5, html[theme=dark] h6 {
+  color: rgb(220, 220, 220);
+}
+html[theme=dark] h1 {
+  border-bottom: 1px solid rgb(42, 55, 60);
+}
+html[theme=dark] h1:first-of-type {
+  border: none;
+}
+html[theme=dark] hr {
+  background: rgb(42, 55, 60);
+}
+html[theme=dark] kbd {
+  background-color: rgb(52, 82, 115);
+}
+html[theme=dark] code, html[theme=dark] pre {
+  background: rgb(29, 38, 43);
+  border-color: rgb(42, 55, 60);
+}
+html[theme=dark] table {
+  width: 100%;
+  margin-top: 1.6rem;
+  text-align: left;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+html[theme=dark] table thead {
+  background-color: rgb(29, 38, 43);
+}
+html[theme=dark] table thead tr th {
+  border-top: 1px solid rgb(42, 55, 60);
+}
+html[theme=dark] table tr th, html[theme=dark] table tr td {
+  padding: 0.8rem 1rem;
+  border-right: 1px solid rgb(42, 55, 60);
+  border-bottom: 1px solid rgb(42, 55, 60);
+}
+html[theme=dark] table tr th:first-child, html[theme=dark] table tr td:first-child {
+  border-left: 1px solid rgb(42, 55, 60);
+}
+html[theme=dark] table tr:first-child th:first-child {
+  border-top-left-radius: 0.8rem;
+}
+html[theme=dark] table tr:first-child th:last-child {
+  border-top-right-radius: 0.8rem;
+}
+html[theme=dark] table tr:last-child td:last-child {
+  border-bottom-right-radius: 0.8rem;
+}
+html[theme=dark] table tr:last-child td:first-child {
+  border-bottom-left-radius: 0.8rem;
+}
+html[theme=dark] table tbody tr:nth-child(even) {
+  background: rgb(29, 38, 43);
+}
+html[theme=dark] #right-container,
+html[theme=dark] #left-container,
+html[theme=dark] .top-container,
+html[theme=dark] .bottom-container,
+html[theme=dark] .list-wrapper ul > li > i {
+  background: rgb(22, 27, 31);
+  color: rgb(220, 220, 220);
+  border-color: rgb(42, 55, 60);
+}
+html[theme=dark] .catalog-button {
+  color: rgb(42, 55, 60);
+}
+html[theme=dark] .catalog-button:hover {
+  color: rgb(40, 180, 115);
+}
+html[theme=dark] input {
+  background: rgb(32, 45, 50);
+  border-color: rgb(42, 55, 60);
+  color: rgb(220, 220, 220);
+}
+html[theme=dark] input::placeholder {
+  color: rgb(55, 75, 80);
+}
+html[theme=dark] .search-result {
+  background: rgb(32, 45, 50);
+  border-color: rgb(42, 55, 60);
+  box-shadow: 0 -0.2rem 0.2rem rgb(22, 27, 31);
+  -webkit-box-shadow: 0 -0.2rem 0.2rem rgb(22, 27, 31);
+  -moz-box-shadow: 0 -0.2rem 0.2rem rgb(22, 27, 31);
+  -o-box-shadow: 0 -0.2rem 0.2rem rgb(22, 27, 31);
+}
+html[theme=dark] .list-wrapper ul > li > i {
+  color: rgb(32, 45, 50);
+}
+html[theme=dark] .list-wrapper ul:before,
+html[theme=dark] .list-wrapper ul > li:before {
+  background: rgb(42, 55, 60);
+}
+html[theme=dark] .list-wrapper ul > li:last-of-type:after,
+html[theme=dark] .list-wrapper > ul > li:first-child > a:before {
+  background: rgb(22, 27, 31);
+}
+html[theme=dark] .list-wrapper a {
+  color: rgb(220, 220, 220);
+}
+html[theme=dark] .list-wrapper ul > li > a:hover {
+  background: rgb(32, 45, 50);
+}
+html[theme=dark] .structure-child {
+  background: rgb(22, 27, 31);
+  border-color: rgb(42, 55, 60);
+  border-bottom-color: rgb(22, 27, 31);
+  box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
+  -webkit-box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
+  -moz-box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
+  -o-box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
+}
+html[theme=dark] ::-webkit-scrollbar-thumb {
+  background: rgb(42, 55, 60);
+}
+html[theme=dark] ::-webkit-scrollbar,
+html[theme=dark] ::-webkit-scrollbar-corner,
+html[theme=dark] ::-webkit-resizer,
+html[theme=dark] ::-webkit-scrollbar-track,
+html[theme=dark] ::-webkit-scrollbar-track-piece {
+  background: rgba(42, 55, 60, 0.1);
+}
+
 /*@media*/
 @media (prefers-color-scheme: dark) {
   html {
+    /* 滑块背景色 */
+    /* 其余相关样式设置跟滑块一个背景色 */
+  }
+  html {
     background-color: rgb(22, 27, 31);
-    color: rgb(245, 255, 255);
+    color: rgb(220, 220, 220);
   }
   html h1, html h2, html h3, html h4, html h5, html h6 {
-    color: rgb(245, 255, 255);
+    color: rgb(220, 220, 220);
   }
   html h1 {
     border-bottom: 1px solid rgb(42, 55, 60);
@@ -874,15 +1040,11 @@ input[type=radio]:checked:after {
     background: rgb(42, 55, 60);
   }
   html kbd {
-    background-color: rgb(29, 38, 43);
+    background-color: rgb(52, 82, 115);
   }
-  html code {
-    background-color: rgb(29, 38, 43);
-    border: none;
-  }
-  html pre {
-    background-color: rgb(29, 38, 43);
-    border: none;
+  html code, html pre {
+    background: rgb(29, 38, 43);
+    border-color: rgb(42, 55, 60);
   }
   html table {
     width: 100%;
@@ -920,24 +1082,155 @@ input[type=radio]:checked:after {
   html table tbody tr:nth-child(even) {
     background: rgb(29, 38, 43);
   }
+  html #right-container,
+  html #left-container,
+  html .top-container,
+  html .bottom-container,
+  html .list-wrapper ul > li > i {
+    background: rgb(22, 27, 31);
+    color: rgb(220, 220, 220);
+    border-color: rgb(42, 55, 60);
+  }
+  html .catalog-button {
+    color: rgb(42, 55, 60);
+  }
+  html .catalog-button:hover {
+    color: rgb(40, 180, 115);
+  }
+  html input {
+    background: rgb(32, 45, 50);
+    border-color: rgb(42, 55, 60);
+    color: rgb(220, 220, 220);
+  }
+  html input::placeholder {
+    color: rgb(55, 75, 80);
+  }
+  html .search-result {
+    background: rgb(32, 45, 50);
+    border-color: rgb(42, 55, 60);
+    box-shadow: 0 -0.2rem 0.2rem rgb(22, 27, 31);
+    -webkit-box-shadow: 0 -0.2rem 0.2rem rgb(22, 27, 31);
+    -moz-box-shadow: 0 -0.2rem 0.2rem rgb(22, 27, 31);
+    -o-box-shadow: 0 -0.2rem 0.2rem rgb(22, 27, 31);
+  }
+  html .list-wrapper ul > li > i {
+    color: rgb(32, 45, 50);
+  }
+  html .list-wrapper ul:before,
+  html .list-wrapper ul > li:before {
+    background: rgb(42, 55, 60);
+  }
+  html .list-wrapper ul > li:last-of-type:after,
+  html .list-wrapper > ul > li:first-child > a:before {
+    background: rgb(22, 27, 31);
+  }
+  html .list-wrapper a {
+    color: rgb(220, 220, 220);
+  }
+  html .list-wrapper ul > li > a:hover {
+    background: rgb(32, 45, 50);
+  }
+  html .structure-child {
+    background: rgb(22, 27, 31);
+    border-color: rgb(42, 55, 60);
+    border-bottom-color: rgb(22, 27, 31);
+    box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
+    -webkit-box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
+    -moz-box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
+    -o-box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
+  }
+  html ::-webkit-scrollbar-thumb {
+    background: rgb(42, 55, 60);
+  }
+  html ::-webkit-scrollbar,
+  html ::-webkit-scrollbar-corner,
+  html ::-webkit-resizer,
+  html ::-webkit-scrollbar-track,
+  html ::-webkit-scrollbar-track-piece {
+    background: rgba(42, 55, 60, 0.1);
+  }
 }
 @media screen and (max-width: 768px) {
-  body {
-    width: 768px;
+  .body-container {
+    height: 100vh;
+  }
+  #left-container {
+    width: 20rem;
+  }
+  #right-container {
+    padding-left: 23rem;
+    padding-right: 3rem;
+  }
+  #right-container {
+    padding: 0 3rem 1.4rem;
+  }
+  #content {
+    width: 100%;
+    color: green;
   }
 }
-@media screen and (max-width: 1200px) {
-  /* #right-container{
-     padding: 0 3.2rem 3.2rem 31.2rem;
-   }*/
-}
-@media screen and (min-width: 1900px) {
-  body {
-    width: 1900px;
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  .body-container {
+    height: 100vh;
   }
-  /* #right-container{
-     padding: 0 21rem 3.2rem 49rem;
-   }*/
+  #left-container {
+    width: 20rem;
+  }
+  #right-container {
+    padding-left: 23rem;
+    padding-right: 3rem;
+  }
+  #content {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+  .body-container {
+    height: 100vh;
+  }
+  #right-container {
+    padding-left: 33rem;
+    padding-right: 5rem;
+  }
+  #content {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1201px) and (max-width: 1920px) {
+  .body-container {
+    height: 100vh;
+  }
+  #right-container {
+    padding-left: 38rem;
+    padding-right: 10rem;
+    border: none;
+  }
+  #content {
+    width: 100%;
+    max-width: 120rem;
+  }
+}
+@media screen and (min-width: 1921px) {
+  .body-container {
+    width: 178rem;
+    height: 100vh;
+    margin: auto;
+  }
+  #left-container {
+    border-left-style: solid;
+    border-left-width: 0.1rem;
+  }
+  #right-container {
+    padding-left: 38rem;
+    padding-right: 10rem;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-left-width: 0.1rem;
+  }
+  #content {
+    width: 120rem;
+    margin: auto;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
