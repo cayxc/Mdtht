@@ -9,10 +9,10 @@
 <section class="body-container">
     <div id="left-container">
         <div class="top-container">
-            <i class="catalog-button iconfont icon-catalogOpen"></i>
+            <i class="catalog-button iconfont icon-catalog-show"></i>
             <div class="search-container">
                 <input type="text" class="search" name="search" placeholder="输入关键字搜索 . . .">
-                <i class="search-icon iconfont icon-cancel"></i>
+                <i class="search-icon iconfont icon-close"></i>
             </div>
             <div class="search-result">
                 <i class="iconfont icon-search"></i>
@@ -34,7 +34,7 @@
         <div id="list-container">
             <div class="list-wrapper">
                 <ul>
-                    <li class="parent-level js-active"><i class="iconfont icon-closeA"></i>
+                    <li class="parent-level js-active"><i class="iconfont icon-retractA"></i>
                         <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-1" class="level-1">
                             <div>
                                 <p class="">8</p>
@@ -42,7 +42,7 @@
                             </div>
                         </a>
                         <ul class="js-close">
-                            <li>
+                            <li><i class="iconfont icon-launchA"></i>
                                 <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-1.1" class="level-1.1">
                                     <div>
                                         <p class="">1.1</p>
@@ -56,7 +56,7 @@
                                         <span>安装laravel-debugbar调试工具</span></div>
                                 </a>
                             </li>
-                            <li class="parent-level"><i class="iconfont icon-closeA"></i>
+                            <li class="parent-level"><i class="iconfont icon-launchB"></i>
                                 <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-1.3" class="level-1.3">
                                     <div>
                                         <p class="">1.3</p>
@@ -90,13 +90,13 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <li class="parent-level"><i class="iconfont icon-retract-3"></i>
                         <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-2" class="level-2">
                             <div><p class="">2</p>
                                 <span>目录结构</span></div>
                         </a>
                         <ul class="js-close">
-                            <li>
+                            <li><i class="iconfont icon-retractB"></i>
                                 <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-2.1" class="level-2.1">
                                     <div><p class="">2.1</p>
                                         <span>主要目录结构</span></div>
@@ -104,7 +104,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <li class="parent-level"><i class="iconfont  icon-launchC"></i>
                         <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-3" class="level-3">
                             <div><p class="">3</p>
                                 <span>CSRF攻击</span></div>
@@ -130,7 +130,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="parent-level"><i class="iconfont icon-closeA"></i>
+                    <li class="parent-level"><i class="iconfont icon-retractC"></i>
                         <a href="/Users/cayxc/Desktop/laravel5.6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#level-4" class="level-4">
                             <div><p class="">4</p>
                                 <span>Laravel路由</span></div>
@@ -1501,13 +1501,12 @@ guarded）</span></a>
             <div class="mode-container">
                 <div class="mode">
                     <i class="iconfont icon-sun" title="切换亮色/黑暗模式"></i>
-
                 </div>
                 <div class="index" title="显示/隐藏目录索引编号">
-                    <i class="iconfont icon-indexA"></i>
+                    <i class="iconfont icon-menu-index"></i>
                 </div>
                 <div class="structure" title="切换目录样式图标">
-                    <i class="iconfont icon-process"></i>
+                    <i class="iconfont icon-style"></i>
                     <ul class="structure-child">
                         <li>
                             <input type="radio" id="styleA" name="catalogStyle" value="1" checked="checked">
@@ -1523,11 +1522,15 @@ guarded）</span></a>
                         </li>
                     </ul>
                 </div>
+                <div class="quit-menu">
+                    <i class="iconfont icon-quit" title="切换亮色/黑暗模式"></i>
+                </div>
             </div>
         </div>
     </div>
     <div id="switch-button">
-        <i class="iconfont icon-arrLeft"></i>
+        <i class="iconfont icon-label"></i>
+        <i class="iconfont icon-catalog-close"></i>
     </div>
     <div id="right-container">
         <div id="content">

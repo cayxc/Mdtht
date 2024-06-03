@@ -5,7 +5,6 @@
   margin: 0;
   padding: 0;
 }
-
 :root {
   font-family: "PingFang SC", "PingFang", "Helvetica", "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
   font-size: 62.5%;
@@ -21,7 +20,9 @@ body {
   line-height: 2.6rem;
   box-sizing: border-box;
 }
-
+//.iconfont{
+//  color: $text-color !important;
+//}
 //标题
 h1, h2, h3, h4, h5, h6 {
   margin: 4rem 0 2rem;
@@ -211,7 +212,9 @@ blockquote {
     margin-top: 0;
   }
 }
-
+.iconfont{
+  color: $text-grey;
+}
 /*table*/
 table {
   @include table-style;
@@ -546,10 +549,9 @@ input[type='radio'] {
 
   .mode, .index, .structure {
     float: left;
-    margin-right: 3rem;
+    margin-right: 2.6rem;
     position: relative;
   }
-
   .iconfont {
     font-size: 2rem;
     line-height: 4rem;
@@ -558,6 +560,9 @@ input[type='radio'] {
       color: $green;
       cursor: pointer;
     }
+  }
+  .icon-quit{
+    font-size: 2.2rem;
   }
 }
 .structure:hover{
@@ -618,13 +623,36 @@ input[type='radio'] {
 }
 /*switch-button*/
 #switch-button{
-  width: 4rem;
-  height: 4rem;
-  background: red;
   position: absolute;
-  z-index: 100;
-  bottom: 0;
-  left: 28rem;
+  top: 0;
+  left: 1.6rem;
+  z-index: 110;
+  width: 3rem;
+  height: 4rem;
+  cursor: pointer;
+  text-align: center;
+  box-sizing: border-box;
+  i{
+    display: block;
+    position: relative;
+    top: 0;
+    left: .8rem;
+    color: $green;
+    font-size: 4rem;
+    text-shadow: 0 0 .4rem $text-grey;
+    margin-top: .6rem;
+    margin-left: -1.2rem;
+  }
+  .icon-catalog-close{
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+    top:-3.6rem;
+    left: .65rem;
+  }
+  &:hover .icon-label{
+    color: $orange;
+  }
 }
 
 /*scroll style*/
