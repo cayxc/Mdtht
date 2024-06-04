@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
 }
+
 :root {
   font-family: "PingFang SC", "PingFang", "Helvetica", "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
   font-size: 62.5%;
@@ -19,7 +20,9 @@ body {
   font-size: $size-16;
   line-height: 2.6rem;
   box-sizing: border-box;
+  text-shadow: .075rem .075rem .075rem rgb($border-color,.75);
 }
+
 //.iconfont{
 //  color: $text-color !important;
 //}
@@ -77,7 +80,7 @@ hr {
 }
 
 ::selection {
-  background: rgb($green,.75);
+  background: rgb($green, .75);
   color: $text-color;
 }
 
@@ -109,7 +112,7 @@ u {
   text-decoration-color: $green;
   -moz-text-decoration-color: $green;
 }
-
+em{font-weight: 300;}
 del {
   color: $text-grey;
   text-decoration: line-through;
@@ -212,9 +215,14 @@ blockquote {
     margin-top: 0;
   }
 }
-.iconfont{
+
+.iconfont {
   color: $text-grey;
+  &:hover{
+    text-shadow: .1rem .1rem .1rem rgb($green,.75);
+  }
 }
+
 /*table*/
 table {
   @include table-style;
@@ -262,7 +270,7 @@ input[type='radio'] {
   }
 }
 
-.body-container{
+.body-container {
   position: relative;
   width: 100%;
   box-sizing: border-box;
@@ -281,7 +289,6 @@ input[type='radio'] {
   box-sizing: border-box;
   line-height: 2rem;
   overflow: hidden;
-
   a {
     line-height: 2rem;
   }
@@ -314,10 +321,9 @@ input[type='radio'] {
   height: 6.2rem;
   border-bottom: 1px solid $border-color;
   color: $text-grey;
-  padding: 1.6rem;
+  padding: 1.6rem 1.2rem 1.6rem 1.6rem;
   top: 0;
   left: 0;
-  position: absolute;
   box-sizing: border-box;
   z-index: 25;
   line-height: 3.2rem;
@@ -325,30 +331,33 @@ input[type='radio'] {
 }
 
 .catalog-button {
-  font-size: 2.6rem;
-  margin-right: 1.6rem;
+  font-size: 3rem;
   cursor: pointer;
   float: left;
-  margin-top: -.2rem;
+  margin-right: 1.2rem;
+  margin-top: -.1rem;
+
   &:hover {
     color: $green;
   }
 }
 
 .search-container {
+  height: 4rem;
   overflow: hidden;
-  margin-top: -.2rem;
+  padding: .4rem;
+  margin-top: -.6rem;
+  margin-right: -.4rem;
+  box-sizing: border-box;
 }
 
 .search {
-  height: 3.2rem;
-  width: 100%;
   @extend .input-text;
-  float: right;
-
+  float: left;
   &:focus {
     outline: none;
     border-color: $green;
+    @include box-shadow-1(rgb($green,.16));
   }
 
   &::placeholder {
@@ -377,18 +386,23 @@ input[type='radio'] {
   padding: 1.4rem 1.6rem;
   overflow: auto;
   margin-top: .2rem;
+  margin-right: .4rem;
   color: $text-grey;
   font-size: $size-14;
   line-height: 1.2;
-  @include box-shadow-1;
-  display: none;
+  box-sizing: border-box;
+  @include box-shadow-1(rgb($grey-color,.6));
+  position: relative;
+  z-index: 40;
+  //display: none;
+
   a {
-    color: $text-grey;
+    color: $text-color;
     cursor: pointer;
     line-height: 1.8rem;
 
     &:hover {
-      color: $green;
+      color: $green !important;
     }
   }
 }
@@ -424,97 +438,92 @@ input[type='radio'] {
   overflow: auto;
   box-sizing: border-box;
   padding: 1.6rem;
+  //background: #a4a4a4;
 }
 
 .list-wrapper {
   font-size: $size-16;
   overflow: hidden;
+
   ul {
     display: block;
     position: relative;
-    z-index: 10;
+
     &:before {
       @include pseudo-element($w: .1rem, $h: 100%, $p: absolute);
       box-sizing: border-box;
-      margin-left: .8rem;
-      bottom: 0;
-      top: -.1rem;
+      //top: 1.3rem;
+      top: -.5rem;
+      left: .8rem;
+      z-index: 15;
+      margin-bottom: .8rem;
       background: $border-color;
     }
   }
 
-  ul > li {
+  ul li {
     width: 100%;
     list-style: none;
     margin-left: 0 !important;
     position: relative;
     line-height: 1;
-    padding-left: .8rem;
     box-sizing: border-box;
-
-    &:before {
-      @include pseudo-element($w: 1.4rem);
-      //background: $border-color;
-      background: $border-color;
-      left: .8rem;
-      top: 1.3rem;
-      position: absolute;
-      z-index: 26;
-    }
-
-    &:last-of-type:after {
-      @include pseudo-element($w: .3rem, $h: 100%, $p: absolute);
-      left: .7rem;
-      top: 1.4rem;
-      background: #ffffff;
-      z-index: 22;
-    }
+    overflow: hidden;
   }
 }
 
-.list-wrapper > ul > li:first-child {
-  margin-top: 0;
+.list-wrapper ul li i {
+  float: left;
+  margin-top: .5rem;
+  margin-left: .05rem;
+  background: white;
+  @include border-radius(.3rem);
+  position: relative;
+  z-index: 20;
+  cursor: pointer;
+  //display: none;
 }
 
-.list-wrapper > ul > li:first-child > a:before {
-  @include pseudo-element($w: .2rem, $h: 100%, $p: absolute);
-  left: -0.2rem;
-  bottom: 1.3rem;
-  background: #ffffff;
-  z-index: 22;
-}
-
-.list-wrapper ul > li > ul {
-  margin-left: 1.2rem !important;
-  margin-top: -0.3rem;
-  padding-top: .3rem;
-}
-
-.list-wrapper ul > li > a {
+.list-wrapper ul li a {
   display: block;
   position: relative;
-  z-index: 25;
+  z-index: 18;
   font-weight: normal;
   color: $grey-color-dark;
-  padding: .3rem .3rem .3rem .2rem;
-  margin-left: .1rem;
-  div {
-    position: relative;
-    margin-left: 1.3rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  padding: .5rem .6rem;
+  margin-bottom: .1rem;
+  margin-left: 2.2rem;
+  box-sizing: border-box;
+  line-height: 1 !important;
+  background: transparent;
+  //background: #0e90d2;
+  @include border-radius(.5rem);
+
+  &:before {
+    @include pseudo-element($w: 1.8rem, $p: absolute);
+    left: -1.4rem;
+    top: 1.2rem;
+    background: $border-color;
   }
+
+  div {
+    //background: #00cdac;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    z-index: 18;
+  }
+
+  p {
+    float: left;
+    margin-right: .4rem;
+    display: table-cell;
+  }
+
   &:hover {
-    color: $green;
-    @extend .active;
     div {
       white-space: wrap;
-    }
-    p {
-      float: left;
-      margin-right: .5rem;
-      display: table-cell;
     }
     span {
       display: table-cell;
@@ -523,15 +532,42 @@ input[type='radio'] {
   }
 }
 
-.list-wrapper ul > li > i {
-  float: left;
+.list-wrapper ul li:hover {
+  & > a {
+    color: $green;
+    background: $code-bg-color;
+    &:before {width: 1.3rem;}
+  }
+  & > .iconfont {
+    color: $green;
+  }
+}
+
+.list-wrapper > ul > li:first-child > a:after {
+  @include pseudo-element($w: .3rem, $h: 50%, $p: absolute);
+  top: 0;
+  left: -1.5rem;
   background: white;
-  top: 0.5rem;
-  left: -0.8rem;
-  margin-right: -2rem;
-  position: relative;
-  z-index: 30;
-  @include border-radius(.3rem);
+}
+
+.list-wrapper ul li ul {
+  margin-left: 2.4rem !important;
+  margin-top: .1rem;
+
+  & li:first-child:before {
+    @include pseudo-element($w: .1rem, $h: 1.4rem, $p: absolute);
+    top: -.1rem;
+    left: .8rem;
+    background: $border-color;
+  }
+
+  & li:last-child:before {
+    @include pseudo-element($w: .3rem, $h: 100%, $p: absolute);
+    top: 1.3rem;
+    left: .7rem;
+    background: white;
+    z-index: 15;
+  }
 }
 
 /*bottom-container*/
@@ -552,6 +588,7 @@ input[type='radio'] {
     margin-right: 2.6rem;
     position: relative;
   }
+
   .iconfont {
     font-size: 2rem;
     line-height: 4rem;
@@ -561,37 +598,58 @@ input[type='radio'] {
       cursor: pointer;
     }
   }
-  .icon-quit{
+
+  .icon-quit {
     font-size: 2.2rem;
   }
 }
-.structure:hover{
-  .structure-child{display: block;}
+
+.structure:hover {
+  .structure-child {
+    display: block;
+  }
 }
+
 .structure-child {
-  width: 10rem;
+  //width: 10rem;
   background: white;
   position: absolute;
   bottom: 4rem;
-  left: -4rem;
-  padding-top: .8rem;
+  left: -5.9rem;
+  padding: 1rem 1.5rem 0;
   @include border-default();
-  @include border-radius($size: 0.5rem);
+  @include border-radius($size: 0.6rem);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-bottom-color: white;
-  @include box-shadow-2(rgb($grey-color,.7));
+  @include box-shadow-2(rgb($grey-color, .7));
   box-sizing: border-box;
-  display: none;
+  overflow: hidden;
+  //display: none;
   li {
-    text-align: center;
     margin-left: 0 !important;
-    margin-bottom: .8rem;
+    padding: 0 1rem;
     cursor: pointer;
     overflow: hidden;
-    &:hover{
+    margin-bottom: .8rem;
+    text-align: left;
+    white-space: nowrap;
+    position: relative;
+    box-sizing: border-box;
+
+    &:hover {
       color: $green;
     }
+    &:first-child,&:nth-of-type(2){
+      padding-bottom: .8rem;
+      border-bottom:.1rem dashed $border-color;
+    }
+    &:last-child{
+      padding-bottom: .8rem;
+      margin-bottom: 0;
+      border-bottom:.1rem dashed $border-color;
+    }
+
   }
 
   li label {
@@ -621,8 +679,9 @@ input[type='radio'] {
     }
   }
 }
+
 /*switch-button*/
-#switch-button{
+#switch-button {
   position: absolute;
   top: 0;
   left: 1.6rem;
@@ -632,25 +691,31 @@ input[type='radio'] {
   cursor: pointer;
   text-align: center;
   box-sizing: border-box;
-  i{
+
+  i {
     display: block;
     position: relative;
     top: 0;
     left: .8rem;
     color: $green;
     font-size: 4rem;
-    text-shadow: 0 0 .4rem $text-grey;
     margin-top: .6rem;
     margin-left: -1.2rem;
   }
-  .icon-catalog-close{
+
+  .icon-label {
+    text-shadow: 0 0 .4rem $text-grey;
+  }
+
+  .icon-catalog-close {
     font-size: 1.4rem;
     font-weight: bold;
     color: white;
-    top:-3.6rem;
+    top: -3.6rem;
     left: .65rem;
   }
-  &:hover .icon-label{
+
+  &:hover .icon-label {
     color: $orange;
   }
 }
@@ -677,10 +742,10 @@ html[theme=dark] {
 }
 
 @media screen and (max-width: 768px) {
-  .body-container{
+  .body-container {
     height: 100vh;
   }
-  #left-container{
+  #left-container {
     width: 20rem;
   }
   #right-container {
@@ -693,14 +758,14 @@ html[theme=dark] {
   }
   #content {
     width: 100%;
-    color: green;
   }
 }
-@media screen and (min-width: 769px) and (max-width: 992px){
-  .body-container{
+
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  .body-container {
     height: 100vh;
   }
-  #left-container{
+  #left-container {
     width: 20rem;
   }
   #right-container {
@@ -711,8 +776,9 @@ html[theme=dark] {
     width: 100%;
   }
 }
+
 @media screen and (min-width: 993px) and (max-width: 1200px) {
-  .body-container{
+  .body-container {
     height: 100vh;
   }
 

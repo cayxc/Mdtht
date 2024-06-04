@@ -14,24 +14,28 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-launchC:before {
+  content: "\e731";
+}
+
+.icon-retractA:before {
+  content: "\e747";
+}
+
+.icon-branchB:before {
+  content: "\e618";
+}
+
+.icon-branch:before {
+  content: "\e6a5";
+}
+
+.icon-catalog-closeB:before {
+  content: "\e62f";
+}
+
 .icon-label:before {
   content: "\e77e";
-}
-
-.icon-catalog-1:before {
-  content: "\e62d";
-}
-
-.icon-catalog-2:before {
-  content: "\e6b2";
-}
-
-.icon-catalog-3:before {
-  content: "\e628";
-}
-
-.icon-quitB:before {
-  content: "\e6af";
 }
 
 .icon-quit:before {
@@ -46,16 +50,8 @@
   content: "\e74b";
 }
 
-.icon-launchC:before {
-  content: "\e600";
-}
-
 .icon-retractC:before {
   content: "\e604";
-}
-
-.icon-launchC-2:before {
-  content: "\e602";
 }
 
 .icon-search:before {
@@ -74,10 +70,6 @@
   content: "\e613";
 }
 
-.icon-menu:before {
-  content: "\e71c";
-}
-
 .icon-sun:before {
   content: "\e603";
 }
@@ -88,10 +80,6 @@
 
 .icon-moon:before {
   content: "\e60c";
-}
-
-.icon-retractA:before {
-  content: "\e63b";
 }
 
 .icon-menu-index:before {
@@ -105,6 +93,7 @@
 .icon-launchA:before {
   content: "\e748";
 }
+
 /*colors*/
 $body-bg-color: #ffffff;
 $border-color: #d0d0d0;
@@ -203,16 +192,16 @@ $size-10: 1.0rem;
 }
 
 /*after/before content style*/
-@mixin pseudo-element($c:"",$w:1rem,$h:.1rem,$p:relative) {
+@mixin pseudo-element($c:"",$w:.5rem,$h:.1rem,$p:relative) {
   content: $c;
   display: inline-block;
   width: $w;
   height: $h;
   position: $p;
-  z-index: 20;
+  z-index: 10;
 }
 
-@mixin bag-border-dark($bag:$dark-bag2,$bor:$grey-color-dark){
+@mixin bag-border-dark($bag:$dark-bag2,$bor:$grey-color-dark) {
   background: $bag;
   border-color: $bor;
 }
@@ -222,7 +211,7 @@ $size-10: 1.0rem;
   -webkit-box-shadow: 0 .1rem .2rem .2rem $color;
   -moz-box-shadow: 0 .1rem .2rem .2rem $color;
   -o-box-shadow: 0 .1rem .2rem .2rem $color;
-  box-shadow:0 .1rem .2rem .2rem $color;
+  box-shadow: 0 .1rem .2rem .2rem $color;
 }
 
 //box-shadow-2
@@ -232,19 +221,20 @@ $size-10: 1.0rem;
   -moz-box-shadow: 0 -.2rem .2rem $color;
   -o-box-shadow: 0 -.2rem .2rem $color;
 }
+
 //box-shadow-3
 @mixin box-shadow-3($color:$grey-color) {
   -webkit-box-shadow: 0 0 .2rem .2rem $color;
   -moz-box-shadow: 0 0 .2rem .2rem $color;
   -o-box-shadow: 0 0 .2rem .2rem $color;
-  box-shadow:0 0 .2rem .2rem $color;
+  box-shadow: 0 0 .2rem .2rem $color;
 }
 
 .active {
   background: $code-bg-color;
   @include border-radius(.4rem);
   position: relative;
-  z-index: 25;
+  z-index: 12;
 }
 
 /*input checkbox no-style*/
@@ -271,11 +261,13 @@ $size-10: 1.0rem;
 /*input text no-style*/
 .input-text {
   display: inline-block;
+  width: 100%;
+  height: 100%;
   border: 1px solid $border-color;
   padding: 0 .6rem;
   @include border-radius(.5rem);
-  outline: none;
   box-sizing: border-box;
+  outline: none;
 }
 
 /*  Custom input placeholder*/
@@ -338,6 +330,9 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 
 /*theme dark style*/
 @mixin theme-dark {
+  body{
+    text-shadow: .075rem .075rem .075rem rgb($text-dark,.1);
+  }
   & {
     background-color: $dark-bag;
     color: $text-dark;
@@ -358,69 +353,86 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   kbd {
     background-color: $title-color2;
   }
-  code,pre {
-    @include bag-border-dark($code-bg-dark,$grey-color-dark);
+  code, pre {
+    @include bag-border-dark($code-bg-dark, $grey-color-dark);
   }
 
   table {
     @include table-style($bd-color: $grey-color-dark, $bg-color: $code-bg-dark);
   }
-  #right-container,
-  #left-container,
-  .top-container,
-  .bottom-container,
-  .list-wrapper ul > li > i {
-    background: $dark-bag;
-    color: $text-dark;
-    border-color: $grey-color-dark;
-  }
-  .catalog-button {
-    color: $grey-color-dark;
-
-    &:hover {
-      color: $green;
-    }
-  }
   input {
-    @include bag-border-dark($dark-bag2,$grey-color-dark);
+    @include bag-border-dark($dark-bag2, $grey-color-dark);
     color: $text-dark;
 
     &::placeholder {
       color: $text-grey-dark;
     }
   }
-  .search-result{
-    @include bag-border-dark();
-    @include box-shadow-2($dark-bag);
+  .iconfont {
+    text-shadow: .1rem .1rem .1rem rgb($dark-bag2,1);
+    &:hover{
+      text-shadow: .1rem .1rem .1rem rgb($green,.2);
+    }
   }
-  .list-wrapper ul > li > i {
-    color: $dark-bag2;
-  }
-  .list-wrapper ul:before,
-  .list-wrapper ul > li:before {
-    background: $grey-color-dark;
-  }
-  .list-wrapper ul > li:last-of-type:after,
-  .list-wrapper > ul > li:first-child > a:before {
+  #right-container,
+  #left-container,
+  .top-container,
+  .bottom-container {
     background: $dark-bag;
-  }
-  .list-wrapper a {
     color: $text-dark;
+    border-color: $grey-color-dark;
   }
-  .list-wrapper ul > li > a:hover {
-    background: $dark-bag2;
+  .list-wrapper {
+    .iconfont {
+      color: $grey-color-dark;
+      background: $dark-bag;
+    }
+    a {
+      color: $text-dark;
+    }
+
+    ul, li, a {
+      &:after, &:before {
+        background: $grey-color-dark;
+      }
+    }
+    & ul li:hover {
+      & > a {
+        background: $dark-bag2;
+      }
+    }
+
+    & ul li ul li:last-child:before,
+    & > ul > li:first-child > a:after {
+      background: $dark-bag;
+    }
+  }
+
+  .search-result {
+    @include bag-border-dark();
+    @include box-shadow-1(rgb($green,.15));
+    a{color: $text-dark;}
   }
   .structure-child {
-    @include bag-border-dark($dark-bag,$grey-color-dark);
+    @include bag-border-dark($dark-bag, $grey-color-dark);
     border-bottom-color: $dark-bag;
-    @include box-shadow-2(rgb($green,.15));
-
+    @include box-shadow-2(rgb($green, .15));
   }
-  /* 滑块背景色 */
+  #switch-button {
+    .icon-catalog-close {
+      color: $text-dark;
+    }
+
+    .icon-label {
+      text-shadow: 0 0 .4rem rgb($green, .75);
+    }
+  }
+
+  //滑块背景色
   ::-webkit-scrollbar-thumb {
     background: $grey-color-dark;
   }
-  /* 其余相关样式设置跟滑块一个背景色 */
+  //其余相关样式设置跟滑块一个背景色
   ::-webkit-scrollbar,
   ::-webkit-scrollbar-corner,
   ::-webkit-resizer,

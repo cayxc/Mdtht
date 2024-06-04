@@ -10,7 +10,6 @@ if(osThemeIsDark && htmlElement.getAttribute('theme') != 'dark'){
 //监听系统主题变化
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", event => {
   //event.matches: dark => true
-  // console.log(event.matches);
   event.matches ? htmlElement.setAttribute("theme","dark") : htmlElement.removeAttribute("theme");
 });
 
