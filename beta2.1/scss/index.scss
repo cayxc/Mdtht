@@ -20,7 +20,7 @@ body {
   font-size: $size-16;
   line-height: 2.6rem;
   box-sizing: border-box;
-  text-shadow: .075rem .075rem .075rem rgb($border-color,.75);
+  @include text-shadow();
 }
 
 //标题
@@ -267,22 +267,25 @@ input[type='radio'] {
   }
 }
 
-.body-container {
+#body-container {
   position: relative;
-  width: 100%;
+  width: 100vw;
+  margin: auto;
   box-sizing: border-box;
+  display: -webkit-box;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
 }
 
 /*left-containe*/
 #left-container {
   width: 28rem;
-  float: left;
   background: white;
   border-right: 1px solid $border-color;
   padding: 0 0 1.6rem 0;
   z-index: 20;
   position: relative;
-  height: 100vh;
   box-sizing: border-box;
   line-height: 2rem;
   overflow: hidden;
@@ -293,23 +296,20 @@ input[type='radio'] {
 
 /*right-containe*/
 #right-container {
-  background: white;
   width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding-left: 28rem;
-  padding-bottom: 3.2rem;
+  height: 100vh;
   overflow: auto;
   box-sizing: border-box;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  -webkit-justify-content: center;
 }
 
 #content {
-  width: 100rem;
-  margin: 0 auto;
+  width: 110rem;
   box-sizing: border-box;
-  overflow: hidden;
+  padding: 0 5rem;
 }
 
 /*top-container*/
@@ -364,9 +364,9 @@ input[type='radio'] {
 
 .search-icon {
   position: absolute;
-  font-size: $size-22;
-  right: .4rem;
-  top: .4rem;
+  font-size: $size-12;
+  right: 2.3rem;
+  top: 1.8rem;
   cursor: pointer;
   display: none;
   line-height: 2.3rem;
@@ -391,7 +391,7 @@ input[type='radio'] {
   @include box-shadow-1(rgb($grey-color,.6));
   position: relative;
   z-index: 40;
-  //display: none;
+  display: none;
 
   a {
     color: $text-color;
@@ -542,7 +542,7 @@ input[type='radio'] {
 
 .list-wrapper > ul > li:first-child > a:after {
   @include pseudo-element($w: .3rem, $h: 50%, $p: absolute);
-  top: 0;
+  top: -.1rem;
   left: -1.5rem;
   background: white;
 }
@@ -580,7 +580,7 @@ input[type='radio'] {
   border-top: 1px solid $border-color;
   color: $text-grey;
 
-  .mode, .index, .structure {
+  .mode, .index, .structure, .quit-menu {
     float: left;
     margin-right: 2.6rem;
     position: relative;
@@ -622,7 +622,7 @@ input[type='radio'] {
   @include box-shadow-2(rgb($grey-color, .7));
   box-sizing: border-box;
   overflow: hidden;
-  //display: none;
+  display: none;
   li {
     margin-left: 0 !important;
     padding: 0 1rem;
@@ -688,6 +688,7 @@ input[type='radio'] {
   cursor: pointer;
   text-align: center;
   box-sizing: border-box;
+  display: none;
 
   i {
     display: block;
@@ -718,6 +719,14 @@ input[type='radio'] {
     color: $orange;
   }
 }
+//note-tips
+.note-tips{
+  line-height: 2rem;
+  font-size: 1.3rem;
+  padding: 1.6rem 0;
+  border-top: .1rem solid $border-color;
+  color: $border-color;
+}
 
 /*scroll style*/
 html {
@@ -741,75 +750,52 @@ html[theme=dark] {
 }
 
 @media screen and (max-width: 768px) {
-  .body-container {
-    height: 100vh;
-  }
   #left-container {
     width: 20rem;
     display: none;
   }
-  #right-container {
-    padding-left: 23rem;
-    padding-right: 3rem;
-  }
-
-  #right-container {
-    padding: 0 3rem 1.4rem;
-  }
   #content {
-    width: 100%;
+    width:100%;
+    padding: 0 3rem;
+  }
+  #switch-button{
+    display: block;
   }
 }
 
 @media screen and (min-width: 769px) and (max-width: 992px) {
-  .body-container {
-    height: 100vh;
-  }
   #left-container {
-    width: 23rem;
-  }
-  #right-container {
-    padding-left: 26rem;
-    padding-right: 3rem;
+    width: 24rem;
   }
   #content {
-    width: 100%;
+    width:100%;
+    padding: 0 3rem;
   }
 }
 
 @media screen and (min-width: 993px) and (max-width: 1200px) {
-  .body-container {
-    height: 100vh;
-  }
 
-  #right-container {
-    padding-left: 33rem;
-    padding-right: 5rem;
-  }
   #content {
     width: 100%;
+    padding: 0 4rem;
   }
+
 }
 
 @media screen and (min-width: 1201px) and (max-width: 1920px) {
-  .body-container {
-    height: 100vh;
-  }
   #right-container {
-    padding-left: 38rem;
-    padding-right: 10rem;
     border: none;
   }
   #content {
-    width: 100%;
+    width:100%;
     max-width: 120rem;
+    padding:0 5rem;
   }
 }
 
 @media screen and (min-width: 1921px) {
-  .body-container {
+  #body-container {
     width: 178rem;
-    height: 100vh;
     margin: auto;
   }
   #left-container {
@@ -817,14 +803,13 @@ html[theme=dark] {
     border-left-width: .1rem;
   }
   #right-container {
-    padding-left: 38rem;
-    padding-right: 10rem;
     border-right-style: solid;
     border-left-style: solid;
     border-left-width: .1rem;
   }
   #content {
-    width: 120rem;
-    margin: auto;
+    width:100%;
+    max-width: 120rem;
+    padding: 0 5rem;
   }
 }

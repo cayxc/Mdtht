@@ -95,6 +95,7 @@
 }
 
 /*colors*/
+
 $body-bg-color: #ffffff;
 $border-color: #d0d0d0;
 $grey-color: #d9d9d9;
@@ -230,6 +231,10 @@ $size-10: 1.0rem;
   -o-box-shadow: 0 0 .2rem .2rem $color;
 }
 
+@mixin text-shadow($x:.075rem,$y:.075rem,$s:.075rem,$c:rgb($border-color,.75)){
+  text-shadow: $x $y $s $c;
+}
+
 .active {
   background: $code-bg-color;
   @include border-radius(.4rem);
@@ -331,7 +336,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 /*theme dark style*/
 @mixin theme-dark {
   body{
-    text-shadow: .075rem .075rem .075rem rgb($dark-bag,.75);
+    @include text-shadow($c:rgb($dark-bag,.75));
   }
   & {
     background-color: $dark-bag;
