@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4571070 */
-  src: url('iconfont.woff2?t=1717424978763') format('woff2'),
-       url('iconfont.woff?t=1717424978763') format('woff'),
-       url('iconfont.ttf?t=1717424978763') format('truetype');
+  src: url('iconfont.woff2?t=1717598673017') format('woff2'),
+       url('iconfont.woff?t=1717598673017') format('woff'),
+       url('iconfont.ttf?t=1717598673017') format('truetype');
 }
 
 .iconfont {
@@ -13,24 +13,28 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-launchC:before {
+  content: "\e731";
+}
+
+.icon-retractA:before {
+  content: "\e747";
+}
+
+.icon-branchB:before {
+  content: "\e618";
+}
+
+.icon-branch:before {
+  content: "\e6a5";
+}
+
+.icon-catalog-closeB:before {
+  content: "\e62f";
+}
+
 .icon-label:before {
   content: "\e77e";
-}
-
-.icon-catalog-1:before {
-  content: "\e62d";
-}
-
-.icon-catalog-2:before {
-  content: "\e6b2";
-}
-
-.icon-catalog-3:before {
-  content: "\e628";
-}
-
-.icon-quitB:before {
-  content: "\e6af";
 }
 
 .icon-quit:before {
@@ -45,16 +49,8 @@
   content: "\e74b";
 }
 
-.icon-launchC:before {
-  content: "\e600";
-}
-
 .icon-retractC:before {
   content: "\e604";
-}
-
-.icon-launchC-2:before {
-  content: "\e602";
 }
 
 .icon-search:before {
@@ -73,10 +69,6 @@
   content: "\e613";
 }
 
-.icon-menu:before {
-  content: "\e71c";
-}
-
 .icon-sun:before {
   content: "\e603";
 }
@@ -87,10 +79,6 @@
 
 .icon-moon:before {
   content: "\e60c";
-}
-
-.icon-retractA:before {
-  content: "\e63b";
 }
 
 .icon-menu-index:before {

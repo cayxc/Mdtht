@@ -37,70 +37,72 @@ class Mdac {
   //openShadow   是否开启文字阴影
   constructor(
       showIndex = true, indexStyle = 1, openDark = false, showTree = true,
-      openShadow = true) {
+      openShadow                                                   = true) {
     objThis = this; //当前对象的 this
-    if ((typeof showIndex) !== 'boolean') {
-      showIndex = true;
-      console.error('传入参数类型有误，已按照默认配置执行，该参数类型为：Boolean');
+    try {
+      if ((typeof showIndex) != 'boolean') {
+        showIndex = true;
+        throw '参数: showIndex 类型有误，已按照默认配置执行，该参数类型为：Boolean';
+      }
+      if ((typeof indexStyle) != 'number') {
+        indexStyle = 1;
+        throw '参数: indexStyle 类型有误，已按照默认配置执行，该参数类型为：Number';
+      }
+      if ((typeof openDark) != 'boolean') {
+        openDark = false;
+        throw '参数: openDark 类型有误，已按照默认配置执行，该参数类型为：Boolean';
+      }
+      if ((typeof showTree) != 'boolean') {
+        openDark = false;
+        throw '参数: showTree 类型有误，已按照默认配置执行，该参数类型为：Boolean';
+      }
+      if ((typeof openShadow) != 'boolean') {
+        openDark = false;
+        throw '参数: openShadow 类型有误，已按照默认配置执行，该参数类型为：Boolean';
+      }
+    } catch (error) {
+      alert(error);
+    } finally {
+      this.showIndex = showIndex;
+      this.indexStyle = indexStyle;
+      this.openDark = openDark;
+      this.openDark = showTree;
+      this.openDark = openShadow;
+      indexStyleNumber = indexStyle;
+      originShowIndex = showIndex;
+      //目录构建
+      if ((document.querySelector('#body-container')) == null) { //替换文档内容，防止重复生成
+        this.replaceOld();
+      }
+      //样式控制节点元素
+      this.bodyContainer = document.querySelector('#body-container');
+      this.leftElement = document.querySelector('#left-container');
+      this.rightElement = document.querySelector('#right-container');
+      this.content = document.querySelector('#content');
+      this.quitElement = document.querySelector('.quit-menu');
+      this.listElement = document.querySelector('.list-wrapper');
+      this.switchButton = document.querySelector('#switch-button');
+      this.asideButton = document.querySelector('.catalog-button');
+      this.switchListButton = document.querySelector('.quit-menu');
+      this.viewModeButton = document.querySelector('.mode');
+      this.allIcon = this.listElement.children[0].querySelectorAll('i');
+      this.allChildLevel = this.listElement.children[0].querySelectorAll('ul');
+      this.allCatalogElement = this.listElement.querySelectorAll('a');
+      this.showIndexEl = document.querySelector('.index');
+      this.allIndex = this.listElement.querySelectorAll('p');
+      //样式控制
+      this.haveChileLevel();
+      this.switchCatalog();
+      this.switchCatalogList();
+      this.switchParentCatalog();
+      this.singLeCatalogClick();
+      this.catalogTrack();
+      this.showCatalogIndex();
+      this.choseCatalogStyle();
+      this.searchCatalog();
+      //主题随系统变化
+      this.themeChange();
     }
-    if ((typeof indexStyle) !== 'number') {
-      indexStyle = 1;
-      console.error('传入参数类型有误，已按照默认配置执行，该参数类型为：Number');
-    }
-    if ((typeof openDark) !== 'boolean') {
-      openDark = false;
-      console.error('传入参数类型有误，已按照默认配置执行，该参数类型为：Boolean');
-    }
-    if ((typeof showTree) !== 'boolean') {
-      openDark = false;
-      console.error('传入参数类型有误，已按照默认配置执行，该参数类型为：Boolean');
-    }
-    if ((typeof openShadow) !== 'boolean') {
-      openDark = false;
-      console.error('传入参数类型有误，已按照默认配置执行，该参数类型为：Boolean');
-    }
-    this.showIndex = showIndex;
-    this.indexStyle = indexStyle;
-    this.openDark = openDark;
-    this.openDark = showTree;
-    this.openDark = openShadow;
-    indexStyleNumber = indexStyle;
-    originShowIndex = showIndex;
-
-    //目录构建
-    if ((document.querySelector('#body-container')) == null) { //替换文档内容，防止重复生成
-      this.replaceOld();
-    }
-    //样式控制节点元素
-    this.bodyContainer = document.querySelector('#body-container');
-    this.leftElement = document.querySelector('#left-container');
-    this.rightElement = document.querySelector('#right-container');
-    this.content = document.querySelector('#content');
-    this.quitElement = document.querySelector('.quit-menu');
-    this.listElement = document.querySelector('.list-wrapper');
-    this.switchButton = document.querySelector('#switch-button');
-    this.asideButton = document.querySelector('.catalog-button');
-    this.switchListButton = document.querySelector('.quit-menu');
-    this.viewModeButton = document.querySelector('.mode');
-    this.allIcon = this.listElement.children[0].querySelectorAll('i');
-    this.allChildLevel = this.listElement.children[0].querySelectorAll('ul');
-    this.allCatalogElement = this.listElement.querySelectorAll('a');
-    this.showIndexEl = document.querySelector('.index');
-    this.allIndex = this.listElement.querySelectorAll('p');
-    //样式控制
-    this.haveChileLevel();
-    this.switchCatalog();
-    this.switchCatalogList();
-    this.switchParentCatalog();
-    this.singLeCatalogClick();
-    this.catalogTrack();
-    this.nightView();
-    this.showCatalogIndex();
-    this.choseCatalogStyle();
-    this.searchCatalog();
-    //主题随系统变化
-    this.themeChange();
-
   }
 
   /*
@@ -145,14 +147,19 @@ class Mdac {
     }
     //目录样式
     let indexStyleElement = '';
-    let styleIndex = ['A','B','C'];
+    let styleIndex = ['A', 'B', 'C'];
     for (let i = 1, len = 3; i <= len; i++) {
       if (this.indexStyle == i) {
-        indexStyleElement += '<li>' + '<input type="radio" id="style'+styleIndex[i+1] +'" name="catalogStyle" value="'+i+'" checked="checked">\n' +
-            '<label for="style'+styleIndex[i-1]+'">Style-'+ styleIndex[i-1]+'</label>'+ '</li>';
+        indexStyleElement += '<li>' + '<input type="radio" id="style' +
+            styleIndex[i + 1] + '" name="catalogStyle" value="' + i +
+            '" checked="checked">\n' +
+            '<label for="style' + styleIndex[i - 1] + '">Style-' +
+            styleIndex[i - 1] + '</label>' + '</li>';
       } else {
-        indexStyleElement += '<li>' + '<input type="radio" id="style'+styleIndex[i+1] +'" name="catalogStyle" value="'+i+'">\n' +
-            '<label for="style'+styleIndex[i-1]+'">Style-'+ styleIndex[i-1]+'</label>'+ '</li>';
+        indexStyleElement += '<li>' + '<input type="radio" id="style' +
+            styleIndex[i + 1] + '" name="catalogStyle" value="' + i + '">\n' +
+            '<label for="style' + styleIndex[i - 1] + '">Style-' +
+            styleIndex[i - 1] + '</label>' + '</li>';
       }
     }
     leftBlock.innerHTML = '\n<header class="top-container">\n' +
@@ -172,7 +179,8 @@ class Mdac {
         '            <div class="mode">\n' +
         '                <i class="iconfont ' + modeStyleClass + '"></i>\n' +
         '            </div>\n' +
-        '            <div class="index" title="显示/隐藏目录索引编号">\n' + indexItem + '</div>\n' +
+        '            <div class="index" title="显示/隐藏目录索引编号">\n' +
+        indexItem + '</div>\n' +
         '            <div class="structure" title="切换目录样式图标">\n' +
         '                <i class="iconfont icon-style"></i>\n' +
         '                <ul class="structure-child">\n' +
@@ -191,15 +199,15 @@ class Mdac {
         '                </div>\n' +
         '            </div>\n' +
         '        </footer>\n' +
-        '    </div>\n' +
-        '   <div id="switch-button">\n' +
-        '   <i class="iconfont icon-label"></i>\n' +
-        '   <i class="iconfont icon-catalog-close"></i>\n' +
-        '   </div>\n';
+        '    </div>\n';
     //4.设置内容父级元素的内容结构
     rightBlock.innerHTML = '\n<div id="content">\n' +
         oldContent +
         '\n</div>\n' + '</div>\n';
+    bodyBlock.innerHTML = '<div id="switch-button">\n' +
+        '<i class="iconfont icon-label"></i>\n' +
+        ' <i class="iconfont icon-catalog-close"></i>\n' +
+        '</div>\n';
 
     //5.追加结构元素到页面
     document.body.appendChild(bodyBlock);
@@ -212,29 +220,6 @@ class Mdac {
         '插件地址：<a href="https://github.com/cayxc/MarkdownPad2AutoCatalog" target="_blank"> GitHub地址</a>&emsp;<a href="https://gitee.com/cayxc/MarkdownPad2AutoCatalog" target="_blank">Gitee地址</a></p>\n';
     //5.追加结构元素到页面
     this.noteTips('footer', msg, 'content');
-  }
-
-  /*
-   * ----------------------------------------
-   * 跟随监听系统主题模式（light/dark）
-   * ----------------------------------------
-  */
-  themeChange(){
-    // 查询系统是否使用了dark主题
-    let osThemeIsDark = matchMedia("(prefers-color-scheme: dark)").matches;
-    let htmlElement = document.querySelector('html');
-
-    //系统开启了，但手动没有开启dark主题，没有自定义
-    if(osThemeIsDark && htmlElement.getAttribute('theme') != 'dark'){
-      htmlElement.setAttribute("theme","dark");
-    }
-
-    //监听系统主题变化
-    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", event => {
-      //event.matches: dark => true
-      event.matches ? htmlElement.setAttribute("theme","dark") : htmlElement.removeAttribute("theme");
-    });
-
   }
 
   /**
@@ -458,6 +443,7 @@ class Mdac {
     //5.追加结构元素到页面
     document.getElementById(id).appendChild(exp);
   }
+
   /*
    * ----------------------------------------
    * 创建目录
@@ -519,7 +505,8 @@ class Mdac {
               liElement.innerHTML = '\n<a href="' + window.location.pathname +
                   '#' + levelArr[n].id + '"' + ' class=' + levelArr[n].id +
                   '>\n' +
-                  '<div><p class="' + indexClass + '">' + levelArr[n].id.slice(6) +
+                  '<div><p class="' + indexClass + '">' +
+                  levelArr[n].id.slice(6) +
                   '</p>\n' +
                   '<span>' + levelArr[n].innerText + '</span></div>' +
                   '</a>\n';
@@ -565,7 +552,7 @@ class Mdac {
     this.createContent();
     this.createCatalogue();
     // 第一个目录默认样式
-    (document.querySelector('.list-wrapper')).querySelector('li').classList.add('js-active');
+    // (document.querySelector('.list-wrapper')).querySelector('li').classList.add('js-active');
   }
 
   /*
@@ -588,28 +575,21 @@ class Mdac {
   switchCatalog() {
     let asideButton = this.asideButton;
     let leftElement = this.leftElement;
-    let rightElement = this.rightElement;
-    // let status = 0;
+    let switchButton = this.switchButton;
+    let status = 0;
+    asideButton.onclick = function() {
+      leftElement.style.display = 'none';
+      switchButton.style.display = 'block';
+    };
     switchButton.onclick = function() {
-      let browsertWidth = document.documentElement.clientWidth;
-      if (status == 1) {
-        this.children[0].setAttribute('class', 'iconfont icon-arrLeft');
-        if (browsertWidth > 750) {
-          leftElement.style.width = '280px';
-        } else {
-          leftElement.style.width = '60%';
-        }
-        leftElement.classList.remove('js-switch-button');
-        rightElement.style.padding = '15px 15px 0 295px';
-        status = 0;
-      } else {
-        this.children[0].setAttribute('class', 'iconfont icon-closeC');
-        leftElement.style.width = '0';
-        leftElement.style.padding = '0';
-        leftElement.classList.add('js-switch-button');
-        leftElement.classList.add('js-switch-button');
-        rightElement.style.padding = '15px 15px 0';
+      if (status == 0) {
+        leftElement.style.display = 'block';
+        this.style.display = 'none';
         status = 1;
+      } else {
+        leftElement.style.display = 'none';
+        this.style.display = 'block';
+        status = 0;
       }
     };
   }
@@ -810,47 +790,54 @@ class Mdac {
   }
 
   /*
-  * ----------------------------------------
-  * 夜览模式
-  * ----------------------------------------
+   * ----------------------------------------
+   * 主题切换（light/dark）
+   * ----------------------------------------
   */
-  nightView() {
-    /*let isDarkMode; //当前是否是夜览模式
-    if ((document.querySelector('.js-night-view')) == null) {
-      isDarkMode = false;
-    } else {
-      isDarkMode = true;
-    }
+  themeChange() {
+    //点击按钮切换模式
     let viewModeButton = this.viewModeButton;
-    let leftElement = this.leftElement;
-    let switchButton = this.switchButton;
+    let htmlElement = document.documentElement;
     viewModeButton.onclick = function() {
-      if (!isDarkMode) {
-        viewModeButton.children[0].setAttribute('class', 'iconfont icon-night');
-        document.body.classList.add('js-night-view');
-        isDarkMode = true;
-        leftElement.style.borderColor = '#3e3d42';
+      let isDarkMode = htmlElement.getAttribute('theme');
+      if (isDarkMode == null) {
+        this.children[0].setAttribute('class', 'iconfont icon-moon');
+        htmlElement.setAttribute('theme', 'dark');
       } else {
-        viewModeButton.children[0].setAttribute('class', 'iconfont icon-sun');
-        document.body.classList.remove('js-night-view');
-        isDarkMode = false;
-        leftElement.style.borderColor = '#ccc';
+        this.children[0].setAttribute('class', 'iconfont icon-sun');
+        htmlElement.removeAttribute('theme');
       }
     };
 
-    //left-container border-color
-    let leftBdColor = leftElement.getAttribute('border-color');
-    switchButton.onmouseover = function() {
-      leftElement.style.borderColor = '#3cae7c';
-    };
-    switchButton.onmouseout = function() {
-      leftElement.style.borderColor = leftBdColor;
-    };*/
+    // 查询系统是否使用了dark主题 osThemeIsDark => true/false;
+    let osThemeIsDark = matchMedia('(prefers-color-scheme: dark)').matches;
+    if (osThemeIsDark) {
+      viewModeButton.children[0].setAttribute('class', 'iconfont icon-moon');
+      htmlElement.setAttribute('theme', 'dark');
+    } else {
+      viewModeButton.children[0].setAttribute('class', 'iconfont icon-sun');
+      htmlElement.removeAttribute('theme');
+    }
+
+    //监听系统主题变化
+    matchMedia('(prefers-color-scheme: dark)').
+        addEventListener('change', event => {
+          //event.matches: dark => true
+          if (event.matches) {
+            viewModeButton.children[0].setAttribute('class',
+                'iconfont icon-moon');
+            document.documentElement.setAttribute('theme', 'dark');
+          } else {
+            viewModeButton.children[0].setAttribute('class',
+                'iconfont icon-sun');
+            document.documentElement.removeAttribute('theme');
+          }
+        });
   }
 
   /*
    * ----------------------------------------
-   * 是否显示目录序号
+   * 显示隐藏目录序号
    * ----------------------------------------
    */
   showCatalogIndex() {
@@ -858,13 +845,13 @@ class Mdac {
     let allIndex = this.allIndex;
     this.showIndexEl.onclick = function() {
       if (!status) { //显示目录序号
-        this.children[0].setAttribute('class', 'iconfont icon-indexA');
+        this.children[0].setAttribute('class', 'iconfont icon-menu-index');
         for (let i = 0, len = allIndex.length; i < len; i++) {
           allIndex[i].classList.remove('js-close');
         }
         status = true;
       } else { //关闭目录序号
-        this.children[0].setAttribute('class', 'iconfont icon-indexB');
+        this.children[0].setAttribute('class', 'iconfont icon-noindex');
         for (let i = 0, len = allIndex.length; i < len; i++) {
           allIndex[i].classList.add('js-close');
         }
@@ -879,43 +866,58 @@ class Mdac {
    * ----------------------------------------
    */
   choseCatalogStyle() {
-    let allStyle = document.querySelector('.structure-child').
-        querySelectorAll('li');
+    let allStyle = document.querySelectorAll('[name="catalogStyle"]');
+
+    //所有的目录
     let allIcon = this.allIcon;
-    for (let i = 0, len1 = allStyle.length; i < len1; i++) {
+    for(let i=0,len = allStyle.length;i<len; i++){
+      allStyle[i].onclick = function() {
+        let styleIndex = allStyle[i].getAttribute('value');
+        //根据style值改变icon-launchA最后的 A 的值
+        for (let j = 0,len2 = allIcon.length;j<len2;j++){
+          // console.log(allIcon[j]);
+        }
+
+      }
+    }
+
+
+
+
+   /* for (let i = 0, len1 = allStyle.length; i < len1; i++) {
       allStyle[i].onclick = function() {
         document.querySelector('.structure-child').
-            querySelector('.active').
+            querySelector('.js-active').
             removeAttribute('class');
-        allStyle[i].setAttribute('class', 'active');
+        allStyle[i].setAttribute('class', 'js-active');
         for (let j = 0, len2 = allIcon.length; j < len2; j++) {
           let isClose = allIcon[j].nextElementSibling.nextElementSibling.getAttribute(
               'class');
           if (i == 0) {
             if (isClose == 'js-close') { //子目录处于关闭状态
-              allIcon[j].setAttribute('class', 'iconfont icon-launchA');
+              allIcon[j].setAttribute('class', 'iconfont icon-retractA');
             } else { //子目录处于打开状态
-              allIcon[j].setAttribute('class', 'iconfont icon-openA');
+              allIcon[j].setAttribute('class', 'iconfont icon-launchA');
             }
             indexStyleNumber = 1;
           } else if (i == 1) {
             if (isClose == 'js-close') { //子目录处于关闭状态
-              allIcon[j].setAttribute('class', 'iconfont icon-closeB');
+              allIcon[j].setAttribute('class', 'iconfont icon-retractB');
             } else { //子目录处于打开状态
-              allIcon[j].setAttribute('class', 'iconfont icon-openB');
+              allIcon[j].setAttribute('class', 'iconfont icon-launchB');
             }
             indexStyleNumber = 2;
           } else {
             if (isClose == 'js-close') { //子目录处于关闭状态
-              allIcon[j].setAttribute('class', 'iconfont icon-closeC');
+              allIcon[j].setAttribute('class', 'iconfont icon-retractC');
             } else { //子目录处于打开状态
-              allIcon[j].setAttribute('class', 'iconfont icon-openC');
+              allIcon[j].setAttribute('class', 'iconfont icon-launchC');
             }
             indexStyleNumber = 3;
           }
         }
       };
-    }
+    }*/
   }
 
   /**

@@ -235,46 +235,6 @@ $size-10: 1.0rem;
   text-shadow: $x $y $s $c;
 }
 
-.active {
-  background: $code-bg-color;
-  @include border-radius(.4rem);
-  position: relative;
-  z-index: 12;
-}
-
-/*input checkbox no-style*/
-.input-checkebox {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  appearance: none;
-  content: "";
-  display: inline-block;
-  position: relative;
-  width: $size-16;
-  height: $size-16;
-  background-color: white;
-  border: 1px solid $title-color;
-  vertical-align: middle;
-  font-size: $size-20;
-  line-height: 1;
-  margin-bottom: 0.3rem;
-  margin-right: 1.2rem;
-  box-sizing: border-box;
-}
-
-/*input text no-style*/
-.input-text {
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  border: 1px solid $border-color;
-  padding: 0 .6rem;
-  @include border-radius(.6rem);
-  box-sizing: border-box;
-  outline: none;
-}
-
 /*  Custom input placeholder*/
 input::-webkit-input-placeholder, /* WebKit browsers */
 input:-moz-placeholder, /* Mozilla Firefox 4 to 18 */
@@ -332,6 +292,53 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   }
 }
 
+/*input checkbox no-style*/
+.input-checkebox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  content: "";
+  display: inline-block;
+  position: relative;
+  width: $size-16;
+  height: $size-16;
+  background-color: white;
+  border: 1px solid $title-color;
+  vertical-align: middle;
+  font-size: $size-20;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+  margin-right: 1.2rem;
+  box-sizing: border-box;
+}
+
+/*input text no-style*/
+.input-text {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid $border-color;
+  padding: 0 .6rem;
+  @include border-radius(.6rem);
+  box-sizing: border-box;
+  outline: none;
+}
+
+.active {
+  background: $code-bg-color;
+  @include border-radius(.4rem);
+  position: relative;
+  z-index: 12;
+}
+.js-close{
+  display: none !important;
+}
+.js-active {
+  color: $green;
+}
+
+//=========================
 
 /*theme dark style*/
 @mixin theme-dark {
@@ -341,6 +348,10 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   & {
     background-color: $dark-bag;
     color: $text-dark;
+  }
+  ::selection {
+    color: $text-dark;
+    text-shadow: none;
   }
   h1, h2, h3, h4, h5, h6 {
     color: $text-dark;
@@ -406,7 +417,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
         background: $dark-bag2;
       }
     }
-
+    & > ul > li:last-child > a:after,
     & ul li ul li:last-child:before,
     & > ul > li:first-child > a:after {
       background: $dark-bag;
@@ -448,5 +459,4 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     background: rgb($grey-color-dark, 0.1);
   }
 }
-
 

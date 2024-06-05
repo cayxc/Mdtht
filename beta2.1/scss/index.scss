@@ -7,7 +7,7 @@
 }
 
 :root {
-  font-family: "PingFang SC", "PingFang", "Helvetica", "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  font-family: "Mono","PingFang SC", "PingFang", "Helvetica", "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
   font-size: 62.5%;
   background-color: $body-bg-color;
   color: $text-color;
@@ -79,6 +79,7 @@ hr {
 ::selection {
   background: rgb($green, .75);
   color: $text-color;
+  text-shadow: none;
 }
 
 a {
@@ -275,7 +276,6 @@ input[type='radio'] {
   display: -webkit-box;
   display: flex;
   justify-content: space-between;
-  padding: 5px;
 }
 
 /*left-containe*/
@@ -283,10 +283,8 @@ input[type='radio'] {
   width: 28rem;
   background: white;
   border-right: 1px solid $border-color;
-  padding: 0 0 1.6rem 0;
   z-index: 20;
   position: relative;
-  box-sizing: border-box;
   line-height: 2rem;
   overflow: hidden;
   a {
@@ -546,6 +544,12 @@ input[type='radio'] {
   left: -1.5rem;
   background: white;
 }
+.list-wrapper > ul > li:last-child > a:after  {
+  @include pseudo-element($w: .3rem, $h:100%,$p: absolute);
+  left: -1.5rem;
+  top: 1.3rem;
+  background: white;
+}
 
 .list-wrapper ul li ul {
   margin-left: 2.4rem !important;
@@ -582,8 +586,11 @@ input[type='radio'] {
 
   .mode, .index, .structure, .quit-menu {
     float: left;
-    margin-right: 2.6rem;
     position: relative;
+    margin-right: 14%;
+  }
+  .quit-menu{
+    margin-right: 0 !important;
   }
 
   .iconfont {
@@ -606,6 +613,7 @@ input[type='radio'] {
     display: block;
   }
 }
+
 
 .structure-child {
   //width: 10rem;
@@ -710,7 +718,8 @@ input[type='radio'] {
     font-size: 1.6rem;
     font-weight: bold;
     color: white;
-    top: -.8rem;
+    top: -1rem;
+    padding-top: .2rem;
     left: 0;
     text-shadow: none;
   }
@@ -743,12 +752,6 @@ html[theme=dark] {
 }
 
 /*@media*/
-@media (prefers-color-scheme: dark) {
-  html {
-    @include theme-dark;
-  }
-}
-
 @media screen and (max-width: 768px) {
   #left-container {
     width: 20rem;

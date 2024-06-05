@@ -99,15 +99,32 @@
 /*code style*/
 /*table style*/
 /*after/before content style*/
-.active {
-  background: rgb(238, 238, 238);
-  border-radius: 0.4rem;
-  -webkit-border-radius: 0.4rem;
-  -moz-border-radius: 0.4rem;
-  position: relative;
-  z-index: 12;
+/*  Custom input placeholder*/
+input::-webkit-input-placeholder,
+input:-moz-placeholder,
+input::-moz-placeholder,
+input:-ms-input-placeholder {
+  color: #999999;
 }
 
+/*  Custom input placeholder*/
+input::-webkit-input-placeholder { /* WebKit browsers */
+  color: #999999;
+}
+
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #999999;
+}
+
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #999999;
+}
+
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: #999999;
+}
+
+/*  Custom Scroll*/
 /*input checkbox no-style*/
 .input-checkebox, input[type=checkbox], input[type=radio] {
   -webkit-appearance: none;
@@ -143,32 +160,23 @@
   outline: none;
 }
 
-/*  Custom input placeholder*/
-input::-webkit-input-placeholder,
-input:-moz-placeholder,
-input::-moz-placeholder,
-input:-ms-input-placeholder {
-  color: #999999;
+.active {
+  background: rgb(238, 238, 238);
+  border-radius: 0.4rem;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  position: relative;
+  z-index: 12;
 }
 
-/*  Custom input placeholder*/
-input::-webkit-input-placeholder { /* WebKit browsers */
-  color: #999999;
+.js-close {
+  display: none !important;
 }
 
-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  color: #999999;
+.js-active {
+  color: rgb(40, 180, 115);
 }
 
-input::-moz-placeholder { /* Mozilla Firefox 19+ */
-  color: #999999;
-}
-
-input:-ms-input-placeholder { /* Internet Explorer 10+ */
-  color: #999999;
-}
-
-/*  Custom Scroll*/
 /*theme dark style*/
 * {
   margin: 0;
@@ -176,7 +184,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 
 :root {
-  font-family: "PingFang SC", "PingFang", "Helvetica", "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  font-family: "Mono", "PingFang SC", "PingFang", "Helvetica", "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
   font-size: 62.5%;
   background-color: #ffffff;
   color: #000000;
@@ -244,6 +252,7 @@ hr {
 ::selection {
   background: rgba(40, 180, 115, 0.75);
   color: #000000;
+  text-shadow: none;
 }
 
 a {
@@ -490,7 +499,6 @@ input[type=radio]:checked:after {
   display: -webkit-box;
   display: flex;
   justify-content: space-between;
-  padding: 5px;
 }
 
 /*left-containe*/
@@ -498,10 +506,8 @@ input[type=radio]:checked:after {
   width: 28rem;
   background: white;
   border-right: 1px solid #d0d0d0;
-  padding: 0 0 1.6rem 0;
   z-index: 20;
   position: relative;
-  box-sizing: border-box;
   line-height: 2rem;
   overflow: hidden;
 }
@@ -769,6 +775,18 @@ input[type=radio]:checked:after {
   background: white;
 }
 
+.list-wrapper > ul > li:last-child > a:after {
+  content: "";
+  display: inline-block;
+  width: 0.3rem;
+  height: 100%;
+  position: absolute;
+  z-index: 10;
+  left: -1.5rem;
+  top: 1.3rem;
+  background: white;
+}
+
 .list-wrapper ul li ul {
   margin-left: 2.4rem !important;
   margin-top: 0.1rem;
@@ -812,8 +830,11 @@ input[type=radio]:checked:after {
 }
 .bottom-container .mode, .bottom-container .index, .bottom-container .structure, .bottom-container .quit-menu {
   float: left;
-  margin-right: 2.6rem;
   position: relative;
+  margin-right: 14%;
+}
+.bottom-container .quit-menu {
+  margin-right: 0 !important;
 }
 .bottom-container .iconfont {
   font-size: 2rem;
@@ -933,7 +954,8 @@ input[type=radio]:checked:after {
   font-size: 1.6rem;
   font-weight: bold;
   color: white;
-  top: -0.8rem;
+  top: -1rem;
+  padding-top: 0.2rem;
   left: 0;
   text-shadow: none;
 }
@@ -984,6 +1006,10 @@ html[theme=dark] body {
 html[theme=dark] {
   background-color: rgb(22, 27, 31);
   color: rgb(220, 220, 220);
+}
+html[theme=dark] ::selection {
+  color: rgb(220, 220, 220);
+  text-shadow: none;
 }
 html[theme=dark] h1, html[theme=dark] h2, html[theme=dark] h3, html[theme=dark] h4, html[theme=dark] h5, html[theme=dark] h6 {
   color: rgb(220, 220, 220);
@@ -1075,7 +1101,7 @@ html[theme=dark] .list-wrapper ul:after, html[theme=dark] .list-wrapper ul:befor
 html[theme=dark] .list-wrapper ul li:hover > a {
   background: rgb(32, 45, 50);
 }
-html[theme=dark] .list-wrapper ul li ul li:last-child:before, html[theme=dark] .list-wrapper > ul > li:first-child > a:after {
+html[theme=dark] .list-wrapper > ul > li:last-child > a:after, html[theme=dark] .list-wrapper ul li ul li:last-child:before, html[theme=dark] .list-wrapper > ul > li:first-child > a:after {
   background: rgb(22, 27, 31);
 }
 html[theme=dark] .search-result {
@@ -1116,144 +1142,6 @@ html[theme=dark] ::-webkit-scrollbar-track-piece {
 }
 
 /*@media*/
-@media (prefers-color-scheme: dark) {
-  html body {
-    text-shadow: 0.075rem 0.075rem 0.075rem rgba(22, 27, 31, 0.75);
-  }
-  html {
-    background-color: rgb(22, 27, 31);
-    color: rgb(220, 220, 220);
-  }
-  html h1, html h2, html h3, html h4, html h5, html h6 {
-    color: rgb(220, 220, 220);
-  }
-  html h1 {
-    border-bottom: 1px solid rgb(42, 55, 60);
-  }
-  html h1:first-of-type {
-    border: none;
-  }
-  html hr {
-    background: rgb(42, 55, 60);
-  }
-  html kbd {
-    background-color: rgb(52, 82, 115);
-  }
-  html code, html pre {
-    background: rgb(29, 38, 43);
-    border-color: rgb(42, 55, 60);
-  }
-  html table {
-    width: 100%;
-    margin-top: 1.6rem;
-    text-align: left;
-    border-collapse: separate;
-    border-spacing: 0;
-  }
-  html table thead {
-    background-color: rgb(29, 38, 43);
-  }
-  html table thead tr th {
-    border-top: 1px solid rgb(42, 55, 60);
-  }
-  html table tr th, html table tr td {
-    padding: 0.8rem 1rem;
-    border-right: 1px solid rgb(42, 55, 60);
-    border-bottom: 1px solid rgb(42, 55, 60);
-  }
-  html table tr th:first-child, html table tr td:first-child {
-    border-left: 1px solid rgb(42, 55, 60);
-  }
-  html table tr:first-child th:first-child {
-    border-top-left-radius: 0.8rem;
-  }
-  html table tr:first-child th:last-child {
-    border-top-right-radius: 0.8rem;
-  }
-  html table tr:last-child td:last-child {
-    border-bottom-right-radius: 0.8rem;
-  }
-  html table tr:last-child td:first-child {
-    border-bottom-left-radius: 0.8rem;
-  }
-  html table tbody tr:nth-child(even) {
-    background: rgb(29, 38, 43);
-  }
-  html input {
-    background: rgb(32, 45, 50);
-    border-color: rgb(42, 55, 60);
-    color: rgb(220, 220, 220);
-  }
-  html input::placeholder {
-    color: rgb(55, 75, 80);
-  }
-  html .iconfont {
-    text-shadow: 0.1rem 0.1rem 0.1rem #202d32;
-  }
-  html .iconfont:hover {
-    text-shadow: 0.1rem 0.1rem 0.1rem rgba(40, 180, 115, 0.2);
-  }
-  html #right-container,
-  html #left-container,
-  html .top-container,
-  html .bottom-container {
-    background: rgb(22, 27, 31);
-    color: rgb(220, 220, 220);
-    border-color: rgb(42, 55, 60);
-  }
-  html .list-wrapper .iconfont {
-    color: rgb(42, 55, 60);
-    background: rgb(22, 27, 31);
-  }
-  html .list-wrapper a {
-    color: rgb(220, 220, 220);
-  }
-  html .list-wrapper ul:after, html .list-wrapper ul:before, html .list-wrapper li:after, html .list-wrapper li:before, html .list-wrapper a:after, html .list-wrapper a:before {
-    background: rgb(42, 55, 60);
-  }
-  html .list-wrapper ul li:hover > a {
-    background: rgb(32, 45, 50);
-  }
-  html .list-wrapper ul li ul li:last-child:before, html .list-wrapper > ul > li:first-child > a:after {
-    background: rgb(22, 27, 31);
-  }
-  html .search-result {
-    background: rgb(32, 45, 50);
-    border-color: rgb(42, 55, 60);
-    box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-    -webkit-box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-    -moz-box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-    -o-box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-  }
-  html .search-result a {
-    color: rgb(220, 220, 220);
-  }
-  html .structure-child {
-    background: rgb(22, 27, 31);
-    border-color: rgb(42, 55, 60);
-    border-bottom-color: rgb(22, 27, 31);
-    box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-    -webkit-box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-    -moz-box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-    -o-box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-  }
-  html .structure-child li:first-child, html .structure-child li:nth-of-type(2), html .structure-child li:last-child {
-    border-color: rgb(42, 55, 60);
-  }
-  html #switch-button .icon-catalog-close {
-    color: rgb(220, 220, 220);
-  }
-  html ::-webkit-scrollbar-thumb {
-    background: rgb(42, 55, 60);
-  }
-  html ::-webkit-scrollbar,
-  html ::-webkit-scrollbar-corner,
-  html ::-webkit-resizer,
-  html ::-webkit-scrollbar-track,
-  html ::-webkit-scrollbar-track-piece {
-    background: rgba(42, 55, 60, 0.1);
-  }
-}
 @media screen and (max-width: 768px) {
   #left-container {
     width: 20rem;
