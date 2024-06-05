@@ -23,9 +23,6 @@ body {
   text-shadow: .075rem .075rem .075rem rgb($border-color,.75);
 }
 
-//.iconfont{
-//  color: $text-color !important;
-//}
 //标题
 h1, h2, h3, h4, h5, h6 {
   margin: 4rem 0 2rem;
@@ -357,7 +354,7 @@ input[type='radio'] {
   &:focus {
     outline: none;
     border-color: $green;
-    @include box-shadow-1(rgb($green,.16));
+    @include box-shadow-1(rgb($green,.2));
   }
 
   &::placeholder {
@@ -381,7 +378,7 @@ input[type='radio'] {
 
 .search-result {
   @include border-default();
-  @include border-radius($size: 0.4rem);
+  @include border-radius($size: 0.6rem);
   background: white;
   padding: 1.4rem 1.6rem;
   overflow: auto;
@@ -684,9 +681,9 @@ input[type='radio'] {
 #switch-button {
   position: absolute;
   top: 0;
-  left: 1.6rem;
+  left: 0;
   z-index: 110;
-  width: 3rem;
+  width: 3.4rem;
   height: 4rem;
   cursor: pointer;
   text-align: center;
@@ -694,25 +691,27 @@ input[type='radio'] {
 
   i {
     display: block;
-    position: relative;
-    top: 0;
-    left: .8rem;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -.4rem;
+    left: -.2rem;
     color: $green;
     font-size: 4rem;
-    margin-top: .6rem;
-    margin-left: -1.2rem;
+    margin-top: 1rem;
   }
 
   .icon-label {
-    text-shadow: 0 0 .4rem $text-grey;
+    text-shadow: 0 0 .3rem $green;
   }
 
   .icon-catalog-close {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: bold;
     color: white;
-    top: -3.6rem;
-    left: .65rem;
+    top: -.8rem;
+    left: 0;
+    text-shadow: none;
   }
 
   &:hover .icon-label {
@@ -747,6 +746,7 @@ html[theme=dark] {
   }
   #left-container {
     width: 20rem;
+    display: none;
   }
   #right-container {
     padding-left: 23rem;
@@ -766,10 +766,10 @@ html[theme=dark] {
     height: 100vh;
   }
   #left-container {
-    width: 20rem;
+    width: 23rem;
   }
   #right-container {
-    padding-left: 23rem;
+    padding-left: 26rem;
     padding-right: 3rem;
   }
   #content {

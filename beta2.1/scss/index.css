@@ -136,9 +136,9 @@
   height: 100%;
   border: 1px solid #d0d0d0;
   padding: 0 0.6rem;
-  border-radius: 0.5rem;
-  -webkit-border-radius: 0.5rem;
-  -moz-border-radius: 0.5rem;
+  border-radius: 0.6rem;
+  -webkit-border-radius: 0.6rem;
+  -moz-border-radius: 0.6rem;
   box-sizing: border-box;
   outline: none;
 }
@@ -568,10 +568,10 @@ input[type=radio]:checked:after {
 .search:focus {
   outline: none;
   border-color: rgb(40, 180, 115);
-  -webkit-box-shadow: 0 0.1rem 0.2rem 0.2rem rgba(40, 180, 115, 0.16);
-  -moz-box-shadow: 0 0.1rem 0.2rem 0.2rem rgba(40, 180, 115, 0.16);
-  -o-box-shadow: 0 0.1rem 0.2rem 0.2rem rgba(40, 180, 115, 0.16);
-  box-shadow: 0 0.1rem 0.2rem 0.2rem rgba(40, 180, 115, 0.16);
+  box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.2);
+  -webkit-box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.2);
+  -moz-box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.2);
+  -o-box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.2);
 }
 .search::placeholder {
   color: #d0d0d0;
@@ -592,9 +592,9 @@ input[type=radio]:checked:after {
 
 .search-result {
   border: 1px solid #d0d0d0;
-  border-radius: 0.4rem;
-  -webkit-border-radius: 0.4rem;
-  -moz-border-radius: 0.4rem;
+  border-radius: 0.6rem;
+  -webkit-border-radius: 0.6rem;
+  -moz-border-radius: 0.6rem;
   background: white;
   padding: 1.4rem 1.6rem;
   overflow: auto;
@@ -604,10 +604,10 @@ input[type=radio]:checked:after {
   font-size: 1.4rem;
   line-height: 1.2;
   box-sizing: border-box;
-  -webkit-box-shadow: 0 0.1rem 0.2rem 0.2rem rgba(217, 217, 217, 0.6);
-  -moz-box-shadow: 0 0.1rem 0.2rem 0.2rem rgba(217, 217, 217, 0.6);
-  -o-box-shadow: 0 0.1rem 0.2rem 0.2rem rgba(217, 217, 217, 0.6);
-  box-shadow: 0 0.1rem 0.2rem 0.2rem rgba(217, 217, 217, 0.6);
+  box-shadow: 0 0 0.2rem 0.2rem rgba(217, 217, 217, 0.6);
+  -webkit-box-shadow: 0 0 0.2rem 0.2rem rgba(217, 217, 217, 0.6);
+  -moz-box-shadow: 0 0 0.2rem 0.2rem rgba(217, 217, 217, 0.6);
+  -o-box-shadow: 0 0 0.2rem 0.2rem rgba(217, 217, 217, 0.6);
   position: relative;
   z-index: 40;
 }
@@ -904,9 +904,9 @@ input[type=radio]:checked:after {
 #switch-button {
   position: absolute;
   top: 0;
-  left: 1.6rem;
+  left: 0;
   z-index: 110;
-  width: 3rem;
+  width: 3.4rem;
   height: 4rem;
   cursor: pointer;
   text-align: center;
@@ -914,23 +914,25 @@ input[type=radio]:checked:after {
 }
 #switch-button i {
   display: block;
-  position: relative;
-  top: 0;
-  left: 0.8rem;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: -0.4rem;
+  left: -0.2rem;
   color: rgb(40, 180, 115);
   font-size: 4rem;
-  margin-top: 0.6rem;
-  margin-left: -1.2rem;
+  margin-top: 1rem;
 }
 #switch-button .icon-label {
-  text-shadow: 0 0 0.4rem #999999;
+  text-shadow: 0 0 0.3rem rgb(40, 180, 115);
 }
 #switch-button .icon-catalog-close {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: bold;
   color: white;
-  top: -3.6rem;
-  left: 0.65rem;
+  top: -0.8rem;
+  left: 0;
+  text-shadow: none;
 }
 #switch-button:hover .icon-label {
   color: #ff5900;
@@ -966,7 +968,7 @@ html ::-webkit-scrollbar-button {
 
 /*dark style*/
 html[theme=dark] body {
-  text-shadow: 0.075rem 0.075rem 0.075rem rgba(220, 220, 220, 0.1);
+  text-shadow: 0.075rem 0.075rem 0.075rem rgba(22, 27, 31, 0.75);
 }
 html[theme=dark] {
   background-color: rgb(22, 27, 31);
@@ -1068,10 +1070,10 @@ html[theme=dark] .list-wrapper ul li ul li:last-child:before, html[theme=dark] .
 html[theme=dark] .search-result {
   background: rgb(32, 45, 50);
   border-color: rgb(42, 55, 60);
-  -webkit-box-shadow: 0 0.1rem 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-  -moz-box-shadow: 0 0.1rem 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-  -o-box-shadow: 0 0.1rem 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-  box-shadow: 0 0.1rem 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
+  box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
+  -webkit-box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
+  -moz-box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
+  -o-box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
 }
 html[theme=dark] .search-result a {
   color: rgb(220, 220, 220);
@@ -1085,11 +1087,11 @@ html[theme=dark] .structure-child {
   -moz-box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
   -o-box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
 }
+html[theme=dark] .structure-child li:first-child, html[theme=dark] .structure-child li:nth-of-type(2), html[theme=dark] .structure-child li:last-child {
+  border-color: rgb(42, 55, 60);
+}
 html[theme=dark] #switch-button .icon-catalog-close {
   color: rgb(220, 220, 220);
-}
-html[theme=dark] #switch-button .icon-label {
-  text-shadow: 0 0 0.4rem rgba(40, 180, 115, 0.75);
 }
 html[theme=dark] ::-webkit-scrollbar-thumb {
   background: rgb(42, 55, 60);
@@ -1105,7 +1107,7 @@ html[theme=dark] ::-webkit-scrollbar-track-piece {
 /*@media*/
 @media (prefers-color-scheme: dark) {
   html body {
-    text-shadow: 0.075rem 0.075rem 0.075rem rgba(220, 220, 220, 0.1);
+    text-shadow: 0.075rem 0.075rem 0.075rem rgba(22, 27, 31, 0.75);
   }
   html {
     background-color: rgb(22, 27, 31);
@@ -1207,10 +1209,10 @@ html[theme=dark] ::-webkit-scrollbar-track-piece {
   html .search-result {
     background: rgb(32, 45, 50);
     border-color: rgb(42, 55, 60);
-    -webkit-box-shadow: 0 0.1rem 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-    -moz-box-shadow: 0 0.1rem 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-    -o-box-shadow: 0 0.1rem 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-    box-shadow: 0 0.1rem 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
+    box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
+    -webkit-box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
+    -moz-box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
+    -o-box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
   }
   html .search-result a {
     color: rgb(220, 220, 220);
@@ -1224,11 +1226,11 @@ html[theme=dark] ::-webkit-scrollbar-track-piece {
     -moz-box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
     -o-box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
   }
+  html .structure-child li:first-child, html .structure-child li:nth-of-type(2), html .structure-child li:last-child {
+    border-color: rgb(42, 55, 60);
+  }
   html #switch-button .icon-catalog-close {
     color: rgb(220, 220, 220);
-  }
-  html #switch-button .icon-label {
-    text-shadow: 0 0 0.4rem rgba(40, 180, 115, 0.75);
   }
   html ::-webkit-scrollbar-thumb {
     background: rgb(42, 55, 60);
@@ -1247,6 +1249,7 @@ html[theme=dark] ::-webkit-scrollbar-track-piece {
   }
   #left-container {
     width: 20rem;
+    display: none;
   }
   #right-container {
     padding-left: 23rem;
@@ -1264,10 +1267,10 @@ html[theme=dark] ::-webkit-scrollbar-track-piece {
     height: 100vh;
   }
   #left-container {
-    width: 20rem;
+    width: 23rem;
   }
   #right-container {
-    padding-left: 23rem;
+    padding-left: 26rem;
     padding-right: 3rem;
   }
   #content {

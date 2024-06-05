@@ -208,10 +208,10 @@ $size-10: 1.0rem;
 
 //box-shadow-1
 @mixin box-shadow-1($color:$grey-color) {
-  -webkit-box-shadow: 0 .1rem .2rem .2rem $color;
-  -moz-box-shadow: 0 .1rem .2rem .2rem $color;
-  -o-box-shadow: 0 .1rem .2rem .2rem $color;
-  box-shadow: 0 .1rem .2rem .2rem $color;
+  box-shadow: 0 0 .2rem .2rem $color;
+  -webkit-box-shadow: 0 0 .2rem .2rem $color;
+  -moz-box-shadow: 0 0 .2rem .2rem $color;
+  -o-box-shadow: 0 0 .2rem .2rem $color;
 }
 
 //box-shadow-2
@@ -224,10 +224,10 @@ $size-10: 1.0rem;
 
 //box-shadow-3
 @mixin box-shadow-3($color:$grey-color) {
+  box-shadow: 0 0 .2rem .2rem $color;
   -webkit-box-shadow: 0 0 .2rem .2rem $color;
   -moz-box-shadow: 0 0 .2rem .2rem $color;
   -o-box-shadow: 0 0 .2rem .2rem $color;
-  box-shadow: 0 0 .2rem .2rem $color;
 }
 
 .active {
@@ -265,7 +265,7 @@ $size-10: 1.0rem;
   height: 100%;
   border: 1px solid $border-color;
   padding: 0 .6rem;
-  @include border-radius(.5rem);
+  @include border-radius(.6rem);
   box-sizing: border-box;
   outline: none;
 }
@@ -331,7 +331,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 /*theme dark style*/
 @mixin theme-dark {
   body{
-    text-shadow: .075rem .075rem .075rem rgb($text-dark,.1);
+    text-shadow: .075rem .075rem .075rem rgb($dark-bag,.75);
   }
   & {
     background-color: $dark-bag;
@@ -417,14 +417,16 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     @include bag-border-dark($dark-bag, $grey-color-dark);
     border-bottom-color: $dark-bag;
     @include box-shadow-2(rgb($green, .15));
+    li{
+      &:first-child,&:nth-of-type(2),
+      &:last-child{
+        border-color: $grey-color-dark;
+      }
+    }
   }
   #switch-button {
     .icon-catalog-close {
       color: $text-dark;
-    }
-
-    .icon-label {
-      text-shadow: 0 0 .4rem rgb($green, .75);
     }
   }
 
