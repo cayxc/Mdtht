@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "560193",
+      "name": "失败",
+      "font_class": "fail",
+      "unicode": "e64e",
+      "unicode_decimal": 58958
+    },
+    {
       "icon_id": "202600",
       "name": "阅读",
       "font_class": "launchC",

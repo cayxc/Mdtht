@@ -165,7 +165,7 @@ class Mdac {
     leftBlock.innerHTML = '\n<header class="top-container">\n' +
         '        <i class="catalog-button iconfont icon-catalog-show"></i>\n' +
         '        <div class="search-container">\n' +
-        '            <input type="text" class="search" name="search" placeholder="输入关键字搜索目录 . . .">\n' +
+        '            <input type="text" class="search" name="search" placeholder="输入关键字搜索目录">\n' +
         '            <i class="search-icon iconfont icon-close"></i>' +
         '        </div>\n' +
         '        <div class="search-result"></div>\n' +
@@ -370,7 +370,7 @@ class Mdac {
       let container = document.querySelector('.list-wrapper');
       container.innerHTML = '<ul>\n' +
           '<li style="text-align:center;color:#999999;font-size:1.4rem; line-height: 2.4rem">\n' +
-          '抱歉...<br/>文档中未发现 h1~h6 的标签<br/>无法生成目录</p>\n</li>\n' +
+          '<i class="iconfont icon-fail"></i>抱歉...<br/>文档中未发现 h1~h6 的标签<br/>无法生成目录</p>\n</li>\n' +
           '</ul>\n';
       return;
     }
@@ -597,7 +597,11 @@ class Mdac {
     let allIcon = this.allIcon;
     let allChildLevel = this.allChildLevel;
     switchListButton.onclick = function() {
-      let isClose = quitElement.querySelector('.icon-branchB');
+      alert(1111);
+      this.children[0].setAttribute('class','iconfont icon-quit');
+      // this.children[0].setAttribute('class','iconfont icon-quit');
+      document.querySelector('.list-wrapper').classList.add('js-retract-catalog');
+      /*let isClose = quitElement.querySelector('.icon-branchB');
       if (isClose) { //已收起所有目录
         // 改变当前目录列表按钮 class
         this.setAttribute('class', 'catalog-button iconfont icon-branchB');
@@ -631,7 +635,7 @@ class Mdac {
         for (let j = 0, allChLen = allChildLevel.length; j < allChLen; j++) {
           allChildLevel[j].setAttribute('class', 'js-close');
         }
-      }
+      }*/
     };
   }
 
@@ -859,12 +863,13 @@ class Mdac {
 
     //所有的目录
     let allIcon = this.allIcon;
+    // console.log(allIcon);
     for(let i=0,len = allStyle.length;i<len; i++){
       allStyle[i].onclick = function() {
         let styleIndex = allStyle[i].getAttribute('value');
         //根据styleIndex值改变icon-launchA最后的 A 的值
         for (let j = 0,len2 = allIcon.length;j<len2;j++){
-          // console.log(allIcon[j]);
+          console.log(allIcon[j].getAttribute('class'));
         }
 
       }

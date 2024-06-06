@@ -13,6 +13,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.icon-fail:before {
+  content: "\e64e";
+}
 
 .icon-launchC:before {
   content: "\e731";
@@ -336,7 +339,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     display: none !important;
   }
 }
-
+.js-retract-catalog{
+  & > ul {
+    display: none;
+  }
+}
 .js-close{
   display: none !important;
 }
@@ -391,6 +398,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     }
   }
   .iconfont {
+    color: $grey-color-dark;
     text-shadow: .1rem .1rem .1rem rgb($dark-bag2,1);
     &:hover{
       text-shadow: .1rem .1rem .1rem rgb($green,.2);
