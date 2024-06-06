@@ -91,7 +91,7 @@ class Mdac {
       this.showIndexEl = document.querySelector('.index');
       this.allIndex = this.listElement.querySelectorAll('p');
       //样式控制
-      this.haveChileLevel();
+      // this.haveChileLevel();
       this.switchCatalog();
       this.switchCatalogList();
       this.switchParentCatalog();
@@ -143,7 +143,7 @@ class Mdac {
     if (isShowIndex) {
       indexItem = '<i class="iconfont icon-menu-index"></i>';
     } else {
-      indexItem = '<i class="iconfont icon-menu-noindex"></i>';
+      indexItem = '<i class="iconfont icon-catalog-closeB"></i>';
     }
     //目录样式
     let indexStyleElement = '';
@@ -560,12 +560,12 @@ class Mdac {
   * 没有子目录时改变最外层 ul 的 padding-left的值
   * ----------------------------------------
   */
-  haveChileLevel() {
+/*  haveChileLevel() {
     let childLevel = this.listElement.querySelector('.parent-level');
     if (!childLevel) {
       this.listElement.children[0].style.paddingLeft = '0';
     }
-  }
+  }*/
 
   /*
   * ----------------------------------------
@@ -576,22 +576,14 @@ class Mdac {
     let asideButton = this.asideButton;
     let leftElement = this.leftElement;
     let switchButton = this.switchButton;
-    let status = 0;
     asideButton.onclick = function() {
       leftElement.style.display = 'none';
       switchButton.style.display = 'block';
     };
-    switchButton.onclick = function() {
-      if (status == 0) {
-        leftElement.style.display = 'block';
-        this.style.display = 'none';
-        status = 1;
-      } else {
-        leftElement.style.display = 'none';
-        this.style.display = 'block';
-        status = 0;
-      }
-    };
+    switchButton.addEventListener('click',function(){
+      leftElement.style.display = 'block';
+      this.style.display = 'none';
+    });
   }
 
   /*
@@ -841,23 +833,20 @@ class Mdac {
    * ----------------------------------------
    */
   showCatalogIndex() {
-    let status = originShowIndex;
-    let allIndex = this.allIndex;
-    this.showIndexEl.onclick = function() {
-      if (!status) { //显示目录序号
-        this.children[0].setAttribute('class', 'iconfont icon-menu-index');
-        for (let i = 0, len = allIndex.length; i < len; i++) {
-          allIndex[i].classList.remove('js-close');
-        }
-        status = true;
-      } else { //关闭目录序号
-        this.children[0].setAttribute('class', 'iconfont icon-noindex');
-        for (let i = 0, len = allIndex.length; i < len; i++) {
-          allIndex[i].classList.add('js-close');
-        }
+    let status = true;
+    let showIndex = originShowIndex;
+    let listElement = this.listElement;
+    this.showIndexEl.children[0].addEventListener('click',function(){
+      if (status) { //关闭目录序号
+        listElement.classList.add('js-noindex');
+        this.setAttribute('class', 'iconfont icon-catalog-closeB');
         status = false;
+      } else { //显示目录序号
+        listElement.classList.remove('js-noindex');
+        this.setAttribute('class', 'iconfont icon-menu-index');
+        status = true;
       }
-    };
+    });
   }
 
   /*
@@ -873,7 +862,7 @@ class Mdac {
     for(let i=0,len = allStyle.length;i<len; i++){
       allStyle[i].onclick = function() {
         let styleIndex = allStyle[i].getAttribute('value');
-        //根据style值改变icon-launchA最后的 A 的值
+        //根据styleIndex值改变icon-launchA最后的 A 的值
         for (let j = 0,len2 = allIcon.length;j<len2;j++){
           // console.log(allIcon[j]);
         }

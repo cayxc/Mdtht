@@ -169,6 +169,10 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   z-index: 12;
 }
 
+.js-noindex ul li a p {
+  display: none !important;
+}
+
 .js-close {
   display: none !important;
 }
@@ -257,7 +261,7 @@ hr {
 
 a {
   text-decoration: none;
-  color: rgb(40, 180, 115);
+  color: #ff5900;
   cursor: pointer;
 }
 a:hover {
@@ -275,7 +279,7 @@ p a {
 
 strong {
   font-weight: bold;
-  color: #ff5900;
+  color: rgb(40, 180, 115);
 }
 
 u {

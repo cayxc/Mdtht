@@ -324,13 +324,19 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   box-sizing: border-box;
   outline: none;
 }
-
+//js control
 .active {
   background: $code-bg-color;
   @include border-radius(.4rem);
   position: relative;
   z-index: 12;
 }
+.js-noindex{
+  & ul li a p{
+    display: none !important;
+  }
+}
+
 .js-close{
   display: none !important;
 }
