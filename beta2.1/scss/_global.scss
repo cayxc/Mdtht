@@ -234,7 +234,7 @@ $size-10: 1.0rem;
   -o-box-shadow: 0 0 .2rem .2rem $color;
 }
 
-@mixin text-shadow($x:.075rem,$y:.075rem,$s:.075rem,$c:rgb($border-color,.75)){
+@mixin text-shadow($x:.075rem,$y:.075rem,$s:.075rem,$c:rgb($border-color,.90)){
   text-shadow: $x $y $s $c;
 }
 
@@ -327,36 +327,85 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   box-sizing: border-box;
   outline: none;
 }
-//js control
+//javascript control
 .active {
   background: $code-bg-color;
   @include border-radius(.4rem);
   position: relative;
   z-index: 12;
 }
-.js-noindex{
+
+#list-container .js-noindex{
   & ul li a p{
-    display: none !important;
-  }
-}
-.js-retract-catalog{
-  & > ul {
     display: none;
   }
 }
+#list-container .js-retract{
+  & > ul li  ul {
+    display: none;
+  }
+}
+#list-container .js-launch{
+  & > ul li ul {
+    display: block;
+  }
+}
 .js-close{
-  display: none !important;
+  display: none;
 }
 .js-active {
   color: $green;
+}
+.js-show-shadow,
+.js-show-shadow .iconfont{
+  @include text-shadow();
+}
+.js-close-shadow,
+.js-close-shadow .iconfont
+{
+  text-shadow: none;
+}
+.js-show-tree .list-wrapper{
+  & ul:before,
+  & ul li:before,
+  & ul li a:before,
+  & ul:after,
+  & ul li:after,
+  & ul li a:after,
+  {
+    display: block !important;
+  }
+  & ul li a {
+    margin-left: 1.8rem;
+  }
+}
+.js-close-tree .list-wrapper{
+  & ul:before,
+  & ul li:before,
+  & ul li a:before,
+  & ul:after,
+  & ul li:after,
+  & ul li a:after,
+  {
+    display: none !important;
+  }
+  & ul li a {
+    margin-left: 1.5rem;
+  }
 }
 
 //=========================
 
 /*theme dark style*/
 @mixin theme-dark {
-  body{
-    @include text-shadow($c:rgb($dark-bag,.75));
+  .js-close-shadow,
+  .js-close-shadow .iconfont
+  {
+    text-shadow: none;
+  }
+  .js-show-shadow,
+  .js-show-shadow .iconfont{
+    @include text-shadow($c:rgb($text-color,.99));
   }
   & {
     background-color: $dark-bag;
@@ -431,9 +480,12 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
         background: $dark-bag2;
       }
     }
-    & > ul > li:last-child > a:after,
+
     & ul li ul li:last-child:before,
-    & > ul > li:first-child > a:after {
+    & > ul > li:first-child > a:after,
+    & > ul li:last-child > a:after,
+    & > ul > li:last-child:after,
+    & > ul > li:last-child > a:after{
       background: $dark-bag;
     }
   }
@@ -443,6 +495,16 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     @include box-shadow-1(rgb($green,.15));
     a{color: $text-dark;}
   }
+  .search-icon{
+    color: $text-grey-dark;
+    &:hover{
+      color: $green;
+    }
+  }
+  .search-result{
+    color: $text-grey-dark;
+  }
+
   .structure-child {
     @include bag-border-dark($dark-bag, $grey-color-dark);
     border-bottom-color: $dark-bag;

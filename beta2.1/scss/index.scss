@@ -20,7 +20,6 @@ body {
   font-size: $size-16;
   line-height: 2.6rem;
   box-sizing: border-box;
-  @include text-shadow();
 }
 
 //标题
@@ -394,7 +393,7 @@ input[type='radio'] {
   margin-top: 3.4rem;
   margin-right: 1.4rem;
   color: $text-grey;
-  font-size: $size-14;
+  font-size: 1.2rem;
   line-height: 1.2;
   box-sizing: border-box;
   @include box-shadow-1(rgb($grey-color,.6));
@@ -426,11 +425,11 @@ input[type='radio'] {
 
 .search-result i {
   text-align: center;
-  font-size: 2.6rem;
+  font-size: 2.2rem;
 }
 
 .search-result span {
-  text-align: center;
+  text-align: left;
 }
 
 /*list-container*/
@@ -498,7 +497,7 @@ input[type='radio'] {
   color: $grey-color-dark;
   padding: .5rem .6rem;
   margin-bottom: .1rem;
-  margin-left: 2.2rem;
+  margin-left: 1.8rem;
   box-sizing: border-box;
   line-height: 1 !important;
   background: transparent;
@@ -506,8 +505,8 @@ input[type='radio'] {
   @include border-radius(.5rem);
 
   &:before {
-    @include pseudo-element($w: 1.8rem, $p: absolute);
-    left: -1.4rem;
+    @include pseudo-element($w: 1.4rem, $p: absolute);
+    left: -1rem;
     top: 1.2rem;
     background: $border-color;
   }
@@ -550,12 +549,19 @@ input[type='radio'] {
 }
 
 .list-wrapper > ul > li:first-child > a:after {
-  @include pseudo-element($w: .3rem, $h: 50%, $p: absolute);
+  @include pseudo-element($w: .3rem, $h: 1.3rem, $p: absolute);
   top: -.1rem;
-  left: -1.5rem;
+  left: -1.1rem;
   background: white;
 }
-.list-wrapper > ul > li:last-child > a:after  {
+.list-wrapper > ul > li:last-child:after {
+  @include pseudo-element($w: .3rem, $h: 100%, $p: absolute);
+  top: 1.3rem;
+  left: .7rem;
+  z-index: 15;
+  background: #ffffff;
+}
+.list-wrapper > ul li:last-child > a:after  {
   @include pseudo-element($w: .3rem, $h:100%,$p: absolute);
   left: -1.5rem;
   top: 1.3rem;
@@ -563,7 +569,7 @@ input[type='radio'] {
 }
 
 .list-wrapper ul li ul {
-  margin-left: 2.4rem !important;
+  margin-left: 2rem !important;
   margin-top: .1rem;
 
   & li:first-child:before {
@@ -627,7 +633,6 @@ input[type='radio'] {
 
 
 .structure-child {
-  //width: 10rem;
   background: white;
   position: absolute;
   bottom: 4rem;
@@ -641,7 +646,7 @@ input[type='radio'] {
   @include box-shadow-2(rgb($grey-color, .7));
   box-sizing: border-box;
   overflow: hidden;
-  display: none;
+  //display: none;
   li {
     margin-left: 0 !important;
     padding: 0 1rem;

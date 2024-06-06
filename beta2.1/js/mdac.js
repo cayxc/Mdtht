@@ -28,6 +28,8 @@
 let objThis;
 let indexStyleNumber;
 let originShowIndex;
+let isShadow;
+let isTree;
 
 class Mdac {
   //showIndex  是否显示目录序号
@@ -36,8 +38,12 @@ class Mdac {
   //showTree   是否开树状线
   //openShadow   是否开启文字阴影
   constructor(
-      showIndex = true, indexStyle = 1, openDark = false, showTree = true,
-      openShadow                                                   = true) {
+      showIndex  = true,
+      indexStyle = 1,
+      openDark   = false,
+      showTree   = true,
+      openShadow = false,
+  ) {
     objThis = this; //当前对象的 this
     try {
       if ((typeof showIndex) != 'boolean') {
@@ -69,7 +75,8 @@ class Mdac {
       this.openDark = showTree;
       this.openDark = openShadow;
       indexStyleNumber = indexStyle;
-      originShowIndex = showIndex;
+      isShadow = openShadow;
+      isTree = showTree;
       //目录构建
       if ((document.querySelector('#body-container')) == null) { //替换文档内容，防止重复生成
         this.replaceOld();
@@ -118,15 +125,6 @@ class Mdac {
     // 如果将 body{overflow:hidden;} 样式写在 css中,
     // 会出现在 MarkdownPad2 编辑器中预览时，超出屏幕的内容无法滑动的 bug
     document.body.style.overflow = 'hidden';
-    //是否开启夜览模式
-    let modeStyleClass;
-    if (this.openDark) {
-      document.body.className = 'js-night-view';
-      modeStyleClass = 'icon-sun';
-    } else {
-      document.body.className = '';
-      modeStyleClass = 'icon-sun';
-    }
     //创建左侧目录、右侧内容及其外层包裹结构元素
     //1.创建目录、内容结构父级空元素
     let bodyBlock = document.createElement('div');
@@ -146,25 +144,35 @@ class Mdac {
       indexItem = '<i class="iconfont icon-catalog-closeB"></i>';
     }
     //目录样式
+    //是否开启夜览模式
+    let modeStyleClass;
+    if (this.openDark) {
+      modeStyleClass = 'icon-moon';
+    } else {
+      document.body.className = '';
+      modeStyleClass = 'icon-sun';
+    }
     let indexStyleElement = '';
     let styleIndex = ['A', 'B', 'C'];
     for (let i = 1, len = 3; i <= len; i++) {
       if (this.indexStyle == i) {
-        indexStyleElement += '<li>' + '<input type="radio" id="style' +
-            styleIndex[i + 1] + '" name="catalogStyle" value="' + i +
-            '" checked="checked">\n' +
+        indexStyleElement += '<li class="style-chose">' +
+            '<input type="radio" name="style' + styleIndex[i - 1] +
+            '" checked="checked">' +
             '<label for="style' + styleIndex[i - 1] + '">Style-' +
-            styleIndex[i - 1] + '</label>' + '</li>';
+            styleIndex[i - 1] + '</label>' +
+            '</li>';
       } else {
-        indexStyleElement += '<li>' + '<input type="radio" id="style' +
-            styleIndex[i + 1] + '" name="catalogStyle" value="' + i + '">\n' +
+        indexStyleElement += '<li class="style-chose">' +
+            '<input type="radio" name="style' + styleIndex[i - 1] + '">' +
             '<label for="style' + styleIndex[i - 1] + '">Style-' +
-            styleIndex[i - 1] + '</label>' + '</li>';
+            styleIndex[i - 1] + '</label>' +
+            '</li>';
       }
     }
-    leftBlock.innerHTML = '\n<header class="top-container">\n' +
+    leftBlock.innerHTML = '<header class="top-container">' +
         '        <i class="catalog-button iconfont icon-catalog-show"></i>\n' +
-        '        <div class="search-container">\n' +
+        '        <div class="search-container">' +
         '            <input type="text" class="search" name="search" placeholder="输入关键字搜索目录">\n' +
         '            <i class="search-icon iconfont icon-close"></i>' +
         '        </div>\n' +
@@ -195,8 +203,7 @@ class Mdac {
         '                </ul>\n' +
         '            </div>\n' +
         '            <div class="quit-menu" title="展开收起子目录">\n' +
-        '                <i class="iconfont icon-quit"></i>\n' +
-        '                </div>\n' +
+        '                <i class="iconfont icon-quit" value="true"></i>\n' +
         '            </div>\n' +
         '        </footer>\n' +
         '    </div>\n';
@@ -273,7 +280,7 @@ class Mdac {
    */
   levelTagArr(level) {
     if (level < 1 || level > 6 || (typeof level) !== 'number') {
-      console.error('levelTagArr() 调用时参数类型错误！');
+      throw 'levelTagArr() 调用时参数类型错误！';
       return;
     }
     // 所有目录集合
@@ -303,7 +310,7 @@ class Mdac {
           level5.push(allTag[i]);
           break;
         case 5:
-          leverl6.push(allTag[i]);
+          level6.push(allTag[i]);
           break;
         default:
           return;
@@ -456,13 +463,6 @@ class Mdac {
     let catalogueBlock = document.querySelector('.list-wrapper');
     // 创建其余子目录
     let ulElement = document.createElement('ul');
-    //是否要显示序号
-    let indexClass;
-    if (this.showIndex) {
-      indexClass = '';
-    } else {
-      indexClass = 'js-close';
-    }
     for (let j = 1; j <= 5; j++) {
       let levelArr = this.levelTagArr(j); // 指定等级的目录集合
       let levelLength = levelArr.length;
@@ -474,7 +474,7 @@ class Mdac {
           let liElement = document.createElement('li');
           liElement.innerHTML = '\n<a href="' + window.location.pathname + '#' +
               levelArr[k].id + '"' + ' class=' + levelArr[k].id + '>\n' +
-              '<div><p class="' + indexClass + '">' + levelArr[k].id.slice(6) +
+              '<div><p>' + levelArr[k].id.slice(6) +
               '</p>\n' +
               '<span>' + levelArr[k].innerText + '</span></div>' +
               '</a>\n';
@@ -505,7 +505,7 @@ class Mdac {
               liElement.innerHTML = '\n<a href="' + window.location.pathname +
                   '#' + levelArr[n].id + '"' + ' class=' + levelArr[n].id +
                   '>\n' +
-                  '<div><p class="' + indexClass + '">' +
+                  '<div><p>' +
                   levelArr[n].id.slice(6) +
                   '</p>\n' +
                   '<span>' + levelArr[n].innerText + '</span></div>' +
@@ -527,10 +527,10 @@ class Mdac {
                     classIcon = 'iconfont icon-launchA';
                     break;
                   case 2:
-                    classIcon = 'iconfont icon-retractB';
+                    classIcon = 'iconfont icon-launchB';
                     break;
                   case 3:
-                    classIcon = 'iconfont icon-retractC';
+                    classIcon = 'iconfont icon-launchC';
                     break;
                   default:
                     classIcon = 'iconfont icon-launchA';
@@ -560,12 +560,12 @@ class Mdac {
   * 没有子目录时改变最外层 ul 的 padding-left的值
   * ----------------------------------------
   */
-/*  haveChileLevel() {
-    let childLevel = this.listElement.querySelector('.parent-level');
-    if (!childLevel) {
-      this.listElement.children[0].style.paddingLeft = '0';
-    }
-  }*/
+  /*  haveChileLevel() {
+      let childLevel = this.listElement.querySelector('.parent-level');
+      if (!childLevel) {
+        this.listElement.children[0].style.paddingLeft = '0';
+      }
+    }*/
 
   /*
   * ----------------------------------------
@@ -580,10 +580,62 @@ class Mdac {
       leftElement.style.display = 'none';
       switchButton.style.display = 'block';
     };
-    switchButton.addEventListener('click',function(){
+    switchButton.addEventListener('click', function() {
       leftElement.style.display = 'block';
       this.style.display = 'none';
     });
+  }
+
+  /*
+  * ----------------------------------------
+  * 改变所有icon为对应的图标
+  * ----------------------------------------
+  * @param iconArr 所有icon图标元素集合
+  * @param index icon图标样式序号：A,B,C ...
+  *
+  */
+  changeIcons(iconArr, index = 1) {
+    if ((typeof iconArr) !== 'object') {
+      throw 'changeIcon() 调用时参数1类型错误，必须为object';
+      return;
+    }
+    if ((typeof index) !== 'number' || index > 3) {
+      throw 'changeIcon() 调用时参数2类型错误，必须为number,且小于等于 3';
+      return;
+    }
+    //改变整体icon风格
+    let arr = ['A', 'B', 'C'];
+    for (let i = 0, len = iconArr.length; i < len; i++) {
+      let oldClass = iconArr[i].getAttribute('class');
+      let newClass = oldClass.slice(0, -1) + arr[index - 1];
+      iconArr[i].setAttribute('class', newClass);
+    }
+    return this;
+  }
+
+  /*
+  * ----------------------------------------
+  * 改变icon对应状态
+  * ----------------------------------------
+   * @param iconArr 所有icon图标元素集合
+   */
+  changeIconStatus(iconArr) {
+    if ((typeof iconArr) !== 'object') {
+      throw 'changeIcon() 调用时参数1类型错误，必须为object';
+      return;
+    }
+    //仅改变状态：展开/关闭
+    for (let i = 0, len = iconArr.length; i < len; i++) {
+      let oldClass = iconArr[i].getAttribute('class');
+      let lastIndex = oldClass.slice(oldClass.length - 1);
+      let str = oldClass.slice(oldClass.indexOf('icon-'), -1);
+      if (str == 'icon-launch') {
+        iconArr[i].setAttribute('class', 'iconfont icon-retract' + lastIndex);
+      }
+      if (str == 'icon-retract') {
+        iconArr[i].setAttribute('class', 'iconfont icon-launch' + lastIndex);
+      }
+    }
   }
 
   /*
@@ -593,50 +645,31 @@ class Mdac {
   */
   switchCatalogList() {
     let switchListButton = this.switchListButton;
-    let quitElement = this.quitElement;
-    let allIcon = this.allIcon;
-    let allChildLevel = this.allChildLevel;
-    switchListButton.onclick = function() {
-      alert(1111);
-      this.children[0].setAttribute('class','iconfont icon-quit');
-      // this.children[0].setAttribute('class','iconfont icon-quit');
-      document.querySelector('.list-wrapper').classList.add('js-retract-catalog');
-      /*let isClose = quitElement.querySelector('.icon-branchB');
-      if (isClose) { //已收起所有目录
-        // 改变当前目录列表按钮 class
-        this.setAttribute('class', 'catalog-button iconfont icon-branchB');
-        // 改变所有父级目录中 i 的 class
-        for (let i = 0, len = allIcon.length; i < len; i++) {
-          if (indexStyleNumber == 1) {
-            allIcon[i].setAttribute('class', 'iconfont icon-launchA');
-          } else if (indexStyleNumber == 2) {
-            allIcon[i].setAttribute('class', 'iconfont icon-launchB');
-          } else {
-            allIcon[i].setAttribute('class', 'iconfont icon-launchC');
-          }
-        }
-        // 打开其所有子目录
-        for (let j = 0, chLen = allChildLevel.length; j < chLen; j++) {
-          allChildLevel[j].setAttribute('class', 'js-open');
-        }
-      } else {  // 已展开所有目录
-        this.setAttribute('class', 'catalog-button iconfont icon-branchB');
-        // 改变所有父级目录中 i 的 class
-        for (let i = 0, allLen = allIcon.length; i < allLen; i++) {
-          if (indexStyleNumber == 1) {
-            allIcon[i].setAttribute('class', 'iconfont icon-launchA');
-          } else if (indexStyleNumber == 2) {
-            allIcon[i].setAttribute('class', 'iconfont icon-launchB');
-          } else {
-            allIcon[i].setAttribute('class', 'iconfont icon-launchC');
-          }
-        }
-        // 关闭其所有子目录
-        for (let j = 0, allChLen = allChildLevel.length; j < allChLen; j++) {
-          allChildLevel[j].setAttribute('class', 'js-close');
-        }
-      }*/
-    };
+    let iconArr = this.allIcon; //所有目录icon图标集合
+    let status = switchListButton.children[0].getAttribute('value');
+    let changeIconStatus = this.changeIconStatus;
+
+    switchListButton.addEventListener('click', function() {
+      if (status) {
+        //切换底部按钮 icon
+        this.children[0].setAttribute('class', 'iconfont icon-branchB');
+        //收起子目录
+        document.querySelector('.list-wrapper').classList.add('js-retract');
+        document.querySelector('.list-wrapper').classList.remove('js-launch');
+        this.children[0].setAttribute('value', 'false');
+        status = false;
+      } else {
+        //切换底部按钮 icon
+        this.children[0].setAttribute('class', 'iconfont icon-quit');
+        //展开子目录
+        document.querySelector('.list-wrapper').classList.add('js-launch');
+        document.querySelector('.list-wrapper').classList.remove('js-retract');
+        this.children[0].setAttribute('value', 'true');
+        status = true;
+      }
+      //改变icon状态：展开/关闭
+      changeIconStatus(iconArr);
+    });
   }
 
   /*
@@ -716,7 +749,7 @@ class Mdac {
    */
   changeParentColor(itemLi) {
     if ((typeof itemLi) !== 'object') {
-      console.error('changeParentColor() 参数必须是一个标签对象！');
+      throw 'changeParentColor() 参数必须是一个标签对象！';
       return false;
     }
     itemLi.classList.add('js-active');
@@ -840,7 +873,7 @@ class Mdac {
     let status = true;
     let showIndex = originShowIndex;
     let listElement = this.listElement;
-    this.showIndexEl.children[0].addEventListener('click',function(){
+    this.showIndexEl.children[0].addEventListener('click', function() {
       if (status) { //关闭目录序号
         listElement.classList.add('js-noindex');
         this.setAttribute('class', 'iconfont icon-catalog-closeB');
@@ -859,59 +892,65 @@ class Mdac {
    * ----------------------------------------
    */
   choseCatalogStyle() {
-    let allStyle = document.querySelectorAll('[name="catalogStyle"]');
+    let allStyle = document.querySelectorAll('.style-chose');
 
     //所有的目录
     let allIcon = this.allIcon;
-    // console.log(allIcon);
-    for(let i=0,len = allStyle.length;i<len; i++){
+    let changeIcons = this.changeIcons;
+    // 改变icon 图标;
+    for (let i = 0, len = allStyle.length; i < len; i++) {
       allStyle[i].onclick = function() {
-        let styleIndex = allStyle[i].getAttribute('value');
-        //根据styleIndex值改变icon-launchA最后的 A 的值
-        for (let j = 0,len2 = allIcon.length;j<len2;j++){
-          console.log(allIcon[j].getAttribute('class'));
+        //改变icon
+        changeIcons(allIcon, i+1);
+        //样式按钮选中
+        for (let j = 0, len = allStyle.length; j < len; j++) {
+          allStyle[j].children[0].removeAttribute('checked');
         }
-
-      }
+        this.children[0].setAttribute('checked', 'checked');
+      };
     }
 
+    //文字阴影显示隐藏
+    let shadowButton = document.querySelector('[name="textShadow"]').parentElement;
+    shadowButton.onclick= function(){
+      let status = document.querySelector('body').getAttribute('class');
+      if(status != 'js-show-shadow'){
+        document.querySelector('body').setAttribute('class','js-show-shadow');
+        this.children[0].setAttribute('checked','checked');
+      }else{
+        document.querySelector('body').setAttribute('class','js-close-shadow');
+        this.children[0].removeAttribute('checked');
+      }
+    }
+    if(isShadow == true){
+      document.querySelector('body').setAttribute('class','js-show-shadow');
+      shadowButton.children[0].setAttribute('checked','checked');
+    }else{
+      document.querySelector('body').setAttribute('class','js-close-shadow');
+      shadowButton.children[0].removeAttribute('checked');
+    }
 
+    //目录树显示隐藏
+    let treeButton = document.querySelector('[name="showTree"]').parentElement;
+    treeButton.onclick= function(){
+      // console.log(treeButton);
+      let status = document.querySelector('#body-container').getAttribute('class');
+      if(status != 'js-show-tree'){
+        document.querySelector('#body-container').setAttribute('class','js-show-tree');
+        this.children[0].setAttribute('checked','checked');
+      }else{
+        document.querySelector('#body-container').setAttribute('class','js-close-tree');
+        this.children[0].removeAttribute('checked');
+      }
+    }
+    if(isShadow == true){
+      document.querySelector('#body-container').setAttribute('class','js-show-tree');
+      treeButton.children[0].setAttribute('checked','checked');
+    }else{
+      document.querySelector('#body-container').setAttribute('class','js-close-tree');
+      treeButton.children[0].removeAttribute('checked');
+    }
 
-
-   /* for (let i = 0, len1 = allStyle.length; i < len1; i++) {
-      allStyle[i].onclick = function() {
-        document.querySelector('.structure-child').
-            querySelector('.js-active').
-            removeAttribute('class');
-        allStyle[i].setAttribute('class', 'js-active');
-        for (let j = 0, len2 = allIcon.length; j < len2; j++) {
-          let isClose = allIcon[j].nextElementSibling.nextElementSibling.getAttribute(
-              'class');
-          if (i == 0) {
-            if (isClose == 'js-close') { //子目录处于关闭状态
-              allIcon[j].setAttribute('class', 'iconfont icon-retractA');
-            } else { //子目录处于打开状态
-              allIcon[j].setAttribute('class', 'iconfont icon-launchA');
-            }
-            indexStyleNumber = 1;
-          } else if (i == 1) {
-            if (isClose == 'js-close') { //子目录处于关闭状态
-              allIcon[j].setAttribute('class', 'iconfont icon-retractB');
-            } else { //子目录处于打开状态
-              allIcon[j].setAttribute('class', 'iconfont icon-launchB');
-            }
-            indexStyleNumber = 2;
-          } else {
-            if (isClose == 'js-close') { //子目录处于关闭状态
-              allIcon[j].setAttribute('class', 'iconfont icon-retractC');
-            } else { //子目录处于打开状态
-              allIcon[j].setAttribute('class', 'iconfont icon-launchC');
-            }
-            indexStyleNumber = 3;
-          }
-        }
-      };
-    }*/
   }
 
   /**
