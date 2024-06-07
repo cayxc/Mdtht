@@ -42,7 +42,7 @@ class Mdac {
       indexStyle = 1,
       openDark   = false,
       showTree   = true,
-      openShadow = false,
+      openShadow = true,
   ) {
     objThis = this; //当前对象的 this
     try {
@@ -157,64 +157,61 @@ class Mdac {
     for (let i = 1, len = 3; i <= len; i++) {
       if (this.indexStyle == i) {
         indexStyleElement += '<li class="style-chose">' +
-            '<input type="radio" name="style' + styleIndex[i - 1] +
-            '" checked="checked">' +
-            '<label for="style' + styleIndex[i - 1] + '">Style-' +
-            styleIndex[i - 1] + '</label>' +
+            '<input type="radio" name="style' + styleIndex[i - 1] + '" checked="checked">' +
+            '<label for="style' + styleIndex[i - 1] + '">图标-' + styleIndex[i - 1] + '</label>' +
             '</li>';
       } else {
         indexStyleElement += '<li class="style-chose">' +
             '<input type="radio" name="style' + styleIndex[i - 1] + '">' +
-            '<label for="style' + styleIndex[i - 1] + '">Style-' +
-            styleIndex[i - 1] + '</label>' +
+            '<label for="style' + styleIndex[i - 1] + '">图标-' + styleIndex[i - 1] + '</label>' +
             '</li>';
       }
     }
     leftBlock.innerHTML = '<header class="top-container">' +
-        '        <i class="catalog-button iconfont icon-catalog-show"></i>\n' +
+        '        <i class="catalog-button iconfont icon-catalog-show"></i>' +
         '        <div class="search-container">' +
-        '            <input type="text" class="search" name="search" placeholder="输入关键字搜索目录">\n' +
+        '            <input type="text" class="search" name="search" placeholder="输入关键字搜索目录">' +
         '            <i class="search-icon iconfont icon-close"></i>' +
-        '        </div>\n' +
-        '        <div class="search-result"></div>\n' +
-        '    </header>\n' +
-        '    <nav id="list-container">\n' +
-        '        <div class="list-wrapper">\n' +
-        '        </div>\n' +
-        '    </nav>\n' +
-        '    <footer class="bottom-container">\n' +
-        '        <div class="mode-container">\n' +
-        '            <div class="mode">\n' +
-        '                <i class="iconfont ' + modeStyleClass + '"></i>\n' +
-        '            </div>\n' +
-        '            <div class="index" title="显示/隐藏目录索引编号">\n' +
-        indexItem + '</div>\n' +
-        '            <div class="structure" title="切换目录样式图标">\n' +
-        '                <i class="iconfont icon-style"></i>\n' +
-        '                <ul class="structure-child">\n' +
-        '                   <li>\n' +
-        '                            <input type="radio" id="show-tree" name="showTree" value="true" checked="checked">\n' +
-        '                            <label for="showTree">显示树状线</label>\n' +
-        '                        </li>\n' +
-        '                        <li>\n' +
-        '                            <input type="radio" id="text-shadow" name="textShadow" value="true" checked="checked">\n' +
-        '                            <label for="textShadow">文字阴影</label>\n' +
-        '                        </li>' + indexStyleElement +
-        '                </ul>\n' +
-        '            </div>\n' +
-        '            <div class="quit-menu" title="展开收起子目录">\n' +
-        '                <i class="iconfont icon-quit" value="true"></i>\n' +
-        '            </div>\n' +
-        '        </footer>\n' +
-        '    </div>\n';
+        '        </div>' +
+        '        <div class="search-result"></div>' +
+        '    </header>' +
+        '    <nav id="list-container">' +
+        '        <div class="list-wrapper">' +
+        '        </div>' +
+        '    </nav>' +
+        '    <footer class="bottom-container">' +
+        '        <div class="mode-container">' +
+        '            <div class="mode">' +
+        '                <i class="iconfont ' + modeStyleClass + '"></i>' +
+        '            </div>' +
+        '            <div class="index" title="显示/隐藏目录索引编号">' + indexItem + '</div>' +
+        '            <div class="structure" title="风格样式">' +
+        '                <i class="iconfont icon-style"></i>' +
+        '                <ul class="structure-child">' +
+        '                   <li>' +
+        '                      <input type="radio" id="show-tree" name="showTree" value="true">' +
+        '                      <label for="showTree">目录树</label>' +
+        '                    </li>' +
+        '                    <li>' +
+        '                      <input type="radio" id="text-shadow" name="textShadow" value="true">' +
+        '                      <label for="textShadow">阴影效果</label>' +
+        '                   </li>' +
+                            indexStyleElement +
+        '                </ul>' +
+        '            </div>' +
+        '            <div class="quit-menu" title="展开收起子目录">' +
+        '                <i class="iconfont icon-quit" value="true"></i>' +
+        '            </div>' +
+        '        </footer>' +
+        '    </div>';
     //4.设置内容父级元素的内容结构
-    rightBlock.innerHTML = '\n<div id="content">\n' +
+    rightBlock.innerHTML = '<div id="content">' +
         oldContent +
-        '\n</div>\n' + '</div>\n';
-    bodyBlock.innerHTML = '<div id="switch-button">\n' +
-        '<i class="iconfont icon-label"></i>\n' +
-        ' <i class="iconfont icon-catalog-close"></i>\n' +
-        '</div>\n';
+        '</div>' + '</div>';
+    bodyBlock.innerHTML = '<div id="switch-button">' +
+        '<i class="iconfont icon-label"></i>' +
+        ' <i class="iconfont icon-catalog-close"></i>' +
+        '</div>';
 
     //5.追加结构元素到页面
     document.body.appendChild(bodyBlock);
@@ -222,9 +219,9 @@ class Mdac {
     bodyBlock.appendChild(rightBlock);
 
     //6.底部提示
-    let msg = '\n<p class="note-tips">\n' +
+    let msg = '<p class="note-tips">' +
         ' 本文档风格样式经过 MarkdownPad2AutoCatalog 目录生成插件转换生成，' +
-        '插件地址：<a href="https://github.com/cayxc/MarkdownPad2AutoCatalog" target="_blank"> GitHub地址</a>&emsp;<a href="https://gitee.com/cayxc/MarkdownPad2AutoCatalog" target="_blank">Gitee地址</a></p>\n';
+        '插件地址：<a href="https://github.com/cayxc/MarkdownPad2AutoCatalog" target="_blank"> GitHub地址</a>&emsp;<a href="https://gitee.com/cayxc/MarkdownPad2AutoCatalog" target="_blank">Gitee地址</a></p>';
     //5.追加结构元素到页面
     this.noteTips('footer', msg, 'content');
   }
@@ -375,10 +372,10 @@ class Mdac {
     //判断目录数量，确定第一、二个标题的层级
     if (tagLength == 0) {
       let container = document.querySelector('.list-wrapper');
-      container.innerHTML = '<ul>\n' +
-          '<li style="text-align:center;color:#999999;font-size:1.4rem; line-height: 2.4rem">\n' +
-          '<i class="iconfont icon-fail"></i>抱歉...<br/>文档中未发现 h1~h6 的标签<br/>无法生成目录</p>\n</li>\n' +
-          '</ul>\n';
+      container.innerHTML = '<ul>' +
+          '<li style="text-align:center;color:#999999;font-size:1.4rem; line-height: 2.4rem">' +
+          '<i class="iconfont icon-fail"></i>抱歉...<br/>文档中未发现 h1~h6 的标签<br/>无法生成目录</p>\n</li>' +
+          '</ul>';
       return;
     }
     if (tagLength == 1) {
@@ -472,12 +469,12 @@ class Mdac {
       if (j == 1) {
         for (let k = 0, len = levelLength; k < len; k++) {
           let liElement = document.createElement('li');
-          liElement.innerHTML = '\n<a href="' + window.location.pathname + '#' +
-              levelArr[k].id + '"' + ' class=' + levelArr[k].id + '>\n' +
+          liElement.innerHTML = '<a href="' + window.location.pathname + '#' +
+              levelArr[k].id + '"' + ' class=' + levelArr[k].id + '>' +
               '<div><p>' + levelArr[k].id.slice(6) +
-              '</p>\n' +
+              '</p>' +
               '<span>' + levelArr[k].innerText + '</span></div>' +
-              '</a>\n';
+              '</a>';
           ulElement.appendChild(liElement);
           // 追加目录到目录容器中
           catalogueBlock.appendChild(ulElement);
@@ -502,14 +499,14 @@ class Mdac {
                   className)[0].parentNode;
               prevElement.setAttribute('class', 'parent-level');
               let liElement = document.createElement('li');
-              liElement.innerHTML = '\n<a href="' + window.location.pathname +
+              liElement.innerHTML = '<a href="' + window.location.pathname +
                   '#' + levelArr[n].id + '"' + ' class=' + levelArr[n].id +
-                  '>\n' +
+                  '>' +
                   '<div><p>' +
                   levelArr[n].id.slice(6) +
-                  '</p>\n' +
+                  '</p>' +
                   '<span>' + levelArr[n].innerText + '</span></div>' +
-                  '</a>\n';
+                  '</a>';
               let currentUlElement = prevElement.querySelector('ul');
               if (currentUlElement !== null) {
                 currentUlElement.appendChild(liElement);
@@ -972,12 +969,12 @@ class Mdac {
       let text = allCatalogElement[i].innerText.replace(/\s+/g, '');
       if (text.toLowerCase().indexOf(value) != -1) {
         let href = allCatalogElement[i].getAttribute('href');
-        result += '\n<a href="' + href + '">' + allCatalogElement[i].innerText +
-            '</a>\n';
+        result += '<a href="' + href + '">' + allCatalogElement[i].innerText +
+            '</a>';
       }
     }
     if (result == '') {
-      result = '\n<i class="iconfont icon-search"></i>\n<span>目录中暂无相关搜索结果</span>\n<span>试试 Ctrl+F  在全文档搜索</span>\n';
+      result = '<i class="iconfont icon-search"></i>\n<span>目录中暂无相关搜索结果</span>\n<span>试试 Ctrl+F  在全文档搜索</span>';
     }
     return result;
   }

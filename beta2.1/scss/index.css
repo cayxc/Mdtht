@@ -131,10 +131,10 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 /*  Custom Scroll*/
 /*input checkbox no-style*/
 .input-checkebox, input[type=checkbox], input[type=radio] {
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
-  appearance: none;
   content: "";
   display: inline-block;
   position: relative;
@@ -146,7 +146,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   font-size: 2rem;
   line-height: 1;
   margin-bottom: 0.3rem;
-  margin-right: 1.2rem;
+  margin-right: 1rem;
   box-sizing: border-box;
 }
 
@@ -190,12 +190,12 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 
 .js-active {
-  color: rgb(40, 180, 115);
+  color: rgb(1, 203, 110);
 }
 
 .js-show-shadow,
 .js-show-shadow .iconfont {
-  text-shadow: 0.075rem 0.075rem 0.075rem rgba(208, 208, 208, 0.9);
+  text-shadow: 0.05rem 0.1rem 0.12rem rgba(208, 208, 208, 0.75);
 }
 
 .js-close-shadow,
@@ -289,18 +289,18 @@ hr {
 }
 
 ::selection {
-  background: rgba(40, 180, 115, 0.75);
+  background: rgba(1, 203, 110, 0.75);
   color: #000000;
   text-shadow: none;
 }
 
 a {
   text-decoration: none;
-  color: #ff5900;
+  color: #ff6d0d;
   cursor: pointer;
 }
 a:hover {
-  color: #e82323;
+  color: rgb(1, 203, 110);
 }
 
 p {
@@ -314,12 +314,12 @@ p a {
 
 strong {
   font-weight: bold;
-  color: rgb(40, 180, 115);
+  color: rgb(1, 203, 110);
 }
 
 u {
-  text-decoration-color: rgb(40, 180, 115);
-  -moz-text-decoration-color: rgb(40, 180, 115);
+  text-decoration-color: rgb(1, 203, 110);
+  -moz-text-decoration-color: rgb(1, 203, 110);
 }
 
 em {
@@ -329,12 +329,12 @@ em {
 del {
   color: #999999;
   text-decoration: line-through;
-  text-decoration-color: #e82323;
-  -moz-text-decoration-color: #e82323;
+  text-decoration-color: #d00101;
+  -moz-text-decoration-color: #d00101;
 }
 
 mark {
-  background-color: rgb(40, 180, 115);
+  background-color: rgb(1, 203, 110);
   padding: 0.2rem 1rem;
   border-radius: 0.4rem;
   -webkit-border-radius: 0.4rem;
@@ -435,11 +435,11 @@ blockquote {
   border-radius: 0.8rem;
   -webkit-border-radius: 0.8rem;
   -moz-border-radius: 0.8rem;
-  border-left: 0.4rem solid rgb(40, 180, 115);
+  border-left: 0.4rem solid rgb(1, 203, 110);
   border-bottom: none;
   border-top: none;
   border-right: none;
-  background-color: rgba(40, 180, 115, 0.06);
+  background-color: rgba(1, 203, 110, 0.06);
   overflow: hidden;
 }
 blockquote p:first-child {
@@ -450,7 +450,7 @@ blockquote p:first-child {
   color: #999999;
 }
 .iconfont:hover {
-  text-shadow: 0.1rem 0.1rem 0.1rem rgba(40, 180, 115, 0.75);
+  text-shadow: 0.1rem 0.1rem 0.1rem rgba(1, 203, 110, 0.75);
 }
 
 /*table*/
@@ -500,10 +500,10 @@ input[type=checkbox] {
 input[type=checkbox]:checked {
   content: "";
   display: inline-block;
-  background: rgb(40, 180, 115);
+  background: rgb(1, 203, 110);
   border-color: transparent;
   font-size: 1.5rem;
-  text-align: center;
+  text-align: left;
   color: white;
 }
 input[type=checkbox]:checked:after {
@@ -513,7 +513,7 @@ input[type=checkbox]:checked:after {
 
 /*input radio*/
 input[type=radio] {
-  border: 1px solid rgb(40, 180, 115);
+  border: 1px solid rgb(1, 203, 110);
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -524,7 +524,7 @@ input[type=radio]:checked:after {
   width: 8px;
   height: 8px;
   margin: 3px auto;
-  background: rgb(40, 180, 115);
+  background: rgb(1, 203, 110);
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -596,7 +596,7 @@ input[type=radio]:checked:after {
   margin-top: -0.2rem;
 }
 .catalog-button:hover {
-  color: rgb(40, 180, 115);
+  color: rgb(1, 203, 110);
 }
 
 .search-container {
@@ -614,7 +614,7 @@ input[type=radio]:checked:after {
   float: right;
   position: relative;
   z-index: 33;
-  width: 80%;
+  width: 79%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -622,11 +622,11 @@ input[type=radio]:checked:after {
 .search:focus {
   outline: none;
   width: 100%;
-  border-color: rgb(40, 180, 115);
-  box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.2);
-  -webkit-box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.2);
-  -moz-box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.2);
-  -o-box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.2);
+  border-color: rgb(1, 203, 110);
+  box-shadow: 0 0 0.2rem 0.2rem rgba(1, 203, 110, 0.2);
+  -webkit-box-shadow: 0 0 0.2rem 0.2rem rgba(1, 203, 110, 0.2);
+  -moz-box-shadow: 0 0 0.2rem 0.2rem rgba(1, 203, 110, 0.2);
+  -o-box-shadow: 0 0 0.2rem 0.2rem rgba(1, 203, 110, 0.2);
 }
 .search::placeholder {
   color: #d0d0d0;
@@ -643,7 +643,7 @@ input[type=radio]:checked:after {
   line-height: 2.3rem;
 }
 .search-icon:hover {
-  color: rgb(40, 180, 115);
+  color: rgb(1, 203, 110);
 }
 
 .search-result {
@@ -674,7 +674,7 @@ input[type=radio]:checked:after {
   line-height: 1.8rem;
 }
 .search-result a:hover {
-  color: rgb(40, 180, 115) !important;
+  color: rgb(1, 203, 110) !important;
 }
 
 .search-result a,
@@ -803,14 +803,14 @@ input[type=radio]:checked:after {
 }
 
 .list-wrapper ul li:hover > a {
-  color: rgb(40, 180, 115);
+  color: rgb(1, 203, 110);
   background: rgb(238, 238, 238);
 }
 .list-wrapper ul li:hover > a:before {
   width: 1.3rem;
 }
 .list-wrapper ul li:hover > .iconfont {
-  color: rgb(40, 180, 115);
+  color: rgb(1, 203, 110);
 }
 
 .list-wrapper > ul > li:first-child > a:after {
@@ -904,7 +904,7 @@ input[type=radio]:checked:after {
   line-height: 4rem;
 }
 .bottom-container .iconfont:hover {
-  color: rgb(40, 180, 115);
+  color: rgb(1, 203, 110);
   cursor: pointer;
 }
 .bottom-container .icon-quit {
@@ -947,11 +947,14 @@ input[type=radio]:checked:after {
   box-sizing: border-box;
 }
 .structure-child li:hover {
-  color: rgb(40, 180, 115);
+  color: rgb(1, 203, 110);
 }
 .structure-child li:first-child, .structure-child li:nth-of-type(2) {
   padding-bottom: 0.8rem;
   border-bottom: 0.1rem dashed #d0d0d0;
+}
+.structure-child li:first-child label, .structure-child li:nth-of-type(2) label {
+  margin-left: -0.8rem;
 }
 .structure-child li:last-child {
   padding-bottom: 0.8rem;
@@ -966,8 +969,7 @@ input[type=radio]:checked:after {
 .structure-child li input[type=radio] {
   width: 1.2rem;
   height: 1.2rem;
-  margin-right: 0.2rem !important;
-  border: 1px solid rgb(40, 180, 115);
+  border: 1px solid rgb(1, 203, 110);
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -979,7 +981,7 @@ input[type=radio]:checked:after {
   width: 0.6rem;
   height: 0.6rem;
   margin: 0.2rem auto;
-  background: rgb(40, 180, 115);
+  background: rgb(1, 203, 110);
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -1005,12 +1007,12 @@ input[type=radio]:checked:after {
   height: 100%;
   top: -0.4rem;
   left: -0.2rem;
-  color: rgb(40, 180, 115);
+  color: rgb(1, 203, 110);
   font-size: 4rem;
   margin-top: 1rem;
 }
 #switch-button .icon-label {
-  text-shadow: 0 0 0.3rem rgb(40, 180, 115);
+  text-shadow: 0 0 0.3rem rgb(1, 203, 110);
 }
 #switch-button .icon-catalog-close {
   font-size: 1.6rem;
@@ -1022,7 +1024,7 @@ input[type=radio]:checked:after {
   text-shadow: none;
 }
 #switch-button:hover .icon-label {
-  color: #ff5900;
+  color: #ff6d0d;
 }
 
 .note-tips {
@@ -1068,7 +1070,7 @@ html[theme=dark] .js-close-shadow .iconfont {
 }
 html[theme=dark] .js-show-shadow,
 html[theme=dark] .js-show-shadow .iconfont {
-  text-shadow: 0.075rem 0.075rem 0.075rem rgba(0, 0, 0, 0.99);
+  text-shadow: 0.2rem 0.2rem 0.2rem #000000;
 }
 html[theme=dark] {
   background-color: rgb(22, 27, 31);
@@ -1146,7 +1148,7 @@ html[theme=dark] .iconfont {
   text-shadow: 0.1rem 0.1rem 0.1rem #202d32;
 }
 html[theme=dark] .iconfont:hover {
-  text-shadow: 0.1rem 0.1rem 0.1rem rgba(40, 180, 115, 0.2);
+  text-shadow: 0.1rem 0.1rem 0.1rem rgba(1, 203, 110, 0.2);
 }
 html[theme=dark] #right-container,
 html[theme=dark] #left-container,
@@ -1175,10 +1177,10 @@ html[theme=dark] .list-wrapper ul li ul li:last-child:before, html[theme=dark] .
 html[theme=dark] .search-result {
   background: rgb(32, 45, 50);
   border-color: rgb(42, 55, 60);
-  box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-  -webkit-box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-  -moz-box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-  -o-box-shadow: 0 0 0.2rem 0.2rem rgba(40, 180, 115, 0.15);
+  box-shadow: 0 0 0.2rem 0.2rem rgba(1, 203, 110, 0.15);
+  -webkit-box-shadow: 0 0 0.2rem 0.2rem rgba(1, 203, 110, 0.15);
+  -moz-box-shadow: 0 0 0.2rem 0.2rem rgba(1, 203, 110, 0.15);
+  -o-box-shadow: 0 0 0.2rem 0.2rem rgba(1, 203, 110, 0.15);
 }
 html[theme=dark] .search-result a {
   color: rgb(220, 220, 220);
@@ -1187,7 +1189,7 @@ html[theme=dark] .search-icon {
   color: rgb(55, 75, 80);
 }
 html[theme=dark] .search-icon:hover {
-  color: rgb(40, 180, 115);
+  color: rgb(1, 203, 110);
 }
 html[theme=dark] .search-result {
   color: rgb(55, 75, 80);
@@ -1196,10 +1198,10 @@ html[theme=dark] .structure-child {
   background: rgb(22, 27, 31);
   border-color: rgb(42, 55, 60);
   border-bottom-color: rgb(22, 27, 31);
-  box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-  -webkit-box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-  -moz-box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
-  -o-box-shadow: 0 -0.2rem 0.2rem rgba(40, 180, 115, 0.15);
+  box-shadow: 0 -0.2rem 0.2rem rgba(1, 203, 110, 0.15);
+  -webkit-box-shadow: 0 -0.2rem 0.2rem rgba(1, 203, 110, 0.15);
+  -moz-box-shadow: 0 -0.2rem 0.2rem rgba(1, 203, 110, 0.15);
+  -o-box-shadow: 0 -0.2rem 0.2rem rgba(1, 203, 110, 0.15);
 }
 html[theme=dark] .structure-child li:first-child, html[theme=dark] .structure-child li:nth-of-type(2), html[theme=dark] .structure-child li:last-child {
   border-color: rgb(42, 55, 60);

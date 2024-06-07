@@ -87,7 +87,7 @@ a {
   cursor: pointer;
 
   &:hover {
-    color: $red;
+    color: $green;
   }
 }
 
@@ -239,7 +239,7 @@ input[type='checkbox'] {
     background: $green;
     border-color: transparent;
     font-size: 1.5rem;
-    text-align: center;
+    text-align: left;
     color: white;
 
     &:after {
@@ -353,7 +353,7 @@ input[type='radio'] {
   float: right;
   position: relative;
   z-index: 33;
-  width: 80%;
+  width: 79%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -664,6 +664,9 @@ input[type='radio'] {
     &:first-child,&:nth-of-type(2){
       padding-bottom: .8rem;
       border-bottom:.1rem dashed $border-color;
+      label{
+        margin-left: -.8rem;
+      }
     }
     &:last-child{
       padding-bottom: .8rem;
@@ -682,7 +685,6 @@ input[type='radio'] {
   li input[type='radio'] {
     width: $size-12;
     height: $size-12;
-    margin-right: .2rem !important;
     @include border-default($color: $green);
     @include border-radius($size: 50%);
     cursor: pointer;
