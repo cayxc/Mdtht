@@ -212,18 +212,18 @@ $size-10: 1.0rem;
 
 //box-shadow-1
 @mixin box-shadow-1($color:$grey-color) {
-  box-shadow: 0 0 .2rem .2rem $color;
-  -webkit-box-shadow: 0 0 .2rem .2rem $color;
-  -moz-box-shadow: 0 0 .2rem .2rem $color;
-  -o-box-shadow: 0 0 .2rem .2rem $color;
+  box-shadow: 0 0 .2rem .1rem $color;
+  -webkit-box-shadow: 0 0 .2rem .1rem $color;
+  -moz-box-shadow: 0 0 .2rem .1rem $color;
+  -o-box-shadow: 0 0 .2rem .1rem $color;
 }
 
 //box-shadow-2
 @mixin box-shadow-2($color:$grey-color) {
-  box-shadow: 0 -.2rem .2rem $color;
-  -webkit-box-shadow: 0 -.2rem .2rem $color;
-  -moz-box-shadow: 0 -.2rem .2rem $color;
-  -o-box-shadow: 0 -.2rem .2rem $color;
+  box-shadow: 0 -.2rem .1rem $color;
+  -webkit-box-shadow: 0 -.2rem .1rem $color;
+  -moz-box-shadow: 0 -.2rem .1rem $color;
+  -o-box-shadow: 0 -.2rem .1rem $color;
 }
 
 //box-shadow-3
@@ -338,8 +338,18 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   position: relative;
   z-index: 12;
 }
+.list-wrapper .js-close{
+  display: none;
+}
+
 .js-width-0{
   width: 0 !important;
+}
+.js-height-0{
+  height: 0 !important;
+}
+.js-height-1{
+  height: 4rem !important;
 }
 
 #list-container .js-noindex{
@@ -478,7 +488,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   }
   .list-wrapper {
     .iconfont {
-      color: $grey-color-dark;
+      color: $text-grey-dark;
       background: $dark-bag;
     }
     a {

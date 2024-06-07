@@ -311,6 +311,8 @@ input[type='radio'] {
   width: 110rem;
   box-sizing: border-box;
   padding: 0 5rem;
+  margin: auto;
+  overflow-x: hidden;
 }
 
 /*top-container*/
@@ -710,11 +712,11 @@ input[type='radio'] {
 /*switch-button*/
 #switch-button {
   position: absolute;
-  top: 0;
-  left: 0;
   z-index: 110;
   width: 3.4rem;
   height: 0;
+  top: 0;
+  left: 0;
   overflow: hidden;
   cursor: pointer;
   text-align: center;
@@ -781,6 +783,10 @@ html[theme=dark] {
 @media screen and (max-width: 768px) {
   #left-container {
     width: 20rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
     display: none;
   }
   #content {
@@ -788,7 +794,7 @@ html[theme=dark] {
     padding: 0 3rem;
   }
   #switch-button{
-    display: block;
+    height: 4rem;
   }
   .search {
     width: 75%;

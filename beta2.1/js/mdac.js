@@ -1,30 +1,30 @@
 /*
-|--------------------------------------------------------------------------
-| MarkdownPad2AutoCatalog
-| MarkdownPad2 编辑器导出 html 文件时自动生成左侧目录插件
-|--------------------------------------------------------------------------
-|
-| 此插件用于将在 MarkdownPad2 编辑器中编辑的文档在转为 Html文件时自动生成左侧目录
-| 目录生成时默认将第一个 h1 标签作为文档的题目，当检测到有多个 h1 标签时，
-| 会将除了第一个 h1 外的所有 h1 标签自动转换为 h2 标签，其余标签自动向下转一级
-| 实现的功能：
-| 1. 根据 html 文档中 h1~h6 标签自动生成对应的目录
-| 2. 自动生成目录编号，可选择是否显示目录编号
-| 3. 提供三种目录样式，可自由选择
-| 4. 提供白天和夜间 2 种阅读模式
-| 5. 根据当前阅读位置，自动显示所在目录及父级目录
-| 6. 目录搜索功能，全文搜索使用浏览器自带的 Ctrl+F
-| 7. 一键展开收起目录列表
-| 8. 整个左侧栏目可展开和收起
-| 9. 代码高亮显示 highlightjs 插件整合
-| 10. 方便的初始化设置，可自定义阅读模式、是否显示目录编号和自定义目录样式
-|
-| 作者: YXC (cayxc512@163.com )
-| 插件地址：
-| GitHub https://github.com/cayxc/MarkdownPad2AutoCatalog
-| Gitee  https://gitee.com/cayxc/MarkdownPad2AutoCatalog
-|
-*/
+ |--------------------------------------------------------------------------
+ | MarkdownPad2AutoCatalog
+ | MarkdownPad2 编辑器导出 html 文件时自动生成左侧目录插件
+ |--------------------------------------------------------------------------
+ |
+ | 此插件用于将在 MarkdownPad2 编辑器中编辑的文档在转为 Html文件时自动生成左侧目录
+ | 目录生成时默认将第一个 h1 标签作为文档的题目，当检测到有多个 h1 标签时，
+ | 会将除了第一个 h1 外的所有 h1 标签自动转换为 h2 标签，其余标签自动向下转一级
+ | 实现的功能：
+ | 1. 根据 html 文档中 h1~h6 标签自动生成对应的目录
+ | 2. 自动生成目录编号，可选择是否显示目录编号
+ | 3. 提供三种目录样式，可自由选择
+ | 4. 提供白天和夜间 2 种阅读模式
+ | 5. 根据当前阅读位置，自动显示所在目录及父级目录
+ | 6. 目录搜索功能，全文搜索使用浏览器自带的 Ctrl+F
+ | 7. 一键展开收起目录列表
+ | 8. 整个左侧栏目可展开和收起
+ | 9. 代码高亮显示 highlightjs 插件整合
+ | 10. 方便的初始化设置，可自定义阅读模式、是否显示目录编号和自定义目录样式
+ |
+ | 作者: YXC (cayxc512@163.com )
+ | 插件地址：
+ | GitHub https://github.com/cayxc/MarkdownPad2AutoCatalog
+ | Gitee  https://gitee.com/cayxc/MarkdownPad2AutoCatalog
+ |
+ */
 let objThis;
 let indexStyleNumber;
 let originShowIndex;
@@ -38,8 +38,8 @@ class Mdac {
   //showTree   是否开树状线
   //openShadow   是否开启文字阴影
   constructor(
-      showIndex                                                    = true, indexStyle                                 = 1, openDark = false, showTree = true,
-      openShadow                                                   = true) {
+      showIndex = true, indexStyle = 1, openDark = true, showTree = true,
+      openShadow = false) {
     objThis = this; //当前对象的 this
     try {
       if ((typeof showIndex) != 'boolean') {
@@ -62,8 +62,8 @@ class Mdac {
         openDark = false;
         throw '参数: openShadow 类型有误，已按照默认配置执行，该参数类型为：Boolean';
       }
-    } catch (error) {
-      alert(error);
+    } catch (err) {
+      this.showError(err);
     } finally {
       this.showIndex = showIndex;
       this.indexStyle = indexStyle;
@@ -97,7 +97,7 @@ class Mdac {
       // this.haveChileLevel();
       this.switchCatalog();
       this.switchCatalogList();
-      this.switchParentCatalog();
+      // this.switchParentCatalog();
       this.singLeCatalogClick();
       this.catalogTrack();
       this.showCatalogIndex();
@@ -112,20 +112,44 @@ class Mdac {
    * ----------------------------------------
    * 错误提示
    * ----------------------------------------
-  */
+   */
   showError(info) {
     let errorBlock = document.createElement('p');
     errorBlock.setAttribute('class', 'error');
     errorBlock.innerHTML = info;
-    let content = document.querySelector('#content');
+    let content = document.querySelector('body');
     content.insertBefore(errorBlock, content.firstChild);
   }
 
+  /**
+   * ----------------------------------------
+   * 提示说明
+   * ----------------------------------------
+   * @param tag sting 提示消息的标签 div p
+   * @param msg string 提示消息
+   * @param id string 父容器，要追加到哪个父容器中的id
+   */
+  noteTips(tag, msg, id) {
+    try {
+      if ((typeof tag) !== 'string' || (typeof msg) !== 'string' ||
+          (typeof id) !== 'string') {
+        throw 'noteTips() 调用时参数类型错误！';
+      }
+      let exp = document.createElement(tag);
+      exp.innerHTML = msg;
+      //5.追加结构元素到页面
+      document.getElementById(id).appendChild(exp);
+    } catch (err) {
+      this.showError(err);
+    }
+
+  }
+
   /*
-     * ----------------------------------------
-     * 创建新的目录、内容和底部提示 布局结构
-     * ----------------------------------------
-    */
+   * ----------------------------------------
+   * 创建新的目录、内容和底部提示的布局结构
+   * ----------------------------------------
+   */
   createContent() {
     //获取已有正文内容
     let oldContent = document.body.innerHTML;
@@ -162,21 +186,25 @@ class Mdac {
       modeStyleClass = 'icon-sun';
     }
     let indexStyleElement = '';
-    let styleIndex = ['A', 'B', 'C'];
+    let styleIndex = ['A',
+                      'B',
+                      'C'];
     for (let i = 1, len = 3; i <= len; i++) {
       if (this.indexStyle == i) {
-        indexStyleElement += '<li class="style-chose">' +
-            '<input type="radio" name="style' + styleIndex[i - 1] +
-            '" checked="checked">' + '<label for="style' + styleIndex[i - 1] +
-            '">图标-' + styleIndex[i - 1] + '</label>' + '</li>';
+        indexStyleElement
+            += '<li class="style-chose">' + '<input type="radio" name="style' +
+            styleIndex[i - 1] + '" checked="checked">' + '<label for="style' +
+            styleIndex[i - 1] + '">图标-' + styleIndex[i - 1] + '</label>' +
+            '</li>';
       } else {
-        indexStyleElement += '<li class="style-chose">' +
-            '<input type="radio" name="style' + styleIndex[i - 1] + '">' +
-            '<label for="style' + styleIndex[i - 1] + '">图标-' +
-            styleIndex[i - 1] + '</label>' + '</li>';
+        indexStyleElement
+            += '<li class="style-chose">' + '<input type="radio" name="style' +
+            styleIndex[i - 1] + '">' + '<label for="style' + styleIndex[i - 1] +
+            '">图标-' + styleIndex[i - 1] + '</label>' + '</li>';
       }
     }
-    leftBlock.innerHTML = '<header class="top-container">' +
+    leftBlock.innerHTML
+        = '<header class="top-container">' +
         '        <i class="catalog-button iconfont icon-catalog-show"></i>' +
         '        <div class="search-container">' +
         '            <input type="text" class="search" name="search" placeholder="输入关键字搜索目录">' +
@@ -203,13 +231,13 @@ class Mdac {
         '                   </li>' + indexStyleElement +
         '                </ul>' + '            </div>' +
         '            <div class="quit-menu" title="展开收起子目录">' +
-        '                <i class="iconfont icon-quit" value="true"></i>' +
+        '                <i class="iconfont icon-branchB" value="true"></i>' +
         '            </div>' + '        </footer>' + '    </div>';
     //4.设置内容父级元素的内容结构
-    rightBlock.innerHTML = '<div id="content">' + oldContent + '</div>' +
-        '</div>';
-    bodyBlock.innerHTML = '<div id="switch-button">' +
-        '<i class="iconfont icon-label"></i>' +
+    rightBlock.innerHTML
+        = '<div id="content">' + oldContent + '</div>' + '</div>';
+    bodyBlock.innerHTML
+        = '<div id="switch-button">' + '<i class="iconfont icon-label"></i>' +
         ' <i class="iconfont icon-catalog-close"></i>' + '</div>';
 
     //5.追加结构元素到页面
@@ -349,7 +377,7 @@ class Mdac {
    *
    */
   setLevelNumber(tag) {
-    try{
+    try {
       if ((typeof tag) != 'object') {
         throw 'setLevelNumber() 调用时参数类型错误，必须是一个h标签的对象集合！';
       }
@@ -364,7 +392,7 @@ class Mdac {
         let newValue = parseInt(str.slice(lastIndex + 1)) + 1;
         return oldValue + '.' + newValue;
       }
-    }catch (err){
+    } catch (err) {
       this.showError(err);
     }
   }
@@ -382,7 +410,8 @@ class Mdac {
     //判断目录数量，确定第一、二个标题的层级
     if (tagLength == 0) {
       let container = document.querySelector('.list-wrapper');
-      container.innerHTML = '<ul>' +
+      container.innerHTML
+          = '<ul>' +
           '<li style="text-align:center;color:#999999;font-size:1.4rem; line-height: 2.4rem">' +
           '<i class="iconfont icon-fail"></i>抱歉...<br/>文档中未发现 h1~h6 的标签<br/>无法生成目录</p>\n</li>' +
           '</ul>';
@@ -438,30 +467,6 @@ class Mdac {
     }
   }
 
-  /**
-   * ----------------------------------------
-   * 提示说明
-   * ----------------------------------------
-   * @param tag sting 提示消息的标签 div p
-   * @param msg string 提示消息
-   * @param id string 父容器，要追加到哪个父容器中的id
-   */
-  noteTips(tag, msg, id) {
-    try {
-      if ((typeof tag) !== 'string' || (typeof msg) !== 'string' ||
-          (typeof id) !== 'string') {
-        throw 'noteTips() 调用时参数类型错误！';
-      }
-      let exp = document.createElement(tag);
-      exp.innerHTML = msg;
-      //5.追加结构元素到页面
-      document.getElementById(id).appendChild(exp);
-    } catch (err) {
-      this.showError(err);
-    }
-
-  }
-
   /*
    * ----------------------------------------
    * 创建目录
@@ -474,7 +479,7 @@ class Mdac {
     let catalogueBlock = document.querySelector('.list-wrapper');
     // 创建其余子目录
     let ulElement = document.createElement('ul');
-    for (let j = 1; j <= 5; j++) {
+    for (let j = 1; j <= 6; j++) {
       let levelArr = this.levelTagArr(j); // 指定等级的目录集合
       let levelLength = levelArr.length;
       if (levelLength == 0) {
@@ -483,10 +488,11 @@ class Mdac {
       if (j == 1) {
         for (let k = 0, len = levelLength; k < len; k++) {
           let liElement = document.createElement('li');
-          liElement.innerHTML = '<a href="' + window.location.pathname + '#' +
-              levelArr[k].id + '"' + ' class=' + levelArr[k].id + '>' +
-              '<div><p>' + levelArr[k].id.slice(6) + '</p>' + '<span>' +
-              levelArr[k].innerText + '</span></div>' + '</a>';
+          liElement.innerHTML
+              = '<a href="' + window.location.pathname + '#' + levelArr[k].id +
+              '"' + ' class=' + levelArr[k].id + '>' + '<div><p>' +
+              levelArr[k].id.slice(6) + '</p>' + '<span>' + levelArr[k].innerText +
+              '</span></div>' + '</a>';
           ulElement.appendChild(liElement);
           // 追加目录到目录容器中
           catalogueBlock.appendChild(ulElement);
@@ -499,8 +505,7 @@ class Mdac {
           let prevLevelArr = this.levelTagArr(j - 1);
           for (let m = 0, preLen = prevLevelArr.length; m < preLen; m++) {
             // 当前的 id 值 （去掉 level-和最后一个 "."之后所有值的中间值）
-            let currentId = levelArr[n].id.slice(6,
-                levelArr[n].id.lastIndexOf('.'));
+            let currentId = levelArr[n].id.slice(6, levelArr[n].id.lastIndexOf('.'));
             // 父目录的 id 值 （去掉 level-）
             let prevId = prevLevelArr[m].id.slice(6);
             // 找到所属的上一级目录
@@ -511,10 +516,11 @@ class Mdac {
                   className)[0].parentNode;
               prevElement.setAttribute('class', 'parent-level');
               let liElement = document.createElement('li');
-              liElement.innerHTML = '<a href="' + window.location.pathname +
-                  '#' + levelArr[n].id + '"' + ' class=' + levelArr[n].id +
-                  '>' + '<div><p>' + levelArr[n].id.slice(6) + '</p>' +
-                  '<span>' + levelArr[n].innerText + '</span></div>' + '</a>';
+              liElement.innerHTML
+                  = '<a href="' + window.location.pathname + '#' +
+                  levelArr[n].id + '"' + ' class=' + levelArr[n].id + '>' +
+                  '<div><p>' + levelArr[n].id.slice(6) + '</p>' + '<span>' + levelArr[n].innerText +
+                  '</span></div>' + '</a>';
               let currentUlElement = prevElement.querySelector('ul');
               if (currentUlElement !== null) {
                 currentUlElement.appendChild(liElement);
@@ -529,20 +535,19 @@ class Mdac {
                 let classIcon;
                 switch (this.indexStyle) {
                   case 1:
-                    classIcon = 'iconfont icon-launchA';
+                    classIcon = 'iconfont icon-retractA';
                     break;
                   case 2:
-                    classIcon = 'iconfont icon-launchB';
+                    classIcon = 'iconfont icon-retractB';
                     break;
                   case 3:
-                    classIcon = 'iconfont icon-launchC';
+                    classIcon = 'iconfont icon-retractC';
                     break;
                   default:
-                    classIcon = 'iconfont icon-launchA';
+                    classIcon = 'iconfont icon-retractA';
                 }
                 parentStyle.setAttribute('class', classIcon);
-                prevElement.insertBefore(parentStyle,
-                    prevElement.childNodes[0]);
+                prevElement.insertBefore(parentStyle, prevElement.childNodes[0]);
               }
               break;
             }
@@ -557,97 +562,96 @@ class Mdac {
     this.createContent();
     this.createCatalogue();
     // 第一个目录默认样式
-    (document.querySelector('.list-wrapper')).querySelector('li').classList.add('js-active');
+    (document.querySelector('.list-wrapper')).querySelector('li').
+        classList.
+        add('js-active');
   }
 
   /*
-  * ----------------------------------------
-  * 没有子目录时改变最外层 ul 的 padding-left的值
-  * ----------------------------------------
-  */
-  /*  haveChileLevel() {
-      let childLevel = this.listElement.querySelector('.parent-level');
-      if (!childLevel) {
-        this.listElement.children[0].style.paddingLeft = '0';
-      }
-    }*/
-
-  /*
-  * ----------------------------------------
-  * 点击隐藏侧边目录
-  * ----------------------------------------
-  */
+   * ----------------------------------------
+   * 点击隐藏侧边目录
+   * ----------------------------------------
+   */
   switchCatalog() {
     let asideButton = this.asideButton;
     let leftElement = this.leftElement;
     let switchButton = this.switchButton;
     asideButton.onclick = function() {
-      leftElement.classList.add('js-width-0');
-      switchButton.style.height = '4rem';
+      leftElement.setAttribute('class', 'js-width-0');
+      switchButton.className = 'js-height-1';
     };
-    switchButton.addEventListener('click', function() {
-      this.style.height = '0';
-      leftElement.classList.remove('js-width-0')
-    });
+    switchButton.onclick = function() {
+      switchButton.style.height = switchButton.className = 'js-height-0';
+      leftElement.removeAttribute('class');
+      leftElement.style.display = 'block';
+    };
   }
 
   /*
-  * ----------------------------------------
-  * 改变所有icon为对应的图标
-  * ----------------------------------------
-  * @param iconArr 所有icon图标元素集合
-  * @param index icon图标样式序号：A,B,C ...
-  *
-  */
+   * ----------------------------------------
+   * 改变所有icon为对应的图标
+   * ----------------------------------------
+   * @param iconArr 所有icon图标元素集合
+   * @param index icon图标样式序号：A,B,C ...
+   *
+   */
   changeIcons(iconArr, index = 1) {
-    if ((typeof iconArr) !== 'object') {
-      throw 'changeIcon() 调用时参数1类型错误，必须为object';
-      return;
+    try {
+      if ((typeof iconArr) !== 'object') {
+        throw 'changeIcon() 调用时参数1类型错误，必须为object';
+      }
+      if ((typeof index) !== 'number' || index > 3) {
+        throw 'changeIcon() 调用时参数2类型错误，必须为number,且小于等于 3';
+      }
+      //改变整体icon风格
+      let arr = ['A',
+                 'B',
+                 'C'];
+      for (let i = 0, len = iconArr.length; i < len; i++) {
+        let oldClass = iconArr[i].getAttribute('class');
+        let newClass = oldClass.slice(0, -1) + arr[index - 1];
+        iconArr[i].setAttribute('class', newClass);
+      }
+      return this;
+    } catch (err) {
+      this.showError(err);
     }
-    if ((typeof index) !== 'number' || index > 3) {
-      throw 'changeIcon() 调用时参数2类型错误，必须为number,且小于等于 3';
-      return;
-    }
-    //改变整体icon风格
-    let arr = ['A', 'B', 'C'];
-    for (let i = 0, len = iconArr.length; i < len; i++) {
-      let oldClass = iconArr[i].getAttribute('class');
-      let newClass = oldClass.slice(0, -1) + arr[index - 1];
-      iconArr[i].setAttribute('class', newClass);
-    }
-    return this;
+
   }
 
   /*
-  * ----------------------------------------
-  * 改变icon对应状态
-  * ----------------------------------------
+   * ----------------------------------------
+   * 改变icon对应状态
+   * ----------------------------------------
    * @param iconArr 所有icon图标元素集合
    */
   changeIconStatus(iconArr) {
-    if ((typeof iconArr) !== 'object') {
-      throw 'changeIcon() 调用时参数1类型错误，必须为object';
-      return;
-    }
-    //仅改变状态：展开/关闭
-    for (let i = 0, len = iconArr.length; i < len; i++) {
-      let oldClass = iconArr[i].getAttribute('class');
-      let lastIndex = oldClass.slice(oldClass.length - 1);
-      let str = oldClass.slice(oldClass.indexOf('icon-'), -1);
-      if (str == 'icon-launch') {
-        iconArr[i].setAttribute('class', 'iconfont icon-retract' + lastIndex);
+    try {
+      if ((typeof iconArr) !== 'object') {
+        throw 'changeIcon() 调用时参数1类型错误，必须为object';
       }
-      if (str == 'icon-retract') {
-        iconArr[i].setAttribute('class', 'iconfont icon-launch' + lastIndex);
+      //仅改变状态：展开/关闭
+      for (let i = 0, len = iconArr.length; i < len; i++) {
+        let oldClass = iconArr[i].getAttribute('class');
+        let lastIndex = oldClass.slice(oldClass.length - 1);
+        let str = oldClass.slice(oldClass.indexOf('icon-'), -1);
+        if (str == 'icon-launch') {
+          iconArr[i].setAttribute('class', 'iconfont icon-retract' + lastIndex);
+        }
+        if (str == 'icon-retract') {
+          iconArr[i].setAttribute('class', 'iconfont icon-launch' + lastIndex);
+        }
       }
+    } catch (err) {
+      this.showError(err);
     }
   }
 
   /*
-  * ----------------------------------------
-  * 整个目录列表展开、收起
-  * ----------------------------------------
-  */
+   * ----------------------------------------
+   * 整个子目录列表展开、收起
+   * ----------------------------------------
+   */
   switchCatalogList() {
     let switchListButton = this.switchListButton;
     let iconArr = this.allIcon; //所有目录icon图标集合
@@ -657,19 +661,19 @@ class Mdac {
     switchListButton.addEventListener('click', function() {
       if (status) {
         //切换底部按钮 icon
-        this.children[0].setAttribute('class', 'iconfont icon-branchB');
-        //收起子目录
-        document.querySelector('.list-wrapper').classList.add('js-retract');
-        document.querySelector('.list-wrapper').classList.remove('js-launch');
-        this.children[0].setAttribute('value', 'false');
-        status = false;
-      } else {
-        //切换底部按钮 icon
         this.children[0].setAttribute('class', 'iconfont icon-quit');
         //展开子目录
         document.querySelector('.list-wrapper').classList.add('js-launch');
         document.querySelector('.list-wrapper').classList.remove('js-retract');
         this.children[0].setAttribute('value', 'true');
+        status = false;
+      } else {
+        //切换底部按钮 icon
+        this.children[0].setAttribute('class', 'iconfont icon-branchB');
+        //收起子目录
+        document.querySelector('.list-wrapper').classList.add('js-retract');
+        document.querySelector('.list-wrapper').classList.remove('js-launch');
+        this.children[0].setAttribute('value', 'false');
         status = true;
       }
       //改变icon状态：展开/关闭
@@ -678,16 +682,17 @@ class Mdac {
   }
 
   /*
-  * ----------------------------------------
-  * 父目录点击展开、收起子目录
-  * ----------------------------------------
-  */
-  switchParentCatalog() {
+   * ----------------------------------------
+   * 父目录点击展开、收起子目录
+   * ----------------------------------------
+   */
+  /*switchParentCatalog() {
     let allIcon = this.allIcon;
     let quitElement = this.quitElement;
+    //查找所有有子目录的目录
+    // let allParents = document.
     //所有一级目录节点
-    let topLevel = document.querySelector(
-        '.list-wrapper').children[0].childNodes;
+    let topLevel = document.querySelector('.list-wrapper').children[0].childNodes;
     let topLevelClass = [];
 
     for (let i = 0, len = allIcon.length; i < len; i++) {
@@ -713,16 +718,13 @@ class Mdac {
             closeClass = 'iconfont retractA';
             openClass = 'iconfont launchA';
         }
-        let status = allIcon[i].nextElementSibling.nextElementSibling.getAttribute(
-            'class');
-        if (status === 'js-open') { //子目录已展开
+        let status = allIcon[i].nextElementSibling.nextElementSibling.classList.contains('js-open');
+        if (status) { //子目录已展开
           allIcon[i].setAttribute('class', closeClass);
-          allIcon[i].nextElementSibling.nextElementSibling.setAttribute('class',
-              'js-close');
+          allIcon[i].nextElementSibling.nextElementSibling.setAttribute('class', 'js-close');
         } else { //子目录已收起
           allIcon[i].setAttribute('class', openClass);
-          allIcon[i].nextElementSibling.nextElementSibling.setAttribute('class',
-              'js-open');
+          allIcon[i].nextElementSibling.nextElementSibling.setAttribute('class', 'js-open');
         }
         // 所有一级目录下的 ul 的 class 集合
         for (let j = 0, len = topLevel.length; j < len; j++) {
@@ -735,15 +737,17 @@ class Mdac {
         }
         //如果所有一级目录的 class 集合中有 js-open ,则表示有打开的一级目录
         if (topLevelClass.includes('js-open')) {
-          topElement.children[0].setAttribute('class',
-              'catalog-button iconfont icon-catalogOpen');
+          quitElement.children[0].setAttribute(
+              'class',
+              'iconfont icon-quit');
         } else {
-          topElement.children[0].setAttribute('class',
-              'catalog-button iconfont icon-catalogClose');
+          quitElement.children[0].setAttribute(
+              'class',
+              'iconfont icon-branchB');
         }
       };
     }
-  }
+  }*/
 
   /**
    * ----------------------------------------
@@ -753,40 +757,48 @@ class Mdac {
    * @return {string|boolean}
    */
   changeParentColor(itemLi) {
-    if ((typeof itemLi) !== 'object') {
-      throw 'changeParentColor() 参数必须是一个标签对象！';
-      return false;
+    try {
+      if ((typeof itemLi) !== 'object') {
+        throw 'changeParentColor() 参数必须是一个标签对象！';
+      }
+      itemLi.classList.add('js-active');
+      if (itemLi.parentElement.parentElement.nodeName == 'LI') {
+        this.changeParentColor(itemLi.parentElement.parentElement);
+      } else {
+        return;
+      }
+    } catch (err) {
+      this.showError(err);
     }
-    itemLi.classList.add('js-active');
-    if (itemLi.parentElement.parentElement.nodeName == 'LI') {
-      this.changeParentColor(itemLi.parentElement.parentElement);
-    } else {
-      return;
-    }
+
   }
 
   /*
-  * ----------------------------------------
-  * 单个目录点击
-  * ----------------------------------------
-  */
+   * ----------------------------------------
+   * 单个目录点击
+   * ----------------------------------------
+   */
   singLeCatalogClick() {
-    let allCatalogElement = this.allCatalogElement;
-    let listElement = this.listElement;
-    for (let i = 0, len = allCatalogElement.length; i < len; i++) {
-      allCatalogElement[i].onclick = function() {
+    // let allCatalogElement = this.allCatalogElement;
+    let listElement = document.querySelector('.list-wrapper');
+    let allElement = listElement.querySelectorAll('li');
+
+    /*for (let i = 0, len = allElement.length; i < len; i++) {
+      allElement[i].addEventListener('click',function(event){
         // 其他目录恢复原始颜色
-        let oldActiveElement = listElement.querySelectorAll('.js-active');
+        let oldActiveElement = document.querySelectorAll('.js-active');
         for (let j = 0, oldLen = oldActiveElement.length; j < oldLen; j++) {
           oldActiveElement[j].classList.remove('js-active');
         }
+        console.log(oldActiveElement[j]);
         // 当前目录改变颜色
-        this.parentElement.classList.add('js-active');
+        allElement[i].classList.add('js-active');
         // 当前父目录添加样式
-        objThis.changeParentColor(allCatalogElement[i].parentElement);
-      };
-    }
+        // objThis.changeParentColor(allCatalogElement[i].parentElement);
+      });
+    }*/
   }
+
 
   /*
    * ----------------------------------------
@@ -794,8 +806,8 @@ class Mdac {
    * ----------------------------------------
    */
   catalogTrack() {
-    //获取内容区所有 h2~h6 标题及它们距离浏览器顶部的距离
-    let allTag = this.content.querySelectorAll('h2,h3,h4,h5,h6');
+    //获取内容区所有 h1~h6 标题及它们距离浏览器顶部的距离
+    let allTag = this.content.querySelectorAll('h1,h2,h3,h4,h5,h6');
     let rightElement = this.rightElement;
     let listElement = this.listElement;
     let allCatalogElement = this.allCatalogElement;
@@ -827,7 +839,7 @@ class Mdac {
    * ----------------------------------------
    * 主题切换（light/dark）
    * ----------------------------------------
-  */
+   */
   themeChange() {
     //点击按钮切换模式
     let viewModeButton = this.viewModeButton;
@@ -858,12 +870,12 @@ class Mdac {
         addEventListener('change', event => {
           //event.matches: dark => true
           if (event.matches) {
-            viewModeButton.children[0].setAttribute('class',
-                'iconfont icon-moon');
+            viewModeButton.children[0].setAttribute(
+                'class', 'iconfont icon-moon');
             document.documentElement.setAttribute('theme', 'dark');
           } else {
-            viewModeButton.children[0].setAttribute('class',
-                'iconfont icon-sun');
+            viewModeButton.children[0].setAttribute(
+                'class', 'iconfont icon-sun');
             document.documentElement.removeAttribute('theme');
           }
         });
@@ -893,7 +905,7 @@ class Mdac {
 
   /*
    * ----------------------------------------
-   * 目录样式选择
+   * 风格样式选择
    * ----------------------------------------
    */
   choseCatalogStyle() {
@@ -919,8 +931,10 @@ class Mdac {
     let shadowButton = document.querySelector(
         '[name="textShadow"]').parentElement;
     shadowButton.onclick = function() {
-      let status = document.querySelector('body').getAttribute('class');
-      if (status != 'js-show-shadow') {
+      let isShadow = document.querySelector('body').
+          classList.
+          contains('js-show-shadow');
+      if (!isShadow) {
         document.querySelector('body').setAttribute('class', 'js-show-shadow');
         this.children[0].setAttribute('checked', 'checked');
       } else {
@@ -939,10 +953,10 @@ class Mdac {
     //目录树显示隐藏
     let treeButton = document.querySelector('[name="showTree"]').parentElement;
     treeButton.onclick = function() {
-      // console.log(treeButton);
-      let status = document.querySelector('#body-container').
-          getAttribute('class');
-      if (status != 'js-show-tree') {
+      let isTree = document.querySelector('#body-container').
+          classList.
+          contains('js-show-tree');
+      if (!isTree) {
         document.querySelector('#body-container').
             setAttribute('class', 'js-show-tree');
         this.children[0].setAttribute('checked', 'checked');
@@ -952,7 +966,7 @@ class Mdac {
         this.children[0].removeAttribute('checked');
       }
     };
-    if (isShadow == true) {
+    if (isTree == true) {
       document.querySelector('#body-container').
           setAttribute('class', 'js-show-tree');
       treeButton.children[0].setAttribute('checked', 'checked');
@@ -972,25 +986,31 @@ class Mdac {
    *
    */
   comparison(value) {
-    if ((typeof value) != 'string') {
-      console.error('comparison() 参数必须是一个字符串');
-      return false;
-    }
-    value = value.toLowerCase();
-    let result = '';
-    let allCatalogElement = this.allCatalogElement;
-    for (let i = 0, len = allCatalogElement.length; i < len; i++) {
-      let text = allCatalogElement[i].innerText.replace(/\s+/g, '');
-      if (text.toLowerCase().indexOf(value) != -1) {
-        let href = allCatalogElement[i].getAttribute('href');
-        result += '<a href="' + href + '">' + allCatalogElement[i].innerText +
-            '</a>';
+    try {
+      if ((typeof value) != 'string') {
+        throw 'comparison() 参数必须是一个字符串';
       }
+      value = value.toLowerCase();
+      let result = '';
+      let allCatalogElement = this.allCatalogElement;
+      for (let i = 0, len = allCatalogElement.length; i < len; i++) {
+        let text = allCatalogElement[i].innerText.replace(/\s+/g, '');
+        if (text.toLowerCase().indexOf(value) != -1) {
+          let href = allCatalogElement[i].getAttribute('href');
+          result
+              += '<a href="' + href + '">' + allCatalogElement[i].innerText +
+              '</a>';
+        }
+      }
+      if (result == '') {
+        result
+            =
+            '<i class="iconfont icon-search"></i>\n<span>目录中暂无相关搜索结果</span>\n<span>试试 Ctrl+F  在全文档搜索</span>';
+      }
+      return result;
+    } catch (err) {
+      this.showError(err);
     }
-    if (result == '') {
-      result = '<i class="iconfont icon-search"></i>\n<span>目录中暂无相关搜索结果</span>\n<span>试试 Ctrl+F  在全文档搜索</span>';
-    }
-    return result;
   }
 
   /*
