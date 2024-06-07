@@ -38,12 +38,8 @@ class Mdac {
   //showTree   是否开树状线
   //openShadow   是否开启文字阴影
   constructor(
-      showIndex  = true,
-      indexStyle = 1,
-      openDark   = false,
-      showTree   = true,
-      openShadow = true,
-  ) {
+      showIndex                                                    = true, indexStyle                                 = 1, openDark = false, showTree = true,
+      openShadow                                                   = true) {
     objThis = this; //当前对象的 this
     try {
       if ((typeof showIndex) != 'boolean') {
@@ -113,6 +109,19 @@ class Mdac {
   }
 
   /*
+   * ----------------------------------------
+   * 错误提示
+   * ----------------------------------------
+  */
+  showError(info) {
+    let errorBlock = document.createElement('p');
+    errorBlock.setAttribute('class', 'error');
+    errorBlock.innerHTML = info;
+    let content = document.querySelector('#content');
+    content.insertBefore(errorBlock, content.firstChild);
+  }
+
+  /*
      * ----------------------------------------
      * 创建新的目录、内容和底部提示 布局结构
      * ----------------------------------------
@@ -157,14 +166,14 @@ class Mdac {
     for (let i = 1, len = 3; i <= len; i++) {
       if (this.indexStyle == i) {
         indexStyleElement += '<li class="style-chose">' +
-            '<input type="radio" name="style' + styleIndex[i - 1] + '" checked="checked">' +
-            '<label for="style' + styleIndex[i - 1] + '">图标-' + styleIndex[i - 1] + '</label>' +
-            '</li>';
+            '<input type="radio" name="style' + styleIndex[i - 1] +
+            '" checked="checked">' + '<label for="style' + styleIndex[i - 1] +
+            '">图标-' + styleIndex[i - 1] + '</label>' + '</li>';
       } else {
         indexStyleElement += '<li class="style-chose">' +
             '<input type="radio" name="style' + styleIndex[i - 1] + '">' +
-            '<label for="style' + styleIndex[i - 1] + '">图标-' + styleIndex[i - 1] + '</label>' +
-            '</li>';
+            '<label for="style' + styleIndex[i - 1] + '">图标-' +
+            styleIndex[i - 1] + '</label>' + '</li>';
       }
     }
     leftBlock.innerHTML = '<header class="top-container">' +
@@ -172,46 +181,36 @@ class Mdac {
         '        <div class="search-container">' +
         '            <input type="text" class="search" name="search" placeholder="输入关键字搜索目录">' +
         '            <i class="search-icon iconfont icon-close"></i>' +
-        '        </div>' +
-        '        <div class="search-result"></div>' +
-        '    </header>' +
-        '    <nav id="list-container">' +
-        '        <div class="list-wrapper">' +
-        '        </div>' +
-        '    </nav>' +
+        '        </div>' + '        <div class="search-result"></div>' +
+        '    </header>' + '    <nav id="list-container">' +
+        '        <div class="list-wrapper">' + '        </div>' + '    </nav>' +
         '    <footer class="bottom-container">' +
         '        <div class="mode-container">' +
         '            <div class="mode">' +
         '                <i class="iconfont ' + modeStyleClass + '"></i>' +
         '            </div>' +
-        '            <div class="index" title="显示/隐藏目录索引编号">' + indexItem + '</div>' +
+        '            <div class="index" title="显示/隐藏目录索引编号">' +
+        indexItem + '</div>' +
         '            <div class="structure" title="风格样式">' +
         '                <i class="iconfont icon-style"></i>' +
         '                <ul class="structure-child">' +
         '                   <li>' +
         '                      <input type="radio" id="show-tree" name="showTree" value="true">' +
         '                      <label for="showTree">目录树</label>' +
-        '                    </li>' +
-        '                    <li>' +
+        '                    </li>' + '                    <li>' +
         '                      <input type="radio" id="text-shadow" name="textShadow" value="true">' +
         '                      <label for="textShadow">阴影效果</label>' +
-        '                   </li>' +
-                            indexStyleElement +
-        '                </ul>' +
-        '            </div>' +
+        '                   </li>' + indexStyleElement +
+        '                </ul>' + '            </div>' +
         '            <div class="quit-menu" title="展开收起子目录">' +
         '                <i class="iconfont icon-quit" value="true"></i>' +
-        '            </div>' +
-        '        </footer>' +
-        '    </div>';
+        '            </div>' + '        </footer>' + '    </div>';
     //4.设置内容父级元素的内容结构
-    rightBlock.innerHTML = '<div id="content">' +
-        oldContent +
-        '</div>' + '</div>';
+    rightBlock.innerHTML = '<div id="content">' + oldContent + '</div>' +
+        '</div>';
     bodyBlock.innerHTML = '<div id="switch-button">' +
         '<i class="iconfont icon-label"></i>' +
-        ' <i class="iconfont icon-catalog-close"></i>' +
-        '</div>';
+        ' <i class="iconfont icon-catalog-close"></i>' + '</div>';
 
     //5.追加结构元素到页面
     document.body.appendChild(bodyBlock);
@@ -234,12 +233,15 @@ class Mdac {
    *
    */
   getTagNumber(tag) {
-    if ((typeof tag) != 'object') {
-      console.error(
-          'getTagNumber() 调用时参数类型错误，必须是一个h标签的对象集合！');
-      return;
+    try {
+      if ((typeof tag) != 'object') {
+        throw 'getTagNumber() 调用时参数类型错误，必须是一个h标签的对象集合！';
+      }
+      return Number(tag.nodeName.slice(1));
+    } catch (err) {
+      this.showError(err);
     }
-    return Number(tag.nodeName.slice(1));
+
   }
 
   /**
@@ -253,18 +255,21 @@ class Mdac {
    * @return number 返回指定字符char出现的数字
    */
   findStrFre(str, char) {
-    if ((typeof str) !== 'string' || (typeof str) !== 'string') {
-      console.error('findStrFre() 调用时参数类型错误！');
-      return;
+    try {
+      if ((typeof str) !== 'string' || (typeof str) !== 'string') {
+        throw 'findStrFre() 调用时参数类型错误！';
+      }
+      let index = str.indexOf(char);
+      let number = 0;
+      while (index !== -1) {
+        number++; // 每出现一次 次数加一
+        // 从字符串出现的位置的下一位置开始继续查找
+        index = str.indexOf(char, index + 1);
+      }
+      return number;
+    } catch (err) {
+      this.showError(err);
     }
-    let index = str.indexOf(char);
-    let number = 0;
-    while (index !== -1) {
-      number++; // 每出现一次 次数加一
-      // 从字符串出现的位置的下一位置开始继续查找
-      index = str.indexOf(char, index + 1);
-    }
-    return number;
   }
 
   /**
@@ -272,64 +277,68 @@ class Mdac {
    * 寻找指定等级的目录的集合
    * ----------------------------------------
    *
-   * @param level number 第几级目录，最大 5
+   * @param level number 第几级目录，最大 6
    *
    */
   levelTagArr(level) {
-    if (level < 1 || level > 6 || (typeof level) !== 'number') {
-      throw 'levelTagArr() 调用时参数类型错误！';
-      return;
-    }
-    // 所有目录集合
-    let allTag = document.querySelectorAll('h1,h2,h3,h4,h5,h6');
-    let level1 = [];
-    let level2 = [];
-    let level3 = [];
-    let level4 = [];
-    let level5 = [];
-    let level6 = [];
-    for (let i = 0, len = allTag.length; i < len; i++) {
-      let number = this.findStrFre(allTag[i].id, '.');
-      switch (number) {
-        case 0:
-          level1.push(allTag[i]);
-          break;
+    try {
+      if (level < 1 || level > 6 || (typeof level) !== 'number') {
+        throw 'levelTagArr() 调用时参数类型错误！';
+      }
+      // 所有目录集合
+      let allTag = document.querySelectorAll('h1,h2,h3,h4,h5,h6');
+      let level1 = [];
+      let level2 = [];
+      let level3 = [];
+      let level4 = [];
+      let level5 = [];
+      let level6 = [];
+      for (let i = 0, len = allTag.length; i < len; i++) {
+        let number = this.findStrFre(allTag[i].id, '.');
+        switch (number) {
+          case 0:
+            level1.push(allTag[i]);
+            break;
+          case 1:
+            level2.push(allTag[i]);
+            break;
+          case 2:
+            level3.push(allTag[i]);
+            break;
+          case 3:
+            level4.push(allTag[i]);
+            break;
+          case 4:
+            level5.push(allTag[i]);
+            break;
+          case 5:
+            level6.push(allTag[i]);
+            break;
+          default:
+            return;
+        }
+      }
+      switch (level) {
         case 1:
-          level2.push(allTag[i]);
-          break;
+          return level1;
         case 2:
-          level3.push(allTag[i]);
-          break;
+          return level2;
         case 3:
-          level4.push(allTag[i]);
-          break;
+          return level3;
         case 4:
-          level5.push(allTag[i]);
-          break;
+          return level4;
         case 5:
-          level6.push(allTag[i]);
+          return level5;
+        case 6:
+          return level6;
           break;
         default:
           return;
       }
+    } catch (err) {
+      this.showError(err);
     }
-    switch (level) {
-      case 1:
-        return level1;
-      case 2:
-        return level2;
-      case 3:
-        return level3;
-      case 4:
-        return level4;
-      case 5:
-        return level5;
-      case 6:
-        return level6;
-        break;
-      default:
-        return;
-    }
+
   }
 
   /**
@@ -340,23 +349,24 @@ class Mdac {
    *
    */
   setLevelNumber(tag) {
-    if ((typeof tag) != 'object') {
-      console.error(
-          'setLevelNumber() 调用时参数类型错误，必须是一个h标签的对象集合！');
-      return;
+    try{
+      if ((typeof tag) != 'object') {
+        throw 'setLevelNumber() 调用时参数类型错误，必须是一个h标签的对象集合！';
+      }
+      let str = tag.id;
+      if (str.lastIndexOf('.') == -1) { //如果是一级目录形式 level-1000
+        let newValue = parseInt(str.slice(6)) + 1;
+        return 'level-' + newValue;
+      } else {
+        //如果是大于一级的目录形式 level-1.1 level-1.1.1 ...
+        let lastIndex = str.lastIndexOf('.');
+        let oldValue = str.slice(0, lastIndex);
+        let newValue = parseInt(str.slice(lastIndex + 1)) + 1;
+        return oldValue + '.' + newValue;
+      }
+    }catch (err){
+      this.showError(err);
     }
-    let str = tag.id;
-    if (str.lastIndexOf('.') == -1) { //如果是一级目录形式 level-1000
-      let newValue = parseInt(str.slice(6)) + 1;
-      return 'level-' + newValue;
-    } else {
-      //如果是大于一级的目录形式 level-1.1 level-1.1.1 ...
-      let lastIndex = str.lastIndexOf('.');
-      let oldValue = str.slice(0, lastIndex);
-      let newValue = parseInt(str.slice(lastIndex + 1)) + 1;
-      return oldValue + '.' + newValue;
-    }
-
   }
 
   /*
@@ -437,15 +447,19 @@ class Mdac {
    * @param id string 父容器，要追加到哪个父容器中的id
    */
   noteTips(tag, msg, id) {
-    if ((typeof tag) !== 'string' || (typeof msg) !== 'string' ||
-        (typeof id) !== 'string') {
-      console.error('noteTips() 调用时参数类型错误！');
-      return;
+    try {
+      if ((typeof tag) !== 'string' || (typeof msg) !== 'string' ||
+          (typeof id) !== 'string') {
+        throw 'noteTips() 调用时参数类型错误！';
+      }
+      let exp = document.createElement(tag);
+      exp.innerHTML = msg;
+      //5.追加结构元素到页面
+      document.getElementById(id).appendChild(exp);
+    } catch (err) {
+      this.showError(err);
     }
-    let exp = document.createElement(tag);
-    exp.innerHTML = msg;
-    //5.追加结构元素到页面
-    document.getElementById(id).appendChild(exp);
+
   }
 
   /*
@@ -471,10 +485,8 @@ class Mdac {
           let liElement = document.createElement('li');
           liElement.innerHTML = '<a href="' + window.location.pathname + '#' +
               levelArr[k].id + '"' + ' class=' + levelArr[k].id + '>' +
-              '<div><p>' + levelArr[k].id.slice(6) +
-              '</p>' +
-              '<span>' + levelArr[k].innerText + '</span></div>' +
-              '</a>';
+              '<div><p>' + levelArr[k].id.slice(6) + '</p>' + '<span>' +
+              levelArr[k].innerText + '</span></div>' + '</a>';
           ulElement.appendChild(liElement);
           // 追加目录到目录容器中
           catalogueBlock.appendChild(ulElement);
@@ -501,12 +513,8 @@ class Mdac {
               let liElement = document.createElement('li');
               liElement.innerHTML = '<a href="' + window.location.pathname +
                   '#' + levelArr[n].id + '"' + ' class=' + levelArr[n].id +
-                  '>' +
-                  '<div><p>' +
-                  levelArr[n].id.slice(6) +
-                  '</p>' +
-                  '<span>' + levelArr[n].innerText + '</span></div>' +
-                  '</a>';
+                  '>' + '<div><p>' + levelArr[n].id.slice(6) + '</p>' +
+                  '<span>' + levelArr[n].innerText + '</span></div>' + '</a>';
               let currentUlElement = prevElement.querySelector('ul');
               if (currentUlElement !== null) {
                 currentUlElement.appendChild(liElement);
@@ -549,7 +557,7 @@ class Mdac {
     this.createContent();
     this.createCatalogue();
     // 第一个目录默认样式
-    // (document.querySelector('.list-wrapper')).querySelector('li').classList.add('js-active');
+    (document.querySelector('.list-wrapper')).querySelector('li').classList.add('js-active');
   }
 
   /*
@@ -574,12 +582,12 @@ class Mdac {
     let leftElement = this.leftElement;
     let switchButton = this.switchButton;
     asideButton.onclick = function() {
-      leftElement.style.display = 'none';
-      switchButton.style.display = 'block';
+      leftElement.classList.add('js-width-0');
+      switchButton.style.height = '4rem';
     };
     switchButton.addEventListener('click', function() {
-      leftElement.style.display = 'block';
-      this.style.display = 'none';
+      this.style.height = '0';
+      leftElement.classList.remove('js-width-0')
     });
   }
 
@@ -898,7 +906,7 @@ class Mdac {
     for (let i = 0, len = allStyle.length; i < len; i++) {
       allStyle[i].onclick = function() {
         //改变icon
-        changeIcons(allIcon, i+1);
+        changeIcons(allIcon, i + 1);
         //样式按钮选中
         for (let j = 0, len = allStyle.length; j < len; j++) {
           allStyle[j].children[0].removeAttribute('checked');
@@ -908,43 +916,49 @@ class Mdac {
     }
 
     //文字阴影显示隐藏
-    let shadowButton = document.querySelector('[name="textShadow"]').parentElement;
-    shadowButton.onclick= function(){
+    let shadowButton = document.querySelector(
+        '[name="textShadow"]').parentElement;
+    shadowButton.onclick = function() {
       let status = document.querySelector('body').getAttribute('class');
-      if(status != 'js-show-shadow'){
-        document.querySelector('body').setAttribute('class','js-show-shadow');
-        this.children[0].setAttribute('checked','checked');
-      }else{
-        document.querySelector('body').setAttribute('class','js-close-shadow');
+      if (status != 'js-show-shadow') {
+        document.querySelector('body').setAttribute('class', 'js-show-shadow');
+        this.children[0].setAttribute('checked', 'checked');
+      } else {
+        document.querySelector('body').setAttribute('class', 'js-close-shadow');
         this.children[0].removeAttribute('checked');
       }
-    }
-    if(isShadow == true){
-      document.querySelector('body').setAttribute('class','js-show-shadow');
-      shadowButton.children[0].setAttribute('checked','checked');
-    }else{
-      document.querySelector('body').setAttribute('class','js-close-shadow');
+    };
+    if (isShadow == true) {
+      document.querySelector('body').setAttribute('class', 'js-show-shadow');
+      shadowButton.children[0].setAttribute('checked', 'checked');
+    } else {
+      document.querySelector('body').setAttribute('class', 'js-close-shadow');
       shadowButton.children[0].removeAttribute('checked');
     }
 
     //目录树显示隐藏
     let treeButton = document.querySelector('[name="showTree"]').parentElement;
-    treeButton.onclick= function(){
+    treeButton.onclick = function() {
       // console.log(treeButton);
-      let status = document.querySelector('#body-container').getAttribute('class');
-      if(status != 'js-show-tree'){
-        document.querySelector('#body-container').setAttribute('class','js-show-tree');
-        this.children[0].setAttribute('checked','checked');
-      }else{
-        document.querySelector('#body-container').setAttribute('class','js-close-tree');
+      let status = document.querySelector('#body-container').
+          getAttribute('class');
+      if (status != 'js-show-tree') {
+        document.querySelector('#body-container').
+            setAttribute('class', 'js-show-tree');
+        this.children[0].setAttribute('checked', 'checked');
+      } else {
+        document.querySelector('#body-container').
+            setAttribute('class', 'js-close-tree');
         this.children[0].removeAttribute('checked');
       }
-    }
-    if(isShadow == true){
-      document.querySelector('#body-container').setAttribute('class','js-show-tree');
-      treeButton.children[0].setAttribute('checked','checked');
-    }else{
-      document.querySelector('#body-container').setAttribute('class','js-close-tree');
+    };
+    if (isShadow == true) {
+      document.querySelector('#body-container').
+          setAttribute('class', 'js-show-tree');
+      treeButton.children[0].setAttribute('checked', 'checked');
+    } else {
+      document.querySelector('#body-container').
+          setAttribute('class', 'js-close-tree');
       treeButton.children[0].removeAttribute('checked');
     }
 

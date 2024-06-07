@@ -129,6 +129,14 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 
 /*  Custom Scroll*/
+.error {
+  border-radius: 0.6rem;
+  -webkit-border-radius: 0.6rem;
+  -moz-border-radius: 0.6rem;
+  padding: 1.6rem;
+  background: rgba(208, 1, 1, 0.5);
+}
+
 /*input checkbox no-style*/
 .input-checkebox, input[type=checkbox], input[type=radio] {
   appearance: none;
@@ -165,12 +173,16 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 
 .active {
-  background: rgb(238, 238, 238);
+  background: #d0d0d0;
   border-radius: 0.4rem;
   -webkit-border-radius: 0.4rem;
   -moz-border-radius: 0.4rem;
   position: relative;
   z-index: 12;
+}
+
+.js-width-0 {
+  width: 0 !important;
 }
 
 #list-container .js-noindex ul li a p {
@@ -189,8 +201,16 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   display: none;
 }
 
-.js-active {
-  color: rgb(1, 203, 110);
+.js-active > a {
+  color: rgb(1, 203, 110) !important;
+  background: rgb(238, 238, 238) !important;
+  border-radius: 0.4rem;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+}
+
+.js-active > .iconfont {
+  color: rgb(1, 203, 110) !important;
 }
 
 .js-show-shadow,
@@ -549,6 +569,10 @@ input[type=radio]:checked:after {
   position: relative;
   line-height: 2rem;
   overflow: hidden;
+  transition: width 0.3s;
+  -moz-transition: width 0.3s;
+  -webkit-transition: width 0.3s;
+  -o-transition: width 0.3s;
 }
 #left-container a {
   line-height: 2rem;
@@ -807,7 +831,7 @@ input[type=radio]:checked:after {
   background: rgb(238, 238, 238);
 }
 .list-wrapper ul li:hover > a:before {
-  width: 1.3rem;
+  width: 1.4rem;
 }
 .list-wrapper ul li:hover > .iconfont {
   color: rgb(1, 203, 110);
@@ -934,6 +958,7 @@ input[type=radio]:checked:after {
   -o-box-shadow: 0 -0.2rem 0.2rem rgba(217, 217, 217, 0.7);
   box-sizing: border-box;
   overflow: hidden;
+  display: none;
 }
 .structure-child li {
   margin-left: 0 !important;
@@ -994,11 +1019,15 @@ input[type=radio]:checked:after {
   left: 0;
   z-index: 110;
   width: 3.4rem;
-  height: 4rem;
+  height: 0;
+  overflow: hidden;
   cursor: pointer;
   text-align: center;
   box-sizing: border-box;
-  display: none;
+  transition: height 0.2s;
+  -moz-transition: height 0.2s;
+  -webkit-transition: height 0.2s;
+  -o-transition: height 0.2s;
 }
 #switch-button i {
   display: block;
@@ -1071,6 +1100,9 @@ html[theme=dark] .js-close-shadow .iconfont {
 html[theme=dark] .js-show-shadow,
 html[theme=dark] .js-show-shadow .iconfont {
   text-shadow: 0.2rem 0.2rem 0.2rem #000000;
+}
+html[theme=dark] .js-active > a {
+  background: rgb(42, 55, 60) !important;
 }
 html[theme=dark] {
   background-color: rgb(22, 27, 31);

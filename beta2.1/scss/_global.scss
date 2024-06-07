@@ -294,7 +294,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     display: none;
   }
 }
-
+.error{
+  @include border-radius(.6rem);
+  padding: 1.6rem;
+  background: rgb($red,.5);
+}
 /*input checkbox no-style*/
 .input-checkebox {
   appearance: none;
@@ -329,10 +333,13 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 //javascript control
 .active {
-  background: $code-bg-color;
+  background: $border-color;
   @include border-radius(.4rem);
   position: relative;
   z-index: 12;
+}
+.js-width-0{
+  width: 0 !important;
 }
 
 #list-container .js-noindex{
@@ -353,8 +360,13 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 .js-close{
   display: none;
 }
-.js-active {
-  color: $green;
+.js-active > a{
+  color: $green !important;
+  background: $code-bg-color !important;
+  @include border-radius(.4rem);
+}
+.js-active > .iconfont{
+  color: $green !important;
 }
 .js-show-shadow,
 .js-show-shadow .iconfont{
@@ -406,6 +418,9 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   .js-show-shadow,
   .js-show-shadow .iconfont{
     @include text-shadow($x:.2rem,$y:.2rem,$s:.2rem,$c:$text-color);
+  }
+  .js-active > a{
+    background: $grey-color-dark !important;
   }
   & {
     background-color: $dark-bag;
