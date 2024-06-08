@@ -455,6 +455,18 @@ input[type='radio'] {
 .list-wrapper {
   font-size: $size-16;
   overflow: hidden;
+  & > div{
+    margin-top: 2rem;
+    text-align: center;
+    color: $text-grey;
+    font-size: 1.3rem;
+    .iconfont{
+      font-size: 2rem;
+    }
+    p{
+      margin-top: .5rem;
+    }
+  }
 
   ul {
     display: block;
@@ -778,7 +790,6 @@ html {
 html[theme=dark] {
   @include theme-dark;
 }
-
 /*@media*/
 @media screen and (max-width: 768px) {
   #left-container {
