@@ -30,16 +30,20 @@ let indexStyleNumber;
 let originShowIndex;
 let isShadow;
 let isTree;
+let levelTagArr;
 
 class Mdac {
   //showIndex  是否显示目录序号
   //indexStyle 目录样式 1, 2, 3
   //openDark   是否开启夜览模式
   //showTree   是否开树状线
-  //openShadow   是否开启文字阴影
+  //openShadow 是否开启文字阴影
   constructor(
-      showIndex = true, indexStyle = 1, openDark = true, showTree = true,
-      openShadow                                                  = false) {
+      showIndex  = true,
+      indexStyle = 1,
+      openDark   = true,
+      showTree   = true,
+      openShadow = false) {
     objThis = this; //当前对象的 this
     try {
       if ((typeof showIndex) != 'boolean') {
@@ -73,12 +77,12 @@ class Mdac {
       indexStyleNumber = indexStyle;
       isShadow = openShadow;
       isTree = showTree;
+      levelTagArr = this.levelTagArr;
 
       //目录构建
       if ((document.querySelector('#body-container')) == null) { //替换文档内容，防止重复生成
         this.replaceOld();
       }
-
       //样式控制节点元素
       this.bodyContainer = document.querySelector('#body-container');
       this.leftElement = document.querySelector('#left-container');
@@ -103,14 +107,12 @@ class Mdac {
       this.catalogIconClick();
       // this.switchParentCatalog();
       this.singleCatalogClick();
-      this.catalogTrack();
+      // this.catalogTrack();
       this.showCatalogIndex();
       this.choseCatalogStyle();
       this.searchCatalog();
       //主题随系统变化
       this.themeChange();
-      // this.findCeilCatalog.bind(null,this);
-
     }
   }
 
@@ -350,7 +352,7 @@ class Mdac {
             level6.push(allTag[i]);
             break;
           default:
-            return;
+            return [];
         }
       }
       switch (level) {
@@ -422,6 +424,7 @@ class Mdac {
           '<li style="text-align:center;color:#999999;font-size:1.4rem; line-height: 2.4rem">' +
           '<i class="iconfont icon-fail"></i>抱歉...<br/>文档中未发现 h1~h6 的标签<br/>无法生成目录</p>\n</li>' +
           '</ul>';
+      return;
     }
     if (tagLength == 1) {
       allTag[0].id = 'level-' + '1'; //第一个标签肯定为一级标题
@@ -478,8 +481,11 @@ class Mdac {
    * 根据当前目录中的 class或id 查找父目录
    * ----------------------------------------
    * @param str  当前目录的 id/class =>(level-1.1)
+   * @param fun  确定目录等级的处理函数 必须是：findStrFre
+   *
+   *
    */
-  findCeilCatalog(str) {
+  findCeilCatalog(str, fun) {
     try {
       if ((typeof str) !== 'string') {
         throw 'catalogForParent()参数类型错误，参数为string';
@@ -487,12 +493,15 @@ class Mdac {
       //上级目录
       let ceilCatalog = [];
       //判断传入的name的目录等级
-      let level = objThis.findStrFre(str, '.') + 1; //0级为一级
+      //let level = this.findStrFre(str, '.') + 1;
+      // findStrFre()要使用参数形式传入，否则多级嵌套调用有问题
+      let level = fun(str, '.') + 1;  //findStrFre返回 0 => 为一级
       if (level > 1) {
         //当前目录的父目录
-        let childArr = objThis.levelTagArr(level - 1);
+        let childArr = this.levelTagArr(level - 1);
+        // console.log(childArr);
         if (childArr.length == 0) {
-          return [];
+          return ceilCatalog;
         }
         for (let i = 0, len = childArr.length; i < len; i++) {
           //父目录
@@ -503,35 +512,10 @@ class Mdac {
             ceilCatalog.push(childArr[i]);
           }
         }
+        return ceilCatalog;
       }
       return ceilCatalog;
     } catch (err) {
-      return err;
-    }
-  }
-
-
-  /**
-   * ----------------------------------------
-   * 根据当前目录中的 class或id 递归查找所有父目录
-   * ----------------------------------------
-   * @param str  当前目录的 id/class =>(level-1.1)
-   */
-  findAllCeilCatalog(str,ceilArr=[]) {
-    try{
-      if((typeof str) !== 'string'){
-        throw 'findAllCeilCatalog() 参数类型错误，参数类型为string';
-      }
-      //父级目录 h 元素
-      let ceilCatalog = objThis.findCeilCatalog(str);
-      if (ceilCatalog.length > 0) { //不是1级目录
-        let ceilName = ceilCatalog[0].id; //上一级目录class
-        let ceilElement = document.getElementsByClassName(ceilName)[0].parentElement;
-        ceilArr.push(ceilElement);
-        this.findAllCeilCatalog(ceilName,ceilArr);
-      }
-      return ceilArr;
-    }catch (err){
       return err;
     }
   }
@@ -577,7 +561,7 @@ class Mdac {
           let cName = levelOther[k].id;
           let handleName = cName.slice(0, cName.lastIndexOf('.'));
           //当前目录的上级目录
-          let ceilElement = this.findCeilCatalog(cName);
+          let ceilElement = this.findCeilCatalog(cName, this.findStrFre);
           if (handleName == ceilElement[0].id) { //找到相应的上级目录
             //上级目录li
             let ceilLi = document.getElementsByClassName(ceilElement[0].id)[0].parentElement;
@@ -596,7 +580,7 @@ class Mdac {
               ceilLi.appendChild(ulElement);
               //给上级目录添加icon
               let iconI = document.createElement('i');
-              iconI.setAttribute('class', 'iconfont icon-launch'+iconStyle[indexStyleNumber-1]);
+              iconI.setAttribute('class', 'iconfont icon-launch' + iconStyle[indexStyleNumber - 1]);
               ceilLi.insertBefore(iconI, ceilLi.children[0]);
             } else { //有子目录
               let container = ceilLi.querySelector('ul');
@@ -612,7 +596,7 @@ class Mdac {
       if (liElement.children[0].nodeName != 'I') {
         //给上级目录添加icon
         let iconI = document.createElement('i');
-        iconI.setAttribute('class', 'iconfont icon-launch'+iconStyle[indexStyleNumber-1]);
+        iconI.setAttribute('class', 'iconfont icon-launch' + iconStyle[indexStyleNumber - 1]);
         liElement.insertBefore(iconI, liElement.children[0]);
       }
     }
@@ -624,8 +608,7 @@ class Mdac {
     this.createCatalogue();
     // 第一个目录默认样式
     (document.querySelector('.list-wrapper')).querySelector('li').
-        classList.
-        add('js-active');
+        classList.add('js-active');
   }
 
   /*
@@ -690,11 +673,11 @@ class Mdac {
       }
       //仅改变状态：展开/关闭
       let oldClass = icon.getAttribute('class');
-      if(oldClass.includes('launch')){
-        icon.setAttribute('class',oldClass.replace('launch','retract'));
+      if (oldClass.includes('launch')) {
+        icon.setAttribute('class', oldClass.replace('launch', 'retract'));
       }
-      if(oldClass.includes('retract')){
-        icon.setAttribute('class',oldClass.replace('retract','launch'));
+      if (oldClass.includes('retract')) {
+        icon.setAttribute('class', oldClass.replace('retract', 'launch'));
       }
     } catch (err) {
       return err;
@@ -729,14 +712,14 @@ class Mdac {
         status = true;
       }
       //改变icon状态：展开/关闭
-      for(let i=0,len=allIcon.length;i<len;i++){
+      for (let i = 0, len = allIcon.length; i < len; i++) {
         changeSingleIcon(allIcon[i]);
         //给没有子目录的一级目录单独设置icon
         let lastChild = allIcon[i].parentElement.lastElementChild;
-        if(lastChild.nodeName == 'A'){
-          let cName = allIcon[i].getAttribute("class");
+        if (lastChild.nodeName == 'A') {
+          let cName = allIcon[i].getAttribute('class');
           //设置新class
-          allIcon[i].setAttribute("class",cName.replace('retract','launch'));
+          allIcon[i].setAttribute('class', cName.replace('retract', 'launch'));
         }
       }
     });
@@ -752,63 +735,23 @@ class Mdac {
     let allIcon = listElement.querySelectorAll('i');
     let changeSingleIcon = this.changeSingleIcon;
     for (let i = 0, len = allIcon.length; i < len; i++) {
-      allIcon[i].onclick = function(event) {
-        event.stopPropagation();
+      allIcon[i].onclick = function() {
         //当前目录下是否有子目录
         let parCatalog = allIcon[i].parentElement;
-        if(parCatalog.lastElementChild.nodeName == 'UL'){ //有子目录
+        if (parCatalog.lastElementChild.nodeName == 'UL') { //有子目录
           changeSingleIcon(allIcon[i]); //修改图标样式
           let listWrapperClass = document.querySelector('.list-wrapper').getAttribute('class');
-          if(listWrapperClass === 'list-wrapper js-retract'){
+          if (listWrapperClass === 'list-wrapper js-retract') {
             allIcon[i].parentElement.classList.toggle('js-item-launch');
-          }else{
+          } else {
             allIcon[i].parentElement.classList.toggle('js-item-retract');
           }
         }
-
+        console.log(allIcon[i]);
       }
     }
   }
-  /**
-   * ----------------------------------------
-   * 目录点击事件
-   * ----------------------------------------
-   * @param  catalog 需要执行点击事件的目录容器 Li
-   */
- catalogClickEvent(catalog) {
-   try{
-     if((typeof catalog) !== 'object'){
-       throw 'catalogClickEvent(catalog)参数类型错误，参数：catalog为目录元素';
-     }
-     let findCeilCatalog = objThis.findCeilCatalog;
-     catalog.onclick = function(event){
-       event.stopPropagation(); //会一直找到其上一级，直到1级目录
-       event.preventDefault();
 
-       let thisClass = catalog.querySelector('a').getAttribute('class');
-       document.getElementById(thisClass).scrollIntoView({behavior:'smooth'});
-       //清除已有的active样式
-       let activeArr = document.querySelectorAll('.js-active');
-       for (let j = 0, len = activeArr.length; j < len; j++) {
-         activeArr[j].classList.remove('js-active');
-       }
-       //给当前目录设置 active
-       catalog.classList.add('js-active');
-       //上级目录
-       let ceilCatalog = findCeilCatalog(thisClass);
-       let allCeil = objThis.findAllCeilCatalog(thisClass);
-       if(allCeil.length>0){
-         for (let k = 0, len = allCeil.length; k < len; k++) {
-           //给上级目录设置 active
-           allCeil[k].classList.add('js-active');
-         }
-       }
-
-     }
-   }catch (err){
-     return err;
-   }
-  }
   /*
    * ----------------------------------------
    * 单个目录点击
@@ -817,9 +760,50 @@ class Mdac {
   singleCatalogClick() {
     let listElement = document.querySelector('.list-wrapper');
     let allCatalog = listElement.querySelectorAll('li');
+    let findCeilCatalog = this.findCeilCatalog;
+    let findStrFre = this.findStrFre;
+    let levelTagArr = this.levelTagArr;
+
     for (let i = 0, len = allCatalog.length; i < len; i++) {
-      this.catalogClickEvent(allCatalog[i]);
+      allCatalog[i].onclick = function(event) {
+        event.stopPropagation(); //会一直找到其上一级，直到1级目录
+        event.preventDefault();
+
+        let currentClass = allCatalog[i].querySelector('a').getAttribute('class');
+        document.getElementById(currentClass).scrollIntoView({behavior: 'smooth'}); //滑动到相应位置
+        //清除已有的active样式
+        let activeArr = listElement.querySelectorAll('.js-active');
+        for (let j = 0, len = activeArr.length; j < len; j++) {
+          activeArr[j].classList.remove('js-active');
+        }
+        //给当前设置active
+        allCatalog[i].setAttribute('class','js-active');
+        //给有active样式的上一级目录设置 active
+        // let ceilCatalog = listElement.querySelectorAll(currentClass);
+        // let ceilCatalog = findCeilCatalog(currentClass,findStrFre);
+        // console.log(ceilCatalog);
+      }
     }
+
+    //给有active样式的上一级目录设置 active
+    // let ceilCatalog = listElement.querySelectorAll(thisClass);
+
+   /* if (ceilCatalog.length > 0) {
+      for (let l = 0, len = ceilCatalog.length; l < len; l++) {
+        ceilCatalog[l].classList.add('js-active');
+      }
+    }*/
+
+
+    //给有active样式的上一级目录设置 active
+   /* let currentClass = listElement.querySelector('.js-active').getAttribute('class');
+    let ceilCatalog = findCeilCatalog(currentClass, findStrFre);
+    console.log(ceilCatalog);
+    if (ceilCatalog.length > 0) {
+      for (let l = 0, len = ceilCatalog.length; l < len; l++) {
+        ceilCatalog[l].classList.add('js-active');
+      }
+    }*/
   }
 
   /*
@@ -972,8 +956,8 @@ class Mdac {
    * @param itemLi 需要寻找父目录的当前 li 元素对象
    * @return {string|boolean}
    */
- /* changeParentColor(itemLi) {
-    try{
+  changeParentColor(itemLi) {
+    try {
       if ((typeof itemLi) !== 'object') {
         throw 'changeParentColor() 参数必须是一个标签对象！';
       }
@@ -983,11 +967,11 @@ class Mdac {
       } else {
         return;
       }
-    }catch (err){
+    } catch (err) {
       return err;
     }
 
-  }*/
+  }
 
   /*
    * ----------------------------------------
@@ -1002,21 +986,15 @@ class Mdac {
     let allCatalogElement = this.allCatalogElement;
     let allTitleDistance = [];
     for (let i = 0, len = allTag.length; i < len; i++) {
-      allTitleDistance.push(allTag[i].offsetTop);
+      allTitleDistance.push(allTag[i].offsetTop - 30);
     }
-    console.log(allTitleDistance);
 
     //滑动正文内容时
     rightElement.onscroll = function() {
       let roll = rightElement.scrollTop;
       for (let i = 0, len = allTitleDistance.length; i < len; i++) {
-        if (allTitleDistance[i] < roll < allTitleDistance[i+1]) {
-          // console.log(allCatalogElement[i].parentElement);
-          objThis.catalogClickEvent('a');
-          // allCatalogElement[i].parentElement.style.background='red';
-          // 当前目录改变颜色
-          // allCatalogElement;
-         /* // 其他目录恢复原始颜色
+        if (allTitleDistance[i] <= roll) {
+          // 其他目录恢复原始颜色
           let oldActiveElement = listElement.querySelectorAll('.js-active');
           for (let j = 0, len2 = oldActiveElement.length; j < len2; j++) {
             oldActiveElement[j].classList.remove('js-active');
@@ -1024,11 +1002,12 @@ class Mdac {
           // 当前目录改变颜色
           allCatalogElement[i].classList.add('js-active');
           // 当前父目录添加样式
-          objThis.changeParentColor(allCatalogElement[i]);*/
+          objThis.changeParentColor(allCatalogElement[i]);
         }
       }
     };
   }
+
   /**
    * ----------------------------------------
    * 比对搜索框和所有目录的值
