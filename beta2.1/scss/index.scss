@@ -1,5 +1,5 @@
 @import "global";
-
+@import "hljs";
 //root
 * {
   margin: 0;
@@ -183,10 +183,11 @@ code {
   @include border-radius(0.5rem);
   padding: .2rem 1rem;
   vertical-align: inherit;
+  font-size: 1.4rem;
 }
 
 pre code {
-  padding: .4rem 1rem;
+  padding: .5rem 1rem;
   border: none;
 }
 
@@ -230,7 +231,6 @@ input[type='checkbox'], input[type="radio"] {
 
 input[type='checkbox'] {
   @include border-radius($size: 0.3rem);
-
   &:checked {
     content: '';
     display: inline-block;
@@ -239,7 +239,6 @@ input[type='checkbox'] {
     font-size: 1.5rem;
     text-align: left;
     color: white;
-
     &:after {
       content: '\2713'; /*2713、2714都是勾，一个粗一个细*/
       vertical-align: super;
@@ -251,7 +250,6 @@ input[type='checkbox'] {
 input[type='radio'] {
   @include border-default($color: $green);
   @include border-radius($size: 50%);
-
   &:checked {
     &:after {
       content: '';
@@ -787,6 +785,7 @@ html {
 /*dark style*/
 html[theme=dark]{
    @include theme-dark;
+  @include code-dark;
  }
 /*@media*/
 @media screen and (max-width: 768px) {

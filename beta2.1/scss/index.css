@@ -250,6 +250,74 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 
 /*theme dark style*/
+/*hljs-style*/
+pre code.hljs {
+  overflow-x: auto;
+}
+
+code.hljs {
+  color: #2b4a6e;
+  padding: 0;
+}
+
+.hljs {
+  background: transparent;
+}
+
+.hljs-comment {
+  color: #9babb6;
+}
+
+.hljs-punctuation, .hljs-tag {
+  color: #3cd7f5;
+}
+
+.hljs-tag .hljs-attr, .hljs-tag .hljs-name {
+  color: #fa5a5a;
+}
+
+.hljs-attribute, .hljs-doctag, .hljs-keyword, .hljs-meta .hljs-keyword, .hljs-name, .hljs-selector-tag {
+  color: #028ade;
+  font-weight: 700;
+}
+
+.hljs-deletion, .hljs-number, .hljs-quote, .hljs-selector-class, .hljs-selector-id, .hljs-string, .hljs-template-tag, .hljs-type {
+  color: rgb(2, 189, 102);
+}
+
+.hljs-section, .hljs-title {
+  color: #af66ef;
+  font-weight: 700;
+}
+
+.hljs-link, .hljs-operator, .hljs-regexp, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-symbol, .hljs-template-variable, .hljs-variable {
+  color: #ff5c6d;
+}
+
+.hljs-literal {
+  color: #014bd2;
+}
+
+.hljs-addition, .hljs-built_in, .hljs-bullet, .hljs-code {
+  color: #ff6d0d;
+}
+
+.hljs-meta {
+  color: #ae42f3;
+}
+
+.hljs-meta .hljs-string {
+  color: #32b1e1;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: 700;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -427,6 +495,7 @@ pre {
   border: 1px solid #d0d0d0;
   background: rgb(238, 238, 238);
   font-size: 1.6rem;
+  box-sizing: border-box;
   border-radius: 0.8rem;
   -webkit-border-radius: 0.8rem;
   -moz-border-radius: 0.8rem;
@@ -439,15 +508,17 @@ code {
   border: 1px solid #d0d0d0;
   background: rgb(238, 238, 238);
   font-size: 1.6rem;
+  box-sizing: border-box;
   border-radius: 0.5rem;
   -webkit-border-radius: 0.5rem;
   -moz-border-radius: 0.5rem;
   padding: 0.2rem 1rem;
   vertical-align: inherit;
+  font-size: 1.4rem;
 }
 
 pre code {
-  padding: 0.4rem 1rem;
+  padding: 0.5rem 1rem;
   border: none;
 }
 
@@ -463,6 +534,7 @@ blockquote {
   border: 1px solid #d0d0d0;
   background: rgb(238, 238, 238);
   font-size: 1.6rem;
+  box-sizing: border-box;
   border-radius: 0.8rem;
   -webkit-border-radius: 0.8rem;
   -moz-border-radius: 0.8rem;
@@ -1287,6 +1359,12 @@ html[theme=dark] ::-webkit-resizer,
 html[theme=dark] ::-webkit-scrollbar-track,
 html[theme=dark] ::-webkit-scrollbar-track-piece {
   background: rgba(42, 55, 60, 0.1);
+}
+html[theme=dark] code.hljs {
+  color: #86c2f6;
+}
+html[theme=dark] .hljs-comment {
+  color: #667c89;
 }
 
 /*@media*/

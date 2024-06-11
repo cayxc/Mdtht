@@ -157,6 +157,8 @@ class MarkdownPad2AutoCatalog {
     let oldContent = document.body.innerHTML;
     //清空已有内容
     document.body.innerHTML = '';
+    //设置主题属性
+    document.documentElement.setAttribute('theme','light');
     // 如果将 body{overflow:hidden;} 样式写在 css中,
     // 会出现在 MarkdownPad2 编辑器中预览时，超出屏幕的内容无法滑动的 bug
     document.body.style.overflow = 'hidden';
@@ -831,12 +833,12 @@ class MarkdownPad2AutoCatalog {
     let htmlElement = document.documentElement;
     viewModeButton.onclick = function() {
       let isDarkMode = htmlElement.getAttribute('theme');
-      if (isDarkMode == null) {
+      if (isDarkMode == 'light') {
         this.children[0].setAttribute('class', 'iconfont icon-moon');
         htmlElement.setAttribute('theme', 'dark');
       } else {
         this.children[0].setAttribute('class', 'iconfont icon-sun');
-        htmlElement.removeAttribute('theme');
+        htmlElement.setAttribute('theme','light');
       }
     };
 
@@ -847,7 +849,7 @@ class MarkdownPad2AutoCatalog {
       htmlElement.setAttribute('theme', 'dark');
     } else {
       viewModeButton.children[0].setAttribute('class', 'iconfont icon-sun');
-      htmlElement.removeAttribute('theme');
+      htmlElement.setAttribute('theme','light');
     }
 
     //监听系统主题变化
@@ -861,7 +863,7 @@ class MarkdownPad2AutoCatalog {
           } else {
             viewModeButton.children[0].setAttribute(
                 'class', 'iconfont icon-sun');
-            document.documentElement.removeAttribute('theme');
+            document.documentElement.setAttribute('theme','light');
           }
         });
   }
