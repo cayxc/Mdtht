@@ -201,28 +201,28 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   display: none;
 }
 
-#list-container .js-retract > ul li ul {
+#list-container .js-retract li ul {
   display: none;
 }
 
-#list-container .js-launch > ul li ul {
-  display: block;
+#list-container .js-item-retract > ul {
+  display: none !important;
 }
 
-.js-close {
-  display: none;
+#list-container .js-item-launch > ul {
+  display: block !important;
 }
 
-.js-active > a {
-  color: rgb(1, 203, 110) !important;
+#list-container .js-active > a {
+  color: rgb(2, 189, 102) !important;
   background: rgb(238, 238, 238) !important;
   border-radius: 0.4rem;
   -webkit-border-radius: 0.4rem;
   -moz-border-radius: 0.4rem;
 }
 
-.js-active > .iconfont {
-  color: rgb(1, 203, 110) !important;
+#list-container .js-active > .iconfont {
+  color: rgb(2, 189, 102) !important;
 }
 
 .js-show-shadow,
@@ -278,18 +278,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 3.2rem;
   padding-bottom: 1.2rem;
   border-bottom: 1px solid #d9d9d9;
 }
 h1:first-of-type {
   border: none;
   padding-bottom: 2rem;
-  text-align: center;
 }
 
 h2 {
-  font-size: 2.7rem;
+  font-size: 2.8rem;
 }
 
 h3 {
@@ -321,7 +320,7 @@ hr {
 }
 
 ::selection {
-  background: rgba(1, 203, 110, 0.75);
+  background: rgba(2, 189, 102, 0.75);
   color: #000000;
   text-shadow: none;
 }
@@ -332,7 +331,7 @@ a {
   cursor: pointer;
 }
 a:hover {
-  color: rgb(1, 203, 110);
+  color: rgb(2, 189, 102);
 }
 
 p {
@@ -346,12 +345,12 @@ p a {
 
 strong {
   font-weight: bold;
-  color: rgb(1, 203, 110);
+  color: rgb(2, 189, 102);
 }
 
 u {
-  text-decoration-color: rgb(1, 203, 110);
-  -moz-text-decoration-color: rgb(1, 203, 110);
+  text-decoration-color: rgb(2, 189, 102);
+  -moz-text-decoration-color: rgb(2, 189, 102);
 }
 
 em {
@@ -366,7 +365,7 @@ del {
 }
 
 mark {
-  background-color: rgb(1, 203, 110);
+  background-color: rgb(2, 189, 102);
   padding: 0.2rem 1rem;
   border-radius: 0.4rem;
   -webkit-border-radius: 0.4rem;
@@ -467,11 +466,11 @@ blockquote {
   border-radius: 0.8rem;
   -webkit-border-radius: 0.8rem;
   -moz-border-radius: 0.8rem;
-  border-left: 0.4rem solid rgb(1, 203, 110);
+  border-left: 0.4rem solid rgb(2, 189, 102);
   border-bottom: none;
   border-top: none;
   border-right: none;
-  background-color: rgba(1, 203, 110, 0.06);
+  background-color: rgba(2, 189, 102, 0.06);
   overflow: hidden;
 }
 blockquote p:first-child {
@@ -482,7 +481,7 @@ blockquote p:first-child {
   color: #999999;
 }
 .iconfont:hover {
-  text-shadow: 0.1rem 0.1rem 0.1rem rgba(1, 203, 110, 0.75);
+  text-shadow: 0.1rem 0.1rem 0.1rem rgba(2, 189, 102, 0.75);
 }
 
 /*table*/
@@ -532,7 +531,7 @@ input[type=checkbox] {
 input[type=checkbox]:checked {
   content: "";
   display: inline-block;
-  background: rgb(1, 203, 110);
+  background: rgb(2, 189, 102);
   border-color: transparent;
   font-size: 1.5rem;
   text-align: left;
@@ -545,7 +544,7 @@ input[type=checkbox]:checked:after {
 
 /*input radio*/
 input[type=radio] {
-  border: 1px solid rgb(1, 203, 110);
+  border: 1px solid rgb(2, 189, 102);
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -556,7 +555,7 @@ input[type=radio]:checked:after {
   width: 8px;
   height: 8px;
   margin: 3px auto;
-  background: rgb(1, 203, 110);
+  background: rgb(2, 189, 102);
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -608,6 +607,10 @@ input[type=radio]:checked:after {
   padding: 0 5rem;
   margin: auto;
   overflow-x: hidden;
+  transition: scroll 0.6s;
+  -moz-transition: scroll 0.6s;
+  -webkit-transition: scroll 0.6s;
+  -o-transition: scroll 0.6s;
 }
 
 /*top-container*/
@@ -634,7 +637,7 @@ input[type=radio]:checked:after {
   margin-top: -0.2rem;
 }
 .catalog-button:hover {
-  color: rgb(1, 203, 110);
+  color: rgb(2, 189, 102);
 }
 
 .search-container {
@@ -660,11 +663,11 @@ input[type=radio]:checked:after {
 .search:focus {
   outline: none;
   width: 100%;
-  border-color: rgb(1, 203, 110);
-  box-shadow: 0 0 0.2rem 0.1rem rgba(1, 203, 110, 0.2);
-  -webkit-box-shadow: 0 0 0.2rem 0.1rem rgba(1, 203, 110, 0.2);
-  -moz-box-shadow: 0 0 0.2rem 0.1rem rgba(1, 203, 110, 0.2);
-  -o-box-shadow: 0 0 0.2rem 0.1rem rgba(1, 203, 110, 0.2);
+  border-color: rgb(2, 189, 102);
+  box-shadow: 0 0 0.2rem 0.1rem rgba(2, 189, 102, 0.2);
+  -webkit-box-shadow: 0 0 0.2rem 0.1rem rgba(2, 189, 102, 0.2);
+  -moz-box-shadow: 0 0 0.2rem 0.1rem rgba(2, 189, 102, 0.2);
+  -o-box-shadow: 0 0 0.2rem 0.1rem rgba(2, 189, 102, 0.2);
 }
 .search::placeholder {
   color: #d0d0d0;
@@ -681,7 +684,7 @@ input[type=radio]:checked:after {
   line-height: 2.3rem;
 }
 .search-icon:hover {
-  color: rgb(1, 203, 110);
+  color: rgb(2, 189, 102);
 }
 
 .search-result {
@@ -712,7 +715,7 @@ input[type=radio]:checked:after {
   line-height: 1.8rem;
 }
 .search-result a:hover {
-  color: rgb(1, 203, 110) !important;
+  color: rgb(2, 189, 102) !important;
 }
 
 .search-result a,
@@ -812,7 +815,7 @@ input[type=radio]:checked:after {
   font-weight: normal;
   color: rgb(42, 55, 60);
   padding: 0.5rem 0.6rem;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.2rem;
   margin-left: 1.8rem;
   box-sizing: border-box;
   line-height: 1 !important;
@@ -841,7 +844,7 @@ input[type=radio]:checked:after {
 }
 .list-wrapper ul li a p {
   float: left;
-  margin-right: 0.4rem;
+  margin-right: 0.2rem;
   display: table-cell;
 }
 .list-wrapper ul li a:hover div {
@@ -853,14 +856,14 @@ input[type=radio]:checked:after {
 }
 
 .list-wrapper ul li:hover > a {
-  color: rgb(1, 203, 110);
+  color: rgb(2, 189, 102);
   background: rgb(238, 238, 238);
 }
 .list-wrapper ul li:hover > a:before {
   width: 1.4rem;
 }
 .list-wrapper ul li:hover > .iconfont {
-  color: rgb(1, 203, 110);
+  color: rgb(2, 189, 102);
 }
 
 .list-wrapper > ul > li:first-child > a:after {
@@ -895,14 +898,14 @@ input[type=radio]:checked:after {
   height: 100%;
   position: absolute;
   z-index: 10;
-  left: -1.5rem;
+  left: -1.1rem;
   top: 1.3rem;
   background: white;
 }
 
 .list-wrapper ul li ul {
   margin-left: 2rem !important;
-  margin-top: 0.1rem;
+  margin-top: 0.2rem;
 }
 .list-wrapper ul li ul li:first-child:before {
   content: "";
@@ -954,7 +957,7 @@ input[type=radio]:checked:after {
   line-height: 4rem;
 }
 .bottom-container .iconfont:hover {
-  color: rgb(1, 203, 110);
+  color: rgb(2, 189, 102);
   cursor: pointer;
 }
 .bottom-container .icon-quit {
@@ -998,7 +1001,7 @@ input[type=radio]:checked:after {
   box-sizing: border-box;
 }
 .structure-child li:hover {
-  color: rgb(1, 203, 110);
+  color: rgb(2, 189, 102);
 }
 .structure-child li:first-child, .structure-child li:nth-of-type(2) {
   padding-bottom: 0.8rem;
@@ -1020,7 +1023,7 @@ input[type=radio]:checked:after {
 .structure-child li input[type=radio] {
   width: 1.2rem;
   height: 1.2rem;
-  border: 1px solid rgb(1, 203, 110);
+  border: 1px solid rgb(2, 189, 102);
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -1032,7 +1035,7 @@ input[type=radio]:checked:after {
   width: 0.6rem;
   height: 0.6rem;
   margin: 0.2rem auto;
-  background: rgb(1, 203, 110);
+  background: rgb(2, 189, 102);
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -1062,12 +1065,12 @@ input[type=radio]:checked:after {
   height: 100%;
   top: -0.4rem;
   left: -0.2rem;
-  color: rgb(1, 203, 110);
+  color: rgb(2, 189, 102);
   font-size: 4rem;
   margin-top: 1rem;
 }
 #switch-button .icon-label {
-  text-shadow: 0 0 0.3rem rgb(1, 203, 110);
+  text-shadow: 0 0 0.3rem rgba(42, 55, 60, 0.75);
 }
 #switch-button .icon-catalog-close {
   font-size: 1.6rem;
@@ -1092,8 +1095,9 @@ input[type=radio]:checked:after {
 
 /*scroll style*/
 html {
-  /*一般用使用方法*/
   /*非webkit内核浏览器*/
+  scrollbar-color: rgb(220, 220, 220) rgba(220, 220, 220, 0.1);
+  scrollbar-width: thin;
   /* 滑块背景色 */
   /* 其余相关样式设置跟滑块一个背景色 */
   /* 隐藏滚动条按钮 */
@@ -1119,6 +1123,10 @@ html ::-webkit-scrollbar-button {
 }
 
 /*dark style*/
+html[theme=dark] {
+  /*非webkit内核浏览器*/
+  scrollbar-color: rgb(42, 55, 60) rgba(42, 55, 60, 0.1);
+}
 html[theme=dark] .js-close-shadow,
 html[theme=dark] .js-close-shadow .iconfont {
   text-shadow: none;
@@ -1129,6 +1137,9 @@ html[theme=dark] .js-show-shadow .iconfont {
 }
 html[theme=dark] .js-active > a {
   background: rgb(42, 55, 60) !important;
+}
+html[theme=dark] #list-container .js-active > a {
+  background: rgb(32, 45, 50) !important;
 }
 html[theme=dark] {
   background-color: rgb(22, 27, 31);
@@ -1206,7 +1217,7 @@ html[theme=dark] .iconfont {
   text-shadow: 0.1rem 0.1rem 0.1rem #202d32;
 }
 html[theme=dark] .iconfont:hover {
-  text-shadow: 0.1rem 0.1rem 0.1rem rgba(1, 203, 110, 0.2);
+  text-shadow: 0.1rem 0.1rem 0.1rem rgba(2, 189, 102, 0.2);
 }
 html[theme=dark] #right-container,
 html[theme=dark] #left-container,
@@ -1235,10 +1246,10 @@ html[theme=dark] .list-wrapper ul li ul li:last-child:before, html[theme=dark] .
 html[theme=dark] .search-result {
   background: rgb(32, 45, 50);
   border-color: rgb(42, 55, 60);
-  box-shadow: 0 0 0.2rem 0.1rem rgba(1, 203, 110, 0.15);
-  -webkit-box-shadow: 0 0 0.2rem 0.1rem rgba(1, 203, 110, 0.15);
-  -moz-box-shadow: 0 0 0.2rem 0.1rem rgba(1, 203, 110, 0.15);
-  -o-box-shadow: 0 0 0.2rem 0.1rem rgba(1, 203, 110, 0.15);
+  box-shadow: 0 0 0.2rem 0.1rem rgba(2, 189, 102, 0.15);
+  -webkit-box-shadow: 0 0 0.2rem 0.1rem rgba(2, 189, 102, 0.15);
+  -moz-box-shadow: 0 0 0.2rem 0.1rem rgba(2, 189, 102, 0.15);
+  -o-box-shadow: 0 0 0.2rem 0.1rem rgba(2, 189, 102, 0.15);
 }
 html[theme=dark] .search-result a {
   color: rgb(220, 220, 220);
@@ -1247,7 +1258,7 @@ html[theme=dark] .search-icon {
   color: rgb(55, 75, 80);
 }
 html[theme=dark] .search-icon:hover {
-  color: rgb(1, 203, 110);
+  color: rgb(2, 189, 102);
 }
 html[theme=dark] .search-result {
   color: rgb(55, 75, 80);
@@ -1256,10 +1267,10 @@ html[theme=dark] .structure-child {
   background: rgb(22, 27, 31);
   border-color: rgb(42, 55, 60);
   border-bottom-color: rgb(22, 27, 31);
-  box-shadow: 0 -0.2rem 0.1rem rgba(1, 203, 110, 0.15);
-  -webkit-box-shadow: 0 -0.2rem 0.1rem rgba(1, 203, 110, 0.15);
-  -moz-box-shadow: 0 -0.2rem 0.1rem rgba(1, 203, 110, 0.15);
-  -o-box-shadow: 0 -0.2rem 0.1rem rgba(1, 203, 110, 0.15);
+  box-shadow: 0 -0.2rem 0.1rem rgba(2, 189, 102, 0.15);
+  -webkit-box-shadow: 0 -0.2rem 0.1rem rgba(2, 189, 102, 0.15);
+  -moz-box-shadow: 0 -0.2rem 0.1rem rgba(2, 189, 102, 0.15);
+  -o-box-shadow: 0 -0.2rem 0.1rem rgba(2, 189, 102, 0.15);
 }
 html[theme=dark] .structure-child li:first-child, html[theme=dark] .structure-child li:nth-of-type(2), html[theme=dark] .structure-child li:last-child {
   border-color: rgb(42, 55, 60);
@@ -1314,7 +1325,7 @@ html[theme=dark] ::-webkit-scrollbar-track-piece {
 @media screen and (min-width: 993px) and (max-width: 1200px) {
   #content {
     width: 100%;
-    padding: 0 4rem;
+    padding: 0 3rem;
   }
 }
 @media screen and (min-width: 1201px) and (max-width: 1920px) {

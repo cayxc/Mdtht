@@ -22,7 +22,6 @@ body {
   box-sizing: border-box;
 }
 
-//标题
 h1, h2, h3, h4, h5, h6 {
   margin: 4rem 0 2rem;
   color: $title-color;
@@ -30,19 +29,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 3.2rem;
   padding-bottom: $size-12;
   @include border-bottom($color: $grey-color);
 
   &:first-of-type {
     border: none;
     padding-bottom: 2rem;
-    text-align: center;
   }
 }
 
 h2 {
-  font-size: 2.7rem;
+  font-size: 2.8rem;
 }
 
 h3 {
@@ -313,6 +311,10 @@ input[type='radio'] {
   padding: 0 5rem;
   margin: auto;
   overflow-x: hidden;
+  transition: scroll 0.6s;
+  -moz-transition: scroll 0.6s;
+  -webkit-transition: scroll 0.6s;
+  -o-transition: scroll 0.6s;
 }
 
 /*top-container*/
@@ -514,7 +516,7 @@ input[type='radio'] {
   font-weight: normal;
   color: $grey-color-dark;
   padding: .5rem .6rem;
-  margin-bottom: .1rem;
+  margin-bottom: .2rem;
   margin-left: 1.8rem;
   box-sizing: border-box;
   line-height: 1 !important;
@@ -540,7 +542,7 @@ input[type='radio'] {
 
   p {
     float: left;
-    margin-right: .4rem;
+    margin-right: .2rem;
     display: table-cell;
   }
 
@@ -581,14 +583,14 @@ input[type='radio'] {
 }
 .list-wrapper > ul li:last-child > a:after  {
   @include pseudo-element($w: .3rem, $h:100%,$p: absolute);
-  left: -1.5rem;
+  left: -1.1rem;
   top: 1.3rem;
   background: white;
 }
 
 .list-wrapper ul li ul {
   margin-left: 2rem !important;
-  margin-top: .1rem;
+  margin-top: .2rem;
 
   & li:first-child:before {
     @include pseudo-element($w: .1rem, $h: 1.4rem, $p: absolute);
@@ -751,7 +753,7 @@ input[type='radio'] {
   }
 
   .icon-label {
-    text-shadow: 0 0 .3rem $green;
+    text-shadow: 0 0 .3rem rgb($grey-color-dark,.75);
   }
 
   .icon-catalog-close {
@@ -779,17 +781,13 @@ input[type='radio'] {
 
 /*scroll style*/
 html {
-  /*一般用使用方法*/
-  //scrollbar-color: $text-dark rgb($text-dark, 0.1);
-  //scrollbar-color: $red rgb(red, 0.1);
-  //scrollbar-width: thin;
   @include custom-scroll();
 }
 
 /*dark style*/
-html[theme=dark] {
-  @include theme-dark;
-}
+html[theme=dark]{
+   @include theme-dark;
+ }
 /*@media*/
 @media screen and (max-width: 768px) {
   #left-container {
@@ -829,7 +827,7 @@ html[theme=dark] {
 
   #content {
     width: 100%;
-    padding: 0 4rem;
+    padding: 0 3rem;
   }
 
 }

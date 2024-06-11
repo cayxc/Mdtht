@@ -104,7 +104,7 @@ $border-color: #d0d0d0;
 $grey-color: #d9d9d9;
 $text-grey: #999999;
 $code-bg-color: rgb(238, 238, 238);
-$green: rgb(1, 203, 110);
+$green: rgb(2, 189, 102);
 $red: #d00101;
 $orange: #ff6d0d;
 $text-color: #000000;
@@ -267,8 +267,9 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 /*  Custom Scroll*/
 @mixin custom-scroll($color:$text-dark) {
   /*非webkit内核浏览器*/
-  //scrollbar-color: $text-dark rgb($text-dark, 0.1);
-  //scrollbar-width: thin;
+  scrollbar-color: $text-dark rgb($text-dark, 0.1);
+  scrollbar-width: thin;
+
   ::-webkit-scrollbar,
   ::-webkit-scrollbar-thumb {
     width: .8rem;
@@ -358,24 +359,28 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   }
 }
 #list-container .js-retract{
-  & > ul li  ul {
+  & li ul {
     display: none;
   }
 }
-#list-container .js-launch{
-  & > ul li ul {
-    display: block;
+
+#list-container .js-item-retract{
+  & > ul{
+    display: none !important;
   }
 }
-.js-close{
-  display: none;
+#list-container .js-item-launch{
+  & > ul{
+    display: block !important;
+  }
 }
-.js-active > a{
+
+#list-container .js-active > a{
   color: $green !important;
   background: $code-bg-color !important;
   @include border-radius(.4rem);
 }
-.js-active > .iconfont{
+#list-container .js-active > .iconfont{
   color: $green !important;
 }
 .js-show-shadow,
@@ -431,6 +436,9 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   }
   .js-active > a{
     background: $grey-color-dark !important;
+  }
+  #list-container .js-active > a{
+    background: $dark-bag2 !important;
   }
   & {
     background-color: $dark-bag;
@@ -546,6 +554,9 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
       color: $text-dark;
     }
   }
+
+  /*非webkit内核浏览器*/
+  scrollbar-color: $grey-color-dark rgb($grey-color-dark, 0.1);
 
   //滑块背景色
   ::-webkit-scrollbar-thumb {
