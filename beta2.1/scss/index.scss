@@ -1,5 +1,6 @@
 @import "global";
 @import "hljs";
+
 //root
 * {
   margin: 0;
@@ -306,7 +307,7 @@ input[type='radio'] {
 #content {
   width: 110rem;
   box-sizing: border-box;
-  padding: 0 5rem;
+  padding: 0 7rem;
   margin: auto;
   overflow-x: hidden;
   transition: scroll 0.6s;
@@ -822,6 +823,7 @@ html[theme=dark]{
 
   #content {
     width: 100%;
+    padding: 0 5rem;
   }
 
 }

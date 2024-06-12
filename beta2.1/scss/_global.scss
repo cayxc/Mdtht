@@ -101,10 +101,10 @@
 /*colors*/
 
 $body-bg-color: #ffffff;
-$border-color: #d0d0d0;
+$border-color: #d3d3d3;
 $grey-color: #d9d9d9;
 $text-grey: #999999;
-$code-bg-color: rgb(238, 238, 238);
+$code-bg-color: #f1f2f3;
 $green: rgb(2, 189, 102);
 $red: #d00101;
 $orange: #ff6d0d;
@@ -152,7 +152,7 @@ $size-10: 1.0rem;
 @mixin code-box($margin:1rem,$padding:1.6rem,$font-size:1.4rem,$bag:$code-bg-color) {
   margin: $margin 0;
   padding: $padding;
-  border: 1px solid $border-color;
+  border: 1px solid rgb($border-color,.5);
   background: $bag;
   font-size: $font-size;
   box-sizing: border-box;
