@@ -38,9 +38,11 @@ class MarkdownPad2AutoCatalog {
   //showTree   是否开树状线
   //openShadow   是否开启文字阴影
   constructor(
-      showIndex = true, indexStyle = 1, openDark = true, showTree = true,
-      openShadow                                                  = false) {
-    objThis = this; //当前对象的 this
+      showIndex  = true,
+      indexStyle = 1,
+      openDark   = true,
+      showTree   = true,
+      openShadow = false) {
     try {
       if ((typeof showIndex) != 'boolean') {
         showIndex = true;
@@ -62,9 +64,7 @@ class MarkdownPad2AutoCatalog {
         openDark = false;
         throw '参数: openShadow 类型有误，已按照默认配置执行，该参数类型为：Boolean';
       }
-    } catch (err) {
-      this.showError(err);
-    } finally {
+      objThis = this; //当前对象的 this
       this.showIndex = showIndex;
       this.indexStyle = indexStyle;
       this.openDark = openDark;
@@ -107,6 +107,8 @@ class MarkdownPad2AutoCatalog {
       this.searchCatalog();
       //主题随系统变化
       this.themeChange();
+    } catch (err) {
+      this.showError(err);
     }
   }
 
@@ -158,7 +160,7 @@ class MarkdownPad2AutoCatalog {
     //清空已有内容
     document.body.innerHTML = '';
     //设置主题属性
-    document.documentElement.setAttribute('theme','light');
+    document.documentElement.setAttribute('theme', 'light');
     // 如果将 body{overflow:hidden;} 样式写在 css中,
     // 会出现在 MarkdownPad2 编辑器中预览时，超出屏幕的内容无法滑动的 bug
     document.body.style.overflow = 'hidden';
@@ -645,6 +647,15 @@ class MarkdownPad2AutoCatalog {
       leftElement.removeAttribute('class');
       leftElement.style.display = 'block';
     };
+    //屏幕小于768时，收起目录展开时，点击内容区，收起目录
+    let mediaStatus = window.matchMedia('(max-width: 768px)').matches;
+    let asideStatus = leftElement.classList.contains('js-width-0');
+    if (mediaStatus && !asideStatus) {
+      this.rightElement.onclick = function() {
+        leftElement.classList.add('js-width-0');
+        switchButton.className = 'js-height-1';
+      };
+    }
   }
 
   /*
@@ -710,7 +721,6 @@ class MarkdownPad2AutoCatalog {
     let status = switchListButton.children[0].getAttribute('value');
     let allIcon = this.allIcon;
     let changeSingleIcon = this.changeSingleIcon;
-
     switchListButton.addEventListener('click', function() {
       if (status) {
         //收起子目录
@@ -803,7 +813,7 @@ class MarkdownPad2AutoCatalog {
             allCeil[k].classList.add('js-active');
           }
         }
-      }
+      };
     } catch (err) {
       return err;
     }
@@ -838,7 +848,7 @@ class MarkdownPad2AutoCatalog {
         htmlElement.setAttribute('theme', 'dark');
       } else {
         this.children[0].setAttribute('class', 'iconfont icon-sun');
-        htmlElement.setAttribute('theme','light');
+        htmlElement.setAttribute('theme', 'light');
       }
     };
 
@@ -849,7 +859,7 @@ class MarkdownPad2AutoCatalog {
       htmlElement.setAttribute('theme', 'dark');
     } else {
       viewModeButton.children[0].setAttribute('class', 'iconfont icon-sun');
-      htmlElement.setAttribute('theme','light');
+      htmlElement.setAttribute('theme', 'light');
     }
 
     //监听系统主题变化
@@ -863,7 +873,7 @@ class MarkdownPad2AutoCatalog {
           } else {
             viewModeButton.children[0].setAttribute(
                 'class', 'iconfont icon-sun');
-            document.documentElement.setAttribute('theme','light');
+            document.documentElement.setAttribute('theme', 'light');
           }
         });
   }
@@ -911,7 +921,7 @@ class MarkdownPad2AutoCatalog {
           allStyle[j].children[0].removeAttribute('checked');
         }
         this.children[0].setAttribute('checked', 'checked');
-      }
+      };
     }
 
     //文字阴影显示隐藏
@@ -928,7 +938,7 @@ class MarkdownPad2AutoCatalog {
         document.querySelector('body').setAttribute('class', 'js-close-shadow');
         this.children[0].removeAttribute('checked');
       }
-    }
+    };
     if (isShadow == true) {
       document.querySelector('body').setAttribute('class', 'js-show-shadow');
       shadowButton.children[0].setAttribute('checked', 'checked');
@@ -952,7 +962,7 @@ class MarkdownPad2AutoCatalog {
             setAttribute('class', 'js-close-tree');
         this.children[0].removeAttribute('checked');
       }
-    }
+    };
     if (isTree == true) {
       document.querySelector('#body-container').
           setAttribute('class', 'js-show-tree');
@@ -1089,8 +1099,8 @@ class MarkdownPad2AutoCatalog {
   }
 }
 
-window.onload = function() {
+window.addEventListener('DOMContentLoaded', function() {
   new MarkdownPad2AutoCatalog();
-};
+});
 
 
