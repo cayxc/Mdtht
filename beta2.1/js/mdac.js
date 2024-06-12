@@ -218,7 +218,7 @@ class MarkdownPad2AutoCatalog {
         '            <i class="search-icon iconfont icon-close"></i>' +
         '        </div>' + '        <div class="search-result"></div>' +
         '    </header>' + '    <nav id="list-container">' +
-        '        <div class="list-wrapper">' + '        </div>' + '    </nav>' +
+        '        <div class="list-wrapper js-launch">' + '        </div>' + '    </nav>' +
         '    <footer class="bottom-container">' +
         '        <div class="mode-container">' +
         '            <div class="mode">' +
@@ -245,12 +245,10 @@ class MarkdownPad2AutoCatalog {
     bodyBlock.innerHTML
         = '<div id="switch-button">' + '<i class="iconfont icon-label"></i>' +
         ' <i class="iconfont icon-catalog-close"></i>' + '</div>';
-
     //5.追加结构元素到页面
     document.body.appendChild(bodyBlock);
     bodyBlock.appendChild(leftBlock);
     bodyBlock.appendChild(rightBlock);
-
     //6.底部提示
     let msg = '<p class="note-tips">' +
         ' 本文档风格样式经过 MarkdownPad2AutoCatalog 目录生成插件转换生成，' +
@@ -408,10 +406,14 @@ class MarkdownPad2AutoCatalog {
    * ----------------------------------------
    */
   setTagLevel() {
+    let allH1 = document.querySelectorAll('h1');
     // 获取所有h1~h6标签
     let allTag = document.querySelectorAll('h1,h2,h3,h4,h5,h6');
+    //如果只有一个 H1 且在第一个位置，将默认为文章标题,该H1将不计入目录中
+    if(allH1.length == 1 && allTag.length > 1 && allTag[0].nodeName === "H1"){
+      allTag = document.querySelectorAll('h2,h3,h4,h5,h6');
+    }
     let tagLength = allTag.length;
-
     //判断目录数量，确定第一、二个标题的层级
     if (tagLength == 0) {
       let container = document.querySelector('.list-wrapper');
@@ -624,9 +626,12 @@ class MarkdownPad2AutoCatalog {
     this.createContent();
     this.createCatalogue();
     // 第一个目录默认样式
-    (document.querySelector('.list-wrapper')).querySelector('li').
-        classList.
-        add('js-active');
+    (document.querySelector('.list-wrapper')).querySelector('li').classList.add('js-active');
+    //给正文一级标题添加下划线样式
+    let allLevel1 = this.levelTagArr(1);
+    for(let i=0,len=allLevel1.length;i<len;i++){
+      allLevel1[i].classList.add('js-level1-style');
+    }
   }
 
   /*
@@ -647,7 +652,7 @@ class MarkdownPad2AutoCatalog {
       leftElement.removeAttribute('class');
       leftElement.style.display = 'block';
     };
-    //屏幕小于768px，目录展开时，点击内容区，收起目录
+    //屏幕小于768时，收起目录展开时，点击内容区，收起目录
     let mediaStatus = window.matchMedia('(max-width: 768px)').matches;
     let asideStatus = leftElement.classList.contains('js-width-0');
     if (mediaStatus && !asideStatus) {
@@ -722,16 +727,25 @@ class MarkdownPad2AutoCatalog {
     let allIcon = this.allIcon;
     let changeSingleIcon = this.changeSingleIcon;
     switchListButton.addEventListener('click', function() {
+      //清除单个目录点已经过击赋予的样式，避免样式冲突
+      let oldLi = document.querySelectorAll('.js-item-retract');
+      for(let j = 0, len = oldLi.length; j < len; j++){
+        oldLi[j].classList.remove('js-item-retract');
+      }
+      let oldLi2 = document.querySelectorAll('.js-item-launch');
+      for(let k = 0, len = oldLi2.length; k < len; k++){
+        oldLi2[k].classList.remove('js-item-launch');
+      }
       if (status) {
         //收起子目录
-        document.querySelector('.list-wrapper').classList.toggle('js-retract');
+        document.querySelector('.list-wrapper').classList.add('js-retract');
         //切换底部按钮 icon
         this.children[0].setAttribute('class', 'iconfont icon-branchB');
         this.children[0].setAttribute('value', 'false');
         status = false;
       } else {
         //展开子目录
-        document.querySelector('.list-wrapper').classList.toggle('js-retract');
+        document.querySelector('.list-wrapper').classList.remove('js-retract');
         //切换底部按钮 icon
         this.children[0].setAttribute('class', 'iconfont icon-quit');
         this.children[0].setAttribute('value', 'true');
@@ -739,7 +753,17 @@ class MarkdownPad2AutoCatalog {
       }
       //改变icon状态：展开/关闭
       for (let i = 0, len = allIcon.length; i < len; i++) {
-        changeSingleIcon(allIcon[i]);
+        let topClass = document.querySelector('.list-wrapper').getAttribute('class');
+        let iconClass = allIcon[i].getAttribute('class');
+        if(topClass.includes('js-retract')){ //收起目录
+          //更换icon
+          allIcon[i].setAttribute('class','iconfont icon-retract'+iconClass.slice(-1));
+          //收起子目录
+          document.querySelector('.list-wrapper').setAttribute('class','list-wrapper js-retract');
+        }else{ //展开目录
+          allIcon[i].setAttribute('class','iconfont icon-launch'+iconClass.slice(-1));
+          document.querySelector('.list-wrapper').setAttribute('class','list-wrapper js-launch');
+        }
         //给没有子目录的一级目录单独设置icon
         let lastChild = allIcon[i].parentElement.lastElementChild;
         if (lastChild.nodeName == 'A') {
@@ -767,15 +791,17 @@ class MarkdownPad2AutoCatalog {
         let parCatalog = allIcon[i].parentElement;
         if (parCatalog.lastElementChild.nodeName == 'UL') { //有子目录
           changeSingleIcon(allIcon[i]); //修改图标样式
-          let listWrapperClass = document.querySelector('.list-wrapper').getAttribute('class');
-          if (listWrapperClass === 'list-wrapper js-retract') {
-            allIcon[i].parentElement.classList.toggle('js-item-launch');
-          } else {
-            allIcon[i].parentElement.classList.toggle('js-item-retract');
+          //点击后的icon
+          let iconClass = allIcon[i].getAttribute('class');
+          if(iconClass.includes('launch')){ //展开子目录
+            allIcon[i].parentElement.classList.add('js-item-launch');
+            allIcon[i].parentElement.classList.remove('js-item-retract');
+          }else{//收起子目录
+            allIcon[i].parentElement.classList.add('js-item-retract');
+            allIcon[i].parentElement.classList.remove('js-item-launch');
           }
         }
-
-      };
+      }
     }
   }
 

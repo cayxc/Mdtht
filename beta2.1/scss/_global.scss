@@ -149,7 +149,7 @@ $size-10: 1.0rem;
 }
 
 /*code style*/
-@mixin code-box($margin:1.6rem,$padding:1.6rem,$font-size:1.6rem,$bag:$code-bg-color) {
+@mixin code-box($margin:1rem,$padding:1.6rem,$font-size:1.4rem,$bag:$code-bg-color) {
   margin: $margin 0;
   padding: $padding;
   border: 1px solid $border-color;
@@ -338,6 +338,10 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 
 //javascript control
+.js-level1-style{
+  @include border-bottom($color: $grey-color);
+}
+
 .active {
   background: $border-color;
   @include border-radius(.4rem);
@@ -368,20 +372,26 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 
 #list-container .js-retract {
-  & li ul {
+  & > ul > li ul {
+    display: none;
+  }
+}
+#list-container .js-launch {
+  & > ul > li ul {
+    display: block;
+  }
+}
+#list-container .list-wrapper .js-item-retract,
+#list-container .list-wrapper .js-item-retract{
+  & > ul {
     display: none;
   }
 }
 
-#list-container .js-item-retract {
+#list-container .list-wrapper .js-item-launch,
+#list-container .list-wrapper .js-item-launch{
   & > ul {
-    display: none !important;
-  }
-}
-
-#list-container .js-item-launch {
-  & > ul {
-    display: block !important;
+    display: block;
   }
 }
 
@@ -466,15 +476,15 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   h1, h2, h3, h4, h5, h6 {
     color: $text-dark;
   }
-  h1 {
+  .js-level1-style {
     @include border-bottom($color: $grey-color-dark);
-
-    &:first-of-type {
-      border: none;
-    }
   }
   hr {
     background: $grey-color-dark;
+  }
+  u {
+    text-decoration-color: $text-dark;
+    -moz-text-decoration-color: $text-dark;
   }
   kbd {
     background-color: $title-color2;

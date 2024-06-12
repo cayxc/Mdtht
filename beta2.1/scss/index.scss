@@ -18,7 +18,7 @@
 
 body {
   font-size: $size-16;
-  line-height: 2.6rem;
+  line-height: 1.6;
   box-sizing: border-box;
 }
 
@@ -30,13 +30,6 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 3.2rem;
-  padding-bottom: $size-12;
-  @include border-bottom($color: $grey-color);
-
-  &:first-of-type {
-    border: none;
-    padding-bottom: 2rem;
-  }
 }
 
 h2 {
@@ -90,7 +83,6 @@ a {
 
 p {
   margin: $size-18 0 0;
-  text-align: justify;
 }
 
 p a {
@@ -103,8 +95,8 @@ strong {
 }
 
 u {
-  text-decoration-color: $green;
-  -moz-text-decoration-color: $green;
+  text-decoration-color: $title-color;
+  -moz-text-decoration-color: $title-color;
 }
 em{font-weight: 300;}
 del {
@@ -170,6 +162,15 @@ dl dd {
   margin-left: 5.6rem;
 }
 
+#content{
+  ul li,
+  ol li,
+  dl dt,
+  dl dd {
+    margin-top: .5rem;
+  }
+}
+
 /*code*/
 pre {
   @include code-box();
@@ -182,7 +183,6 @@ code {
   @include border-radius(0.5rem);
   padding: .2rem 1rem;
   vertical-align: inherit;
-  font-size: 1.4rem;
   color: #284567;
 }
 
@@ -200,11 +200,11 @@ sup, sub {
 blockquote {
   @include code-box($padding: 2rem, $font-size: $size-16);
   @include border-radius();
-  border-left: .4rem solid $green;
+  border-left: .5rem solid $green;
   border-bottom: none;
   border-top: none;
   border-right: none;
-  background-color: rgb($green, 0.06);
+  background-color: rgb($green, 0.2);
   overflow: hidden;
 
   p:first-child {
@@ -275,7 +275,7 @@ input[type='radio'] {
 
 /*left-containe*/
 #left-container {
-  width: 28rem;
+  width: 30rem;
   background: white;
   border-right: 1px solid $border-color;
   z-index: 20;
@@ -568,7 +568,7 @@ input[type='radio'] {
 
 .list-wrapper > ul > li:first-child > a:after {
   @include pseudo-element($w: .3rem, $h: 1.3rem, $p: absolute);
-  top: -.1rem;
+  top: 0;
   left: -1.1rem;
   background: white;
 }
@@ -741,26 +741,22 @@ input[type='radio'] {
   i {
     display: block;
     position: absolute;
-    width: 100%;
-    height: 100%;
-    top: -.4rem;
-    left: -.2rem;
     color: $green;
     font-size: 4rem;
-    margin-top: 1rem;
   }
 
   .icon-label {
+    top: -1.3rem;
+    left: -.2rem;
     text-shadow: 0 0 .3rem rgb($grey-color-dark,.75);
   }
 
   .icon-catalog-close {
+    top: .2rem;
+    left: .85rem;
     font-size: 1.6rem;
     font-weight: bold;
     color: white;
-    top: -1rem;
-    padding-top: .2rem;
-    left: 0;
     text-shadow: none;
   }
 
@@ -790,7 +786,7 @@ html[theme=dark]{
 /*@media*/
 @media screen and (max-width: 768px) {
   #left-container {
-    width: 20rem;
+    width: 22rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -811,7 +807,7 @@ html[theme=dark]{
 
 @media screen and (min-width: 769px) and (max-width: 992px) {
   #left-container {
-    width: 24rem;
+    width: 26rem;
   }
   #content {
     width:100%;
@@ -826,7 +822,6 @@ html[theme=dark]{
 
   #content {
     width: 100%;
-    padding: 0 3rem;
   }
 
 }
@@ -838,7 +833,6 @@ html[theme=dark]{
   #content {
     width:100%;
     max-width: 120rem;
-    padding:0 5rem;
   }
 }
 
@@ -858,7 +852,6 @@ html[theme=dark]{
   }
   #content {
     width:100%;
-    max-width: 120rem;
-    padding: 0 5rem;
+    max-width: 140rem;
   }
 }
