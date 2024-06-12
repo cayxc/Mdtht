@@ -647,7 +647,7 @@ class MarkdownPad2AutoCatalog {
       leftElement.removeAttribute('class');
       leftElement.style.display = 'block';
     };
-    //屏幕小于768时，收起目录展开时，点击内容区，收起目录
+    //屏幕小于768px，目录展开时，点击内容区，收起目录
     let mediaStatus = window.matchMedia('(max-width: 768px)').matches;
     let asideStatus = leftElement.classList.contains('js-width-0');
     if (mediaStatus && !asideStatus) {

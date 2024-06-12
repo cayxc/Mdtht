@@ -256,7 +256,7 @@ pre code.hljs {
 }
 
 code.hljs {
-  color: #2b4a6e;
+  color: #284567;
   padding: 0;
 }
 
@@ -277,7 +277,7 @@ code.hljs {
 }
 
 .hljs-attribute, .hljs-doctag, .hljs-keyword, .hljs-meta .hljs-keyword, .hljs-name, .hljs-selector-tag {
-  color: #028ade;
+  color: #3cb2fc;
   font-weight: 700;
 }
 
@@ -295,7 +295,7 @@ code.hljs {
 }
 
 .hljs-literal {
-  color: #014bd2;
+  color: #0d50cc;
 }
 
 .hljs-addition, .hljs-built_in, .hljs-bullet, .hljs-code {
@@ -515,6 +515,7 @@ code {
   padding: 0.2rem 1rem;
   vertical-align: inherit;
   font-size: 1.4rem;
+  color: #284567;
 }
 
 pre code {
@@ -862,7 +863,7 @@ input[type=radio]:checked:after {
   list-style: none;
   margin-left: 0 !important;
   position: relative;
-  line-height: 1;
+  line-height: 1.1 !important;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -890,7 +891,7 @@ input[type=radio]:checked:after {
   margin-bottom: 0.2rem;
   margin-left: 1.8rem;
   box-sizing: border-box;
-  line-height: 1 !important;
+  line-height: 1.1 !important;
   background: transparent;
   border-radius: 0.5rem;
   -webkit-border-radius: 0.5rem;
@@ -904,7 +905,7 @@ input[type=radio]:checked:after {
   position: absolute;
   z-index: 10;
   left: -1rem;
-  top: 1.2rem;
+  top: 1.3rem;
   background: #d0d0d0;
 }
 .list-wrapper ul li a div {
@@ -971,7 +972,7 @@ input[type=radio]:checked:after {
   position: absolute;
   z-index: 10;
   left: -1.1rem;
-  top: 1.3rem;
+  top: 100%;
   background: white;
 }
 
@@ -1168,7 +1169,7 @@ input[type=radio]:checked:after {
 /*scroll style*/
 html {
   /*非webkit内核浏览器*/
-  scrollbar-color: rgb(220, 220, 220) rgba(220, 220, 220, 0.1);
+  scrollbar-color: rgb(210, 210, 210) rgba(210, 210, 210, 0.1);
   scrollbar-width: thin;
   /* 滑块背景色 */
   /* 其余相关样式设置跟滑块一个背景色 */
@@ -1181,14 +1182,14 @@ html ::-webkit-scrollbar-thumb {
   border-radius: 0.4rem;
 }
 html ::-webkit-scrollbar-thumb {
-  background: rgb(220, 220, 220);
+  background: rgb(210, 210, 210);
 }
 html ::-webkit-scrollbar,
 html ::-webkit-scrollbar-corner,
 html ::-webkit-resizer,
 html ::-webkit-scrollbar-track,
 html ::-webkit-scrollbar-track-piece {
-  background: rgba(220, 220, 220, 0.1);
+  background: rgba(210, 210, 210, 0.1);
 }
 html ::-webkit-scrollbar-button {
   display: none;
@@ -1215,14 +1216,14 @@ html[theme=dark] #list-container .js-active > a {
 }
 html[theme=dark] {
   background-color: rgb(22, 27, 31);
-  color: rgb(220, 220, 220);
+  color: rgb(210, 210, 210);
 }
 html[theme=dark] ::selection {
-  color: rgb(220, 220, 220);
+  color: rgb(210, 210, 210);
   text-shadow: none;
 }
 html[theme=dark] h1, html[theme=dark] h2, html[theme=dark] h3, html[theme=dark] h4, html[theme=dark] h5, html[theme=dark] h6 {
-  color: rgb(220, 220, 220);
+  color: rgb(210, 210, 210);
 }
 html[theme=dark] h1 {
   border-bottom: 1px solid rgb(42, 55, 60);
@@ -1279,7 +1280,7 @@ html[theme=dark] table tbody tr:nth-child(even) {
 html[theme=dark] input {
   background: rgb(32, 45, 50);
   border-color: rgb(42, 55, 60);
-  color: rgb(220, 220, 220);
+  color: rgb(210, 210, 210);
 }
 html[theme=dark] input::placeholder {
   color: rgb(55, 75, 80);
@@ -1296,7 +1297,7 @@ html[theme=dark] #left-container,
 html[theme=dark] .top-container,
 html[theme=dark] .bottom-container {
   background: rgb(22, 27, 31);
-  color: rgb(220, 220, 220);
+  color: rgb(210, 210, 210);
   border-color: rgb(42, 55, 60);
 }
 html[theme=dark] .list-wrapper .iconfont {
@@ -1304,7 +1305,7 @@ html[theme=dark] .list-wrapper .iconfont {
   background: rgb(22, 27, 31);
 }
 html[theme=dark] .list-wrapper a {
-  color: rgb(220, 220, 220);
+  color: rgb(210, 210, 210);
 }
 html[theme=dark] .list-wrapper ul:after, html[theme=dark] .list-wrapper ul:before, html[theme=dark] .list-wrapper li:after, html[theme=dark] .list-wrapper li:before, html[theme=dark] .list-wrapper a:after, html[theme=dark] .list-wrapper a:before {
   background: rgb(42, 55, 60);
@@ -1324,7 +1325,7 @@ html[theme=dark] .search-result {
   -o-box-shadow: 0 0 0.2rem 0.1rem rgba(2, 189, 102, 0.15);
 }
 html[theme=dark] .search-result a {
-  color: rgb(220, 220, 220);
+  color: rgb(210, 210, 210);
 }
 html[theme=dark] .search-icon {
   color: rgb(55, 75, 80);
@@ -1348,7 +1349,7 @@ html[theme=dark] .structure-child li:first-child, html[theme=dark] .structure-ch
   border-color: rgb(42, 55, 60);
 }
 html[theme=dark] #switch-button .icon-catalog-close {
-  color: rgb(220, 220, 220);
+  color: rgb(210, 210, 210);
 }
 html[theme=dark] ::-webkit-scrollbar-thumb {
   background: rgb(42, 55, 60);
@@ -1360,8 +1361,8 @@ html[theme=dark] ::-webkit-scrollbar-track,
 html[theme=dark] ::-webkit-scrollbar-track-piece {
   background: rgba(42, 55, 60, 0.1);
 }
-html[theme=dark] code.hljs {
-  color: #86c2f6;
+html[theme=dark] code, html[theme=dark] code.hljs {
+  color: #a7eaff;
 }
 html[theme=dark] .hljs-comment {
   color: #667c89;
@@ -1379,7 +1380,7 @@ html[theme=dark] .hljs-comment {
   }
   #content {
     width: 100%;
-    padding: 0 3rem;
+    padding: 0 2rem;
   }
   #switch-button {
     height: 4rem;
