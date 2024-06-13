@@ -6,6 +6,7 @@ pre code.hljs {
 code.hljs {
   color: #284567;
   padding: 0;
+  background: transparent;
 }
 
 .hljs {
@@ -68,6 +69,10 @@ code.hljs {
 @mixin code-dark {
   code,code.hljs {
     color: #95def6;
+    background: transparent;
+  }
+  p code,p code.hljs{
+    background: rgba(165, 187, 192, 0.12);
   }
   .hljs-comment {
     color: #667c89;

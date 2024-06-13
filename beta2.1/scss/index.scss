@@ -8,9 +8,9 @@
 }
 
 :root {
-  font-family: "Mono","PingFang SC", "PingFang", "Helvetica", "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  font-family: "Mono","PingFang SC","Helvetica Neue","Helvetica","Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
   font-size: 62.5%;
-  background-color: $body-bg-color;
+  background-color: $bg-color;
   color: $text-color;
   height: 100%;
   overflow: hidden;
@@ -68,7 +68,7 @@ hr {
 }
 
 ::selection {
-  background: rgb($green, .75);
+  background: rgb($orange, .5);
   color: $text-color;
   text-shadow: none;
 }
@@ -128,7 +128,7 @@ kbd {
   @include border-radius(.4rem);
   padding: 0 .6rem;
   margin-right: 0.6rem;
-  vertical-align: inherit;
+  vertical-align: text-top;
   font-size: 1.4rem;
 
 }
@@ -189,13 +189,14 @@ code {
   @include border-radius(0.5rem);
   padding: .2rem 1rem;
   line-height: 1.8;
-  vertical-align: inherit;
+  vertical-align: text-top;
   color: #284567;
 }
 
 pre code {
   padding: .5rem 1rem;
   border: none;
+  vertical-align: bottom;
 }
 p code{
   line-height: 1.5;
@@ -213,7 +214,7 @@ blockquote {
   border-bottom: none;
   border-top: none;
   border-right: none;
-  background-color: rgb($green, 0.16);
+  background-color: rgb(165,187,192,.16);
   overflow: hidden;
 
   p:first-child {
@@ -247,7 +248,7 @@ input[type='checkbox'] {
     border-color: transparent;
     font-size: 1.3rem;
     text-align: center;
-    color: white;
+    color: $bg-color;
     &:after {
       content: '\2713'; /*2713、2714都是勾，一个粗一个细*/
       vertical-align: text-top;
@@ -285,7 +286,7 @@ input[type='radio'] {
 /*left-containe*/
 #left-container {
   width: 30rem;
-  background: white;
+  background: $bg-color;
   border-right: 1px solid $border-color;
   z-index: 20;
   position: relative;
@@ -335,7 +336,7 @@ input[type='radio'] {
   box-sizing: border-box;
   z-index: 25;
   line-height: 3.2rem;
-  background: white;
+  background: $bg-color;
 }
 
 .catalog-button {
@@ -370,6 +371,7 @@ input[type='radio'] {
   z-index: 33;
   width: 80%;
   overflow: hidden;
+  font-size: 1.2rem;
   white-space: nowrap;
   text-overflow: ellipsis;
   &:focus {
@@ -380,7 +382,7 @@ input[type='radio'] {
   }
 
   &::placeholder {
-    color: $border-color;
+    color: $text-grey;
   }
 }
 
@@ -402,7 +404,7 @@ input[type='radio'] {
 .search-result {
   @include border-default();
   @include border-radius($size: 0.6rem);
-  background: white;
+  background: $bg-color;
   padding: 1.4rem 1.6rem;
   overflow: auto;
   margin-top: 3.4rem;
@@ -507,7 +509,7 @@ input[type='radio'] {
   font-size: 1.4rem;
   margin-top: .6rem;
   margin-left: .15rem;
-  background: white;
+  background: $bg-color;
   @include border-radius(.3rem);
   position: relative;
   z-index: 20;
@@ -579,20 +581,20 @@ input[type='radio'] {
   @include pseudo-element($w: .3rem, $h: 100%, $p: absolute);
   left: -1.1rem;
   bottom: 50%;
-  background: white;
+  background: $bg-color;
 }
 .list-wrapper > ul > li:last-child:after {
   @include pseudo-element($w: .3rem, $h: 100%, $p: absolute);
   top: 1.3rem;
   left: .7rem;
   z-index: 15;
-  background: #ffffff;
+  background: $bg-color;
 }
 .list-wrapper > ul li:last-child > a:after  {
   @include pseudo-element($w: .3rem, $h:100%,$p: absolute);
   left: -1.1rem;
   top: 100%;
-  background: white;
+  background: $bg-color;
 }
 
 .list-wrapper ul li ul {
@@ -610,7 +612,7 @@ input[type='radio'] {
     @include pseudo-element($w: .3rem, $h: 100%, $p: absolute);
     top: 1.3rem;
     left: .7rem;
-    background: white;
+    background: $bg-color;
     z-index: 15;
   }
 }
@@ -622,7 +624,7 @@ input[type='radio'] {
   position: absolute;
   z-index: 30;
   bottom: 0;
-  background: white;
+  background: $bg-color;
   padding: 0 1.6rem;
   box-sizing: border-box;
   border-top: 1px solid $border-color;
@@ -660,7 +662,7 @@ input[type='radio'] {
 
 
 .structure-child {
-  background: white;
+  background: $bg-color;
   position: absolute;
   bottom: 4rem;
   left: -5.9rem;
@@ -669,7 +671,7 @@ input[type='radio'] {
   @include border-radius($size: 0.6rem);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  border-bottom-color: white;
+  border-bottom-color: $bg-color;
   @include box-shadow-2(rgb($grey-color, .7));
   box-sizing: border-box;
   overflow: hidden;
@@ -765,7 +767,7 @@ input[type='radio'] {
     left: .85rem;
     font-size: 1.6rem;
     font-weight: bold;
-    color: white;
+    color: $bg-color;
     text-shadow: none;
   }
 
@@ -780,7 +782,7 @@ input[type='radio'] {
   padding: 1.6rem 0;
   margin-top: 5rem;
   border-top: .1rem solid $border-color;
-  color: $border-color;
+  color: $text-grey;
 }
 
 /*scroll style*/

@@ -99,26 +99,25 @@
 }
 
 /*colors*/
-
-$body-bg-color: #ffffff;
+$bg-color: #fdfdfd;
+$bg-color2: rgb(236,239,240);
 $border-color: #d3d3d3;
 $grey-color: #d9d9d9;
-$text-grey: #999999;
-$code-bg-color: #f1f2f3;
+$code-bg-color: #eeeeee;
+//$code-bg-color: rgb(165,187,192,.14);
 $green: rgb(2, 189, 102);
-//$green: rgb(201, 18, 82);
 $red: #d00101;
 $orange: #ff6d0d;
 $text-color: #000000;
-$title-color: rgb(40, 55, 75);
-$title-color2: rgb(52, 82, 115);
-//$dark-bag: rgb(22, 27, 31);
-$dark-bag: rgb(29, 33, 40);
-$dark-bag2: rgb(41, 55, 61);
+$text-grey: #999999;
+$title-color: rgb(39, 56, 75);
+$title-color2: rgb(48, 78, 112);
+$bg-dark: rgb(22, 27, 32);
+$bg-dark2: rgb(41, 55, 61);
 $text-dark: rgb(200, 200, 200);
-$text-grey-dark: rgb(55, 75, 80);
-$code-bg-dark: rgb(45, 57, 63);
-$grey-color-dark: rgb(42, 55, 60);
+$text-grey-dark: rgb(46, 62, 66);
+$code-bg-dark: rgba(184, 204, 208, 0.12);
+$grey-color-dark: rgb(52, 65, 72);
 
 /*size*/
 $size-32: 3.2rem;
@@ -161,41 +160,46 @@ $size-10: 1.0rem;
 }
 
 /*table style*/
-@mixin table-style($bd-color:$grey-color,$bg-color:$code-bg-color,$bd-radius:0.8rem) {
+@mixin table-style($bor-color:$grey-color,$bag-color:$code-bg-color,$bor-radius:0.8rem) {
   width: 100%;
   margin-top: $size-16;
   text-align: left;
   border-collapse: separate;
   border-spacing: 0;
+  border-radius:$bor-radius;
+  overflow: hidden;
   thead {
-    background-color: $bg-color;
-
     tr th {
-      border-top: 1px solid $bd-color;
+      border-top: 1px solid $bor-color;
     }
   }
   tr th, tr td {
     padding: 0.8rem 1rem;
-    border-right: 1px solid $bd-color;
-    border-bottom: 1px solid $bd-color;
+    border-right: 1px solid $bor-color;
   }
   tr th:first-child, tr td:first-child {
-    border-left: 1px solid $bd-color;
+    border-left: 1px solid $bor-color;
   }
   tr:first-child th:first-child {
-    border-top-left-radius: $bd-radius;
+    border-top-left-radius: $bor-radius;
+    background: $bag-color;
   }
   tr:first-child th:last-child {
-    border-top-right-radius: $bd-radius;
+    border-top-right-radius: $bor-radius;
+    background: $bag-color;
   }
   tr:last-child td:last-child {
-    border-bottom-right-radius: $bd-radius;
+    border-bottom-right-radius: $bor-radius;
+    border-bottom: 1px solid $bor-color;
+    background: $bag-color;
   }
   tr:last-child td:first-child {
-    border-bottom-left-radius: $bd-radius;
+    border-bottom-left-radius: $bor-radius;
+    border-bottom: 1px solid $bor-color;
+    background: $bag-color;
   }
   tbody tr:nth-child(even) {
-    background: $bg-color;
+    background: $bag-color;
   }
 }
 
@@ -209,7 +213,7 @@ $size-10: 1.0rem;
   z-index: 10;
 }
 
-@mixin bag-border-dark($bag:$dark-bag2,$bor:$grey-color-dark) {
+@mixin bag-border-dark($bag:$bg-dark2,$bor:$grey-color-dark) {
   background: $bag;
   border-color: $bor;
 }
@@ -272,7 +276,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 /*  Custom Scroll*/
 @mixin custom-scroll($color:$text-dark) {
   /*非webkit内核浏览器*/
-  scrollbar-color: $text-dark rgb($text-dark, 0.1);
+  scrollbar-color: rgb($grey-color,0.8) rgb($grey-color, 0.15);
   scrollbar-width: thin;
 
   ::-webkit-scrollbar,
@@ -284,7 +288,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 
   /* 滑块背景色 */
   ::-webkit-scrollbar-thumb {
-    background: $text-dark;
+    background: rgb($grey-color,.8);
   }
   /* 其余相关样式设置跟滑块一个背景色 */
   ::-webkit-scrollbar,
@@ -292,7 +296,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   ::-webkit-resizer,
   ::-webkit-scrollbar-track,
   ::-webkit-scrollbar-track-piece {
-    background: rgb($text-dark, 0.1);
+    background: rgb($grey-color, 0.15);
   }
 
   /* 隐藏滚动条按钮 */
@@ -320,7 +324,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   position: relative;
   width: $size-16;
   height: $size-16;
-  background-color: white;
+  background-color: $bg-color;
   border: 1px solid $title-color;
   vertical-align: middle;
   font-size: $size-20;
@@ -348,7 +352,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 
 .active {
-  background: $border-color;
+  background: $grey-color;
   @include border-radius(.4rem);
   position: relative;
   z-index: 12;
@@ -460,10 +464,10 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     background: $grey-color-dark !important;
   }
   #list-container .js-active > a {
-    background: $dark-bag2 !important;
+    background: $bg-dark2 !important;
   }
   & {
-    background-color: $dark-bag;
+    background-color: $bg-dark;
     color: $text-dark;
   }
   ::selection {
@@ -491,10 +495,10 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   }
 
   table {
-    @include table-style($bd-color: $grey-color-dark, $bg-color: $code-bg-dark);
+    @include table-style($bor-color: $grey-color-dark, $bag-color: $code-bg-dark);
   }
   input {
-    @include bag-border-dark($dark-bag2, $grey-color-dark);
+    @include bag-border-dark($bg-dark2, $grey-color-dark);
     color: $text-dark;
 
     &::placeholder {
@@ -503,24 +507,28 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   }
   .iconfont {
     color: $grey-color-dark;
-    text-shadow: .1rem .1rem .1rem rgb($dark-bag2, 1);
+    text-shadow: .1rem .1rem .1rem rgb($bg-dark2, 1);
 
     &:hover {
       text-shadow: .1rem .1rem .1rem rgb($green, .2);
     }
   }
+  .note-tips{
+ border-color: $text-grey-dark;
+    color: $text-grey-dark;
+  }
   #right-container,
   #left-container,
   .top-container,
   .bottom-container {
-    background: $dark-bag;
+    background: $bg-dark;
     color: $text-dark;
     border-color: $grey-color-dark;
   }
   .list-wrapper {
     .iconfont {
       color: $text-grey-dark;
-      background: $dark-bag;
+      background: $bg-dark;
     }
 
     a {
@@ -535,7 +543,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 
     & ul li:hover {
       & > a {
-        background: $dark-bag2;
+        background: $bg-dark2;
       }
     }
 
@@ -544,32 +552,33 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     & > ul li:last-child > a:after,
     & > ul > li:last-child:after,
     & > ul > li:last-child > a:after {
-      background: $dark-bag;
+      background: $bg-dark;
+    }
+  }
+  .search{
+    &::placeholder {
+      color: rgb($text-dark,.4);
     }
   }
 
   .search-result {
     @include bag-border-dark();
     @include box-shadow-1(rgb($green, .15));
-
+    color: rgb($text-dark,.4);
     a {
       color: $text-dark;
     }
   }
   .search-icon {
-    color: $text-grey-dark;
-
+    color: rgb($text-dark,.4);
     &:hover {
       color: $green;
     }
   }
-  .search-result {
-    color: $text-grey-dark;
-  }
 
   .structure-child {
-    @include bag-border-dark($dark-bag, $grey-color-dark);
-    border-bottom-color: $dark-bag;
+    @include bag-border-dark($bg-dark, $grey-color-dark);
+    border-bottom-color: $bg-dark;
     @include box-shadow-2(rgb($green, .15));
 
     li {
@@ -586,11 +595,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   }
 
   /*非webkit内核浏览器*/
-  scrollbar-color: $grey-color-dark rgb($grey-color-dark, 0.1);
+  scrollbar-color: rgb($grey-color-dark,.8) rgb($grey-color-dark, 0.1);
 
   //滑块背景色
   ::-webkit-scrollbar-thumb {
-    background: $grey-color-dark;
+    background: rgb($grey-color-dark,.8);
   }
   //其余相关样式设置跟滑块一个背景色
   ::-webkit-scrollbar,
