@@ -129,6 +129,10 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 
 /*  Custom Scroll*/
+.text-center {
+  text-align: center;
+}
+
 .error {
   border-radius: 0.6rem;
   -webkit-border-radius: 0.6rem;
@@ -248,15 +252,9 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 .js-show-tree .list-wrapper ul:before, .js-show-tree .list-wrapper ul li:before, .js-show-tree .list-wrapper ul li a:before, .js-show-tree .list-wrapper ul:after, .js-show-tree .list-wrapper ul li:after, .js-show-tree .list-wrapper ul li a:after {
   display: block !important;
 }
-.js-show-tree .list-wrapper ul li a {
-  margin-left: 1.8rem;
-}
 
 .js-close-tree .list-wrapper ul:before, .js-close-tree .list-wrapper ul li:before, .js-close-tree .list-wrapper ul li a:before, .js-close-tree .list-wrapper ul:after, .js-close-tree .list-wrapper ul li:after, .js-close-tree .list-wrapper ul li a:after {
   display: none !important;
-}
-.js-close-tree .list-wrapper ul li a {
-  margin-left: 1.5rem;
 }
 
 /*theme dark style*/
@@ -350,7 +348,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 4rem 0 2rem;
+  margin: 3.6rem 0 1.8rem;
   color: rgb(40, 55, 75);
   letter-spacing: 0.2rem;
 }
@@ -433,6 +431,13 @@ del {
   text-decoration: line-through;
   text-decoration-color: #d00101;
   -moz-text-decoration-color: #d00101;
+}
+
+sup, sub {
+  cursor: pointer;
+}
+sup:hover, sub:hover {
+  color: rgb(2, 189, 102);
 }
 
 mark {
@@ -523,6 +528,7 @@ code {
   -webkit-border-radius: 0.5rem;
   -moz-border-radius: 0.5rem;
   padding: 0.2rem 1rem;
+  line-height: 1.8;
   vertical-align: inherit;
   color: #284567;
 }
@@ -530,6 +536,10 @@ code {
 pre code {
   padding: 0.5rem 1rem;
   border: none;
+}
+
+p code {
+  line-height: 1.5;
 }
 
 /*sup,sub*/
@@ -552,7 +562,7 @@ blockquote {
   border-bottom: none;
   border-top: none;
   border-right: none;
-  background-color: rgba(2, 189, 102, 0.2);
+  background-color: rgba(2, 189, 102, 0.16);
   overflow: hidden;
 }
 blockquote p:first-child {
@@ -615,13 +625,13 @@ input[type=checkbox]:checked {
   display: inline-block;
   background: rgb(2, 189, 102);
   border-color: transparent;
-  font-size: 1.5rem;
-  text-align: left;
+  font-size: 1.3rem;
+  text-align: center;
   color: white;
 }
 input[type=checkbox]:checked:after {
   content: "✓"; /*2713、2714都是勾，一个粗一个细*/
-  vertical-align: super;
+  vertical-align: text-top;
 }
 
 /*input radio*/
@@ -662,10 +672,10 @@ input[type=radio]:checked:after {
   position: relative;
   line-height: 2rem;
   overflow: hidden;
-  transition: width 0.3s;
-  -moz-transition: width 0.3s;
-  -webkit-transition: width 0.3s;
-  -o-transition: width 0.3s;
+  transition: width 0.3s linear, height 0.3s linear;
+  -moz-transition: width 0.3s linear, height 0.3s linear;
+  -webkit-transition: width 0.3s linear, height 0.3s;
+  -o-transition: width 0.3s linear, height 0.3s linear;
 }
 #left-container a {
   line-height: 2rem;
@@ -719,7 +729,7 @@ input[type=radio]:checked:after {
   margin-top: -0.2rem;
 }
 .catalog-button:hover {
-  color: rgb(2, 189, 102);
+  color: rgb(2, 189, 102) !important;
 }
 
 .search-container {
@@ -737,7 +747,7 @@ input[type=radio]:checked:after {
   float: right;
   position: relative;
   z-index: 33;
-  width: 79%;
+  width: 80%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -830,12 +840,13 @@ input[type=radio]:checked:after {
   z-index: 24;
   overflow: auto;
   box-sizing: border-box;
-  padding: 1.6rem;
+  padding: 0 1.6rem 1.6rem;
 }
 
 .list-wrapper {
   font-size: 1.6rem;
-  overflow: hidden;
+  position: relative;
+  margin-top: 1.6rem;
 }
 .list-wrapper > div {
   margin-top: 2rem;
@@ -874,13 +885,13 @@ input[type=radio]:checked:after {
   position: relative;
   line-height: 1.1 !important;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 .list-wrapper ul li i {
   float: left;
-  margin-top: 0.5rem;
-  margin-left: 0.05rem;
+  font-size: 1.4rem;
+  margin-top: 0.6rem;
+  margin-left: 0.15rem;
   background: white;
   border-radius: 0.3rem;
   -webkit-border-radius: 0.3rem;
@@ -952,11 +963,11 @@ input[type=radio]:checked:after {
   content: "";
   display: inline-block;
   width: 0.3rem;
-  height: 1.3rem;
+  height: 100%;
   position: absolute;
   z-index: 10;
-  top: 0;
   left: -1.1rem;
+  bottom: 50%;
   background: white;
 }
 
@@ -1135,10 +1146,10 @@ input[type=radio]:checked:after {
   cursor: pointer;
   text-align: center;
   box-sizing: border-box;
-  transition: height 0.2s;
-  -moz-transition: height 0.2s;
-  -webkit-transition: height 0.2s;
-  -o-transition: height 0.2s;
+  transition: height 0.2s linear;
+  -moz-transition: height 0.2s linear;
+  -webkit-transition: height 0.2s linear;
+  -o-transition: height 0.2s linear;
 }
 #switch-button i {
   display: block;
@@ -1167,6 +1178,7 @@ input[type=radio]:checked:after {
   line-height: 2rem;
   font-size: 1.3rem;
   padding: 1.6rem 0;
+  margin-top: 5rem;
   border-top: 0.1rem solid #d3d3d3;
   color: #d3d3d3;
 }
@@ -1174,7 +1186,7 @@ input[type=radio]:checked:after {
 /*scroll style*/
 html {
   /*非webkit内核浏览器*/
-  scrollbar-color: rgb(210, 210, 210) rgba(210, 210, 210, 0.1);
+  scrollbar-color: rgb(200, 200, 200) rgba(200, 200, 200, 0.1);
   scrollbar-width: thin;
   /* 滑块背景色 */
   /* 其余相关样式设置跟滑块一个背景色 */
@@ -1187,14 +1199,14 @@ html ::-webkit-scrollbar-thumb {
   border-radius: 0.4rem;
 }
 html ::-webkit-scrollbar-thumb {
-  background: rgb(210, 210, 210);
+  background: rgb(200, 200, 200);
 }
 html ::-webkit-scrollbar,
 html ::-webkit-scrollbar-corner,
 html ::-webkit-resizer,
 html ::-webkit-scrollbar-track,
 html ::-webkit-scrollbar-track-piece {
-  background: rgba(210, 210, 210, 0.1);
+  background: rgba(200, 200, 200, 0.1);
 }
 html ::-webkit-scrollbar-button {
   display: none;
@@ -1217,18 +1229,18 @@ html[theme=dark] .js-active > a {
   background: rgb(42, 55, 60) !important;
 }
 html[theme=dark] #list-container .js-active > a {
-  background: rgb(32, 45, 50) !important;
+  background: rgb(41, 55, 61) !important;
 }
 html[theme=dark] {
-  background-color: rgb(22, 27, 31);
-  color: rgb(210, 210, 210);
+  background-color: rgb(29, 33, 40);
+  color: rgb(200, 200, 200);
 }
 html[theme=dark] ::selection {
-  color: rgb(210, 210, 210);
+  color: rgb(200, 200, 200);
   text-shadow: none;
 }
 html[theme=dark] h1, html[theme=dark] h2, html[theme=dark] h3, html[theme=dark] h4, html[theme=dark] h5, html[theme=dark] h6 {
-  color: rgb(210, 210, 210);
+  color: rgb(200, 200, 200);
 }
 html[theme=dark] .js-level1-style {
   border-bottom: 1px solid rgb(42, 55, 60);
@@ -1237,14 +1249,14 @@ html[theme=dark] hr {
   background: rgb(42, 55, 60);
 }
 html[theme=dark] u {
-  text-decoration-color: rgb(210, 210, 210);
-  -moz-text-decoration-color: rgb(210, 210, 210);
+  text-decoration-color: rgb(200, 200, 200);
+  -moz-text-decoration-color: rgb(200, 200, 200);
 }
 html[theme=dark] kbd {
   background-color: rgb(52, 82, 115);
 }
 html[theme=dark] code, html[theme=dark] pre {
-  background: rgb(29, 38, 43);
+  background: rgb(45, 57, 63);
   border-color: rgb(42, 55, 60);
 }
 html[theme=dark] table {
@@ -1255,7 +1267,7 @@ html[theme=dark] table {
   border-spacing: 0;
 }
 html[theme=dark] table thead {
-  background-color: rgb(29, 38, 43);
+  background-color: rgb(45, 57, 63);
 }
 html[theme=dark] table thead tr th {
   border-top: 1px solid rgb(42, 55, 60);
@@ -1281,19 +1293,19 @@ html[theme=dark] table tr:last-child td:first-child {
   border-bottom-left-radius: 0.8rem;
 }
 html[theme=dark] table tbody tr:nth-child(even) {
-  background: rgb(29, 38, 43);
+  background: rgb(45, 57, 63);
 }
 html[theme=dark] input {
-  background: rgb(32, 45, 50);
+  background: rgb(41, 55, 61);
   border-color: rgb(42, 55, 60);
-  color: rgb(210, 210, 210);
+  color: rgb(200, 200, 200);
 }
 html[theme=dark] input::placeholder {
-  color: rgb(55, 75, 80);
+  color: #999999;
 }
 html[theme=dark] .iconfont {
   color: rgb(42, 55, 60);
-  text-shadow: 0.1rem 0.1rem 0.1rem #202d32;
+  text-shadow: 0.1rem 0.1rem 0.1rem #29373d;
 }
 html[theme=dark] .iconfont:hover {
   text-shadow: 0.1rem 0.1rem 0.1rem rgba(2, 189, 102, 0.2);
@@ -1302,28 +1314,28 @@ html[theme=dark] #right-container,
 html[theme=dark] #left-container,
 html[theme=dark] .top-container,
 html[theme=dark] .bottom-container {
-  background: rgb(22, 27, 31);
-  color: rgb(210, 210, 210);
+  background: rgb(29, 33, 40);
+  color: rgb(200, 200, 200);
   border-color: rgb(42, 55, 60);
 }
 html[theme=dark] .list-wrapper .iconfont {
   color: rgb(55, 75, 80);
-  background: rgb(22, 27, 31);
+  background: rgb(29, 33, 40);
 }
 html[theme=dark] .list-wrapper a {
-  color: rgb(210, 210, 210);
+  color: rgb(200, 200, 200);
 }
 html[theme=dark] .list-wrapper ul:after, html[theme=dark] .list-wrapper ul:before, html[theme=dark] .list-wrapper li:after, html[theme=dark] .list-wrapper li:before, html[theme=dark] .list-wrapper a:after, html[theme=dark] .list-wrapper a:before {
   background: rgb(42, 55, 60);
 }
 html[theme=dark] .list-wrapper ul li:hover > a {
-  background: rgb(32, 45, 50);
+  background: rgb(41, 55, 61);
 }
 html[theme=dark] .list-wrapper ul li ul li:last-child:before, html[theme=dark] .list-wrapper > ul > li:first-child > a:after, html[theme=dark] .list-wrapper > ul li:last-child > a:after, html[theme=dark] .list-wrapper > ul > li:last-child:after, html[theme=dark] .list-wrapper > ul > li:last-child > a:after {
-  background: rgb(22, 27, 31);
+  background: rgb(29, 33, 40);
 }
 html[theme=dark] .search-result {
-  background: rgb(32, 45, 50);
+  background: rgb(41, 55, 61);
   border-color: rgb(42, 55, 60);
   box-shadow: 0 0 0.2rem 0.1rem rgba(2, 189, 102, 0.15);
   -webkit-box-shadow: 0 0 0.2rem 0.1rem rgba(2, 189, 102, 0.15);
@@ -1331,7 +1343,7 @@ html[theme=dark] .search-result {
   -o-box-shadow: 0 0 0.2rem 0.1rem rgba(2, 189, 102, 0.15);
 }
 html[theme=dark] .search-result a {
-  color: rgb(210, 210, 210);
+  color: rgb(200, 200, 200);
 }
 html[theme=dark] .search-icon {
   color: rgb(55, 75, 80);
@@ -1343,9 +1355,9 @@ html[theme=dark] .search-result {
   color: rgb(55, 75, 80);
 }
 html[theme=dark] .structure-child {
-  background: rgb(22, 27, 31);
+  background: rgb(29, 33, 40);
   border-color: rgb(42, 55, 60);
-  border-bottom-color: rgb(22, 27, 31);
+  border-bottom-color: rgb(29, 33, 40);
   box-shadow: 0 -0.2rem 0.1rem rgba(2, 189, 102, 0.15);
   -webkit-box-shadow: 0 -0.2rem 0.1rem rgba(2, 189, 102, 0.15);
   -moz-box-shadow: 0 -0.2rem 0.1rem rgba(2, 189, 102, 0.15);
@@ -1355,7 +1367,7 @@ html[theme=dark] .structure-child li:first-child, html[theme=dark] .structure-ch
   border-color: rgb(42, 55, 60);
 }
 html[theme=dark] #switch-button .icon-catalog-close {
-  color: rgb(210, 210, 210);
+  color: rgb(200, 200, 200);
 }
 html[theme=dark] ::-webkit-scrollbar-thumb {
   background: rgb(42, 55, 60);
@@ -1368,7 +1380,7 @@ html[theme=dark] ::-webkit-scrollbar-track-piece {
   background: rgba(42, 55, 60, 0.1);
 }
 html[theme=dark] code, html[theme=dark] code.hljs {
-  color: #a7eaff;
+  color: #95def6;
 }
 html[theme=dark] .hljs-comment {
   color: #667c89;

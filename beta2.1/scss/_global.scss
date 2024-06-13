@@ -106,16 +106,18 @@ $grey-color: #d9d9d9;
 $text-grey: #999999;
 $code-bg-color: #f1f2f3;
 $green: rgb(2, 189, 102);
+//$green: rgb(201, 18, 82);
 $red: #d00101;
 $orange: #ff6d0d;
 $text-color: #000000;
 $title-color: rgb(40, 55, 75);
 $title-color2: rgb(52, 82, 115);
-$dark-bag: rgb(22, 27, 31);
-$dark-bag2: rgb(32, 45, 50);
-$text-dark: rgb(210, 210, 210);
+//$dark-bag: rgb(22, 27, 31);
+$dark-bag: rgb(29, 33, 40);
+$dark-bag2: rgb(41, 55, 61);
+$text-dark: rgb(200, 200, 200);
 $text-grey-dark: rgb(55, 75, 80);
-$code-bg-dark: rgb(29, 38, 43);
+$code-bg-dark: rgb(45, 57, 63);
 $grey-color-dark: rgb(42, 55, 60);
 
 /*size*/
@@ -247,23 +249,24 @@ input::-moz-placeholder, /* Mozilla Firefox 19+ */
 input:-ms-input-placeholder /* Internet Explorer 10+ */
 {
   color: $text-grey;
+
 }
 
 /*  Custom input placeholder*/
 input::-webkit-input-placeholder { /* WebKit browsers */
-  color: #999999;
+  color: $text-grey;
 }
 
 input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  color: #999999;
+  color: $text-grey;
 }
 
 input::-moz-placeholder { /* Mozilla Firefox 19+ */
-  color: #999999;
+  color: $text-grey;
 }
 
 input:-ms-input-placeholder { /* Internet Explorer 10+ */
-  color: #999999;
+  color: $text-grey;
 }
 
 /*  Custom Scroll*/
@@ -297,7 +300,9 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     display: none;
   }
 }
-
+.text-center{
+  text-align: center;
+}
 .error {
   @include border-radius(.6rem);
   padding: 1.6rem;
@@ -425,10 +430,6 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   {
     display: block !important;
   }
-
-  & ul li a {
-    margin-left: 1.8rem;
-  }
 }
 
 .js-close-tree .list-wrapper {
@@ -440,10 +441,6 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   & ul li a:after,
   {
     display: none !important;
-  }
-
-  & ul li a {
-    margin-left: 1.5rem;
   }
 }
 
@@ -501,7 +498,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     color: $text-dark;
 
     &::placeholder {
-      color: $text-grey-dark;
+      color: $text-grey;
     }
   }
   .iconfont {

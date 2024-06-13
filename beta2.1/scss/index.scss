@@ -24,7 +24,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 4rem 0 2rem;
+  margin: 3.6rem 0 1.8rem;
   color: $title-color;
   letter-spacing: .2rem;
 }
@@ -106,7 +106,12 @@ del {
   text-decoration-color: $red;
   -moz-text-decoration-color: $red;
 }
-
+sup,sub{
+  cursor: pointer;
+  &:hover{
+    color: $green;
+  }
+}
 mark {
   background-color: $green;
   padding: 0.2rem 1rem;
@@ -183,6 +188,7 @@ code {
   @include code-box();
   @include border-radius(0.5rem);
   padding: .2rem 1rem;
+  line-height: 1.8;
   vertical-align: inherit;
   color: #284567;
 }
@@ -191,7 +197,9 @@ pre code {
   padding: .5rem 1rem;
   border: none;
 }
-
+p code{
+  line-height: 1.5;
+}
 /*sup,sub*/
 sup, sub {
   font-size: $size-12;
@@ -205,7 +213,7 @@ blockquote {
   border-bottom: none;
   border-top: none;
   border-right: none;
-  background-color: rgb($green, 0.2);
+  background-color: rgb($green, 0.16);
   overflow: hidden;
 
   p:first-child {
@@ -237,12 +245,12 @@ input[type='checkbox'] {
     display: inline-block;
     background: $green;
     border-color: transparent;
-    font-size: 1.5rem;
-    text-align: left;
+    font-size: 1.3rem;
+    text-align: center;
     color: white;
     &:after {
       content: '\2713'; /*2713、2714都是勾，一个粗一个细*/
-      vertical-align: super;
+      vertical-align: text-top;
     }
   }
 }
@@ -283,10 +291,10 @@ input[type='radio'] {
   position: relative;
   line-height: 2rem;
   overflow: hidden;
-  transition: width 0.3s;
-  -moz-transition: width 0.3s;
-  -webkit-transition: width 0.3s;
-  -o-transition: width 0.3s;
+  transition: width 0.3s linear,height 0.3s linear;
+  -moz-transition: width 0.3s linear,height 0.3s linear;
+  -webkit-transition: width 0.3s linear,height 0.3s;
+  -o-transition: width 0.3s linear,height 0.3s linear;
   a {
     line-height: 2rem;
   }
@@ -340,7 +348,7 @@ input[type='radio'] {
   margin-top: -.2rem;
 
   &:hover {
-    color: $green;
+    color: $green !important;
   }
 }
 
@@ -360,7 +368,7 @@ input[type='radio'] {
   float: right;
   position: relative;
   z-index: 33;
-  width: 79%;
+  width: 80%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -449,13 +457,14 @@ input[type='radio'] {
   z-index: 24;
   overflow: auto;
   box-sizing: border-box;
-  padding: 1.6rem;
+  padding: 0 1.6rem 1.6rem;
   //background: #a4a4a4;
 }
 
 .list-wrapper {
   font-size: $size-16;
-  overflow: hidden;
+  position: relative;
+  margin-top: 1.6rem;
   & > div{
     margin-top: 2rem;
     text-align: center;
@@ -468,7 +477,6 @@ input[type='radio'] {
       margin-top: .5rem;
     }
   }
-
   ul {
     display: block;
     position: relative;
@@ -476,7 +484,6 @@ input[type='radio'] {
     &:before {
       @include pseudo-element($w: .1rem, $h: 100%, $p: absolute);
       box-sizing: border-box;
-      //top: 1.3rem;
       top: -.5rem;
       left: .8rem;
       z-index: 15;
@@ -492,22 +499,23 @@ input[type='radio'] {
     position: relative;
     line-height: 1.1 !important;
     box-sizing: border-box;
-    overflow: hidden;
   }
 }
 
 .list-wrapper ul li i {
   float: left;
-  margin-top: .5rem;
-  margin-left: .05rem;
+  font-size: 1.4rem;
+  margin-top: .6rem;
+  margin-left: .15rem;
   background: white;
   @include border-radius(.3rem);
   position: relative;
   z-index: 20;
   cursor: pointer;
-  //display: none;
 }
+.list-wrapper ul li .iconfont{
 
+}
 .list-wrapper ul li a {
   display: block;
   position: relative;
@@ -568,9 +576,9 @@ input[type='radio'] {
 }
 
 .list-wrapper > ul > li:first-child > a:after {
-  @include pseudo-element($w: .3rem, $h: 1.3rem, $p: absolute);
-  top: 0;
+  @include pseudo-element($w: .3rem, $h: 100%, $p: absolute);
   left: -1.1rem;
+  bottom: 50%;
   background: white;
 }
 .list-wrapper > ul > li:last-child:after {
@@ -734,10 +742,10 @@ input[type='radio'] {
   cursor: pointer;
   text-align: center;
   box-sizing: border-box;
-  transition: height 0.2s;
-  -moz-transition: height 0.2s;
-  -webkit-transition: height 0.2s;
-  -o-transition: height 0.2s;
+  transition: height 0.2s linear;
+  -moz-transition: height 0.2s linear;
+  -webkit-transition: height 0.2s linear;
+  -o-transition: height 0.2s linear;
 
   i {
     display: block;
@@ -770,6 +778,7 @@ input[type='radio'] {
   line-height: 2rem;
   font-size: 1.3rem;
   padding: 1.6rem 0;
+  margin-top: 5rem;
   border-top: .1rem solid $border-color;
   color: $border-color;
 }
