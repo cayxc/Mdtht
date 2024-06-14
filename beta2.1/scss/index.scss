@@ -346,7 +346,7 @@ input[type='radio'] {
   cursor: pointer;
   float: left;
   margin-right: 1.2rem;
-  margin-top: -.2rem;
+  margin-top: -.1rem;
 
   &:hover {
     color: $green !important;
@@ -417,7 +417,6 @@ input[type='radio'] {
   position: relative;
   z-index: 40;
   display: none;
-
   a {
     color: $text-color;
     cursor: pointer;
@@ -467,7 +466,7 @@ input[type='radio'] {
   font-size: $size-16;
   position: relative;
   margin-top: 1.6rem;
-  & > div{
+  & .empty-catalog{
     margin-top: 2rem;
     text-align: center;
     color: $text-grey;
@@ -477,16 +476,16 @@ input[type='radio'] {
     }
     p{
       margin-top: .5rem;
+      text-align: left;
     }
   }
   ul {
     display: block;
     position: relative;
-
     &:before {
       @include pseudo-element($w: .1rem, $h: 100%, $p: absolute);
       box-sizing: border-box;
-      top: -.5rem;
+      top: -.6rem;
       left: .8rem;
       z-index: 15;
       margin-bottom: .8rem;
@@ -526,22 +525,21 @@ input[type='radio'] {
   color: $grey-color-dark;
   padding: .5rem .6rem;
   margin-bottom: .2rem;
-  margin-left: 1.8rem;
+  margin-left: 2rem;
   box-sizing: border-box;
   line-height: 1.1 !important;
   background: transparent;
-  //background: #0e90d2;
   @include border-radius(.5rem);
 
   &:before {
-    @include pseudo-element($w: 1.4rem, $p: absolute);
-    left: -1rem;
-    top: 1.3rem;
+    @include pseudo-element($w: 1.6rem, $p: absolute);
+    left: -1.2rem;
+    margin-right: .2rem;
+    top: 1.34rem;
     background: $border-color;
   }
 
   div {
-    //background: #00cdac;
     position: relative;
     overflow: hidden;
     white-space: nowrap;
@@ -556,6 +554,9 @@ input[type='radio'] {
   }
 
   &:hover {
+    &:before{
+      width: 1.2rem !important;
+    }
     div {
       white-space: wrap;
     }
@@ -577,40 +578,31 @@ input[type='radio'] {
   }
 }
 
-.list-wrapper > ul > li:first-child > a:after {
-  @include pseudo-element($w: .3rem, $h: 100%, $p: absolute);
-  left: -1.1rem;
-  bottom: 50%;
-  background: $bg-color;
-}
 .list-wrapper > ul > li:last-child:after {
   @include pseudo-element($w: .3rem, $h: 100%, $p: absolute);
-  top: 1.3rem;
+  top: 1.34rem;
   left: .7rem;
   z-index: 15;
   background: $bg-color;
 }
 .list-wrapper > ul li:last-child > a:after  {
   @include pseudo-element($w: .3rem, $h:100%,$p: absolute);
-  left: -1.1rem;
-  top: 100%;
+  left: -1.3rem;
+  top: 1.44rem;
   background: $bg-color;
 }
-
+.list-wrapper > ul > li:first-child > a:after {
+  @include pseudo-element($w: .3rem, $h: 100%, $p: absolute);
+  left: -1.3rem;
+  top: -1.4rem;
+  background: $bg-color;
+}
 .list-wrapper ul li ul {
-  margin-left: 2rem !important;
-  margin-top: .2rem;
-
-  & li:first-child:before {
-    @include pseudo-element($w: .1rem, $h: 1.4rem, $p: absolute);
-    top: -.1rem;
-    left: .8rem;
-    background: $border-color;
-  }
-
+  margin-left: 2.2rem !important;
+  margin-top: .24rem;
   & li:last-child:before {
     @include pseudo-element($w: .3rem, $h: 100%, $p: absolute);
-    top: 1.3rem;
+    top: 1.45rem;
     left: .7rem;
     background: $bg-color;
     z-index: 15;

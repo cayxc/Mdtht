@@ -351,12 +351,13 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   @include border-bottom($color: $grey-color);
 }
 
-.active {
+/*.active {
   background: $grey-color;
   @include border-radius(.4rem);
-  position: relative;
-  z-index: 12;
-}
+  &:before{
+    width: 1.2rem;
+  }
+}*/
 
 .list-wrapper .js-close {
   display: none;
@@ -408,7 +409,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   color: $green !important;
   background: $code-bg-color !important;
   @include border-radius(.4rem);
+  &:before{
+    width: 1.2rem;
+  }
 }
+
 
 #list-container .js-active > .iconfont {
   color: $green !important;
