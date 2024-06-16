@@ -25,54 +25,74 @@
  | Gitee  https://gitee.com/cayxc/MarkdownPad2AutoCatalog
  |
  */
-let objThis;
+var objThis;
 
 class MarkdownPad2AutoCatalog {
   //showIndex  是否显示目录序号
   //indexStyle 目录样式 1, 2, 3
   //openDark   是否开启夜览模式
   //showTree   是否开启树状线
+  //showTitleIndex  是否开启正文标题序号
   //openShadow  是否开启文字阴影
   //firstTagToTitle  第一个标题是否作为文档标题，不计入目录中
   //titleCenter 文章标题是否居中
   constructor (
-      showIndex = true, indexStyle = 1, openDark = true, showTree = true,
-      openShadow                                                  = false, firstTagToTitle = false, titleCenter = false) {
+      showIndex       = true,
+      indexStyle      = 1,
+      openDark        = false,
+      showTree        = true,
+      openShadow      = false,
+      showTitleIndex  = true,
+      firstTagToTitle = true,
+      titleCenter     = true) {
     try {
-      if ((typeof showIndex) != 'boolean') {
+      if ((typeof showIndex) !== 'boolean') {
         showIndex = true;
         throw '参数: showIndex 类型有误，已按照默认配置执行，该参数类型为：Boolean';
       }
-      if ((typeof indexStyle) != 'number') {
+      if ((typeof indexStyle) !== 'number' || 1 > indexStyle || indexStyle > 3) {
         indexStyle = 1;
-        throw '参数: indexStyle 类型有误，已按照默认配置执行，该参数类型为：Number';
+        throw '参数: indexStyle 类型有误，已按照默认配置执行，该参数类型为：Number, 1<= Number <=3';
       }
-      if ((typeof openDark) != 'boolean') {
+      if ((typeof openDark) !== 'boolean') {
         openDark = false;
         throw '参数: openDark 类型有误，已按照默认配置执行，该参数类型为：Boolean';
       }
-      if ((typeof showTree) != 'boolean') {
-        openDark = false;
+      if ((typeof showTree) !== 'boolean') {
+        showTree = true;
         throw '参数: showTree 类型有误，已按照默认配置执行，该参数类型为：Boolean';
       }
-      if ((typeof openShadow) != 'boolean') {
-        openDark = false;
+      if ((typeof openShadow) !== 'boolean') {
+        openShadow = false;
         throw '参数: openShadow 类型有误，已按照默认配置执行，该参数类型为：Boolean';
       }
+      if ((typeof showTitleIndex) !== 'boolean') {
+        showTitleIndex = true;
+        throw '参数: showTitleIndex 类型有误，已按照默认配置执行，该参数类型为：Boolean';
+      }
+      if ((typeof firstTagToTitle) !== 'boolean') {
+        firstTagToTitle = false;
+        throw '参数: firstTagToTitle 类型有误，已按照默认配置执行，该参数类型为：Boolean';
+      }
+      if ((typeof titleCenter) !== 'boolean') {
+        titleCenter = false;
+        throw '参数: titleCenter 类型有误，已按照默认配置执行，该参数类型为：Boolean';
+      }
+
     } catch (err) {
       this.showError (err);
+      console.log(err);
     }
     /*开发调试过程中将以下放到catch外，以获取具体错误信息*/
     objThis = this; //当前对象的 this
     this.showIndex = showIndex;
     this.indexStyle = indexStyle;
     this.openDark = openDark;
-    this.openDark = showTree;
-    this.openDark = openShadow;
-    this.titleCenter = titleCenter;
     this.openShadow = openShadow;
+    this.showTitleIndex = showTitleIndex;
     this.showTree = showTree;
     this.firstTagToTitle = firstTagToTitle;
+    this.titleCenter = titleCenter;
     this.acticleTitle = '';
     this.handleHarr = '';
     //目录构建
@@ -96,14 +116,14 @@ class MarkdownPad2AutoCatalog {
     this.showIndexEl = document.querySelector ('.index');
     this.allIndex = this.listElement.querySelectorAll ('p');
     //样式控制
+    this.showCatalogIndex ();
+    this.choseCatalogStyle ();
     this.switchCatalog ();
     this.switchCatalogList ();
     this.catalogIconClick ();
     this.singleCatalogClick ();
-    this.catalogTrack ();
-    this.showCatalogIndex ();
-    this.choseCatalogStyle ();
     this.searchCatalog ();
+    this.catalogTrack ();
     //主题随系统变化
     this.themeChange ();
 
@@ -119,7 +139,7 @@ class MarkdownPad2AutoCatalog {
     errorBlock.setAttribute ('class', 'error');
     errorBlock.innerHTML = info;
     let content = document.querySelector ('body');
-    content.insertBefore (errorBlock, content.firstChild);
+    content.prepend (errorBlock);
   }
 
   /**
@@ -182,16 +202,16 @@ class MarkdownPad2AutoCatalog {
     //目录样式
     //是否开启夜览模式
     let modeStyleClass;
-    if (this.openDark) {
+    if (this.openDark === true) {
       modeStyleClass = 'icon-moon';
-    } else {
-      document.body.className = '';
+      document.documentElement.setAttribute ('theme', 'dark');
+    }
+    if (this.openDark === false){
       modeStyleClass = 'icon-sun';
+      document.documentElement.setAttribute ('theme', 'light');
     }
     let indexStyleElement = '';
-    let styleIndex = [
-      'A', 'B', 'C',
-    ];
+    let styleIndex = ['A', 'B', 'C'];
     for (let i = 1, len = 3; i <= len; i ++) {
       if (this.indexStyle == i) {
         indexStyleElement +=
@@ -225,12 +245,18 @@ class MarkdownPad2AutoCatalog {
         '            <div class="structure" title="风格样式">'+
         '                <i class="iconfont icon-style"></i>'+
         '                <ul class="structure-child">'+
+        '                    <li>'+
+        '                      <input type="radio" id="title-index" name="titleIndex" value="false">'+
+        '                      <label for="titleIndex">标题索引</label>'+
+        '                    </li>'+
         '                   <li>'+
         '                      <input type="radio" id="show-tree" name="showTree" value="true">'+
         '                      <label for="showTree">目录树</label>'+
-        '                    </li>'+'                    <li>'+
+        '                    </li>'+
+        '                    <li>'+
         '                      <input type="radio" id="text-shadow" name="textShadow" value="true">'+
         '                      <label for="textShadow">阴影效果</label>'+
+        '                   </li>'+
         '                   </li>'+indexStyleElement+
         '                </ul>'+'            </div>'+
         '            <div class="quit-menu" title="展开收起子目录">'+
@@ -290,9 +316,12 @@ class MarkdownPad2AutoCatalog {
   setTagLevel () {
     // 获取所有h1~h6标签
     let allTag = document.querySelectorAll ('h1,h2,h3,h4,h5,h6');
+    if (allTag.length == 0) {
+      return false;
+    }
     if (this.firstTagToTitle === true) { //将第一个标题作为文档标题
       this.acticleTitle = allTag[0];
-      allTag[1].parentNode.removeChild (allTag[0]);
+      allTag[0].parentNode.removeChild (allTag[0]);
       //处理后的h标签集合
       // 去除第一个标题的目录,重新查询
       allTag = document.querySelectorAll ('h1,h2,h3,h4,h5,h6');
@@ -303,12 +332,8 @@ class MarkdownPad2AutoCatalog {
     if (tagLength == 0) {
       return false;
     }
-    if (tagLength == 1) {
-      allTag[0].id = 'level-'+'1'; //第一个标签肯定为一级标题
-      return true;
-    }
-    if (tagLength > 1) {
-      allTag[0].id = 'level-'+'1'; //设置第一个标题带层级的id
+    if (tagLength >= 1) {
+      allTag[0].id = 'level-1'; //设置第一个标题带层级的id
       for (let i = 1, len = allTag.length; i < len; i ++) {
         /*后一个和从前一个比较*/
         //第2个标签数字 > 前1个的标签数字 ，则是前1个的子级
@@ -327,18 +352,24 @@ class MarkdownPad2AutoCatalog {
             if (this.getTagNumber (allTag[i]) == this.getTagNumber (allTag[j-1])) { //和第j-1个同级
               allTag[i].id = this.getPrefixIndex (allTag[j-1].id)[0]+(this.getPrefixIndex (allTag[j-1].id)[1]+1);
               break;
-            }else if(this.getTagNumber (allTag[i]) > this.getTagNumber (allTag[j-1])){ //和前一个/第i-1个同级
+            } else if (this.getTagNumber (allTag[i]) > this.getTagNumber (allTag[j-1])) { //和前一个/第i-1个同级
               allTag[i].id = this.getPrefixIndex (allTag[i-1].id)[0]+(this.getPrefixIndex (allTag[i-1].id)[1]+1);
               break;
-            }else{ //继续向前找
+            } else { //继续向前找
               allTag[i].id = this.getPrefixIndex (allTag[j].id)[0]+(this.getPrefixIndex (allTag[j].id)[1]+1);
               //如果前一个：allTag[j] 是一级目录了,停止继续查找，结束循环
-              if(allTag[j].id.indexOf('.') === -1){
+              if (allTag[j].id.indexOf ('.') === - 1) {
                 break;
               }
             }
           }
         }
+      }
+      //添加标题索引
+      for (let k = 0; k < tagLength; k ++) {
+        let titleIndex = document.createElement ('span');
+        titleIndex.innerHTML = allTag[k].id.slice (allTag[k].id.lastIndexOf ('-')+1);
+        allTag[k].prepend (titleIndex);
       }
       return true;
     }
@@ -621,7 +652,7 @@ class MarkdownPad2AutoCatalog {
                   let iconI = document.createElement ('i');
                   iconI.setAttribute ('class',
                       'iconfont icon-launch'+iconStyle[this.indexStyle-1]);
-                  ceilLi.insertBefore (iconI, ceilLi.children[0]);
+                  ceilLi.prepend (iconI);
                 } else { //有子目录
                   let container = ceilLi.querySelector ('ul');
                   container.appendChild (content);
@@ -639,12 +670,11 @@ class MarkdownPad2AutoCatalog {
             let iconI = document.createElement ('i');
             iconI.setAttribute ('class',
                 'iconfont icon-launch'+iconStyle[this.indexStyle-1]);
-            liElement.insertBefore (iconI, liElement.children[0]);
+            liElement.prepend (iconI);
           }
         }
         return true;
       }
-      console.log (level1);
     } else {
       let emptyCatalog = document.createElement ('div');
       emptyCatalog.setAttribute ('class', 'empty-catalog');
@@ -663,6 +693,7 @@ class MarkdownPad2AutoCatalog {
   replaceOld () {
     this.createContent ();
     let res = this.createCatalogue ();
+    let contentBox = document.querySelector ('#content');
     if (res) {
       // 第一个目录默认样式
       (document.querySelector ('.list-wrapper')).querySelector ('li').
@@ -674,17 +705,14 @@ class MarkdownPad2AutoCatalog {
         for (let i = 0, len = allLevel1.length; i < len; i ++) {
           allLevel1[i].classList.add ('js-level1-style');
         }
-        let contentBox = document.querySelector ('#content');
-        //开启第一个标题作为文档标题
-        if (this.firstTagToTitle === true) { //还原删去了的第一个H1
-          contentBox.insertBefore (this.acticleTitle, contentBox.firstChild);
-          if (this.titleCenter === true) {
-            this.acticleTitle.setAttribute ('class', 'text-center'); // 标题居中
-          }
+        //开启第一个标题作为文档标题， 标题居中
+        if (this.firstTagToTitle === true && this.titleCenter === true) {
+          this.acticleTitle.setAttribute ('class', 'text-center');
         }
       }
     }
-
+    //还原删去了的第一个H1到正文
+    contentBox.prepend (this.acticleTitle);
   }
 
   /*
@@ -788,20 +816,20 @@ class MarkdownPad2AutoCatalog {
       for (let k = 0, len = oldLi2.length; k < len; k ++) {
         oldLi2[k].classList.remove ('js-item-launch');
       }
-      if (status) {
+      if (status === 'true') {
         //收起子目录
         document.querySelector ('.list-wrapper').classList.add ('js-retract');
         //切换底部按钮 icon
         this.children[0].setAttribute ('class', 'iconfont icon-branchB');
         this.children[0].setAttribute ('value', 'false');
-        status = false;
+        status = 'false';
       } else {
         //展开子目录
         document.querySelector ('.list-wrapper').classList.remove ('js-retract');
         //切换底部按钮 icon
         this.children[0].setAttribute ('class', 'iconfont icon-quit');
         this.children[0].setAttribute ('value', 'true');
-        status = true;
+        status = 'true';
       }
       //改变icon状态：展开/关闭
       for (let i = 0, len = allIcon.length; i < len; i ++) {
@@ -844,6 +872,7 @@ class MarkdownPad2AutoCatalog {
     for (let i = 0, len = allIcon.length; i < len; i ++) {
       allIcon[i].onclick = function (event) {
         event.stopPropagation ();
+        event.preventDefault ();
         //当前目录下是否有子目录
         let parCatalog = allIcon[i].parentElement;
         if (parCatalog.lastElementChild.nodeName == 'UL') { //有子目录
@@ -858,7 +887,7 @@ class MarkdownPad2AutoCatalog {
             allIcon[i].parentElement.classList.remove ('js-item-launch');
           }
         }
-      };
+      }
     }
   }
 
@@ -877,16 +906,14 @@ class MarkdownPad2AutoCatalog {
       catalog.onclick = function (event) {
         event.stopPropagation (); //会一直找到其上一级，直到1级目录
         event.preventDefault ();
-
         let thisClass = catalog.querySelector ('a').getAttribute ('class');
-        document.getElementById (thisClass).scrollIntoView ({behavior: 'smooth'});
         //清除已有的active样式
         let activeArr = document.querySelectorAll ('.js-active');
         for (let j = 0, len = activeArr.length; j < len; j ++) {
           activeArr[j].classList.remove ('js-active');
         }
         //给当前目录设置 active
-        catalog.classList.add ('js-active');
+        this.classList.add ('js-active');
         //上级目录
         let ceilCatalog = findCeilCatalog (thisClass);
         let allCeil = objThis.findAllCeilCatalog (thisClass);
@@ -896,7 +923,8 @@ class MarkdownPad2AutoCatalog {
             allCeil[k].classList.add ('js-active');
           }
         }
-      };
+        document.getElementById(thisClass).scrollIntoView({behavior:'smooth',block:'start',inline:'nearest'});
+      }
     } catch (err) {
       return err;
     }
@@ -921,28 +949,43 @@ class MarkdownPad2AutoCatalog {
    * ----------------------------------------
    */
   themeChange () {
-    //点击按钮切换模式
-    let viewModeButton = this.viewModeButton;
     let htmlElement = document.documentElement;
+    let viewModeButton = this.viewModeButton;
+
+    //初始配置
+    //let openDark = this.openDark;
+    if (this.openDark === true) {
+      htmlElement.setAttribute ('theme', 'dark');
+      viewModeButton.children[0].setAttribute ('class', 'iconfont icon-moon');
+    } else {
+      htmlElement.setAttribute ('theme', 'light');
+      viewModeButton.children[0].setAttribute ('class', 'iconfont icon-sun');
+    }
+
+    //点击按钮切换模式
     viewModeButton.onclick = function () {
       let isDarkMode = htmlElement.getAttribute ('theme');
       if (isDarkMode == 'light') {
         this.children[0].setAttribute ('class', 'iconfont icon-moon');
         htmlElement.setAttribute ('theme', 'dark');
-      } else {
+      }
+      if (isDarkMode == 'dark'){
         this.children[0].setAttribute ('class', 'iconfont icon-sun');
         htmlElement.setAttribute ('theme', 'light');
       }
-    };
+    }
 
     // 查询系统是否使用了dark主题 osThemeIsDark => true/false;
+    // 开启后优先级高于初始配置 openDark 的设置，是否使用以下设置看个人
     let osThemeIsDark = matchMedia ('(prefers-color-scheme: dark)').matches;
     if (osThemeIsDark) {
+      this.openDark = true;
       viewModeButton.children[0].setAttribute ('class', 'iconfont icon-moon');
-      htmlElement.setAttribute ('theme', 'dark');
+       htmlElement.setAttribute ('theme', 'dark');
     } else {
-      viewModeButton.children[0].setAttribute ('class', 'iconfont icon-sun');
-      htmlElement.setAttribute ('theme', 'light');
+      this.openDark = false;
+        viewModeButton.children[0].setAttribute ('class', 'iconfont icon-sun');
+       htmlElement.setAttribute ('theme', 'light');
     }
 
     //监听系统主题变化
@@ -950,15 +993,16 @@ class MarkdownPad2AutoCatalog {
         addEventListener ('change', event => {
           //event.matches: dark => true
           if (event.matches) {
-            viewModeButton.children[0].setAttribute ('class',
-                'iconfont icon-moon');
+            this.openDark = true;
+            viewModeButton.children[0].setAttribute ('class', 'iconfont icon-moon');
             document.documentElement.setAttribute ('theme', 'dark');
           } else {
-            viewModeButton.children[0].setAttribute ('class',
-                'iconfont icon-sun');
+            this.openDark = false;
+            viewModeButton.children[0].setAttribute ('class', 'iconfont icon-sun');
             document.documentElement.setAttribute ('theme', 'light');
           }
         });
+
   }
 
   /*
@@ -967,18 +1011,28 @@ class MarkdownPad2AutoCatalog {
    * ----------------------------------------
    */
   showCatalogIndex () {
-    let status = true;
-    let showIndex = this.indexStyle;
-    let listElement = this.listElement;
-    this.showIndexEl.children[0].addEventListener ('click', function () {
-      if (status) { //关闭目录序号
-        listElement.classList.add ('js-noindex');
-        this.setAttribute ('class', 'iconfont icon-catalog-closeB');
-        status = false;
-      } else { //显示目录序号
+    let indexStyle = this.indexStyle;
+    let listElement = document.querySelector ('#list-container');
+    let switchIndex = document.querySelector ('.index');
+    //配置选择
+    if (this.showIndex === false) { //关闭目录序号
+      listElement.classList.add ('js-noindex');
+      switchIndex.children[0].setAttribute ('class', 'iconfont icon-catalog-closeB');
+    } else { //显示目录序号
+      listElement.classList.remove ('js-noindex');
+      switchIndex.children[0].setAttribute ('class', 'iconfont icon-menu-index');
+    }
+    //按钮点击
+    let status = this.showIndex;
+    switchIndex.addEventListener ('click', function () {
+      if (status === false) { //关闭目录序号
         listElement.classList.remove ('js-noindex');
-        this.setAttribute ('class', 'iconfont icon-menu-index');
+        switchIndex.children[0].setAttribute ('class', 'iconfont icon-menu-index');
         status = true;
+      } else { //显示目录序号
+        listElement.classList.add ('js-noindex');
+        switchIndex.children[0].setAttribute ('class', 'iconfont icon-catalog-closeB');
+        status = false;
       }
     });
   }
@@ -989,11 +1043,13 @@ class MarkdownPad2AutoCatalog {
    * ----------------------------------------
    */
   choseCatalogStyle () {
+    //目录图标样式
     let allStyle = document.querySelectorAll ('.style-chose');
-
     //所有的目录
     let allIcon = this.allIcon;
     let changeIcons = this.changeIcons;
+    //初始化配置目录图标样式
+    changeIcons (allIcon, this.indexStyle);
     // 改变icon 图标;
     for (let i = 0, len = allStyle.length; i < len; i ++) {
       allStyle[i].onclick = function () {
@@ -1022,7 +1078,8 @@ class MarkdownPad2AutoCatalog {
         this.children[0].removeAttribute ('checked');
       }
     };
-    if (this.openShadow == true) {
+    //初始配置
+    if (this.openShadow === true) {
       document.querySelector ('body').setAttribute ('class', 'js-show-shadow');
       shadowButton.children[0].setAttribute ('checked', 'checked');
     } else {
@@ -1046,7 +1103,8 @@ class MarkdownPad2AutoCatalog {
         this.children[0].removeAttribute ('checked');
       }
     };
-    if (this.showTree == true) {
+    //初始配置
+    if (this.showTree === true) {
       document.querySelector ('#body-container').
           setAttribute ('class', 'js-show-tree');
       treeButton.children[0].setAttribute ('checked', 'checked');
@@ -1055,7 +1113,104 @@ class MarkdownPad2AutoCatalog {
           setAttribute ('class', 'js-close-tree');
       treeButton.children[0].removeAttribute ('checked');
     }
+    //显示正文标题索引
+    let contentBox = document.querySelector ('#content');
+    let titleButton = document.querySelector ('[name="titleIndex"]').parentElement;
+    let titleIndex = document.getElementById ('title-index');
+    titleButton.onclick = function (event) {
+      if (titleIndex.value == 'true') {
+        contentBox.classList.remove ('js-show');
+        titleIndex.removeAttribute ('checked');
+        titleIndex.value = 'false';
+      } else {
+        contentBox.classList.add ('js-show');
+        titleIndex.setAttribute ('checked', 'checked');
+        titleIndex.value = 'true';
+      }
+    };
+    //初始配置
+    if (this.showTitleIndex === false) {
+      contentBox.classList.remove ('js-show');
+      titleIndex.removeAttribute ('checked');
+      titleIndex.value = 'false';
+    } else {
+      contentBox.classList.add ('js-show');
+      titleIndex.setAttribute ('checked', 'checked');
+      titleIndex.value = 'true';
+    }
+  }
 
+  /**
+   * ----------------------------------------
+   * 比对搜索框和所有目录的值
+   * ----------------------------------------
+   * @param value 要比对的原始值，即 input 输入框的 value 值
+   *
+   */
+  comparison (value) {
+    try {
+      if ((typeof value) != 'string') {
+        throw 'comparison() 参数必须是一个字符串';
+      }
+      value = value.toLowerCase ();
+      let result = '';
+      let allCatalogElement = this.allCatalogElement;
+      for (let i = 0, len = allCatalogElement.length; i < len; i ++) {
+        let text = allCatalogElement[i].innerText.replace (/\s+/g, '');
+        if (text.toLowerCase ().indexOf (value) != - 1) {
+          let href = allCatalogElement[i].getAttribute ('href');
+          result += '<a href="'+href+'">'+allCatalogElement[i].innerText+'</a>';
+        }
+      }
+      if (result == '') {
+        result = '<div><i class="iconfont icon-search"></i>\n<span>目录中暂无相关搜索结果</span><span>试试 Ctrl+F  在全文搜索</span></div>';
+      }
+      return result;
+    } catch (err) {
+      this.showError (err);
+    }
+  }
+
+  /*
+   * ----------------------------------------
+   * 搜索目录
+   * ----------------------------------------
+   */
+  searchCatalog () {
+    let searchElement = document.querySelector ('.search');
+    let searchResultElement = document.querySelector ('.search-result');
+    let searchIconElement = searchElement.nextElementSibling;
+    //键盘抬起
+    searchElement.onkeyup = function () {
+      let searchNewValue = (searchElement.value).replace (/\s+/g, '');
+      if (searchNewValue) { // 不为空时
+        searchResultElement.classList.add ('js-search');
+        searchIconElement.style.display = 'block';
+        let results = objThis.comparison (searchNewValue);
+        searchResultElement.innerHTML = '<nav>'+results+'</nav>';
+
+        // 记录当前已点选过的搜索结果
+        let newSearch = document.querySelectorAll ('.search-result a');
+        for (let j = 0, len = newSearch.length; j < len; j ++) {
+          newSearch[j].addEventListener ('click', function (event) {
+            event.preventDefault ();
+            event.preventDefault();
+            document.getElementById (this.href.slice (this.href.indexOf ('#')+1)).scrollIntoView ({behavior: 'smooth',block:'start',inline:'nearest'});
+            newSearch[j].setAttribute ('class', 'search-click');
+          });
+        }
+      } else {
+        searchResultElement.classList.remove ('search-click');
+        searchIconElement.style.display = 'none';
+      }
+    }
+
+    // 点击取消
+    searchIconElement.onclick = function () {
+      this.style.display = 'none';
+      searchResultElement.classList.remove ('js-search');
+      searchElement.value = '';
+    }
   }
 
   /*
@@ -1075,6 +1230,7 @@ class MarkdownPad2AutoCatalog {
     //滑动正文内容时
     rightElement.onscroll = function (event) {
       event.stopPropagation ();
+      event.preventDefault();
       //滑动到相应区域目录添加active样式
       let roll = rightElement.scrollTop; //滚动距离
       for (let i = 0, len = allTag.length; i < len; i ++) {
@@ -1090,7 +1246,7 @@ class MarkdownPad2AutoCatalog {
             catalog[i].children[0].setAttribute ('class',
                 oldIcon.replace ('retract', 'launch'));
           }
-          //前一个同级目录如果有子目录则收起 -->????
+          //前一个同级目录如果有子目录则收起 -->?????
           //父级目录,添加激活样式，展开子目录，修改icon图标
           let currentClass = catalog[i].querySelector ('a').
               getAttribute ('class');
@@ -1127,87 +1283,12 @@ class MarkdownPad2AutoCatalog {
       let listBoxHeight = document.querySelector (
           '.list-wrapper ul').clientHeight;
       if (listBoxHeight > topBoxHeight) {
-        originalLastItem.scrollIntoView ({
-          behavior: 'smooth', block: 'center', inline: 'center',
-        });
+        originalLastItem.scrollIntoView ({behavior: 'smooth', block: 'center', inline: 'nearest'});
       }
-
-    };
-  }
-
-  /**
-   * ----------------------------------------
-   * 比对搜索框和所有目录的值
-   * ----------------------------------------
-   * @param value 要比对的原始值，即 input 输入框的 value 值
-   *
-   */
-  comparison (value) {
-    try {
-      if ((typeof value) != 'string') {
-        throw 'comparison() 参数必须是一个字符串';
-      }
-      value = value.toLowerCase ();
-      let result = '';
-      let allCatalogElement = this.allCatalogElement;
-      for (let i = 0, len = allCatalogElement.length; i < len; i ++) {
-        let text = allCatalogElement[i].innerText.replace (/\s+/g, '');
-        if (text.toLowerCase ().indexOf (value) != - 1) {
-          let href = allCatalogElement[i].getAttribute ('href');
-          result +=
-              '<a href="'+href+'">'+allCatalogElement[i].innerText+
-              '</a>';
-        }
-      }
-      if (result == '') {
-        result =
-            '<i class="iconfont icon-search"></i>\n<span>目录中暂无相关搜索结果</span>\n<span>试试 Ctrl+F  在全文档搜索</span>';
-      }
-      return result;
-    } catch (err) {
-      this.showError (err);
     }
   }
-
-  /*
-   * ----------------------------------------
-   * 搜索目录
-   * ----------------------------------------
-   */
-  searchCatalog () {
-    let searchElement = document.querySelector ('.search');
-    let searchResultElement = document.querySelector ('.search-result');
-    let searchIconElement = searchElement.nextElementSibling;
-    // 获取焦点
-    searchElement.onfocus = function () {
-      searchElement.onkeyup = function () {
-        let searchNewValue = (searchElement.value).replace (/\s+/g, '');
-        if (searchNewValue) { // 不为空时
-          searchResultElement.style.display = 'block';
-          searchIconElement.style.display = 'block';
-          let results = objThis.comparison (searchNewValue);
-          searchResultElement.innerHTML = results;
-          // 记录当前已点选过的搜索结果
-          let allSearch = searchResultElement.querySelectorAll ('a');
-          for (let j = 0, len = allSearch.length; j < len; j ++) {
-            allSearch[j].onclick = function () {
-              allSearch[j].classList.add ('js-active');
-            };
-          }
-        } else {
-          searchResultElement.style.display = 'none';
-          searchIconElement.style.display = 'none';
-        }
-      };
-    };
-    // 点击取消
-    searchIconElement.onclick = function () {
-      this.style.display = 'none';
-      searchResultElement.style.display = 'none';
-      searchElement.value = '';
-    };
-  }
 }
+
 
 window.addEventListener ('DOMContentLoaded', function () {
   new MarkdownPad2AutoCatalog ();

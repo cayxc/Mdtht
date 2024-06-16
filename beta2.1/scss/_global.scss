@@ -99,23 +99,26 @@
 }
 
 /*colors*/
-$bg-color: #fdfdfd;
-$bg-color2: rgb(236,239,240);
-$border-color: #d3d3d3;
-$grey-color: #d9d9d9;
-$code-bg-color: #eeeeee;
-//$code-bg-color: rgb(165,187,192,.14);
-$green: rgb(2, 189, 102);
-$red: #d00101;
-$orange: #ff6d0d;
 $text-color: #000000;
 $text-grey: #999999;
 $title-color: rgb(39, 56, 75);
 $title-color2: rgb(48, 78, 112);
+
+$bg-color: #fdfdfd;
+$bg-color2: rgb(236, 239, 240);
+$border-color: #d3d3d3;
+$grey-color: #d9d9d9;
+$code-bg-color: #eeeeee;
+
+$green: rgb(2, 189, 102);
+$red: #d00101;
+$orange: #ff6d0d;
+
+$text-dark: rgb(196, 196, 196);
+$text-grey-dark: rgb(46, 62, 66);
+
 $bg-dark: rgb(22, 27, 32);
 $bg-dark2: rgb(41, 55, 61);
-$text-dark: rgb(200, 200, 200);
-$text-grey-dark: rgb(46, 62, 66);
 $code-bg-dark: rgba(184, 204, 208, 0.12);
 $grey-color-dark: rgb(52, 65, 72);
 
@@ -150,10 +153,10 @@ $size-10: 1.0rem;
 }
 
 /*code style*/
-@mixin code-box($margin:1rem,$padding:1.6rem,$font-size:1.4rem,$bag:$code-bg-color) {
+@mixin code-box($margin:1rem,$padding:1.8rem,$font-size:1.4rem,$bag:$code-bg-color) {
   margin: $margin 0;
   padding: $padding;
-  border: 1px solid rgb($border-color,.5);
+  border: 1px solid rgb($border-color, .5);
   background: $bag;
   font-size: $font-size;
   box-sizing: border-box;
@@ -166,7 +169,7 @@ $size-10: 1.0rem;
   text-align: left;
   border-collapse: separate;
   border-spacing: 0;
-  border-radius:$bor-radius;
+  border-radius: $bor-radius;
   overflow: hidden;
   thead {
     tr th {
@@ -276,7 +279,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 /*  Custom Scroll*/
 @mixin custom-scroll($color:$text-dark) {
   /*非webkit内核浏览器*/
-  scrollbar-color: rgb($grey-color,0.8) rgb($grey-color, 0.15);
+  scrollbar-color: rgb($grey-color, 0.8) rgb($grey-color, 0.15);
   scrollbar-width: thin;
 
   ::-webkit-scrollbar,
@@ -288,7 +291,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 
   /* 滑块背景色 */
   ::-webkit-scrollbar-thumb {
-    background: rgb($grey-color,.8);
+    background: rgb($grey-color, .8);
   }
   /* 其余相关样式设置跟滑块一个背景色 */
   ::-webkit-scrollbar,
@@ -304,9 +307,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     display: none;
   }
 }
-.text-center{
+
+.text-center {
   text-align: center;
 }
+
 .error {
   @include border-radius(.6rem);
   padding: 1.6rem;
@@ -347,17 +352,40 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 
 //javascript control
-.js-level1-style{
+.js-level1-style {
   @include border-bottom($color: $grey-color);
 }
 
-/*.active {
-  background: $grey-color;
-  @include border-radius(.4rem);
-  &:before{
-    width: 1.2rem;
+.js-search {
+  @include border-default();
+  @include border-radius($size: 0.6rem);
+  max-height: 60vh !important;
+  @include box-shadow-1(rgb($grey-color, .6));
+  background: $bg-color;
+  & > nav {
+    max-height: 60vh;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    scrollbar-width: none;
+    -webkit-scrollbar:none;
   }
-}*/
+
+  a {
+    color: $text-color !important;
+  }
+  i {
+    color: $text-grey !important;
+  }
+}
+
+#right-container .js-show h1 > span,
+#right-container .js-show h2 > span,
+#right-container .js-show h3 > span,
+#right-container .js-show h4 > span,
+#right-container .js-show h5 > span,
+#right-container .js-show h6 > span {
+  display: block !important;
+}
 
 .list-wrapper .js-close {
   display: none;
@@ -375,9 +403,9 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   height: 4rem !important;
 }
 
-#list-container .js-noindex {
+.js-noindex {
   & ul li a p {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -386,34 +414,45 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     display: none;
   }
 }
+
 #list-container .js-launch {
   & > ul > li ul {
     display: block;
   }
 }
+
 #list-container .list-wrapper .js-item-retract,
-#list-container .list-wrapper .js-item-retract{
+#list-container .list-wrapper .js-item-retract {
   & > ul {
     display: none;
   }
 }
 
 #list-container .list-wrapper .js-item-launch,
-#list-container .list-wrapper .js-item-launch{
+#list-container .list-wrapper .js-item-launch {
   & > ul {
     display: block;
   }
 }
 
-#list-container .js-active > a {
+#list-container .js-active > a,
+.search-result .js-active
+{
   color: $green !important;
   background: $code-bg-color !important;
-  @include border-radius(.4rem);
-  &:before{
+  @include border-radius(.5rem);
+
+  &:before {
     width: 1.2rem;
   }
 }
 
+.search-result .search-click{
+  @include border-radius(.5rem);
+  padding: .4rem .6rem;
+  color: $orange !important;
+  background: $code-bg-color;
+}
 
 #list-container .js-active > .iconfont {
   color: $green !important;
@@ -451,6 +490,9 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   {
     display: none !important;
   }
+  & ul li a{
+    margin-left: 1.7rem;
+  }
 }
 
 //=========================
@@ -465,10 +507,15 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   .js-show-shadow .iconfont {
     @include text-shadow($x: .2rem, $y: .2rem, $s: .2rem, $c: $text-color);
   }
+  .search-result .search-click{
+    color: $orange !important;
+    background: $grey-color-dark;
+  }
   .js-active > a {
     background: $grey-color-dark !important;
   }
-  #list-container .js-active > a {
+  #list-container .js-active > a,
+  .search-result .js-active{
     background: $bg-dark2 !important;
   }
   & {
@@ -518,8 +565,8 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
       text-shadow: .1rem .1rem .1rem rgb($green, .2);
     }
   }
-  .note-tips{
- border-color: $text-grey-dark;
+  .note-tips {
+    border-color: $text-grey-dark;
     color: $text-grey-dark;
   }
   #right-container,
@@ -560,34 +607,57 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
       background: $bg-dark;
     }
   }
-  .search{
+  .search {
     &::placeholder {
-      color: rgb($text-dark,.4);
+      color: rgb($text-dark, .4);
     }
   }
 
   .search-result {
     @include bag-border-dark();
+    background: $bg-dark2 !important;
+    a, i {
+      color: rgb($text-dark, .4) !important;
+    }
+  }
+  .js-search {
     @include box-shadow-1(rgb($green, .15));
-    color: rgb($text-dark,.4);
+    color: rgb($text-dark, .4) !important;
+
     a {
-      color: $text-dark;
+      color: $text-dark !important;
+      &:hover {
+        color: $green !important;
+        background: $code-bg-dark !important;
+      }
+    }
+    i {
+      color: rgb($text-grey, .4) !important;
     }
   }
   .search-icon {
-    color: rgb($text-dark,.4);
+    color: rgb($text-dark, .4);
+    background: $bg-dark2;
     &:hover {
       color: $green;
     }
   }
 
-  .structure-child {
+  &:hover .structure-child {
+    background: $bg-dark;
     @include bag-border-dark($bg-dark, $grey-color-dark);
     border-bottom-color: $bg-dark;
     @include box-shadow-2(rgb($green, .15));
+  }
+
+  .structure-child {
+    background: $bg-dark;
 
     li {
-      &:first-child, &:nth-of-type(2),
+      &:first-child,
+      &:nth-of-type(1),
+      &:nth-of-type(2),
+      &:nth-of-type(3),
       &:last-child {
         border-color: $grey-color-dark;
       }
@@ -599,12 +669,13 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     }
   }
 
+
   /*非webkit内核浏览器*/
-  scrollbar-color: rgb($grey-color-dark,.8) rgb($grey-color-dark, 0.1);
+  scrollbar-color: rgb($grey-color-dark, .8) rgb($grey-color-dark, 0.1);
 
   //滑块背景色
   ::-webkit-scrollbar-thumb {
-    background: rgb($grey-color-dark,.8);
+    background: rgb($grey-color-dark, .8);
   }
   //其余相关样式设置跟滑块一个背景色
   ::-webkit-scrollbar,

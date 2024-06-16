@@ -8,7 +8,7 @@
 }
 
 :root {
-  font-family: "Mono","PingFang SC","Helvetica Neue","Helvetica","Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  font-family: "Mono", "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
   font-size: 62.5%;
   background-color: $bg-color;
   color: $text-color;
@@ -77,6 +77,7 @@ a {
   text-decoration: none;
   color: $orange;
   cursor: pointer;
+
   &:hover {
     color: $green;
   }
@@ -99,19 +100,26 @@ u {
   text-decoration-color: $title-color;
   -moz-text-decoration-color: $title-color;
 }
-em{font-weight: 300;}
+
+em {
+  font-weight: 300;
+}
+
 del {
   color: $text-grey;
   text-decoration: line-through;
   text-decoration-color: $red;
   -moz-text-decoration-color: $red;
 }
-sup,sub{
+
+sup, sub {
   cursor: pointer;
-  &:hover{
+
+  &:hover {
     color: $green;
   }
 }
+
 mark {
   background-color: $green;
   padding: 0.2rem 1rem;
@@ -168,7 +176,7 @@ dl dd {
   margin-left: 5.6rem;
 }
 
-#content{
+#content {
   ul li,
   ol li,
   dl dt,
@@ -198,9 +206,11 @@ pre code {
   border: none;
   vertical-align: bottom;
 }
-p code{
+
+p code {
   line-height: 1.5;
 }
+
 /*sup,sub*/
 sup, sub {
   font-size: $size-12;
@@ -214,7 +224,7 @@ blockquote {
   border-bottom: none;
   border-top: none;
   border-right: none;
-  background-color: rgb(165,187,192,.16);
+  background-color: rgb(165, 187, 192, .16);
   overflow: hidden;
 
   p:first-child {
@@ -224,8 +234,9 @@ blockquote {
 
 .iconfont {
   color: $text-grey;
-  &:hover{
-    text-shadow: .1rem .1rem .1rem rgb($green,.75);
+
+  &:hover {
+    text-shadow: .1rem .1rem .1rem rgb($green, .75);
   }
 }
 
@@ -241,6 +252,7 @@ input[type='checkbox'], input[type="radio"] {
 
 input[type='checkbox'] {
   @include border-radius($size: 0.3rem);
+
   &:checked {
     content: '';
     display: inline-block;
@@ -249,6 +261,7 @@ input[type='checkbox'] {
     font-size: 1.3rem;
     text-align: center;
     color: $bg-color;
+
     &:after {
       content: '\2713'; /*2713、2714都是勾，一个粗一个细*/
       vertical-align: text-top;
@@ -260,6 +273,7 @@ input[type='checkbox'] {
 input[type='radio'] {
   @include border-default($color: $green);
   @include border-radius($size: 50%);
+
   &:checked {
     &:after {
       content: '';
@@ -278,24 +292,31 @@ input[type='radio'] {
   width: 100vw;
   margin: auto;
   box-sizing: border-box;
-  display: -webkit-box;
   display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -moz-box;
   justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+
 }
 
 /*left-containe*/
 #left-container {
-  width: 30rem;
+  width: 28rem;
   background: $bg-color;
   border-right: 1px solid $border-color;
   z-index: 20;
   position: relative;
   line-height: 2rem;
   overflow: hidden;
-  transition: width 0.3s linear,height 0.3s linear;
-  -moz-transition: width 0.3s linear,height 0.3s linear;
-  -webkit-transition: width 0.3s linear,height 0.3s;
-  -o-transition: width 0.3s linear,height 0.3s linear;
+  transition: width 0.2s linear, height 0.2s linear;
+  -moz-transition: width 0.2s linear, height 0.2s linear;
+  -webkit-transition: width 0.2s linear, height 0.2s linear;
+  -o-transition: width 0.2s linear, height 0.2s linear;
+
   a {
     line-height: 2rem;
   }
@@ -306,23 +327,30 @@ input[type='radio'] {
   width: 100%;
   height: 100vh;
   overflow: auto;
+  padding: 0 7rem;
   box-sizing: border-box;
-  display: flex;
-  display: -webkit-flex;
-  justify-content: center;
-  -webkit-justify-content: center;
 }
 
 #content {
   width: 110rem;
   box-sizing: border-box;
-  padding: 0 7rem;
   margin: auto;
   overflow-x: hidden;
-  transition: scroll 0.6s;
-  -moz-transition: scroll 0.6s;
-  -webkit-transition: scroll 0.6s;
-  -o-transition: scroll 0.6s;
+  transition: scroll 0.3s linear;
+  -moz-transition: scroll 0.3s linear;
+  -webkit-transition: scroll 0.3s linear;
+  -o-transition: scroll 0.3s linear;
+
+  & h1 > span,
+  & h2 > span,
+  & h3 > span,
+  & h4 > span,
+  & h5 > span,
+  & h6 > span {
+    float: left;
+    margin-right: 1rem;
+    display: none;
+  }
 }
 
 /*top-container*/
@@ -345,8 +373,6 @@ input[type='radio'] {
   font-size: 3rem;
   cursor: pointer;
   float: left;
-  margin-right: 1.2rem;
-  margin-top: -.1rem;
 
   &:hover {
     color: $green !important;
@@ -358,7 +384,7 @@ input[type='radio'] {
   position: absolute;
   overflow: hidden;
   padding: .4rem;
-  top: 1rem;
+  top: 1.1rem;
   right: 1.1rem;
   left: 1.2rem;
   box-sizing: border-box;
@@ -374,11 +400,16 @@ input[type='radio'] {
   font-size: 1.2rem;
   white-space: nowrap;
   text-overflow: ellipsis;
+  transition: width 0.1s linear;
+  -moz-transition: width 0.1s linear;
+  -webkit-transition: width 0.1s linear;
+  -o-transition: width 0.1s linear;
+
   &:focus {
     outline: none;
     width: 100%;
     border-color: $green;
-    @include box-shadow-1(rgb($green,.2));
+    @include box-shadow-1(rgb($green, .2));
   }
 
   &::placeholder {
@@ -390,8 +421,10 @@ input[type='radio'] {
   position: absolute;
   z-index: 35;
   font-size: $size-12;
-  right: 1.2rem;
-  top: .8rem;
+  right: .7rem;
+  top: .85rem;
+  padding: 0 .5rem;
+  background: $bg-color;
   cursor: pointer;
   display: none;
   line-height: 2.3rem;
@@ -402,50 +435,86 @@ input[type='radio'] {
 }
 
 .search-result {
-  @include border-default();
-  @include border-radius($size: 0.6rem);
-  background: $bg-color;
-  padding: 1.4rem 1.6rem;
-  overflow: auto;
-  margin-top: 3.4rem;
+  max-height: 0;
+  overflow: hidden;
+  margin-top: 3.7rem;
   margin-right: 1.4rem;
-  color: $text-grey;
-  font-size: 1.2rem;
+  background: $bg-color;
+  font-size: 1.4rem;
   line-height: 1.2;
+  color: $text-grey;
   box-sizing: border-box;
-  @include box-shadow-1(rgb($grey-color,.6));
   position: relative;
   z-index: 40;
-  display: none;
-  a {
-    color: $text-color;
-    cursor: pointer;
-    line-height: 1.8rem;
+  transition: max-height 0.2s linear;
+  -moz-transition: max-height 0.2s linear;
+  -webkit-transition: max-height 0.2s linear;
+  -o-transition: max-height 0.2s linear;
 
-    &:hover {
-      color: $green !important;
+  & > nav {
+    padding: 1rem;
+    box-sizing: border-box;
+    width: 100%;
+
+    & a {
+      display: block;
+      color: $bg-color;
+      margin-bottom: .25rem;
+      padding: .5rem 1rem;
+      box-sizing: border-box;
+      @include border-radius(.5rem);
+      word-break: break-word;
+      &:hover {
+        cursor: pointer;
+        color: $green !important;
+        background: $code-bg-color;
+      }
+    }
+
+    & > div {
+      height: auto;
+      display: flex;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: -moz-box;
+      flex-direction: column;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      -moz-flex-direction: column;
+      justify-content: center;
+      -webkit-justify-content: center;
+      -moz-justify-content: center;
+
+      & i {
+        display: block;
+        color: $bg-color;
+        text-align: center;
+        font-size: 2.2rem;
+        margin-top: 3.6rem;
+        margin-bottom: 1rem;
+        &:hover{
+          text-shadow: none;
+        }
+      }
+
+      & span {
+        display: block;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        text-align: center;
+
+        &:first-of-type {
+          margin-top: .5rem;
+          margin-bottom: .6rem;
+        }
+
+        &:last-child {
+          margin-bottom: 3.6rem;
+        }
+      }
     }
   }
-}
-
-.search-result a,
-.search-result i,
-.search-result span {
-  display: block;
-  margin: 0 0 6px 0;
-}
-
-.search-result a {
-  cursor: pointer;
-}
-
-.search-result i {
-  text-align: center;
-  font-size: 2.2rem;
-}
-
-.search-result span {
-  text-align: left;
 }
 
 /*list-container*/
@@ -466,22 +535,27 @@ input[type='radio'] {
   font-size: $size-16;
   position: relative;
   margin-top: 1.6rem;
-  & .empty-catalog{
+
+  & .empty-catalog {
     margin-top: 2rem;
     text-align: center;
     color: $text-grey;
     font-size: 1.3rem;
-    .iconfont{
+
+    .iconfont {
       font-size: 2rem;
     }
-    p{
+
+    p {
       margin-top: .5rem;
       text-align: left;
     }
   }
+
   ul {
     display: block;
     position: relative;
+
     &:before {
       @include pseudo-element($w: .1rem, $h: 100%, $p: absolute);
       box-sizing: border-box;
@@ -514,9 +588,11 @@ input[type='radio'] {
   z-index: 20;
   cursor: pointer;
 }
-.list-wrapper ul li .iconfont{
+
+.list-wrapper ul li .iconfont {
 
 }
+
 .list-wrapper ul li a {
   display: block;
   position: relative;
@@ -524,7 +600,7 @@ input[type='radio'] {
   font-weight: normal;
   color: $grey-color-dark;
   padding: .5rem .6rem;
-  margin-bottom: .2rem;
+  margin-bottom: .25rem;
   margin-left: 2rem;
   box-sizing: border-box;
   line-height: 1.1 !important;
@@ -554,12 +630,14 @@ input[type='radio'] {
   }
 
   &:hover {
-    &:before{
+    &:before {
       width: 1.2rem !important;
     }
+
     div {
       white-space: wrap;
     }
+
     span {
       display: table-cell;
       word-break: break-word;
@@ -571,8 +649,12 @@ input[type='radio'] {
   & > a {
     color: $green;
     background: $code-bg-color;
-    &:before {width: 1.4rem;}
+
+    &:before {
+      width: 1.4rem;
+    }
   }
+
   & > .iconfont {
     color: $green;
   }
@@ -585,21 +667,25 @@ input[type='radio'] {
   z-index: 15;
   background: $bg-color;
 }
-.list-wrapper > ul li:last-child > a:after  {
-  @include pseudo-element($w: .3rem, $h:100%,$p: absolute);
+
+.list-wrapper > ul li:last-child > a:after {
+  @include pseudo-element($w: .3rem, $h: 100%, $p: absolute);
   left: -1.3rem;
   top: 1.44rem;
   background: $bg-color;
 }
+
 .list-wrapper > ul > li:first-child > a:after {
-  @include pseudo-element($w: .3rem, $h: 100%, $p: absolute);
+  @include pseudo-element($w: .3rem, $h: 2rem, $p: absolute);
   left: -1.3rem;
-  top: -1.4rem;
+  top: -.65rem;
   background: $bg-color;
 }
+
 .list-wrapper ul li ul {
   margin-left: 2.2rem !important;
   margin-top: .24rem;
+
   & li:last-child:before {
     @include pseudo-element($w: .3rem, $h: 100%, $p: absolute);
     top: 1.45rem;
@@ -626,8 +712,10 @@ input[type='radio'] {
     float: left;
     position: relative;
     margin-right: 14%;
+    z-index: 40;
   }
-  .quit-menu{
+
+  .quit-menu {
     margin-right: 0 !important;
   }
 
@@ -648,26 +736,34 @@ input[type='radio'] {
 
 .structure:hover {
   .structure-child {
-    display: block;
+    height: 20.8rem;
+    bottom: 4rem;
+    padding: 1rem 1.5rem 0;
+    @include border-default();
+    @include border-radius($size: 0.6rem);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-color: $bg-color;
+    @include box-shadow-2(rgb($grey-color, .7));
   }
 }
 
 
 .structure-child {
+  height: 0;
   background: $bg-color;
   position: absolute;
+  z-index: 30;
   bottom: 4rem;
-  left: -5.9rem;
-  padding: 1rem 1.5rem 0;
-  @include border-default();
-  @include border-radius($size: 0.6rem);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom-color: $bg-color;
-  @include box-shadow-2(rgb($grey-color, .7));
+  left: -5.2rem;
+  //padding: 1rem 1.5rem 0;
   box-sizing: border-box;
   overflow: hidden;
-  display: none;
+  transition: height 0.1s linear;
+  -moz-transition: height 0.1s linear;
+  -webkit-transition: height 0.1s linear;
+  -o-transition: height 0.1s linear;
+
   li {
     margin-left: 0 !important;
     padding: 0 1rem;
@@ -682,17 +778,20 @@ input[type='radio'] {
     &:hover {
       color: $green;
     }
-    &:first-child,&:nth-of-type(2){
+
+    &:first-child, &:nth-of-type(1), &:nth-of-type(2), &:nth-of-type(3) {
       padding-bottom: .8rem;
-      border-bottom:.1rem dashed $border-color;
-      label{
+      border-bottom: .1rem dashed $border-color;
+
+      label {
         margin-left: -.8rem;
       }
     }
-    &:last-child{
+
+    &:last-child {
       padding-bottom: .8rem;
       margin-bottom: 0;
-      border-bottom:.1rem dashed $border-color;
+      border-bottom: .1rem dashed $border-color;
     }
 
   }
@@ -751,7 +850,7 @@ input[type='radio'] {
   .icon-label {
     top: -1.3rem;
     left: -.2rem;
-    text-shadow: 0 0 .3rem rgb($grey-color-dark,.75);
+    text-shadow: 0 0 .3rem rgb($code-bg-dark, .75);
   }
 
   .icon-catalog-close {
@@ -767,14 +866,20 @@ input[type='radio'] {
     color: $orange;
   }
 }
+
 //note-tips
-.note-tips{
-  line-height: 2rem;
-  font-size: 1.3rem;
+#content > footer {
+  width: 100%;
+  margin-top: 10rem;
+  box-sizing: border-box;
+}
+
+.note-tips {
+  font-size: 1.2rem;
   padding: 1.6rem 0;
-  margin-top: 5rem;
   border-top: .1rem solid $border-color;
   color: $text-grey;
+  margin: 0;
 }
 
 /*scroll style*/
@@ -783,25 +888,28 @@ html {
 }
 
 /*dark style*/
-html[theme=dark]{
-   @include theme-dark;
+html[theme=dark] {
+  @include theme-dark;
   @include code-dark;
- }
+}
+
 /*@media*/
 @media screen and (max-width: 768px) {
   #left-container {
-    width: 22rem;
+    width: 24rem;
     position: absolute;
     top: 0;
     left: 0;
     height: 100vh;
     display: none;
   }
-  #content {
-    width:100%;
+  #right-container {
     padding: 0 2rem;
   }
-  #switch-button{
+  #content {
+    width: 100%;
+  }
+  #switch-button {
     height: 4rem;
   }
   .search {
@@ -810,12 +918,11 @@ html[theme=dark]{
 }
 
 @media screen and (min-width: 769px) and (max-width: 992px) {
-  #left-container {
-    width: 26rem;
+  #right-container {
+    padding: 0 3rem;
   }
   #content {
-    width:100%;
-    padding: 0 3rem;
+    width: 100%;
   }
   .search {
     width: 75%;
@@ -823,12 +930,15 @@ html[theme=dark]{
 }
 
 @media screen and (min-width: 993px) and (max-width: 1200px) {
-
-  #content {
-    width: 100%;
+  #left-container {
+    width: 26rem;
+  }
+  #right-container {
     padding: 0 5rem;
   }
-
+  #content {
+    width: 100%;
+  }
 }
 
 @media screen and (min-width: 1201px) and (max-width: 1920px) {
@@ -836,8 +946,8 @@ html[theme=dark]{
     border: none;
   }
   #content {
-    width:100%;
-    max-width: 120rem;
+    width: 100%;
+    max-width: 140rem;
   }
 }
 
@@ -856,7 +966,7 @@ html[theme=dark]{
     border-left-width: .1rem;
   }
   #content {
-    width:100%;
+    width: 100%;
     max-width: 140rem;
   }
 }
