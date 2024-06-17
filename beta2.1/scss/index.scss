@@ -148,8 +148,6 @@ img {
 
 //列表
 ul li, ol li, dl dt, dl dd {
-  margin-left: 3.8rem;
-
   input, p {
     display: inline-block;
   }
@@ -164,16 +162,26 @@ ul li, ol li, dl dt, dl dd {
 
   &:has(input[type="checkbox"]), &:has(input[type="radio"]) {
     list-style: none;
-    margin-left: 2.4rem;
   }
 }
 
-li dl {
-  margin-left: -1.6rem;
+ul{
+  li{list-style: none;}
+  li li{
+    margin-left: 3.4rem;
+  }
+  ol{
+    margin-left: 3.4rem;
+  }
+}
+ol{
+  margin-left: 2.2rem;
+  ul{margin-left: 1.4rem;}
+  ol{margin-left: 3.6rem;}
 }
 
 dl dd {
-  margin-left: 5.6rem;
+  margin-left: 3.4rem;
 }
 
 #content {
@@ -464,6 +472,7 @@ input[type='radio'] {
       box-sizing: border-box;
       @include border-radius(.5rem);
       word-break: break-word;
+
       &:hover {
         cursor: pointer;
         color: $green !important;
@@ -493,7 +502,8 @@ input[type='radio'] {
         font-size: 2.2rem;
         margin-top: 3.6rem;
         margin-bottom: 1rem;
-        &:hover{
+
+        &:hover {
           text-shadow: none;
         }
       }

@@ -515,9 +515,6 @@ img {
   -moz-border-radius: 0.8rem;
 }
 
-ul li, ol li, dl dt, dl dd {
-  margin-left: 3.8rem;
-}
 ul li input, ul li p, ol li input, ol li p, dl dt input, dl dt p, dl dd input, dl dd p {
   display: inline-block;
 }
@@ -529,15 +526,30 @@ ul li p, ol li p, dl dt p, dl dd p {
 }
 ul li:has(input[type=checkbox]), ul li:has(input[type=radio]), ol li:has(input[type=checkbox]), ol li:has(input[type=radio]), dl dt:has(input[type=checkbox]), dl dt:has(input[type=radio]), dl dd:has(input[type=checkbox]), dl dd:has(input[type=radio]) {
   list-style: none;
-  margin-left: 2.4rem;
 }
 
-li dl {
-  margin-left: -1.6rem;
+ul li {
+  list-style: none;
+}
+ul li li {
+  margin-left: 3.4rem;
+}
+ul ol {
+  margin-left: 3.4rem;
+}
+
+ol {
+  margin-left: 2.2rem;
+}
+ol ul {
+  margin-left: 1.4rem;
+}
+ol ol {
+  margin-left: 3.6rem;
 }
 
 dl dd {
-  margin-left: 5.6rem;
+  margin-left: 3.4rem;
 }
 
 #content ul li,
