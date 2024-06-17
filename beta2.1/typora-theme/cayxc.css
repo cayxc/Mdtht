@@ -1,0 +1,310 @@
+:root {
+  --bg-color: #fdfdfd; /*change background*/
+  --bg-color2: #eeeeee;
+  --bg-color3: #A5BBC026;
+  --grey-color: rgba(203, 203, 203, 0.8);
+  --grey-color2: rgba(203, 203, 203, 0.4);
+  --green-color: #02bd66ff;
+  --orange-color: #ff6d0d;
+  --red-color: #d00101;
+  --border-color: #d3d3d3ff;
+  --text-color: #000; /*change text color*/
+  --title-color: #1e2b38; /*change text color*/
+  --md-char-color: #778c9d; /*change color of meta characetrs like `*` in Markdown */
+
+  --meta-content-color: var(--green-color); /*change color of meta contents like image text or link address in Markdown */
+  --primary-color: var(--green-color); /* color of primary buttons */
+  --primary-btn-border-color: var(--green-color);
+  --primary-btn-text-color: var(--text-color);
+  --window-border: 1px solid var(--grey-color); /*border for sidebar, etc*/
+  --active-file-bg-color: var(--bg-color2); /*background color if list item in file tree or file list*/
+  --active-file-text-color: inherit;
+  --active-file-border-color: var(--border-color);
+  --side-bar-bg-color: var(--bg-color); /*change background of sidebar*/
+  --item-hover-bg-color: var(--green-color); /*background of control items when hover, like menu in sidebar*/
+  --item-hover-text-color: inherit;
+  --monospace: monospace; /*monospace font for codes, fences*/
+}
+
+:root {
+  font-family: "Mono", "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  font-size: 62.5%;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  letter-spacing: .1rem;
+}
+
+
+body {
+  font-size: 16px;
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 3.6rem 0 1.8rem;
+  color: var(--title-color);
+  letter-spacing: .2rem;
+}
+
+h1 {
+  font-size: 3.2rem;
+  border-bottom: .1rem solid var(--grey-color);
+}
+h1:first-of-type{
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 2.8rem;
+}
+
+h3 {
+  font-size: 2.4rem;
+}
+
+h4 {
+  font-size: 2.1rem;
+}
+
+h5 {
+  font-size: 1.8rem;
+}
+
+h6 {
+  font-size: 1.6rem;
+}
+
+h5, h6 {
+  & + p {
+    margin-top: -0.8rem;
+  }
+}
+
+hr {
+  border: none;
+  height: .1rem;
+  margin: 1.8rem 0;
+  background: var(--grey-color);
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: var(--orange-color);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--green-color);
+  }
+}
+
+p {
+  margin: 1.8rem 0 0;
+}
+
+p a {
+  font-weight: bold;
+}
+
+strong {
+  font-weight: bold;
+  color: var(--green-color);
+}
+
+u {
+  text-decoration-color: var(--title-color);
+}
+
+em {
+  font-weight: 300;
+}
+
+sup, sub {
+  cursor: pointer;
+}
+
+mark {
+  background-color: var(--green-color);
+  padding: 0.2rem 1rem;
+  border-radius: .4rem;
+}
+
+img {
+  width: 100%;
+  border-radius: 0.8rem;
+  -webkit-border-radius: 0.8rem;
+  -moz-border-radius: 0.8rem;
+}
+ul{
+  margin-left: -4rem;
+}
+ul li {
+  list-style: none;
+  text-decoration: none;
+}
+ul li li {
+  margin-left: 2.5rem;
+}
+
+ol {
+  margin-left: 2.5rem;
+}
+ol li{
+  margin-left: 0;
+}
+
+/*code*/
+
+code,p code {
+  margin: 1rem 0;
+  border: 1px solid var(--grey-color2) !important;
+  background: var(--bg-color2) !important;
+  font-size: 1.4rem;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+  line-height: 1.8;
+  color: var(--title-color) !important;
+}
+pre,p pre {
+  margin: 1rem 0;
+  padding: 1.8rem;
+  border: 1px solid var(--grey-color2) !important;
+  background: var(--bg-color2) !important;
+  font-size: 1.4rem !important;
+  box-sizing: border-box;
+  border-radius: 0.8rem;
+  overflow: auto;
+}
+
+
+pre pre{
+  background: transparent !important;
+  padding: .5rem 1rem;
+  border: none !important;
+  vertical-align: middle;
+}
+
+p code {
+  line-height: 1.5 !important;
+  padding: 0.3rem 1rem !important;
+}
+
+/*sup,sub*/
+sup, sub {
+  font-size: 1.2rem;
+}
+
+/*blockquote*/
+blockquote {
+  margin: 1rem 0;
+  padding: 2rem;
+  border: 1px solid rgb(var(--border-color), .5);
+  box-sizing: border-box;
+  border-radius: 0.8rem;
+  border-left: .5rem solid var(--green-color);
+  border-bottom: none;
+  border-top: none;
+  border-right: none;
+  background-color: var(--bg-color3);
+}
+blockquote p:first-child {
+  margin-top: 0;
+}
+/*table*/
+table {
+  width: 100%;
+  margin-top: 1.6rem;
+  text-align: left;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+table thead tr th {
+  border-top: 1px solid var(--grey-color);
+}
+table tr th, table tr td {
+  padding: 0.8rem 1rem;
+  border-right: 1px solid var(--grey-color);
+}
+table tr th:first-child, table tr td:first-child {
+  border-left: 1px solid var(--grey-color);
+}
+table tr:first-child th:first-child {
+  border-top-left-radius: 0.8rem;
+  background: var(--bg-color2);
+}
+table tr:first-child th:last-child {
+  border-top-right-radius: 0.8rem;
+  background: var(--bg-color2);
+}
+table tr:last-child td:last-child {
+  border-bottom-right-radius: 0.8rem;
+  border-bottom: 1px solid var(--grey-color);
+  background: var(--bg-color2);
+}
+table tr:last-child td:first-child {
+  border-bottom-left-radius: 0.8rem;
+  border-bottom: 1px solid var(--grey-color);
+  background: var(--bg-color2);
+}
+table tbody tr:nth-child(even) {
+  background: var(--bg-color2);
+}
+input[type=checkbox],
+li.task-list-item>input[type=checkbox],
+#write input[type=checkbox] {
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  border: .1rem solid var(--grey-color);
+  list-style: none;
+  background: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  padding: 0;
+  line-height: 1.1;
+  margin-top: .45rem;
+}
+input[type=checkbox]:checked,
+li.task-list-item>input[type=checkbox]:checked,
+#write input[type=checkbox]:checked{
+  content: "";
+  display: inline-block;
+  background: rgb(2, 189, 102);
+  border-color: transparent;
+  text-align: center;
+  color: #fdfdfd;
+}
+input[type=checkbox]:checked:after,
+li.task-list-item>input[type=checkbox]:checked:after,
+#write input[type=checkbox]:checked:after{
+  content: "\2713"; /*2713、2714都是勾，一个粗一个细*/
+  font-size: 1.3rem;
+  vertical-align: text-top;
+}
+li.task-list-item{
+  margin-left: 2rem;
+}
+li.task-list-item p{
+  margin-left: 1rem;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #161b20ff; /*change background*/
+    --bg-color2: #29373dff;
+    --grey-color: #2e3e42ff;
+    --border-color: #d3d3d3ff;
+    --bg-color2: #a5bbc01e;
+    --text-color: #c4c4c4ff; /*change text color*/
+    --md-char-color: #667c89; /*change color of meta characetrs like `*` in Markdown */
+
+  }
+}

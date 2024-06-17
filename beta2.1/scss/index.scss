@@ -1,6 +1,5 @@
 @import "global";
 @import "hljs";
-
 //root
 * {
   margin: 0;
@@ -151,11 +150,9 @@ ul li, ol li, dl dt, dl dd {
   input, p {
     display: inline-block;
   }
-
   input {
     margin-right: $size-10;
   }
-
   p {
     margin: 0;
   }
@@ -166,22 +163,21 @@ ul li, ol li, dl dt, dl dd {
 }
 
 ul{
-  li{list-style: none;}
-  li li{
-    margin-left: 3.4rem;
+  li{
+    list-style: none;
+    text-decoration: none;
   }
-  ol{
-    margin-left: 3.4rem;
+  li li{
+    margin-left: 2.5rem;
   }
 }
 ol{
-  margin-left: 2.2rem;
-  ul{margin-left: 1.4rem;}
-  ol{margin-left: 3.6rem;}
+  margin-left: 2.5rem;
+  li{margin-left: 0;}
 }
 
 dl dd {
-  margin-left: 3.4rem;
+  margin-left: 2.5rem;
 }
 
 #content {
@@ -232,8 +228,7 @@ blockquote {
   border-bottom: none;
   border-top: none;
   border-right: none;
-  background-color: rgb(165, 187, 192, .16);
-  overflow: hidden;
+  background-color: rgb(165, 187, 192, .15);
 
   p:first-child {
     margin-top: 0;
@@ -260,6 +255,7 @@ input[type='checkbox'], input[type="radio"] {
 
 input[type='checkbox'] {
   @include border-radius($size: 0.3rem);
+  line-height: 1;
 
   &:checked {
     content: '';
@@ -335,14 +331,14 @@ input[type='radio'] {
   width: 100%;
   height: 100vh;
   overflow: auto;
-  padding: 0 7rem;
+  padding: 0 10rem;
   box-sizing: border-box;
 }
 
 #content {
-  width: 110rem;
-  box-sizing: border-box;
+  max-width: 110rem;
   margin: auto;
+  box-sizing: border-box;
   overflow-x: hidden;
   transition: scroll 0.3s linear;
   -moz-transition: scroll 0.3s linear;
@@ -476,7 +472,7 @@ input[type='radio'] {
       &:hover {
         cursor: pointer;
         color: $green !important;
-        background: $code-bg-color;
+        background: $bg-color2;
       }
     }
 
@@ -658,7 +654,7 @@ input[type='radio'] {
 .list-wrapper ul li:hover {
   & > a {
     color: $green;
-    background: $code-bg-color;
+    background: $bg-color2;
 
     &:before {
       width: 1.4rem;
@@ -914,7 +910,7 @@ html[theme=dark] {
     display: none;
   }
   #right-container {
-    padding: 0 2rem;
+    padding: 0 3rem;
   }
   #content {
     width: 100%;
@@ -929,7 +925,7 @@ html[theme=dark] {
 
 @media screen and (min-width: 769px) and (max-width: 992px) {
   #right-container {
-    padding: 0 3rem;
+    padding: 0 6rem;
   }
   #content {
     width: 100%;
@@ -944,10 +940,11 @@ html[theme=dark] {
     width: 26rem;
   }
   #right-container {
-    padding: 0 5rem;
+    padding: 0 8rem;
   }
   #content {
     width: 100%;
+    max-width: 100rem;
   }
 }
 
@@ -957,7 +954,7 @@ html[theme=dark] {
   }
   #content {
     width: 100%;
-    max-width: 140rem;
+    max-width: 120rem;
   }
 }
 

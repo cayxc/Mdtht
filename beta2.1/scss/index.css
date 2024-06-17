@@ -177,11 +177,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 
 .js-level1-style {
-  border-bottom: 1px solid #d9d9d9;
+  border-bottom: 0.1rem solid #d9d9d9;
 }
 
 .js-search {
-  border: 1px solid #d3d3d3;
+  border: 0.1rem solid #d3d3d3;
   border-radius: 0.6rem;
   -webkit-border-radius: 0.6rem;
   -moz-border-radius: 0.6rem;
@@ -530,26 +530,21 @@ ul li:has(input[type=checkbox]), ul li:has(input[type=radio]), ol li:has(input[t
 
 ul li {
   list-style: none;
+  text-decoration: none;
 }
 ul li li {
-  margin-left: 3.4rem;
-}
-ul ol {
-  margin-left: 3.4rem;
+  margin-left: 2.5rem;
 }
 
 ol {
-  margin-left: 2.2rem;
+  margin-left: 2.5rem;
 }
-ol ul {
-  margin-left: 1.4rem;
-}
-ol ol {
-  margin-left: 3.6rem;
+ol li {
+  margin-left: 0;
 }
 
 dl dd {
-  margin-left: 3.4rem;
+  margin-left: 2.5rem;
 }
 
 #content ul li,
@@ -563,7 +558,7 @@ dl dd {
 pre {
   margin: 1rem 0;
   padding: 1.8rem;
-  border: 1px solid rgba(211, 211, 211, 0.5);
+  border: 0.1rem solid rgba(211, 211, 211, 0.35);
   background: #eeeeee;
   font-size: 1.4rem;
   box-sizing: border-box;
@@ -576,7 +571,7 @@ pre {
 code {
   margin: 1rem 0;
   padding: 1.8rem;
-  border: 1px solid rgba(211, 211, 211, 0.5);
+  border: 0.1rem solid rgba(211, 211, 211, 0.35);
   background: #eeeeee;
   font-size: 1.4rem;
   box-sizing: border-box;
@@ -608,7 +603,7 @@ sup, sub {
 blockquote {
   margin: 1rem 0;
   padding: 2rem;
-  border: 1px solid rgba(211, 211, 211, 0.5);
+  border: 0.1rem solid rgba(211, 211, 211, 0.35);
   background: #eeeeee;
   font-size: 1.6rem;
   box-sizing: border-box;
@@ -619,8 +614,7 @@ blockquote {
   border-bottom: none;
   border-top: none;
   border-right: none;
-  background-color: rgba(165, 187, 192, 0.16);
-  overflow: hidden;
+  background-color: rgba(165, 187, 192, 0.15);
 }
 blockquote p:first-child {
   margin-top: 0;
@@ -644,14 +638,14 @@ table {
   overflow: hidden;
 }
 table thead tr th {
-  border-top: 1px solid #d9d9d9;
+  border-top: 0.1rem solid rgba(217, 217, 217, 0.8);
 }
 table tr th, table tr td {
   padding: 0.8rem 1rem;
-  border-right: 1px solid #d9d9d9;
+  border-right: 0.1rem solid rgba(217, 217, 217, 0.8);
 }
 table tr th:first-child, table tr td:first-child {
-  border-left: 1px solid #d9d9d9;
+  border-left: 0.1rem solid rgba(217, 217, 217, 0.8);
 }
 table tr:first-child th:first-child {
   border-top-left-radius: 0.8rem;
@@ -663,12 +657,12 @@ table tr:first-child th:last-child {
 }
 table tr:last-child td:last-child {
   border-bottom-right-radius: 0.8rem;
-  border-bottom: 1px solid #d9d9d9;
+  border-bottom: 0.1rem solid rgba(217, 217, 217, 0.8);
   background: #eeeeee;
 }
 table tr:last-child td:first-child {
   border-bottom-left-radius: 0.8rem;
-  border-bottom: 1px solid #d9d9d9;
+  border-bottom: 0.1rem solid rgba(217, 217, 217, 0.8);
   background: #eeeeee;
 }
 table tbody tr:nth-child(even) {
@@ -680,6 +674,7 @@ input[type=checkbox] {
   border-radius: 0.3rem;
   -webkit-border-radius: 0.3rem;
   -moz-border-radius: 0.3rem;
+  line-height: 1;
 }
 input[type=checkbox]:checked {
   content: "";
@@ -697,7 +692,7 @@ input[type=checkbox]:checked:after {
 
 /*input radio*/
 input[type=radio] {
-  border: 1px solid rgb(2, 189, 102);
+  border: 0.1rem solid rgb(2, 189, 102);
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -752,14 +747,14 @@ input[type=radio]:checked:after {
   width: 100%;
   height: 100vh;
   overflow: auto;
-  padding: 0 7rem;
+  padding: 0 10rem;
   box-sizing: border-box;
 }
 
 #content {
-  width: 110rem;
-  box-sizing: border-box;
+  max-width: 110rem;
   margin: auto;
+  box-sizing: border-box;
   overflow-x: hidden;
   transition: scroll 0.3s linear;
   -moz-transition: scroll 0.3s linear;
@@ -1155,7 +1150,7 @@ input[type=radio]:checked:after {
   height: 20.8rem;
   bottom: 4rem;
   padding: 1rem 1.5rem 0;
-  border: 1px solid #d3d3d3;
+  border: 0.1rem solid #d3d3d3;
   border-radius: 0.6rem;
   -webkit-border-radius: 0.6rem;
   -moz-border-radius: 0.6rem;
@@ -1216,7 +1211,7 @@ input[type=radio]:checked:after {
 .structure-child li input[type=radio] {
   width: 1.2rem;
   height: 1.2rem;
-  border: 1px solid rgb(2, 189, 102);
+  border: 0.1rem solid rgb(2, 189, 102);
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -1353,7 +1348,7 @@ html[theme=dark] h1, html[theme=dark] h2, html[theme=dark] h3, html[theme=dark] 
   color: rgb(196, 196, 196);
 }
 html[theme=dark] .js-level1-style {
-  border-bottom: 1px solid rgb(52, 65, 72);
+  border-bottom: 0.1rem solid rgb(52, 65, 72);
 }
 html[theme=dark] hr {
   background: rgb(52, 65, 72);
@@ -1379,14 +1374,14 @@ html[theme=dark] table {
   overflow: hidden;
 }
 html[theme=dark] table thead tr th {
-  border-top: 1px solid rgb(52, 65, 72);
+  border-top: 0.1rem solid rgb(52, 65, 72);
 }
 html[theme=dark] table tr th, html[theme=dark] table tr td {
   padding: 0.8rem 1rem;
-  border-right: 1px solid rgb(52, 65, 72);
+  border-right: 0.1rem solid rgb(52, 65, 72);
 }
 html[theme=dark] table tr th:first-child, html[theme=dark] table tr td:first-child {
-  border-left: 1px solid rgb(52, 65, 72);
+  border-left: 0.1rem solid rgb(52, 65, 72);
 }
 html[theme=dark] table tr:first-child th:first-child {
   border-top-left-radius: 0.8rem;
@@ -1398,12 +1393,12 @@ html[theme=dark] table tr:first-child th:last-child {
 }
 html[theme=dark] table tr:last-child td:last-child {
   border-bottom-right-radius: 0.8rem;
-  border-bottom: 1px solid rgb(52, 65, 72);
+  border-bottom: 0.1rem solid rgb(52, 65, 72);
   background: rgba(184, 204, 208, 0.12);
 }
 html[theme=dark] table tr:last-child td:first-child {
   border-bottom-left-radius: 0.8rem;
-  border-bottom: 1px solid rgb(52, 65, 72);
+  border-bottom: 0.1rem solid rgb(52, 65, 72);
   background: rgba(184, 204, 208, 0.12);
 }
 html[theme=dark] table tbody tr:nth-child(even) {
@@ -1538,7 +1533,7 @@ html[theme=dark] .hljs-comment {
     display: none;
   }
   #right-container {
-    padding: 0 2rem;
+    padding: 0 3rem;
   }
   #content {
     width: 100%;
@@ -1552,7 +1547,7 @@ html[theme=dark] .hljs-comment {
 }
 @media screen and (min-width: 769px) and (max-width: 992px) {
   #right-container {
-    padding: 0 3rem;
+    padding: 0 6rem;
   }
   #content {
     width: 100%;
@@ -1566,10 +1561,11 @@ html[theme=dark] .hljs-comment {
     width: 26rem;
   }
   #right-container {
-    padding: 0 5rem;
+    padding: 0 8rem;
   }
   #content {
     width: 100%;
+    max-width: 100rem;
   }
 }
 @media screen and (min-width: 1201px) and (max-width: 1920px) {
@@ -1578,7 +1574,7 @@ html[theme=dark] .hljs-comment {
   }
   #content {
     width: 100%;
-    max-width: 140rem;
+    max-width: 120rem;
   }
 }
 @media screen and (min-width: 1921px) {

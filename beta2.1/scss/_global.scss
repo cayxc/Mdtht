@@ -105,10 +105,10 @@ $title-color: rgb(39, 56, 75);
 $title-color2: rgb(48, 78, 112);
 
 $bg-color: #fdfdfd;
-$bg-color2: rgb(236, 239, 240);
+//$bg-color2: rgb(236, 239, 240);
+$bg-color2: #eeeeee;
 $border-color: #d3d3d3;
 $grey-color: #d9d9d9;
-$code-bg-color: #eeeeee;
 
 $green: rgb(2, 189, 102);
 $red: #d00101;
@@ -137,11 +137,11 @@ $size-12: 1.2rem;
 $size-10: 1.0rem;
 
 /*border*/
-@mixin border-default($width:1px,$style:solid,$color:$border-color) {
+@mixin border-default($width:.1rem,$style:solid,$color:$border-color) {
   border: $width $style $color;
 }
 
-@mixin border-bottom($width:1px,$style:solid,$color:$border-color) {
+@mixin border-bottom($width:.1rem,$style:solid,$color:$border-color) {
   border-bottom: $width $style $color;
 }
 
@@ -153,17 +153,17 @@ $size-10: 1.0rem;
 }
 
 /*code style*/
-@mixin code-box($margin:1rem,$padding:1.8rem,$font-size:1.4rem,$bag:$code-bg-color) {
+@mixin code-box($margin:1rem,$padding:1.8rem,$font-size:1.4rem,$bag:$bg-color2) {
   margin: $margin 0;
   padding: $padding;
-  border: 1px solid rgb($border-color, .5);
+  border: .1rem solid rgb($border-color, .35);
   background: $bag;
   font-size: $font-size;
   box-sizing: border-box;
 }
 
 /*table style*/
-@mixin table-style($bor-color:$grey-color,$bag-color:$code-bg-color,$bor-radius:0.8rem) {
+@mixin table-style($bor-color:rgb($grey-color,.8),$bag-color:$bg-color2,$bor-radius:0.8rem) {
   width: 100%;
   margin-top: $size-16;
   text-align: left;
@@ -173,15 +173,15 @@ $size-10: 1.0rem;
   overflow: hidden;
   thead {
     tr th {
-      border-top: 1px solid $bor-color;
+      border-top: .1rem solid $bor-color;
     }
   }
   tr th, tr td {
     padding: 0.8rem 1rem;
-    border-right: 1px solid $bor-color;
+    border-right: .1rem solid $bor-color;
   }
   tr th:first-child, tr td:first-child {
-    border-left: 1px solid $bor-color;
+    border-left: .1rem solid $bor-color;
   }
   tr:first-child th:first-child {
     border-top-left-radius: $bor-radius;
@@ -193,12 +193,12 @@ $size-10: 1.0rem;
   }
   tr:last-child td:last-child {
     border-bottom-right-radius: $bor-radius;
-    border-bottom: 1px solid $bor-color;
+    border-bottom: .1rem solid $bor-color;
     background: $bag-color;
   }
   tr:last-child td:first-child {
     border-bottom-left-radius: $bor-radius;
-    border-bottom: 1px solid $bor-color;
+    border-bottom: .1rem solid $bor-color;
     background: $bag-color;
   }
   tbody tr:nth-child(even) {
@@ -362,17 +362,19 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   max-height: 60vh !important;
   @include box-shadow-1(rgb($grey-color, .6));
   background: $bg-color;
+
   & > nav {
     max-height: 60vh;
     overflow-y: auto !important;
     overflow-x: hidden !important;
     scrollbar-width: none;
-    -webkit-scrollbar:none;
+    -webkit-scrollbar: none;
   }
 
   a {
     color: $text-color !important;
   }
+
   i {
     color: $text-grey !important;
   }
@@ -436,10 +438,9 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 
 #list-container .js-active > a,
-.search-result .js-active
-{
+.search-result .js-active {
   color: $green !important;
-  background: $code-bg-color !important;
+  background: $bg-color2 !important;
   @include border-radius(.5rem);
 
   &:before {
@@ -447,11 +448,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   }
 }
 
-.search-result .search-click{
+.search-result .search-click {
   @include border-radius(.5rem);
   padding: .4rem .6rem;
   color: $orange !important;
-  background: $code-bg-color;
+  background: $bg-color2;
 }
 
 #list-container .js-active > .iconfont {
@@ -490,7 +491,8 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   {
     display: none !important;
   }
-  & ul li a{
+
+  & ul li a {
     margin-left: 1.7rem;
   }
 }
@@ -507,7 +509,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   .js-show-shadow .iconfont {
     @include text-shadow($x: .2rem, $y: .2rem, $s: .2rem, $c: $text-color);
   }
-  .search-result .search-click{
+  .search-result .search-click {
     color: $orange !important;
     background: $grey-color-dark;
   }
@@ -515,7 +517,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     background: $grey-color-dark !important;
   }
   #list-container .js-active > a,
-  .search-result .js-active{
+  .search-result .js-active {
     background: $bg-dark2 !important;
   }
   & {
@@ -616,6 +618,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   .search-result {
     @include bag-border-dark();
     background: $bg-dark2 !important;
+
     a, i {
       color: rgb($text-dark, .4) !important;
     }
@@ -626,11 +629,13 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 
     a {
       color: $text-dark !important;
+
       &:hover {
         color: $green !important;
         background: $code-bg-dark !important;
       }
     }
+
     i {
       color: rgb($text-grey, .4) !important;
     }
@@ -638,6 +643,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   .search-icon {
     color: rgb($text-dark, .4);
     background: $bg-dark2;
+
     &:hover {
       color: $green;
     }
