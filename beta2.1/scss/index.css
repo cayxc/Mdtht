@@ -153,7 +153,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   width: 1.6rem;
   height: 1.6rem;
   background-color: #fdfdfd;
-  border: 1px solid rgb(39, 56, 75);
+  border: 1px solid rgb(28, 36, 54);
   vertical-align: middle;
   font-size: 2rem;
   line-height: 1;
@@ -271,7 +271,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   -webkit-border-radius: 0.5rem;
   -moz-border-radius: 0.5rem;
   padding: 0.4rem 0.6rem;
-  color: #ff6d0d !important;
+  color: #fa5f1d !important;
   background: #eeeeee;
 }
 
@@ -307,7 +307,7 @@ pre code.hljs {
 }
 
 code.hljs {
-  color: #284567;
+  color: #283e60;
   padding: 0;
   background: transparent;
 }
@@ -351,7 +351,7 @@ code.hljs {
 }
 
 .hljs-addition, .hljs-built_in, .hljs-bullet, .hljs-code {
-  color: #ff6d0d;
+  color: #fa5f1d;
 }
 
 .hljs-meta {
@@ -376,7 +376,7 @@ code.hljs {
 }
 
 :root {
-  font-family: "Mono", "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  font-family: "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
   font-size: 62.5%;
   background-color: #fdfdfd;
   color: #000000;
@@ -393,7 +393,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 3.6rem 0 1.8rem;
-  color: rgb(39, 56, 75);
+  color: rgb(28, 36, 54);
   letter-spacing: 0.2rem;
 }
 
@@ -434,14 +434,13 @@ hr {
 }
 
 ::selection {
-  background: rgba(255, 109, 13, 0.5);
-  color: #000000;
+  background: rgba(2, 189, 102, 0.3);
   text-shadow: none;
 }
 
 a {
   text-decoration: none;
-  color: #ff6d0d;
+  color: #fa5f1d;
   cursor: pointer;
 }
 a:hover {
@@ -452,18 +451,14 @@ p {
   margin: 1.8rem 0 0;
 }
 
-p a {
-  font-weight: bold;
-}
-
 strong {
   font-weight: bold;
   color: rgb(2, 189, 102);
 }
 
 u {
-  text-decoration-color: rgb(39, 56, 75);
-  -moz-text-decoration-color: rgb(39, 56, 75);
+  text-decoration-color: rgb(28, 36, 54);
+  -moz-text-decoration-color: rgb(28, 36, 54);
 }
 
 em {
@@ -473,8 +468,8 @@ em {
 del {
   color: #999999;
   text-decoration: line-through;
-  text-decoration-color: #d00101;
-  -moz-text-decoration-color: #d00101;
+  text-decoration-color: #fa5f1d;
+  -moz-text-decoration-color: #fa5f1d;
 }
 
 sup, sub {
@@ -485,7 +480,7 @@ sup:hover, sub:hover {
 }
 
 mark {
-  background-color: rgb(2, 189, 102);
+  background-color: rgba(2, 189, 102, 0.75);
   padding: 0.2rem 1rem;
   border-radius: 0.4rem;
   -webkit-border-radius: 0.4rem;
@@ -496,8 +491,8 @@ kbd {
   display: inline-block;
   line-height: 2.2rem;
   border: none;
-  background: rgb(39, 56, 75);
-  color: #d9d9d9;
+  background: rgb(28, 36, 54);
+  color: #fdfdfd;
   border-image: none;
   border-radius: 0.4rem;
   -webkit-border-radius: 0.4rem;
@@ -513,6 +508,7 @@ img {
   border-radius: 0.8rem;
   -webkit-border-radius: 0.8rem;
   -moz-border-radius: 0.8rem;
+  margin-top: 1rem;
 }
 
 ul li input, ul li p, ol li input, ol li p, dl dt input, dl dt p, dl dd input, dl dd p {
@@ -537,7 +533,7 @@ ul li li {
 }
 
 ol {
-  margin-left: 2.5rem;
+  margin-left: 2.3rem;
 }
 ol li {
   margin-left: 0;
@@ -557,7 +553,7 @@ dl dd {
 /*code*/
 pre {
   margin: 1rem 0;
-  padding: 1.8rem;
+  padding: 0.5rem 1rem;
   border: 0.1rem solid rgba(211, 211, 211, 0.35);
   background: #eeeeee;
   font-size: 1.4rem;
@@ -570,7 +566,7 @@ pre {
 
 code {
   margin: 1rem 0;
-  padding: 1.8rem;
+  padding: 0.5rem 1rem;
   border: 0.1rem solid rgba(211, 211, 211, 0.35);
   background: #eeeeee;
   font-size: 1.4rem;
@@ -581,13 +577,14 @@ code {
   padding: 0.2rem 1rem;
   line-height: 1.8;
   vertical-align: text-top;
-  color: #284567;
+  color: #283e60;
 }
 
 pre code {
-  padding: 0.5rem 1rem;
+  display: inline-block;
+  margin: 1.3rem !important;
   border: none;
-  vertical-align: bottom;
+  vertical-align: middle;
 }
 
 p code {
@@ -602,7 +599,7 @@ sup, sub {
 /*blockquote*/
 blockquote {
   margin: 1rem 0;
-  padding: 2rem;
+  padding: 1rem 2rem;
   border: 0.1rem solid rgba(211, 211, 211, 0.35);
   background: #eeeeee;
   font-size: 1.6rem;
@@ -615,6 +612,7 @@ blockquote {
   border-top: none;
   border-right: none;
   background-color: rgba(165, 187, 192, 0.15);
+  overflow: hidden;
 }
 blockquote p:first-child {
   margin-top: 0;
@@ -747,13 +745,18 @@ input[type=radio]:checked:after {
   width: 100%;
   height: 100vh;
   overflow: auto;
-  padding: 0 10rem;
+  padding: 0 10rem 0;
   box-sizing: border-box;
 }
 
+#content > *:first-child {
+  margin-top: 3.2rem !important;
+}
+
 #content {
-  max-width: 110rem;
-  margin: auto;
+  width: 100%;
+  max-width: 120rem;
+  margin: 0 auto;
   box-sizing: border-box;
   overflow-x: hidden;
   transition: scroll 0.3s linear;
@@ -1266,21 +1269,21 @@ input[type=radio]:checked:after {
   text-shadow: none;
 }
 #switch-button:hover .icon-label {
-  color: #ff6d0d;
+  color: #fa5f1d;
 }
 
 #content > footer {
-  width: 100%;
-  margin-top: 10rem;
+  margin-top: 7.2rem;
   box-sizing: border-box;
 }
 
 .note-tips {
-  font-size: 1.2rem;
-  padding: 1.6rem 0;
+  font-size: 1.1rem;
+  padding: 1.1rem 0;
   border-top: 0.1rem solid #d3d3d3;
   color: #999999;
   margin: 0;
+  text-align: center;
 }
 
 /*scroll style*/
@@ -1326,7 +1329,7 @@ html[theme=dark] .js-show-shadow .iconfont {
   text-shadow: 0.2rem 0.2rem 0.2rem #000000;
 }
 html[theme=dark] .search-result .search-click {
-  color: #ff6d0d !important;
+  color: #fa5f1d !important;
   background: rgb(52, 65, 72);
 }
 html[theme=dark] .js-active > a {
@@ -1339,10 +1342,6 @@ html[theme=dark] .search-result .js-active {
 html[theme=dark] {
   background-color: rgb(22, 27, 32);
   color: rgb(196, 196, 196);
-}
-html[theme=dark] ::selection {
-  color: rgb(196, 196, 196);
-  text-shadow: none;
 }
 html[theme=dark] h1, html[theme=dark] h2, html[theme=dark] h3, html[theme=dark] h4, html[theme=dark] h5, html[theme=dark] h6 {
   color: rgb(196, 196, 196);
@@ -1523,6 +1522,15 @@ html[theme=dark] .hljs-comment {
 }
 
 /*@media*/
+@media print {
+  table,
+  pre {
+    page-break-inside: avoid;
+  }
+  pre {
+    word-wrap: break-word;
+  }
+}
 @media screen and (max-width: 768px) {
   #left-container {
     width: 24rem;
@@ -1533,10 +1541,7 @@ html[theme=dark] .hljs-comment {
     display: none;
   }
   #right-container {
-    padding: 0 3rem;
-  }
-  #content {
-    width: 100%;
+    padding: 0 3.6rem;
   }
   #switch-button {
     height: 4rem;
@@ -1544,43 +1549,35 @@ html[theme=dark] .hljs-comment {
   .search {
     width: 75%;
   }
+  #content > footer {
+    margin-top: 3.6rem;
+  }
 }
 @media screen and (min-width: 769px) and (max-width: 992px) {
   #right-container {
-    padding: 0 6rem;
-  }
-  #content {
-    width: 100%;
+    padding: 0 3.6rem;
   }
   .search {
     width: 75%;
   }
 }
 @media screen and (min-width: 993px) and (max-width: 1200px) {
+  #right-container {
+    padding: 0 6rem;
+  }
   #left-container {
     width: 26rem;
-  }
-  #right-container {
-    padding: 0 8rem;
-  }
-  #content {
-    width: 100%;
-    max-width: 100rem;
   }
 }
 @media screen and (min-width: 1201px) and (max-width: 1920px) {
   #right-container {
     border: none;
   }
-  #content {
-    width: 100%;
-    max-width: 120rem;
-  }
 }
 @media screen and (min-width: 1921px) {
   #body-container {
     width: 178rem;
-    margin: auto;
+    margin: 0 auto;
   }
   #left-container {
     border-left-style: solid;
@@ -1592,7 +1589,6 @@ html[theme=dark] .hljs-comment {
     border-left-width: 0.1rem;
   }
   #content {
-    width: 100%;
     max-width: 140rem;
   }
 }

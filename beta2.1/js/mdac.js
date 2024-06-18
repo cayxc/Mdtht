@@ -78,54 +78,53 @@ class MarkdownPad2AutoCatalog {
         titleCenter = false;
         throw '参数: titleCenter 类型有误，已按照默认配置执行，该参数类型为：Boolean';
       }
+      /*开发调试过程中将以下放到catch外，以获取具体错误信息*/
+      objThis = this; //当前对象的 this
+      this.showIndex = showIndex;
+      this.indexStyle = indexStyle;
+      this.openDark = openDark;
+      this.openShadow = openShadow;
+      this.showTitleIndex = showTitleIndex;
+      this.showTree = showTree;
+      this.firstTagToTitle = firstTagToTitle;
+      this.titleCenter = titleCenter;
+      this.acticleTitle = '';
+      this.handleHarr = '';
+      //目录构建
+      if ((document.querySelector ('#body-container')) == null) { //替换文档内容，防止重复生成
+        this.replaceOld ();
+      }
+      //样式控制节点元素
+      this.bodyContainer = document.querySelector ('#body-container');
+      this.leftElement = document.querySelector ('#left-container');
+      this.rightElement = document.querySelector ('#right-container');
+      this.content = document.querySelector ('#content');
+      this.quitElement = document.querySelector ('.quit-menu');
+      this.listElement = document.querySelector ('.list-wrapper');
+      this.switchButton = document.querySelector ('#switch-button');
+      this.asideButton = document.querySelector ('.catalog-button');
+      this.switchListButton = document.querySelector ('.quit-menu');
+      this.viewModeButton = document.querySelector ('.mode');
+      this.allIcon = this.listElement.children[0].querySelectorAll ('i');
+      this.allChildLevel = this.listElement.children[0].querySelectorAll ('ul');
+      this.allCatalogElement = this.listElement.querySelectorAll ('a');
+      this.showIndexEl = document.querySelector ('.index');
+      this.allIndex = this.listElement.querySelectorAll ('p');
+      //样式控制
+      this.showCatalogIndex ();
+      this.choseCatalogStyle ();
+      this.switchCatalog ();
+      this.switchCatalogList ();
+      this.catalogIconClick ();
+      this.singleCatalogClick ();
+      this.searchCatalog ();
+      this.catalogTrack ();
+      //主题随系统变化
+      this.themeChange ();
 
     } catch (err) {
       this.showError (err);
-      console.log(err);
     }
-    /*开发调试过程中将以下放到catch外，以获取具体错误信息*/
-    objThis = this; //当前对象的 this
-    this.showIndex = showIndex;
-    this.indexStyle = indexStyle;
-    this.openDark = openDark;
-    this.openShadow = openShadow;
-    this.showTitleIndex = showTitleIndex;
-    this.showTree = showTree;
-    this.firstTagToTitle = firstTagToTitle;
-    this.titleCenter = titleCenter;
-    this.acticleTitle = '';
-    this.handleHarr = '';
-    //目录构建
-    if ((document.querySelector ('#body-container')) == null) { //替换文档内容，防止重复生成
-      this.replaceOld ();
-    }
-    //样式控制节点元素
-    this.bodyContainer = document.querySelector ('#body-container');
-    this.leftElement = document.querySelector ('#left-container');
-    this.rightElement = document.querySelector ('#right-container');
-    this.content = document.querySelector ('#content');
-    this.quitElement = document.querySelector ('.quit-menu');
-    this.listElement = document.querySelector ('.list-wrapper');
-    this.switchButton = document.querySelector ('#switch-button');
-    this.asideButton = document.querySelector ('.catalog-button');
-    this.switchListButton = document.querySelector ('.quit-menu');
-    this.viewModeButton = document.querySelector ('.mode');
-    this.allIcon = this.listElement.children[0].querySelectorAll ('i');
-    this.allChildLevel = this.listElement.children[0].querySelectorAll ('ul');
-    this.allCatalogElement = this.listElement.querySelectorAll ('a');
-    this.showIndexEl = document.querySelector ('.index');
-    this.allIndex = this.listElement.querySelectorAll ('p');
-    //样式控制
-    this.showCatalogIndex ();
-    this.choseCatalogStyle ();
-    this.switchCatalog ();
-    this.switchCatalogList ();
-    this.catalogIconClick ();
-    this.singleCatalogClick ();
-    this.searchCatalog ();
-    this.catalogTrack ();
-    //主题随系统变化
-    this.themeChange ();
 
   }
 

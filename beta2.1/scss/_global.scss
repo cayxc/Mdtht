@@ -101,18 +101,18 @@
 /*colors*/
 $text-color: #000000;
 $text-grey: #999999;
-$title-color: rgb(39, 56, 75);
+$text-code: #283e60;
+$title-color: rgb(28, 36, 54);
 $title-color2: rgb(48, 78, 112);
 
 $bg-color: #fdfdfd;
-//$bg-color2: rgb(236, 239, 240);
 $bg-color2: #eeeeee;
 $border-color: #d3d3d3;
 $grey-color: #d9d9d9;
 
 $green: rgb(2, 189, 102);
 $red: #d00101;
-$orange: #ff6d0d;
+$orange: #fa5f1d;
 
 $text-dark: rgb(196, 196, 196);
 $text-grey-dark: rgb(46, 62, 66);
@@ -153,9 +153,9 @@ $size-10: 1.0rem;
 }
 
 /*code style*/
-@mixin code-box($margin:1rem,$padding:1.8rem,$font-size:1.4rem,$bag:$bg-color2) {
+@mixin code-box($margin:1rem,$padding:1rem,$font-size:1.4rem,$bag:$bg-color2) {
   margin: $margin 0;
-  padding: $padding;
+  padding: $padding/2 $padding;
   border: .1rem solid rgb($border-color, .35);
   background: $bag;
   font-size: $font-size;
@@ -524,10 +524,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     background-color: $bg-dark;
     color: $text-dark;
   }
-  ::selection {
-    color: $text-dark;
-    text-shadow: none;
-  }
+
   h1, h2, h3, h4, h5, h6 {
     color: $text-dark;
   }

@@ -7,7 +7,7 @@
 }
 
 :root {
-  font-family: "Mono", "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  font-family: "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
   font-size: 62.5%;
   background-color: $bg-color;
   color: $text-color;
@@ -67,8 +67,7 @@ hr {
 }
 
 ::selection {
-  background: rgb($orange, .5);
-  color: $text-color;
+  background: rgb($green, .3);
   text-shadow: none;
 }
 
@@ -84,10 +83,6 @@ a {
 
 p {
   margin: $size-18 0 0;
-}
-
-p a {
-  font-weight: bold;
 }
 
 strong {
@@ -107,8 +102,8 @@ em {
 del {
   color: $text-grey;
   text-decoration: line-through;
-  text-decoration-color: $red;
-  -moz-text-decoration-color: $red;
+  text-decoration-color: $orange;
+  -moz-text-decoration-color: $orange;
 }
 
 sup, sub {
@@ -120,7 +115,7 @@ sup, sub {
 }
 
 mark {
-  background-color: $green;
+  background-color: rgb($green,.75);
   padding: 0.2rem 1rem;
   @include border-radius(0.4rem)
 }
@@ -130,7 +125,7 @@ kbd {
   line-height: $size-22;
   border: none;
   background: $title-color;
-  color: $grey-color;
+  color: $bg-color;
   border-image: none;
   @include border-radius(.4rem);
   padding: 0 .6rem;
@@ -143,6 +138,7 @@ kbd {
 img {
   width: 100%;
   @include border-radius();
+  margin-top: 1rem;
 }
 
 //列表
@@ -172,7 +168,7 @@ ul{
   }
 }
 ol{
-  margin-left: 2.5rem;
+  margin-left: 2.3rem;
   li{margin-left: 0;}
 }
 
@@ -202,13 +198,14 @@ code {
   padding: .2rem 1rem;
   line-height: 1.8;
   vertical-align: text-top;
-  color: #284567;
+  color: $text-code;
 }
 
 pre code {
-  padding: .5rem 1rem;
+  display: inline-block;
+  margin: 1.3rem !important;
   border: none;
-  vertical-align: bottom;
+  vertical-align: middle;
 }
 
 p code {
@@ -229,6 +226,7 @@ blockquote {
   border-top: none;
   border-right: none;
   background-color: rgb(165, 187, 192, .15);
+  overflow: hidden;
 
   p:first-child {
     margin-top: 0;
@@ -331,13 +329,17 @@ input[type='radio'] {
   width: 100%;
   height: 100vh;
   overflow: auto;
-  padding: 0 10rem;
+  padding: 0 10rem 0;
   box-sizing: border-box;
+}
+#content > *:first-child {
+  margin-top: 3.2rem !important;
 }
 
 #content {
-  max-width: 110rem;
-  margin: auto;
+  width: 100%;
+  max-width: 120rem;
+  margin: 0 auto;
   box-sizing: border-box;
   overflow-x: hidden;
   transition: scroll 0.3s linear;
@@ -875,17 +877,17 @@ input[type='radio'] {
 
 //note-tips
 #content > footer {
-  width: 100%;
-  margin-top: 10rem;
+  margin-top: 7.2rem;
   box-sizing: border-box;
 }
 
 .note-tips {
-  font-size: 1.2rem;
-  padding: 1.6rem 0;
+  font-size: 1.1rem;
+  padding: 1.1rem 0;
   border-top: .1rem solid $border-color;
   color: $text-grey;
   margin: 0;
+  text-align: center;
 }
 
 /*scroll style*/
@@ -900,6 +902,16 @@ html[theme=dark] {
 }
 
 /*@media*/
+@media print {
+  table,
+  pre {
+    page-break-inside: avoid;
+  }
+  pre {
+    word-wrap: break-word;
+  }
+}
+
 @media screen and (max-width: 768px) {
   #left-container {
     width: 24rem;
@@ -910,10 +922,7 @@ html[theme=dark] {
     display: none;
   }
   #right-container {
-    padding: 0 3rem;
-  }
-  #content {
-    width: 100%;
+    padding: 0 3.6rem;
   }
   #switch-button {
     height: 4rem;
@@ -921,14 +930,14 @@ html[theme=dark] {
   .search {
     width: 75%;
   }
+  #content > footer {
+    margin-top: 3.6rem;
+  }
 }
 
 @media screen and (min-width: 769px) and (max-width: 992px) {
   #right-container {
-    padding: 0 6rem;
-  }
-  #content {
-    width: 100%;
+    padding: 0 3.6rem;
   }
   .search {
     width: 75%;
@@ -936,15 +945,11 @@ html[theme=dark] {
 }
 
 @media screen and (min-width: 993px) and (max-width: 1200px) {
+  #right-container {
+    padding: 0 6rem;
+  }
   #left-container {
     width: 26rem;
-  }
-  #right-container {
-    padding: 0 8rem;
-  }
-  #content {
-    width: 100%;
-    max-width: 100rem;
   }
 }
 
@@ -952,16 +957,12 @@ html[theme=dark] {
   #right-container {
     border: none;
   }
-  #content {
-    width: 100%;
-    max-width: 120rem;
-  }
 }
 
 @media screen and (min-width: 1921px) {
   #body-container {
     width: 178rem;
-    margin: auto;
+    margin: 0 auto;
   }
   #left-container {
     border-left-style: solid;
@@ -973,7 +974,6 @@ html[theme=dark] {
     border-left-width: .1rem;
   }
   #content {
-    width: 100%;
     max-width: 140rem;
   }
 }
