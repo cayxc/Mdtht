@@ -16,7 +16,7 @@
   --md-char-color: rgba(72, 93, 108, 0.75); /*change color of meta characetrs like `*` in Markdown */
 
   --meta-content-color: var(--md-char-color); /*change color of meta contents like image text or link address in Markdown */
-  --primary-color: var(--bg-color2); /* color of primary buttons */
+  --primary-color: var(--green-color); /* color of primary buttons */
   --primary-btn-border-color: var(--bg-color2);
   --primary-btn-text-color: var(--green-color);
   --window-border: 1px solid var(--grey-color); /*border for sidebar, etc*/
@@ -127,10 +127,12 @@ a, div.md-def-link, span.md-url {
   color: var(--orange-color);
   cursor: pointer;
   font-size: 1.6rem;
-
-  &:hover {
-    color: var(--green-color);
-  }
+}
+a:hover,
+div.md-def-link:hover,
+span.md-url:hover
+{
+  color: var(--green-color);
 }
 div.md-def-link .md-def-url,
 .md-link .md-url {
@@ -382,7 +384,6 @@ li.task-list-item > input[type=checkbox],
   height: 1.6rem;
   padding: 0;
   line-height: 1.1;
-  margin-top: .45rem;
 }
 input[type=checkbox]:checked,
 li.task-list-item > input[type=checkbox]:checked,
@@ -684,14 +685,19 @@ span.md-comment {
   -webkit-align-items: center;
 }
 #md-notification > div > div label input{
- margin-top: 0;
+  margin-top: 0;
   vertical-align: bottom;
+}
+#md-notification > div > div label span{
+  display: block;
+  float: right;
+  margin-top: .35rem;
 }
 /*TOC md-toc*/
 .md-toc{
   font-size: 1.4rem;
-  margin: 0;
-  background: var(--bg-color3);
+  margin: 2rem 0 0 0;
+  background: var(--bg-color2);
   border-bottom: .1rem solid var(--grey-color2);
 }
 .md-toc-content{
@@ -704,7 +710,7 @@ span.md-comment {
 }
 #write div.md-toc-tooltip .md-delete-toc{
   padding: 0 1rem;
- background: var(--bg-color);
+  background: var(--bg-color);
 }
 #write div.md-toc-tooltip .md-delete-toc:hover{
   color: var(--green-color);
