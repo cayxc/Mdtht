@@ -22,7 +22,7 @@
   --window-border: 1px solid var(--grey-color); /*border for sidebar, etc*/
   --active-file-bg-color: var(--bg-color2); /*background color if list item in file tree or file list*/
   --active-file-text-color: var(--green-color);
-  --active-file-border-color: var(--border-color);
+  --active-file-border-color: var(--green-color);
   --side-bar-bg-color: var(--bg-color); /*change background of sidebar*/
   --item-hover-bg-color: var(--bg-color2); /*background of control items when hover, like menu in sidebar*/
   --item-hover-text-color: var(--green-color);
@@ -54,88 +54,6 @@ body {
 }
 #write > *:first-child {
   margin-top: 3.2rem !important;
-}
-/*源码模式*/
-#typora-source .CodeMirror-lines {
-  width: 100%;
-  max-width: 140rem;
-  margin: 0 auto;
-  padding: 0 10rem;
-  box-sizing: border-box;
-}
-#typora-source .CodeMirror-lines pre {
-  border: none !important;
-  padding: .5rem .6rem !important;
-  background: var(--bg-color) !important;
-}
-#typora-source .CodeMirror-lines .cm-header {
-  color: var(--orange-color) !important;
-}
-.CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
-  border-left: 3px solid var(--orange-color);
-}
-.cm-s-typora-default .cm-header, .cm-s-typora-default .cm-property,
-.cm-s-typora-default .cm-link {
-  color: var(--orange-color);
-}
-.cm-s-inner .cm-comment, .cm-s-inner.cm-comment {
-  color: var(--md-char-color);
-}
-.cm-s-typora-default .cm-string {
-  color: var(--green-color);
-}
-.cm-s-typora-default .cm-code, .cm-s-typora-default .cm-comment {
-  color: var(--text-code);
-}
-.cm-s-typora-default .cm-tag {
-  color: var(--red-color);
-}
-.cm-attribute {
-  color: var(--orange-color);
-}
-
-/*右侧大纲*/
-/*#sidebar-content .outline-content li {
-  margin: 0.5rem;
-  background: var(--bg-color2);
-  padding: .6rem 1.2rem;
-  border-radius: .6rem;
-  -webkit-border-radius: .6rem;
-  -moz-border-radius: .6rem;
-  box-sizing: border-box;
-}*/
-#outline-content{
-  padding: 1rem;
-}
-#outline-content li .outline-item{
-  margin: auto 0 0.3rem;
-  border-radius: 0.4rem;
-  -webkit-border-radius: 0.4rem;
-  -moz-border-radius: 0.4rem;
-}
-#outline-content li ul{
-  margin-left: 0.2rem;
-}
-.outline-item .outline-item{
-  margin-left: .5rem;
-}
-#outline-content .outline-label{
-  padding: 0 0.8rem;
-}
-#outline-content .outline-item:hover{
-  border: none;
-}
-
-#outline-content .outline-label:hover{
-  text-decoration: none;
-}
-#outline-content > li > .outline-item:hover{
-  background: var(--bg-color2);
-}
-
-#outline-content .outline-item-active{
-  color: var(--green-color);
-  background: var(--bg-color2);
 }
 
 h3.md-focus:before,
@@ -251,7 +169,6 @@ em {
 
 sup, sub, .footnotes {
   font-size: 1rem;
-  cursor: pointer;
 }
 del {
   font-size: 1.6rem;
@@ -375,9 +292,12 @@ blockquote p:first-child {
   margin-top: 0;
 }
 /*table*/
+figure.table-figure{
+  margin-top: 2.4rem !important;
+}
 table {
   width: 100%;
-  margin-top: 1.6rem;
+  margin-top: 1.8rem;
   text-align: left;
   border-collapse: separate;
   border-spacing: 0;
@@ -388,6 +308,7 @@ table {
 }
 table thead tr th {
   border-top: 1px solid var(--grey-color);
+  background: var(--bg-color2);
 }
 table tr th, table tr td {
   padding: 0.8rem 1rem;
@@ -400,6 +321,7 @@ table tr:first-child th:first-child {
   border-top-left-radius: 0.8rem;
   -webkit-border-top-left-radius: 0.8rem;
   background: var(--bg-color2);
+  white-space: nowrap;
 }
 table tr:first-child th:last-child {
   border-top-right-radius: 0.8rem;
@@ -410,17 +332,36 @@ table tr:last-child td:last-child {
   border-bottom-right-radius: 0.8rem;
   -webkit-border-bottom-right-radius: 0.8rem;
   border-bottom: 1px solid var(--grey-color);
-  background: var(--bg-color2);
+  background: var(--bg-color);
 }
 table tr:last-child td:first-child {
   border-bottom-left-radius: 0.8rem;
   -webkit-border-bottom-left-radius: 0.8rem;
   border-bottom: 1px solid var(--grey-color);
-  background: var(--bg-color2);
 }
-table tbody tr:nth-child(even) {
-  background: var(--bg-color2);
+table tbody tr:nth-child(even) td{
+  background: var(--bg-color2) !important;
 }
+table tbody tr:nth-child(odd) td{
+  background: var(--bg-color) !important;
+}
+table tbody tr td{
+  border-top: .1rem solid var(--grey-color);
+}
+table tbody tr:last-child td{
+  border-bottom: .1rem solid var(--grey-color);
+}
+button#md-resize-grid{
+  display: block;
+  width: 100%;
+  margin: 1rem auto 0;
+}
+input#md-grid-width,
+input#md-grid-height {
+  text-align: center !important;
+  padding-left: 0 !important;
+}
+/*input*/
 input[type=checkbox],
 li.task-list-item > input[type=checkbox],
 #write input[type=checkbox] {
@@ -471,6 +412,168 @@ span.md-comment {
   color: var(--text-code);
 }
 
+/*typora-source*/
+#typora-source .CodeMirror-lines {
+  width: 100%;
+  max-width: 140rem;
+  margin: 0 auto;
+  padding: 0 10rem;
+  box-sizing: border-box;
+}
+#typora-source .CodeMirror-lines pre {
+  border: none !important;
+  padding: .5rem .6rem !important;
+  background: var(--bg-color) !important;
+}
+#typora-source .CodeMirror-lines .cm-header {
+  color: var(--orange-color) !important;
+}
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+  border-left: 3px solid var(--orange-color);
+}
+.cm-s-typora-default .cm-header, .cm-s-typora-default .cm-property,
+.cm-s-typora-default .cm-link {
+  color: var(--orange-color);
+}
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment {
+  color: var(--md-char-color);
+}
+.cm-s-typora-default .cm-string {
+  color: var(--green-color);
+}
+.cm-s-typora-default .cm-code, .cm-s-typora-default .cm-comment {
+  color: var(--text-code);
+}
+.cm-s-typora-default .cm-tag {
+  color: var(--red-color);
+}
+.cm-attribute {
+  color: var(--orange-color);
+}
+
+/*sidebar*/
+#outline-content{
+  padding: 1rem;
+}
+
+#outline-content li .outline-item{
+  margin: auto 0 0.3rem;
+  border-radius: 0.6rem;
+  -webkit-border-radius: 0.6rem;
+  -moz-border-radius: 0.6rem;
+  padding: 0.5rem 1rem;
+}
+
+#outline-content li ul{
+  margin-left: 2.6rem;
+}
+
+.outline-item .outline-item{
+  margin-left: .5rem;
+}
+#outline-content .outline-label{
+  /*padding: 0 0.8rem;*/
+}
+#outline-content .outline-item:hover{
+  border: none;
+}
+
+#outline-content .outline-label:hover{
+  text-decoration: none;
+}
+#outline-content > li > .outline-item:hover{
+  background: var(--bg-color2);
+}
+
+#outline-content .outline-item-active{
+  color: var(--green-color);
+  background: var(--bg-color2);
+}
+
+/*file-library-list*/
+#file-library-list{
+  padding: 0.8rem;
+}
+#file-library-list .file-list-item{
+  padding: 0.5rem 1rem;
+}
+#file-library-list .file-list-item.active{
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  border: none;
+  margin-top: 0.8rem;
+}
+#file-library-list .file-list-item:first-of-type.active{
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  border: none;
+  margin-top: 0;
+}
+#file-library-list .file-list-item:hover{
+  color: var(--orange-color);
+}
+#sidebar-loading-template{
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: none;
+}
+
+/*file-library tree*/
+#file-library-tree{
+  padding-left: 1.2rem;
+  padding-right: .8rem;
+  box-sizing: border-box;
+}
+.sidebar-tab-btn{
+  font-size: 1.8rem !important;
+  line-height: 2rem !important;
+  vertical-align: text-top;
+  margin-top: 1.1rem !important;
+}
+.file-tree-node{
+  position: relative;
+  padding-left: 0;
+}
+.file-library-node .file-node-children
+{
+  margin-left: 1.2rem;
+}
+
+.file-node-expanded > .file-node-children{
+  margin-left: 2.8rem;
+}
+
+.file-tree-node.active>.file-node-background{
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  border: none;
+}
+.fa-folder:before,
+.fa-folder:after,
+.fa-caret-right,
+.fa-caret-down {
+  color: var(--text-grey);
+}
+.fa-caret-down {
+  margin-right: .4rem !important;
+  margin-left: 1rem !important;
+}
+.fa-caret-right {
+  margin-right: .3rem !important;
+  margin-left: 1rem !important;
+}
+.file-node-expanded>.file-node-content .fa-caret-down{
+  margin-left: 0;
+}
+
+
+/*@media*/
 @media print {
   table,
   pre {
