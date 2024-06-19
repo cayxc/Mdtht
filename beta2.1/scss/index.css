@@ -628,7 +628,7 @@ blockquote p:first-child {
 /*table*/
 table {
   width: 100%;
-  margin-top: 1.6rem;
+  margin-top: 1.8rem;
   text-align: left;
   border-collapse: separate;
   border-spacing: 0;
@@ -637,6 +637,7 @@ table {
 }
 table thead tr th {
   border-top: 0.1rem solid rgba(217, 217, 217, 0.8);
+  background: #eeeeee;
 }
 table tr th, table tr td {
   padding: 0.8rem 1rem;
@@ -648,6 +649,7 @@ table tr th:first-child, table tr td:first-child {
 table tr:first-child th:first-child {
   border-top-left-radius: 0.8rem;
   background: #eeeeee;
+  white-space: nowrap;
 }
 table tr:first-child th:last-child {
   border-top-right-radius: 0.8rem;
@@ -661,10 +663,18 @@ table tr:last-child td:last-child {
 table tr:last-child td:first-child {
   border-bottom-left-radius: 0.8rem;
   border-bottom: 0.1rem solid rgba(217, 217, 217, 0.8);
-  background: #eeeeee;
 }
-table tbody tr:nth-child(even) {
-  background: #eeeeee;
+table tbody tr:nth-child(even) td {
+  background: #eeeeee !important;
+}
+table tbody tr:nth-child(odd) td {
+  background: #fdfdfd !important;
+}
+table tbody tr td {
+  border-top: 0.1rem solid rgba(217, 217, 217, 0.8);
+}
+table tbody tr:last-child td {
+  border-bottom: 0.1rem solid rgba(217, 217, 217, 0.8);
 }
 
 /*input checketbox*/
@@ -1365,7 +1375,7 @@ html[theme=dark] code, html[theme=dark] pre {
 }
 html[theme=dark] table {
   width: 100%;
-  margin-top: 1.6rem;
+  margin-top: 1.8rem;
   text-align: left;
   border-collapse: separate;
   border-spacing: 0;
@@ -1374,6 +1384,7 @@ html[theme=dark] table {
 }
 html[theme=dark] table thead tr th {
   border-top: 0.1rem solid rgb(52, 65, 72);
+  background: rgba(184, 204, 208, 0.12);
 }
 html[theme=dark] table tr th, html[theme=dark] table tr td {
   padding: 0.8rem 1rem;
@@ -1385,6 +1396,7 @@ html[theme=dark] table tr th:first-child, html[theme=dark] table tr td:first-chi
 html[theme=dark] table tr:first-child th:first-child {
   border-top-left-radius: 0.8rem;
   background: rgba(184, 204, 208, 0.12);
+  white-space: nowrap;
 }
 html[theme=dark] table tr:first-child th:last-child {
   border-top-right-radius: 0.8rem;
@@ -1398,10 +1410,30 @@ html[theme=dark] table tr:last-child td:last-child {
 html[theme=dark] table tr:last-child td:first-child {
   border-bottom-left-radius: 0.8rem;
   border-bottom: 0.1rem solid rgb(52, 65, 72);
+}
+html[theme=dark] table tbody tr:nth-child(even) td {
+  background: rgba(184, 204, 208, 0.12) !important;
+}
+html[theme=dark] table tbody tr:nth-child(odd) td {
+  background: #fdfdfd !important;
+}
+html[theme=dark] table tbody tr td {
+  border-top: 0.1rem solid rgb(52, 65, 72);
+}
+html[theme=dark] table tbody tr:last-child td {
+  border-bottom: 0.1rem solid rgb(52, 65, 72);
+}
+html[theme=dark] table tbody tr:nth-child(even) th {
   background: rgba(184, 204, 208, 0.12);
 }
-html[theme=dark] table tbody tr:nth-child(even) {
-  background: rgba(184, 204, 208, 0.12);
+html[theme=dark] table tbody tr:nth-child(odd) td {
+  background: rgba(41, 55, 61, 0.2);
+}
+html[theme=dark] table tbody tr td {
+  border-top: 0.1rem solid rgb(52, 65, 72);
+}
+html[theme=dark] table tbody tr:last-child td {
+  border-bottom: 0.1rem solid rgb(52, 65, 72);
 }
 html[theme=dark] input {
   background: rgb(41, 55, 61);

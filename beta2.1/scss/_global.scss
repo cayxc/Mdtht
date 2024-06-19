@@ -165,7 +165,7 @@ $size-10: 1.0rem;
 /*table style*/
 @mixin table-style($bor-color:rgb($grey-color,.8),$bag-color:$bg-color2,$bor-radius:0.8rem) {
   width: 100%;
-  margin-top: $size-16;
+  margin-top: $size-18;
   text-align: left;
   border-collapse: separate;
   border-spacing: 0;
@@ -174,6 +174,7 @@ $size-10: 1.0rem;
   thead {
     tr th {
       border-top: .1rem solid $bor-color;
+      background: $bag-color;
     }
   }
   tr th, tr td {
@@ -186,6 +187,7 @@ $size-10: 1.0rem;
   tr:first-child th:first-child {
     border-top-left-radius: $bor-radius;
     background: $bag-color;
+    white-space: nowrap;
   }
   tr:first-child th:last-child {
     border-top-right-radius: $bor-radius;
@@ -199,10 +201,18 @@ $size-10: 1.0rem;
   tr:last-child td:first-child {
     border-bottom-left-radius: $bor-radius;
     border-bottom: .1rem solid $bor-color;
-    background: $bag-color;
   }
-  tbody tr:nth-child(even) {
-    background: $bag-color;
+  tbody tr:nth-child(even) td{
+    background: $bag-color !important;
+  }
+  tbody tr:nth-child(odd) td{
+    background: $bg-color !important;
+  }
+  tbody tr td{
+    border-top: .1rem solid $bor-color;
+  }
+  tbody tr:last-child td{
+    border-bottom: .1rem solid $bor-color;
   }
 }
 
@@ -547,6 +557,18 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 
   table {
     @include table-style($bor-color: $grey-color-dark, $bag-color: $code-bg-dark);
+    tbody tr:nth-child(even) th{
+      background: $code-bg-dark;
+    }
+    tbody tr:nth-child(odd) td{
+      background: rgb($bg-dark2,.2);
+    }
+    tbody tr td{
+      border-top: .1rem solid $grey-color-dark;
+    }
+    tbody tr:last-child td{
+      border-bottom: .1rem solid $grey-color-dark;
+    }
   }
   input {
     @include bag-border-dark($bg-dark2, $grey-color-dark);
