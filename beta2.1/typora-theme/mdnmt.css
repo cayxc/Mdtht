@@ -59,21 +59,21 @@ body {
 h3.md-focus:before,
 h4.md-focus:before,
 h5.md-focus:before,
-h6.md-focus:before{
+h6.md-focus:before {
   font-size: 1.2rem;
   left: -3rem;
   color: var(--green-color);
 }
-h3.md-focus:before{
+h3.md-focus:before {
   top: .9rem;
 }
-h4.md-focus:before{
+h4.md-focus:before {
   top: .75rem;
 }
-h5.md-focus:before{
+h5.md-focus:before {
   top: .35rem;
 }
-h6.md-focus:before{
+h6.md-focus:before {
   top: .3rem;
 }
 
@@ -292,7 +292,7 @@ blockquote p:first-child {
   margin-top: 0;
 }
 /*table*/
-figure.table-figure{
+figure.table-figure {
   margin-top: 2.4rem !important;
 }
 table {
@@ -339,19 +339,19 @@ table tr:last-child td:first-child {
   -webkit-border-bottom-left-radius: 0.8rem;
   border-bottom: 1px solid var(--grey-color);
 }
-table tbody tr:nth-child(even) td{
+table tbody tr:nth-child(even) td {
   background: var(--bg-color2) !important;
 }
-table tbody tr:nth-child(odd) td{
+table tbody tr:nth-child(odd) td {
   background: var(--bg-color) !important;
 }
-table tbody tr td{
+table tbody tr td {
   border-top: .1rem solid var(--grey-color);
 }
-table tbody tr:last-child td{
+table tbody tr:last-child td {
   border-bottom: .1rem solid var(--grey-color);
 }
-button#md-resize-grid{
+button#md-resize-grid {
   display: block;
   width: 100%;
   margin: 1rem auto 0;
@@ -361,6 +361,10 @@ input#md-grid-height {
   text-align: center !important;
   padding-left: 0 !important;
 }
+table code {
+  line-height: 2.4 !important;
+}
+
 /*input*/
 input[type=checkbox],
 li.task-list-item > input[type=checkbox],
@@ -393,7 +397,7 @@ li.task-list-item > input[type=checkbox]:checked,
 input[type=checkbox]:checked:after,
 li.task-list-item > input[type=checkbox]:checked:after,
 #write input[type=checkbox]:checked:after {
-  content: "\2713"; /*2713、2714都是勾，一个粗一个细*/
+  content: "\2713"; /*2713、2714 都是勾，一个粗一个细*/
   font-size: 1.3rem;
   vertical-align: text-top;
 }
@@ -452,69 +456,151 @@ span.md-comment {
 }
 
 /*sidebar*/
-#outline-content{
-  padding: 1rem;
+#outline-content {
+  padding: 1.2rem;
+}
+#outline-content li {
+  position: relative;
+  z-index: 30;
+}
+#outline-content li::before {
+  content: '';
+  width: .1rem;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: -0.5rem;
+  background: var(--border-color);
 }
 
-#outline-content li .outline-item{
-  margin: auto 0 0.3rem;
+#outline-content li ul {
+  margin-left: 2.6rem;
+}
+#outline-content > li:last-of-type::before,
+#outline-content ul > li:last-of-type::before {
+  display: none;
+}
+#outline-content li .outline-item {
+  margin: 0 0 0.3rem 1rem;
+  padding: 0;
+  position: relative;
+  z-index: 32;
+}
+
+#outline-content > li .outline-item::before {
+  content: '';
+  width: 1.4rem;
+  height: .1rem;
+  position: absolute;
+  left: -1rem;
+  bottom: 50%;
+  z-index: 25;
+  background: var(--border-color);
+  /*background: dodgerblue;*/
+}
+#outline-content > li .outline-item::after {
+  content: '';
+  width: .1rem;
+  height: 100%;
+  position: absolute;
+  left: -1rem;
+  bottom: 50%;
+  z-index: 25;
+  background: var(--border-color);
+  /*background: #ff1ee1;*/
+}
+#outline-content > li ul > li:last-child .outline-item::after {
+  content: '';
+  width: .1rem;
+  height: 100%;
+  position: absolute;
+  left: -1rem;
+  top: -50%;
+  background: var(--border-color);
+  /*background: red;*/
+}
+#outline-content > li:first-child > .outline-item:first-child::after {
+  content: '';
+  width: .3rem;
+  height: 100%;
+  position: absolute;
+  z-index: 23;
+  left: -1.1rem;
+  background: var(--bg-color);
+}
+#outline-content > li:last-child > .outline-item:first-child::after {
+  content: '';
+  width: .1rem;
+  position: absolute;
+  left: -1rem;
+  background: var(--border-color);
+}
+
+
+.outline-item .outline-item {
+  margin-left: .5rem;
+}
+#outline-content .outline-label {
+  display: block;
+  width: 100%;
   border-radius: 0.6rem;
   -webkit-border-radius: 0.6rem;
   -moz-border-radius: 0.6rem;
-  padding: 0.5rem 1rem;
+  padding: 0.1rem 0.8rem;
+  position: relative;
+  background: var(--bg-color);
 }
-
-#outline-content li ul{
-  margin-left: 2.6rem;
-}
-
-.outline-item .outline-item{
-  margin-left: .5rem;
-}
-#outline-content .outline-label{
-  /*padding: 0 0.8rem;*/
-}
-#outline-content .outline-item:hover{
+#outline-content .outline-item:hover {
   border: none;
+  border-radius: 0.6rem;
+  -webkit-border-radius: 0.6rem;
+  -moz-border-radius: 0.6rem;
 }
 
-#outline-content .outline-label:hover{
+#outline-content .outline-label:hover {
   text-decoration: none;
+  background: var(--bg-color2);
+  z-index: 35;
 }
-#outline-content > li > .outline-item:hover{
+#outline-content > li > .outline-item:hover {
   background: var(--bg-color2);
 }
 
-#outline-content .outline-item-active{
+
+#outline-content .outline-item-active .outline-label {
   color: var(--green-color);
   background: var(--bg-color2);
+  padding: 0.3rem 0.8rem;
+  z-index: 35;
 }
 
 /*file-library-list*/
-#file-library-list{
-  padding: 0.8rem;
+#file-library-list {
+  padding: 1.2rem;
 }
-#file-library-list .file-list-item{
+#file-library-list .file-list-item {
   padding: 0.5rem 1rem;
+  margin-bottom: 0.4rem;
 }
-#file-library-list .file-list-item.active{
+#file-library-list .file-list-item.active {
   border-radius: 0.5rem;
   -webkit-border-radius: 0.5rem;
   -moz-border-radius: 0.5rem;
   border: none;
   margin-top: 0.8rem;
 }
-#file-library-list .file-list-item:first-of-type.active{
-  border-radius: 0.5rem;
-  -webkit-border-radius: 0.5rem;
-  -moz-border-radius: 0.5rem;
+#file-library-list .file-list-item:first-of-type.active {
   border: none;
   margin-top: 0;
 }
-#file-library-list .file-list-item:hover{
+#file-library-list .file-list-item:hover {
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
   color: var(--orange-color);
+  background: var(--bg-color2);
 }
-#sidebar-loading-template{
+#sidebar-loading-template {
   padding: 0.8rem;
   border-radius: 0.5rem;
   -webkit-border-radius: 0.5rem;
@@ -524,31 +610,39 @@ span.md-comment {
 }
 
 /*file-library tree*/
-#file-library-tree{
+#file-library-tree {
+  padding-top: 0.8rem;
   padding-left: 1.2rem;
-  padding-right: .8rem;
+  padding-right: 1.2rem;
   box-sizing: border-box;
 }
-.sidebar-tab-btn{
-  font-size: 1.8rem !important;
+.sidebar-tab-btn {
+  font-size: 1.6rem !important;
   line-height: 2rem !important;
   vertical-align: text-top;
-  margin-top: 1.1rem !important;
+  margin-top: 1.2rem !important;
+  color: var(--title-color);
 }
-.file-tree-node{
+.sidebar-tab-btn:hover {
+  color: var(--green-color);
+}
+.file-tree-node {
   position: relative;
   padding-left: 0;
+  margin-left: 0;
 }
-.file-library-node .file-node-children
-{
+.file-node-content {
+  padding-right: 0;
+}
+.file-library-node .file-node-children {
   margin-left: 1.2rem;
 }
 
-.file-node-expanded > .file-node-children{
+.file-node-expanded > .file-node-children {
   margin-left: 2.8rem;
 }
 
-.file-tree-node.active>.file-node-background{
+.file-tree-node.active > .file-node-background {
   border-radius: 0.5rem;
   -webkit-border-radius: 0.5rem;
   -moz-border-radius: 0.5rem;
@@ -568,10 +662,54 @@ span.md-comment {
   margin-right: .3rem !important;
   margin-left: 1rem !important;
 }
-.file-node-expanded>.file-node-content .fa-caret-down{
+.file-node-expanded > .file-node-content .fa-caret-down {
   margin-left: 0;
 }
-
+/*md-notification-container*/
+#md-notification:before{
+  font-size: 2rem;
+  top: 21px;
+}
+#md-notification p,
+#md-notification .ty-enter-mode-warning-body {
+  font-size: 1.2rem !important;
+}
+#md-notification > div > div {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -moz-box;
+  align-items: center;
+  -webkit-align-items: center;
+}
+#md-notification > div > div label input{
+ margin-top: 0;
+  vertical-align: bottom;
+}
+/*TOC md-toc*/
+.md-toc{
+  font-size: 1.4rem;
+  margin: 0;
+  background: var(--bg-color3);
+  border-bottom: .1rem solid var(--grey-color2);
+}
+.md-toc-content{
+  padding: 2rem 3rem;
+  margin: 0;
+}
+#write div.md-toc-tooltip{
+  position: relative;
+  margin: 1rem 0 .5rem;
+}
+#write div.md-toc-tooltip .md-delete-toc{
+  padding: 0 1rem;
+ background: var(--bg-color);
+}
+#write div.md-toc-tooltip .md-delete-toc:hover{
+  color: var(--green-color);
+  background: var(--bg-color2);
+}
 
 /*@media*/
 @media print {
