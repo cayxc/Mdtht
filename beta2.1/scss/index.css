@@ -1185,6 +1185,7 @@ input[type=radio]:checked:after {
   height: 20.8rem;
   bottom: 4rem;
   padding: 1rem 1.5rem 0;
+  left: -8.4rem;
   border: 0.1rem solid lightgray;
   border-radius: 0.6rem;
   -webkit-border-radius: 0.6rem;
@@ -1204,7 +1205,7 @@ input[type=radio]:checked:after {
   position: absolute;
   z-index: 30;
   bottom: 4rem;
-  left: -5.2rem;
+  left: -6.8rem;
   box-sizing: border-box;
   overflow: hidden;
   transition: height 0.1s linear;
