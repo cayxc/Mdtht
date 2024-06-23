@@ -1,7 +1,7 @@
 /*
  |--------------------------------------------------------------------------
- | MarkdownPad2AutoCatalog
- | MarkdownPad2 编辑器导出 html 文件时自动生成左侧目录插件
+ | mdtht
+ | Markdown 编辑器导出 html 文件时自动生成左侧目录插件
  |--------------------------------------------------------------------------
  |
  | 此插件用于将在 MarkdownPad2 编辑器中编辑的文档在转为 Html文件时自动生成左侧目录
@@ -27,7 +27,7 @@
  */
 var objThis;
 
-class MarkdownPad2AutoCatalog {
+class Mdtht {
   //showIndex  是否显示目录序号
   //indexStyle 目录样式 1, 2, 3
   //openDark   是否开启夜览模式
@@ -227,7 +227,7 @@ class MarkdownPad2AutoCatalog {
     }
     leftBlock.innerHTML =
         '<header class="top-container">'+
-        '        <i class="catalog-button iconfont icon-catalog-show"></i>'+
+        '        <i class="catalog-button iconfont icon-catalog-show" title="展开/收起侧边栏"></i>'+
         '        <div class="search-container">'+
         '            <input type="text" class="search" name="search" placeholder="输入关键字搜索目录">'+
         '            <i class="search-icon iconfont icon-close"></i>'+
@@ -236,7 +236,7 @@ class MarkdownPad2AutoCatalog {
         '        <div class="list-wrapper js-launch">'+'        </div>'+
         '    </nav>'+'    <footer class="bottom-container">'+
         '        <div class="mode-container">'+
-        '            <div class="mode">'+
+        '            <div class="mode" title="亮色/暗色模式">'+
         '                <i class="iconfont '+modeStyleClass+'"></i>'+
         '            </div>'+
         '            <div class="index" title="显示/隐藏目录索引编号">'+
@@ -258,7 +258,7 @@ class MarkdownPad2AutoCatalog {
         '                   </li>'+
         '                   </li>'+indexStyleElement+
         '                </ul>'+'            </div>'+
-        '            <div class="quit-menu" title="展开收起子目录">'+
+        '            <div class="quit-menu" title="展开/收起全部子目录">'+
         '                <i class="iconfont icon-quit" value="true"></i>'+
         '            </div>'+'        </footer>'+'    </div>';
     //4.设置内容父级元素的内容结构
@@ -273,8 +273,8 @@ class MarkdownPad2AutoCatalog {
     bodyBlock.appendChild (rightBlock);
     //6.底部提示
     let msg = '<p class="note-tips">'+
-        ' 本文档风格样式经过 MarkdownPad2AutoCatalog 目录生成插件转换生成，'+
-        '插件地址：<a href="https://github.com/cayxc/MarkdownPad2AutoCatalog" target="_blank"> GitHub地址</a>&emsp;<a href="https://gitee.com/cayxc/MarkdownPad2AutoCatalog" target="_blank">Gitee地址</a></p>';
+        'DOCUMENT STYLE CREATED BY MDTHT,'+
+        '&nbsp;ABOUT MDTHT：<a href="https://github.com/cayxc/MarkdownPad2AutoCatalog" target="_blank"> GitHub</a>&emsp;<a href="https://gitee.com/cayxc/MarkdownPad2AutoCatalog" target="_blank">Gitee</a></p>';
     //5.追加结构元素到页面
     this.noteTips ('footer', msg, 'content');
   }
@@ -1290,7 +1290,7 @@ class MarkdownPad2AutoCatalog {
 
 
 window.addEventListener ('DOMContentLoaded', function () {
-  new MarkdownPad2AutoCatalog ();
+  new Mdtht ();
 });
 
 

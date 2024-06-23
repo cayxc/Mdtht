@@ -1,9 +1,9 @@
 /* ALI-ICONFONT*/
 @font-face {
   font-family: "iconfont"; /* Project id 4571070 */
-  src: url('../ali-iconfont-2/iconfont.woff2?t=1717407125272') format('woff2'),
-  url('../ali-iconfont-2/iconfont.woff?t=1717407125272') format('woff'),
-  url('../ali-iconfont-2/iconfont.ttf?t=1717407125272') format('truetype');
+  src: url('../ali-iconfont/iconfont.woff2?t=1717407125272') format('woff2'),
+  url('../ali-iconfont/iconfont.woff?t=1717407125272') format('woff'),
+  url('../ali-iconfont/iconfont.ttf?t=1717407125272') format('truetype');
 }
 
 .iconfont {
@@ -12,6 +12,14 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-retractB:before {
+  content: "\e619";
+}
+
+.icon-launchB:before {
+  content: "\e77f";
 }
 
 .icon-fail:before {
@@ -44,14 +52,6 @@
 
 .icon-quit:before {
   content: "\e652";
-}
-
-.icon-launchB:before {
-  content: "\e60f";
-}
-
-.icon-retractB:before {
-  content: "\e74b";
 }
 
 .icon-retractC:before {
@@ -99,28 +99,33 @@
 }
 
 /*colors*/
-$text-color: #000000;
-$text-grey: #999999;
-$text-code: #283e60;
-$title-color: rgb(28, 36, 54);
-$title-color2: rgb(48, 78, 112);
+$text-color: #000;
+$text-grey: #666;
+$text-code: #223372;
+$title-color: #18222f;
+$title-color2: rgb(34, 45, 86);
 
-$bg-color: #fdfdfd;
-$bg-color2: #eeeeee;
-$border-color: #d3d3d3;
+$bg-color: rgb(250, 250, 250);
+$bg-color2: rgb(240, 240, 242);
+$bg-color3: rgba(240, 240, 244, 0.8);
+$border-color: #d3d3d3ff;
 $grey-color: #d9d9d9;
 
-$green: rgb(2, 189, 102);
-$red: #d00101;
-$orange: #fa5f1d;
+$color-1: #365ec7;
+$color-1-0-a: rgba(110, 150, 253, 0.18);
+$color-1-0-b: rgba(110, 150, 253, 0.05);
+$color-2: #e38603;
+$color-1-0-c: rgba(43, 135, 238, 0.3);
 
-$text-dark: rgb(196, 196, 196);
-$text-grey-dark: rgb(46, 62, 66);
+$text-dark: #d0d0d0;
+$text-grey-dark: #868686;
 
-$bg-dark: rgb(22, 27, 32);
-$bg-dark2: rgb(41, 55, 61);
-$code-bg-dark: rgba(184, 204, 208, 0.12);
-$grey-color-dark: rgb(52, 65, 72);
+$bg-dark:  #1b1b1f;
+$bg-dark2: rgb(40, 42, 50);
+$code-bg-dark:  rgb(49, 52, 56);
+$bg-color3-dark: rgba(40, 42, 50, 0.8);
+$grey-color-dark:  rgb(49, 52, 56);
+$text-code-dark: #d7ddff;
 
 /*size*/
 $size-32: 3.2rem;
@@ -156,7 +161,7 @@ $size-10: 1.0rem;
 @mixin code-box($margin:1rem,$padding:1rem,$font-size:1.4rem,$bag:$bg-color2) {
   margin: $margin 0;
   padding: $padding/2 $padding;
-  border: .1rem solid rgb($border-color, .35);
+  //border: .1rem solid rgb($border-color, .35);
   background: $bag;
   font-size: $font-size;
   box-sizing: border-box;
@@ -325,7 +330,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 .error {
   @include border-radius(.6rem);
   padding: 1.6rem;
-  background: rgb($red, .5);
+  background: rgb($color-1, .5);
 }
 
 /*input checkbox no-style*/
@@ -449,7 +454,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 
 #list-container .js-active > a,
 .search-result .js-active {
-  color: $green !important;
+  color: $color-1 !important;
   background: $bg-color2 !important;
   @include border-radius(.5rem);
 
@@ -461,12 +466,12 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 .search-result .search-click {
   @include border-radius(.5rem);
   padding: .4rem .6rem;
-  color: $orange !important;
+  color: $color-2 !important;
   background: $bg-color2;
 }
 
 #list-container .js-active > .iconfont {
-  color: $green !important;
+  color: $color-1 !important;
 }
 
 .js-show-shadow,
@@ -520,7 +525,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     @include text-shadow($x: .2rem, $y: .2rem, $s: .2rem, $c: $text-color);
   }
   .search-result .search-click {
-    color: $orange !important;
+    color: $color-2 !important;
     background: $grey-color-dark;
   }
   .js-active > a {
@@ -534,7 +539,6 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     background-color: $bg-dark;
     color: $text-dark;
   }
-
   h1, h2, h3, h4, h5, h6 {
     color: $text-dark;
   }
@@ -548,20 +552,26 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     text-decoration-color: $text-dark;
     -moz-text-decoration-color: $text-dark;
   }
+  blockquote{
+    background: $bg-color3-dark;
+  }
+  blockquote blockquote{
+    background: $color-1-0-b;
+  }
   kbd {
     background-color: $title-color2;
   }
   code, pre {
-    @include bag-border-dark($code-bg-dark, $grey-color-dark);
+    @include bag-border-dark($bg-dark2,$code-bg-dark);
   }
 
   table {
     @include table-style($bor-color: $grey-color-dark, $bag-color: $code-bg-dark);
     tbody tr:nth-child(even) th{
-      background: $code-bg-dark;
+      background: $code-bg-dark !important;
     }
     tbody tr:nth-child(odd) td{
-      background: rgb($bg-dark2,.2);
+      background: rgb($bg-dark2,.2) !important;
     }
     tbody tr td{
       border-top: .1rem solid $grey-color-dark;
@@ -579,11 +589,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     }
   }
   .iconfont {
-    color: $grey-color-dark;
+    color: $bg-dark2;
     text-shadow: .1rem .1rem .1rem rgb($bg-dark2, 1);
 
     &:hover {
-      text-shadow: .1rem .1rem .1rem rgb($green, .2);
+      text-shadow: .1rem .1rem .1rem rgb($color-1, .2);
     }
   }
   .note-tips {
@@ -643,14 +653,14 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     }
   }
   .js-search {
-    @include box-shadow-1(rgb($green, .15));
+    @include box-shadow-1(rgb($color-1, .15));
     color: rgb($text-dark, .4) !important;
 
     a {
       color: $text-dark !important;
 
       &:hover {
-        color: $green !important;
+        color: $color-1 !important;
         background: $code-bg-dark !important;
       }
     }
@@ -664,7 +674,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     background: $bg-dark2;
 
     &:hover {
-      color: $green;
+      color: $color-1;
     }
   }
 
@@ -672,7 +682,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     background: $bg-dark;
     @include bag-border-dark($bg-dark, $grey-color-dark);
     border-bottom-color: $bg-dark;
-    @include box-shadow-2(rgb($green, .15));
+    @include box-shadow-2(rgb($color-1, .15));
   }
 
   .structure-child {
@@ -692,15 +702,18 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     .icon-catalog-close {
       color: $text-dark;
     }
+    .icon-label {
+      text-shadow: 0 0 0.3rem rgb(0,0,0, 0.8);
+    }
   }
 
 
   /*非webkit内核浏览器*/
-  scrollbar-color: rgb($grey-color-dark, .8) rgb($grey-color-dark, 0.1);
+  scrollbar-color: rgb($bg-dark2, .8) rgb($bg-dark2, 0.1);
 
   //滑块背景色
   ::-webkit-scrollbar-thumb {
-    background: rgb($grey-color-dark, .8);
+    background: rgb($bg-dark2, .8);
   }
   //其余相关样式设置跟滑块一个背景色
   ::-webkit-scrollbar,
@@ -708,7 +721,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   ::-webkit-resizer,
   ::-webkit-scrollbar-track,
   ::-webkit-scrollbar-track-piece {
-    background: rgb($grey-color-dark, 0.1);
+    background: rgb($bg-dark2, 0.1);
   }
 }
 

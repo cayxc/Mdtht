@@ -14,7 +14,7 @@ code.hljs {
 }
 
 .hljs-comment {
-  color: #778c9d;
+  color: rgba(72, 93, 108, 0.75);
 }
 
 .hljs-punctuation, .hljs-tag {
@@ -27,16 +27,14 @@ code.hljs {
 
 .hljs-attribute, .hljs-doctag, .hljs-keyword, .hljs-meta .hljs-keyword, .hljs-name, .hljs-selector-tag {
   color: #3cb2fc;
-  font-weight: 700
 }
 
 .hljs-deletion, .hljs-number, .hljs-quote, .hljs-selector-class, .hljs-selector-id, .hljs-string, .hljs-template-tag, .hljs-type {
-  color: $green;
+  color: #365ec7;
 }
 
 .hljs-section, .hljs-title {
   color: #af66ef;
-  font-weight: 700;
 }
 
 .hljs-link, .hljs-operator, .hljs-regexp, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-symbol, .hljs-template-variable, .hljs-variable {
@@ -48,7 +46,7 @@ code.hljs {
 }
 
 .hljs-addition, .hljs-built_in, .hljs-bullet, .hljs-code {
-  color: $orange;
+  color: #e38603;
 }
 
 .hljs-meta {
@@ -64,15 +62,15 @@ code.hljs {
 }
 
 .hljs-strong {
-  font-weight: 700
+  font-weight: 500
 }
 @mixin code-dark {
   code,code.hljs {
-    color: #95def6;
+    color: #d7ddff;
     background: transparent;
   }
-  p code,p code.hljs{
-    background: rgba(165, 187, 192, 0.12);
+  p code,table code,p code.hljs{
+    background: rgba(110, 150, 253, 0.18);
   }
   .hljs-comment {
     color: #667c89;

@@ -67,17 +67,18 @@ hr {
 }
 
 ::selection {
-  background: rgb($green, .3);
+  background: $color-1-0-c;
   text-shadow: none;
 }
-
 a {
   text-decoration: none;
-  color: $orange;
+  color: $color-1;
   cursor: pointer;
+  font-weight: 500;
 
   &:hover {
-    color: $green;
+    color: $color-2;
+    text-decoration: underline;
   }
 }
 
@@ -87,7 +88,7 @@ p {
 
 strong {
   font-weight: bold;
-  color: $green;
+  color: $color-1;
 }
 
 u {
@@ -102,22 +103,23 @@ em {
 del {
   color: $text-grey;
   text-decoration: line-through;
-  text-decoration-color: $orange;
-  -moz-text-decoration-color: $orange;
+  text-decoration-color: $color-2;
+  -moz-text-decoration-color: $color-2;
 }
 
 sup, sub {
   cursor: pointer;
 
   &:hover {
-    color: $green;
+    color: $color-1;
   }
 }
 
 mark {
-  background-color: rgb($green,.75);
+  background-color: $color-1;
   padding: 0.2rem 1rem;
-  @include border-radius(0.4rem)
+  @include border-radius(0.4rem);
+  color: $bg-color;
 }
 
 kbd {
@@ -132,11 +134,10 @@ kbd {
   margin-right: 0.6rem;
   vertical-align: text-top;
   font-size: 1.4rem;
-
+  box-shadow: none;
 }
 
 img {
-  width: 100%;
   @include border-radius();
   margin-top: 1rem;
 }
@@ -159,21 +160,32 @@ ul li, ol li, dl dt, dl dd {
 }
 
 ul{
+  margin-left: 3.2rem;
   li{
     list-style: none;
     text-decoration: none;
   }
-  li li{
-    margin-left: 2.5rem;
+  ul{
+    margin-left: 3.2rem;
+  }
+  ol{
+    margin-left: 3.2rem;
   }
 }
+
 ol{
-  margin-left: 2.3rem;
-  li{margin-left: 0;}
+  margin-left: 5.2rem;
+  ol{margin-left: 3.2rem;}
+  ul{
+    margin-left: .8rem;
+  }
 }
 
+dl{
+  margin-left: 3.2rem;
+}
 dl dd {
-  margin-left: 2.5rem;
+  margin-left: 3.2rem;
 }
 
 #content {
@@ -195,10 +207,11 @@ pre {
 code {
   @include code-box();
   @include border-radius(0.5rem);
-  padding: .2rem 1rem;
+  background: $bg-color3;
+  padding: .3rem 1rem;
   line-height: 1.8;
-  vertical-align: text-top;
   color: $text-code;
+  vertical-align: text-bottom;
 }
 
 pre code {
@@ -208,8 +221,10 @@ pre code {
   vertical-align: middle;
 }
 
-p code {
+p code,blockquote code,table code {
   line-height: 1.5;
+  padding: 0.3rem 1rem;
+  background: $color-1-0-a;
 }
 
 /*sup,sub*/
@@ -221,23 +236,26 @@ sup, sub {
 blockquote {
   @include code-box($padding: 2rem, $font-size: $size-16);
   @include border-radius();
-  border-left: .5rem solid $green;
+  border-left: .4rem solid $color-1;
   border-bottom: none;
   border-top: none;
   border-right: none;
-  background-color: rgb(165, 187, 192, .15);
+  background-color: $bg-color3;
   overflow: hidden;
 
   p:first-child {
     margin-top: 0;
   }
 }
+blockquote blockquote{
+  background: $color-1-0-b;
+}
 
 .iconfont {
   color: $text-grey;
 
   &:hover {
-    text-shadow: .1rem .1rem .1rem rgb($green, .75);
+    text-shadow: .1rem .1rem .1rem rgb($color-1, .75);
   }
 }
 
@@ -258,7 +276,7 @@ input[type='checkbox'] {
   &:checked {
     content: '';
     display: inline-block;
-    background: $green;
+    background: $color-1;
     border-color: transparent;
     font-size: 1.3rem;
     text-align: center;
@@ -273,7 +291,7 @@ input[type='checkbox'] {
 
 /*input radio*/
 input[type='radio'] {
-  @include border-default($color: $green);
+  @include border-default($color: $color-1);
   @include border-radius($size: 50%);
 
   &:checked {
@@ -283,7 +301,7 @@ input[type='radio'] {
       width: 8px;
       height: 8px;
       margin: 3px auto;
-      background: $green;
+      background: $color-1;
       @include border-radius($size: 50%);
     }
   }
@@ -302,7 +320,6 @@ input[type='radio'] {
   justify-content: space-between;
   -webkit-justify-content: space-between;
   -moz-justify-content: space-between;
-
 }
 
 /*left-containe*/
@@ -381,7 +398,7 @@ input[type='radio'] {
   float: left;
 
   &:hover {
-    color: $green !important;
+    color: $color-1 !important;
   }
 }
 
@@ -414,8 +431,8 @@ input[type='radio'] {
   &:focus {
     outline: none;
     width: 100%;
-    border-color: $green;
-    @include box-shadow-1(rgb($green, .2));
+    border-color: $color-1;
+    @include box-shadow-1(rgb($color-1, .2));
   }
 
   &::placeholder {
@@ -436,7 +453,7 @@ input[type='radio'] {
   line-height: 2.3rem;
 
   &:hover {
-    color: $green;
+    color: $color-1;
   }
 }
 
@@ -473,7 +490,7 @@ input[type='radio'] {
 
       &:hover {
         cursor: pointer;
-        color: $green !important;
+        color: $color-1 !important;
         background: $bg-color2;
       }
     }
@@ -563,6 +580,7 @@ input[type='radio'] {
   ul {
     display: block;
     position: relative;
+    margin-left: 0;
 
     &:before {
       @include pseudo-element($w: .1rem, $h: 100%, $p: absolute);
@@ -638,6 +656,7 @@ input[type='radio'] {
   }
 
   &:hover {
+    text-decoration: none;
     &:before {
       width: 1.2rem !important;
     }
@@ -655,7 +674,7 @@ input[type='radio'] {
 
 .list-wrapper ul li:hover {
   & > a {
-    color: $green;
+    color: $color-1;
     background: $bg-color2;
 
     &:before {
@@ -664,7 +683,7 @@ input[type='radio'] {
   }
 
   & > .iconfont {
-    color: $green;
+    color: $color-1;
   }
 }
 
@@ -732,7 +751,7 @@ input[type='radio'] {
     line-height: 4rem;
 
     &:hover {
-      color: $green;
+      color: $color-1;
       cursor: pointer;
     }
   }
@@ -784,7 +803,7 @@ input[type='radio'] {
     box-sizing: border-box;
 
     &:hover {
-      color: $green;
+      color: $color-1;
     }
 
     &:first-child, &:nth-of-type(1), &:nth-of-type(2), &:nth-of-type(3) {
@@ -813,7 +832,7 @@ input[type='radio'] {
   li input[type='radio'] {
     width: $size-12;
     height: $size-12;
-    @include border-default($color: $green);
+    @include border-default($color: $color-1);
     @include border-radius($size: 50%);
     cursor: pointer;
 
@@ -824,7 +843,7 @@ input[type='radio'] {
         width: .6rem;
         height: .6rem;
         margin: .2rem auto;
-        background: $green;
+        background: $color-1;
         @include border-radius($size: 50%);
       }
     }
@@ -851,14 +870,14 @@ input[type='radio'] {
   i {
     display: block;
     position: absolute;
-    color: $green;
+    color: $color-1;
     font-size: 4rem;
   }
 
   .icon-label {
     top: -1.3rem;
     left: -.2rem;
-    text-shadow: 0 0 .3rem rgb($code-bg-dark, .75);
+    text-shadow: 0 0 .3rem rgb($bg-dark, .5);
   }
 
   .icon-catalog-close {
@@ -871,7 +890,7 @@ input[type='radio'] {
   }
 
   &:hover .icon-label {
-    color: $orange;
+    color: $color-2;
   }
 }
 
@@ -882,12 +901,18 @@ input[type='radio'] {
 }
 
 .note-tips {
-  font-size: 1.1rem;
+  font-size: .9rem;
   padding: 1.1rem 0;
   border-top: .1rem solid $border-color;
   color: $text-grey;
   margin: 0;
   text-align: center;
+  &::before{
+    content: '\00A9';
+    font-size: 1.2rem;
+    vertical-align: middle;
+    margin-right: .2rem;
+  }
 }
 
 /*scroll style*/

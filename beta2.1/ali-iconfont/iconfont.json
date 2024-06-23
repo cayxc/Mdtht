@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "34817772",
+      "name": "方向",
+      "font_class": "retractB",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "40829260",
+      "name": "方向",
+      "font_class": "launchB",
+      "unicode": "e77f",
+      "unicode_decimal": 59263
+    },
+    {
       "icon_id": "560193",
       "name": "失败",
       "font_class": "fail",
@@ -60,20 +74,6 @@
       "font_class": "quit",
       "unicode": "e652",
       "unicode_decimal": 58962
-    },
-    {
-      "icon_id": "22334253",
-      "name": "展开",
-      "font_class": "launchB",
-      "unicode": "e60f",
-      "unicode_decimal": 58895
-    },
-    {
-      "icon_id": "40590638",
-      "name": "展开",
-      "font_class": "retractB",
-      "unicode": "e74b",
-      "unicode_decimal": 59211
     },
     {
       "icon_id": "40586374",
