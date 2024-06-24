@@ -101,10 +101,10 @@ Custom Configuration Example：
 
 When using, please pay attention to the following 4 points:
 
-1. The automatically generated table of contents and code highlighting functions will not take effect in the preview pane of the MarkdownPad2 editor. They will only work properly when you export the file as HTML and open the HTML file in a browser.
-2. **When generating the table of contents, if multiple `<h1>` tags are detected, all `<h1>` tags except the first one will be automatically converted to `<h2>` tags, and all subsequent tags will be downgraded by one level (e.g., `<h3>` becomes `<h4>`, and so on). Since this operation may affect the speed of generating the table of contents, it is recommended to use only one `<h1>` tag as the document title and `<h2>` tags as first-level headings.**
-3. Avoid using `<script>` tags in your content, as this can prevent subsequent content from displaying properly.
-4. Usage of inserting code:
+- The automatically generated table of contents and code highlighting functions will not take effect in the preview pane of the MarkdownPad2 editor. They will only work properly when you export the file as HTML and open the HTML file in a browser.
+- **When generating the table of contents, if multiple `<h1>` tags are detected, all `<h1>` tags except the first one will be automatically converted to `<h2>` tags, and all subsequent tags will be downgraded by one level (e.g., `<h3>` becomes `<h4>`, and so on). Since this operation may affect the speed of generating the table of contents, it is recommended to use only one `<h1>` tag as the document title and `<h2>` tags as first-level headings.**
+- Avoid using `<script>` tags in your content, as this can prevent subsequent content from displaying properly.
+- Usage of inserting code:
    1. Use: `<pre><code class="xxx">Your code</code></pre>`, where xxx is the code type, such as "js".
    2. Simply add spaces before the content you want to set as code. If one space is not enough, add more spaces until the content after the spaces changes color. This method is more convenient, and it's my favorite way ^_^
 
