@@ -1,3 +1,6 @@
+# In project refactoring
+---
+
 # MarkdownPad2AutoCatalog 
 
 MarkdownPad2AutoCatalog is a plugin developed for the MarkdownPad2 editor using JavaScript and CSS. Its purpose is to automatically generate a navigation menu and customize webpage styles when exporting files to HTML or previewing them.
