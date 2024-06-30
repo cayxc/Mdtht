@@ -6,6 +6,14 @@
 
 Can be used in any Markdown editor that supports adding JavaScript and CSS, such as:：**Typora**、**MarkdownPad** ......
 
+> [!IMPORTANT]
+>
+> **Important Tips：** **Mdtht is a remake of MarkdownPad2AutoCatalog**
+>
+> MarkdownPad2AutoCatalog is now obsolete. Users who previously used MarkdownPad2AutoCatalog should download Mdtht again
+>
+> Compared to MarkdownPad2AutoCatalog, Mdtht has higher execution efficiency and richer features.
+
 # Implemented functions
 
 **Mdtht** provides the following features：
@@ -77,7 +85,7 @@ The steps to use in **MarkdownPad** are as follows:
 
 5. Open MarkdownPad -> `Tool`  -> `Option`  -> `Senior` -> `Html Head Editor`  -> Enter the label pairs in the code editor，Then paste the code of **mdtht.min.js** into the label pair, For example: `<script> Copy the code of mdtht.min.js and place it here </script>`  -> `Save and Close`
 
-6. 代码高亮：
+6. Code highlight:
     1. Download **highlight.min.js**，[highlight.min.js-download address](https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js "highlight.min.js")
     2. Refer to step 5 to copy the highlight.js code into a new `<script>` tag pair.
     3.  **Add code at the end of the highlight.min.js code: `hljs.highlightAll();`** -> `Save completed`

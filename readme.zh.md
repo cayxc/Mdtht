@@ -6,6 +6,14 @@
 
 可以在任何支持添加 js 和 css 的Markdown编辑器中使用，如：**Typora**、**MarkdownPad** ......
 
+> [!IMPORTANT]
+>
+> **注意：** **Mdtht 是 MarkdownPad2AutoCatalog 的重制版**
+>
+> MarkdownPad2AutoCatalog 现在已经废弃，请之前使用MarkdownPad2AutoCatalog 的用户重新下载 Mdtht
+>
+> **Mdtht** 相比 **MarkdownPad2AutoCatalog** 具有更加高的执行效率和更加丰富的功能。
+
 # 实现的功能
 
 **Mdtht**提供了如下功能：
