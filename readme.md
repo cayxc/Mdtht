@@ -130,7 +130,7 @@ Example of configuration parameter sequence:
 
 > [!ImPORTANT]
 >
-> **Be careful：**If you want to configure the Nth parameter, the parameters before the Nth parameter must also be configured in sequence. If you want to configure the third parameter, the first and second parameters must also be configured.
+> **Be Careful：**If you want to configure the Nth parameter, the parameters before the Nth parameter must also be configured in sequence. If you want to configure the third parameter, the first and second parameters must also be configured.
 
 ---
 
