@@ -48,7 +48,7 @@ Can be used in any Markdown editor that supports adding JavaScript and CSS, such
 
 **3 types of directory styles**
 
-![3 种目录样式](./img/mdtht-3.jpg)
+![3 种目录样式](./img/mdtht-3.png)
 
 **Search function effect**
 
