@@ -1275,13 +1275,11 @@ class Mdtht {
    */
   internalLinkJump(){
     let aLink = document.querySelectorAll('#content a');
-    let internalLink = [];
     if(aLink.length > 0){
       for (let i = 0,len=aLink.length;i<len;i++){
         if(aLink[i].getAttribute('href').slice(0,1) === '#'){
           let aName = aLink[i].getAttribute('name');
           let aHref = aLink[i].getAttribute('href');
-          console.log(aName,aHref);
           aLink[i].onclick=function (e){
             e.preventDefault();
             let targetElement =  document.getElementsByName(aHref.slice(1));
