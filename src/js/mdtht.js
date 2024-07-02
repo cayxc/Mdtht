@@ -1174,7 +1174,6 @@ class Mdtht {
         for (let j = 0, len = newSearch.length; j < len; j ++) {
           newSearch[j].addEventListener ('click', function (event) {
             event.preventDefault ();
-            event.preventDefault();
             document.getElementById (this.href.slice (this.href.indexOf ('#')+1)).scrollIntoView ({behavior: 'smooth',block:'start',inline:'nearest'});
             newSearch[j].setAttribute ('class', 'search-click');
           });
