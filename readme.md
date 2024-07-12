@@ -65,7 +65,7 @@ The steps to use in **Typora** are as follows:
 3. `In the<body/>text box`  -> `Input:<script> </script>` -> Copy the **mdtht.min.js** code from the dist folder to the `<script>` label pair，For example:`<script> Copy the code of mdtht.min.js here </script>`
 4. The style file has been added.
 5. Code highlight:
-    1. Download **highlight.min.js**，[highlight.min.js-download address](https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js "highlight.min.js")
+    1. Download **highlight.min.js**，[highlight.min.js-download address](https://highlightjs.org/download)，**Attention: Please select "Select all languages" when downloading**
     2. Refer to step 3 to copy the highlight.js code into the text box of the`<body/>`
     3. **Add code at the end of the highlight.min.js code: `hljs.highlightAll();`** -> `Save completed`
 6. When exporting HTML, simply select the Mdtht template you just added.
@@ -86,7 +86,7 @@ The steps to use in **MarkdownPad** are as follows:
 5. Open MarkdownPad -> `Tool`  -> `Option`  -> `Senior` -> `Html Head Editor`  -> Enter the label pairs in the code editor，Then paste the code of **mdtht.min.js** into the label pair, For example: `<script> Copy the code of mdtht.min.js and place it here </script>`  -> `Save and Close`
 
 6. Code highlight:
-    1. Download **highlight.min.js**，[highlight.min.js-download address](https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js "highlight.min.js")
+    1. Download **highlight.min.js**，[highlight.min.js-download address](https://highlightjs.org/download)，**Attention: Please select "Select all languages" when downloading**
     2. Refer to step 5 to copy the highlight.js code into a new `<script>` tag pair.
     3.  **Add code at the end of the highlight.min.js code: `hljs.highlightAll();`** -> `Save completed`
 7. Save and close, complete.
