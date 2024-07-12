@@ -29,7 +29,7 @@ Can be used in any Markdown editor that supports adding JavaScript and CSS, such
 9. One click expansion and collapse of sidebar.
 10. Automatically track the directory based on the content of the reading area.
 11. Catalog search.
-12. Code highlighting plugin **highlightjs** style beautification，[highlightjs网址](https://highlightjs.org/)
+12. Code highlighting plugin **highlightjs** style beautification，[highlightjs](https://highlightjs.org/)
 13. Personalize configuration styles based on personal preferences.
 
 # Final effect
