@@ -255,7 +255,7 @@ class Mdtht {
     //6.底部提示
     let msg = '<p class="note-tips">'+
         'DOCUMENT STYLE CREATED BY Mdtht,'+
-        '&nbsp;ABOUT Mdtht：<a href="https://github.com/cayxc/Mdtht" target="_blank"> GitHub</a>&emsp;<a href="https://gitee.com/cayxc/mdtht" target="_blank">Gitee</a></p>';
+        '&nbsp;ABOUT Mdtht：<a href="https://github.com/cayxc/Mdtht" target="_blank">Github</a>&emsp;<a href="https://gitee.com/cayxc/mdtht" target="_blank">Gitee</a></p>';
     //5.追加结构元素到页面
     this.noteTips ('footer', msg, 'content');
   }
