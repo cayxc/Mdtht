@@ -65,7 +65,7 @@
 3. `在<body/>文本框中`  -> `输入：<script> </script>` -> 复制 dist 文件夹中的 **mdtht.min.js** 的代码到`<script>`标签对中，如：`<script> 复制 mdtht.min.js 的代码到这里 </script>`
 4. 样式文件添加完成。
 5. 代码高亮：
-    1. 下载 highlight.min.js，[highlight.min.js下载地址](https://highlightjs.org/download)，**注意：下载时请选择“Select all languages”**
+    1. 下载 highlight.min.js，[highlight.min.js下载地址](https://highlightjs.org/download)，**注意：下载时请选择 “Select all languages”**
     2. 参照第 3 步将 highlight.min.js 代码复制到 `<body/>文本框中`
     3. **在 highlight.min.js 代码的最后位置添加代码： `hljs.highlightAll();`** -> `保存完成`。
 6. 导出 html 时选择刚刚添加的 Mdtht 模版即可。
@@ -86,7 +86,7 @@
 5. 打开 MarkdownPad -> `工具`  -> `选项`  -> `高级` -> `Html Head编辑器`  -> 在代码编辑器中输入 `<script> </script>` 标签对，然后粘贴 **mdtht.min.js** 的代码到标签对中： `<script> 复制mdtht.min.js的代码放到这里 </script>`  -> `保存并关闭`
 
 6. 代码高亮：
-    1. 下载 highlight.min.js，[highlight.min.js下载地址](https://highlightjs.org/download)，**注意：下载时请选择“Select all languages”**
+    1. 下载 highlight.min.js，[highlight.min.js下载地址](https://highlightjs.org/download)，**注意：下载时请选择 “Select all languages”**
     2. 参照第 5 步将 highlight.min.js 代码复制到 `新的<script>标签对中`
     3. **在 highlight.min.js 代码的最后位置添加代码： `hljs.highlightAll();`** -> `保存完成`。
 
