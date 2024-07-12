@@ -66,7 +66,7 @@ The steps to use in **Typora** are as follows:
 4. The style file has been added.
 5. Code highlight:
     1. Download **highlight.min.js**，[highlight.min.js-download address](https://highlightjs.org/download)，**Attention: Please select "Select all languages" when downloading**
-    2. Refer to step 3 to copy the highlight.js code into the text box of the`<body/>`
+    2. Extract downloaded files, Refer to step 3 to copy the highlight.js code into the text box of the`<body/>`
     3. **Add code at the end of the highlight.min.js code: `hljs.highlightAll();`** -> `Save completed`
 6. When exporting HTML, simply select the Mdtht template you just added.
 
@@ -87,7 +87,7 @@ The steps to use in **MarkdownPad** are as follows:
 
 6. Code highlight:
     1. Download **highlight.min.js**，[highlight.min.js-download address](https://highlightjs.org/download)，**Attention: Please select "Select all languages" when downloading**
-    2. Refer to step 5 to copy the highlight.js code into a new `<script>` tag pair.
+    2. Extract downloaded files, Refer to step 5 to copy the highlight.js code into a new `<script>` tag pair.
     3.  **Add code at the end of the highlight.min.js code: `hljs.highlightAll();`** -> `Save completed`
 7. Save and close, complete.
 
