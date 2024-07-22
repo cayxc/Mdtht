@@ -8,6 +8,10 @@ Can be used in any Markdown editor that supports adding JavaScript and CSS, such
 
 > [!IMPORTANT]
 >
+> **Note: It can also be used in a separate HTML file**. Simply introduce mdtht.min.js and mdtht.min.css into the HTML file to generate the relevant styles. As long as there is an h tag in the HTML, the corresponding directory can be generated.
+
+> [!IMPORTANT]
+>
 > **Important Tips：** **Mdtht is a remake of MarkdownPad2AutoCatalog**
 >
 > MarkdownPad2AutoCatalog is now obsolete. Users who previously used MarkdownPad2AutoCatalog should download Mdtht again
@@ -20,17 +24,18 @@ Can be used in any Markdown editor that supports adding JavaScript and CSS, such
 
 1. Two document style modes, high brightness and dark, can be automatically switched based on the system or manually set.
 2. Automatically generate corresponding hierarchical directories and serial numbers based on the position of h1~h6 tags in the HTML document.
-3. Automatically generate sidebar directory navigation.
-4. Show or hide title numbering.
-5. Directory hierarchical tree view.
-6. 3 types of directory icon styles.
-7. Text Shadow Effect.
-8. One click expansion of storage subdirectories.
-9. One click expansion and collapse of sidebar.
-10. Automatically track the directory based on the content of the reading area.
-11. Catalog search.
-12. Code highlighting plugin **highlightjs** style beautification，[highlightjs](https://highlightjs.org/)
-13. Personalize configuration styles based on personal preferences.
+3. Automatically correct the directory hierarchy based on the position of the h tag
+4. Automatically generate sidebar directory navigation.
+5. Show or hide title numbering.
+6. Directory hierarchical tree view.
+7. 3 types of directory icon styles.
+8. Text Shadow Effect.
+9. One click expansion of storage subdirectories.
+10. One click expansion and collapse of sidebar.
+11. Automatically track the directory based on the content of the reading area.
+12. Catalog search.
+13. Code highlighting plugin **highlightjs** style beautification，[highlightjs](https://highlightjs.org/)
+14. Personalize configuration styles based on personal preferences.
 
 # Final effect
 
