@@ -2,7 +2,7 @@
 
 [English Document](./readme.md)
 
-**Mdtht**（Markdown to Html Theme）是使用 Javascript和 CSS 为 Markdown编辑器开发的一款插件。目的是在将 .md 文件导出为html文件或预览时，自动生成侧边目录、文档样式。
+**Mdtht**（Markdown to Html Theme）是使用 Javascript 和 CSS 为 Markdown编辑器开发的一款插件。目的是在将 .md 文件导出为html文件或预览时，自动生成侧边目录、文档样式。
 
 可以在任何支持添加 js 和 css 的Markdown编辑器中使用，如：**Typora**、**MarkdownPad** ......
 
@@ -60,6 +60,17 @@
 ![搜索功能效果](./img/mdtht-4.png)
 
 # 如何使用
+
+## 在单独的html文件中使用
+
+在**单独的html文件**中使用步骤如下：
+
+1. 在 html 的 `<head>`标签中依次引入 mdtht.min.css、 mdtht.min.js
+2. 代码高亮（不需要代码高亮可以跳过这步）：
+    1. 下载 highlight.min.js，[highlight.min.js下载地址](https://highlightjs.org/download)，**注意：下载时请选择 “Select all languages”**
+    2. 解压下载的文件，参照第 1 步将 highlight.min.js 引入到html中。
+    3. 在引入的 highlight.min.js之后添加代码： `<script> hljs.highlightAll(); </script>` -> `保存`。
+6. 完成。
 
 ## 在Typora中使用
 
