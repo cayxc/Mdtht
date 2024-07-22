@@ -67,9 +67,9 @@ The steps to use in a separate HTML file are as follows:
 
 1. In the<head>tag of HTML, sequentially introduce mdtht.min.css and mdtht.min.js
 2. Code highlighting (you can skip this step without code highlighting):
-  1. Download highlight.min.js, [highlight.min.js download link]（ https://highlightjs.org/download ）Attention: **Please select "Select all languages" when downloading**
-  2. Extract the downloaded file and refer to step 1 to import highlight.min.js into HTML.
-  3. Add code after introducing highlight.min.js: `<script>hljs. highlightAll()</Script>` -> Save.
+   1. Download highlight.min.js, [highlight.min.js download link]（ https://highlightjs.org/download ）Attention: **Please select "Select all languages" when downloading**
+   2. Extract the downloaded file and refer to step 1 to import highlight.min.js into HTML.
+   3. Add code after introducing highlight.min.js: `<script>hljs. highlightAll()</Script>` -> Save.
 3. Completed.
 
 ## Using in Typora
