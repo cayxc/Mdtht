@@ -104,7 +104,7 @@
 6. 代码高亮：
     1. 下载 highlight.min.js，[highlight.min.js下载地址](https://highlightjs.org/download)，**注意：下载时请选择 “Select all languages”**
     2. 解压下载的文件，参照第 5 步将 highlight.min.js 代码复制到 `新的<script>标签对中`
-    3. **在 highlight.min.js 代码的最后位置添加代码： `hljs.highlightAll();`** -> `保存完成`。
+    3. **在 highlight.min.js 代码的最后位置添加代码： `hljs.highlightAll();`** -> 保存。
 
 7. 保存并关闭，完成。
 
