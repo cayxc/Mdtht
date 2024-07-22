@@ -8,7 +8,7 @@
 
 > [!IMPORTANT]
 >
-> **注意：在单独的 html 文件中使用也可以**，只需在html文件中引入 mdtht.min.js和 mdtht.min.css 就能生成相关样式，只要html中有 h标签 就能生成相应的目录
+> **注意：在单独的 html 文件中使用也可以**，只需在html文件中引入 mdtht.min.js和 mdtht.min.css 就能生成相关样式，只要html中有 h标签 就能生成相应的目录。
 
 > [!IMPORTANT]
 >
