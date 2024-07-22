@@ -70,7 +70,7 @@
     1. 下载 highlight.min.js，[highlight.min.js下载地址](https://highlightjs.org/download)，**注意：下载时请选择 “Select all languages”**
     2. 解压下载的文件，参照第 1 步将 highlight.min.js 引入到html中。
     3. 在引入的 highlight.min.js之后添加代码： `<script> hljs.highlightAll(); </script>` -> `保存`。
-6. 完成。
+3. 完成。
 
 ## 在Typora中使用
 
