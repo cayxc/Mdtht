@@ -1,11 +1,14 @@
 /*
- mdtht.js
- (c) 2022-2024
- Author: cayxc
- Homepage:  https://gitee.com/cayxc/mdtht  https://github.com/cayxc/Mdtht
- License: BSD-3-Clause
+ * ------------------------------------------------------------------------
+ * mdtht.js
+ * (c) 2022-2024
+ * Author: cayxc
+ * Homepage:  https://gitee.com/cayxc/mdtht  https://github.com/cayxc/Mdtht
+ * License: BSD-3-Clause
+ * ------------------------------------------------------------------------
  */
-var objThis;
+let objThis;
+
 class Mdtht {
   //indexStyle 目录样式 1, 2, 3
   //firstTagToTitle  第一个标题是否作为文档标题，不计入目录中
@@ -23,8 +26,8 @@ class Mdtht {
       showTitleIndex  = false,
       showTree        = true,
       openShadow      = false,
-      openDark        = false
-      ) {
+      openDark        = false,
+  ) {
     try {
       if ((typeof showIndex) !== 'boolean') {
         showIndex = true;
@@ -58,9 +61,6 @@ class Mdtht {
         titleCenter = false;
         throw '参数: titleCenter 类型有误，已按照默认配置执行，该参数类型为：Boolean';
       }
-    } catch (err) {
-      this.showError (err);
-    }finally {
       /*开发调试过程中将以下放到catch外，以获取具体错误信息*/
       objThis = this; //当前对象的 this
       this.showIndex = showIndex;
@@ -102,9 +102,12 @@ class Mdtht {
       this.singleCatalogClick ();
       this.searchCatalog ();
       this.catalogTrack ();
-      this.internalLinkJump();
+      this.internalLinkJump ();
       //主题随系统变化
       this.themeChange ();
+
+    } catch (err) {
+      this.showError (err);
     }
 
   }
@@ -115,10 +118,10 @@ class Mdtht {
    * ----------------------------------------
    */
   showError (info) {
-    let errorBlock = document.createElement ('p');
+    const errorBlock = document.createElement ('p');
     errorBlock.setAttribute ('class', 'error');
     errorBlock.innerHTML = info;
-    let content = document.querySelector ('body');
+    const content = document.querySelector ('body');
     content.prepend (errorBlock);
   }
 
@@ -136,7 +139,7 @@ class Mdtht {
           (typeof id) !== 'string') {
         throw 'noteTips() 调用时参数类型错误！';
       }
-      let exp = document.createElement (tag);
+      const exp = document.createElement (tag);
       exp.innerHTML = msg;
       //5.追加结构元素到页面
       document.getElementById (id).appendChild (exp);
@@ -153,7 +156,7 @@ class Mdtht {
    */
   createContent () {
     //获取已有正文内容
-    let oldContent = document.body.innerHTML;
+    const oldContent = document.body.innerHTML;
     //清空已有内容
     document.body.innerHTML = '';
     //设置主题属性
@@ -163,9 +166,9 @@ class Mdtht {
     document.body.style.overflow = 'hidden';
     //创建左侧目录、右侧内容及其外层包裹结构元素
     //1.创建目录、内容结构父级空元素
-    let bodyBlock = document.createElement ('div');
-    let leftBlock = document.createElement ('aside');
-    let rightBlock = document.createElement ('section');
+    const bodyBlock = document.createElement ('div');
+    const leftBlock = document.createElement ('aside');
+    const rightBlock = document.createElement ('section');
     //2.设置目录、内容父级元素id属性
     bodyBlock.id = 'body-container';
     leftBlock.id = 'left-container';
@@ -186,12 +189,12 @@ class Mdtht {
       modeStyleClass = 'icon-moon';
       document.documentElement.setAttribute ('theme', 'dark');
     }
-    if (this.openDark === false){
+    if (this.openDark === false) {
       modeStyleClass = 'icon-sun';
       document.documentElement.setAttribute ('theme', 'light');
     }
     let indexStyleElement = '';
-    let styleIndex = ['A', 'B', 'C'];
+    const styleIndex = ['A', 'B', 'C'];
     for (let i = 1, len = 3; i <= len; i ++) {
       if (this.indexStyle == i) {
         indexStyleElement +=
@@ -253,7 +256,7 @@ class Mdtht {
     bodyBlock.appendChild (leftBlock);
     bodyBlock.appendChild (rightBlock);
     //6.底部提示
-    let msg = '<p class="note-tips">'+
+    const msg = '<p class="note-tips">'+
         'DOCUMENT STYLE CREATED BY Mdtht,'+
         '&nbsp;ABOUT Mdtht：<a href="https://github.com/cayxc/Mdtht" target="_blank">Github</a>&emsp;<a href="https://gitee.com/cayxc/mdtht" target="_blank">Gitee</a></p>';
     //5.追加结构元素到页面
@@ -307,7 +310,7 @@ class Mdtht {
       allTag = document.querySelectorAll ('h1,h2,h3,h4,h5,h6');
     }
     this.handleHarr = allTag; //处理后的h标签集合
-    let tagLength = allTag.length;
+    const tagLength = allTag.length;
     //判断目录数量
     if (tagLength == 0) {
       return false;
@@ -347,7 +350,7 @@ class Mdtht {
       }
       //添加标题索引
       for (let k = 0; k < tagLength; k ++) {
-        let titleIndex = document.createElement ('span');
+        const titleIndex = document.createElement ('span');
         titleIndex.innerHTML = allTag[k].id.slice (allTag[k].id.lastIndexOf ('-')+1);
         allTag[k].prepend (titleIndex);
       }
@@ -416,12 +419,12 @@ class Mdtht {
       }
       // 所有目录集合,处理后的
       let allTag = this.handleHarr;
-      let level1 = [];
-      let level2 = [];
-      let level3 = [];
-      let level4 = [];
-      let level5 = [];
-      let level6 = [];
+      const level1 = [];
+      const level2 = [];
+      const level3 = [];
+      const level4 = [];
+      const level5 = [];
+      const level6 = [];
       for (let i = 0, len = allTag.length; i < len; i ++) {
         let number = this.findStrFre (allTag[i].id, '.');
         switch (number) {
@@ -483,15 +486,15 @@ class Mdtht {
       if ((typeof tag) != 'object') {
         throw 'setLevelNumber() 调用时参数类型错误，必须是一个h标签的对象集合！';
       }
-      let str = tag.id;
+      const str = tag.id;
       if (str.lastIndexOf ('.') == - 1) { //如果是一级目录形式 level-1000
-        let newValue = parseInt (str.slice (6))+1;
+        const newValue = parseInt (str.slice (6))+1;
         return 'level-'+newValue;
       } else {
         //如果是大于一级的目录形式 level-1.1 level-1.1.1 ...
-        let lastIndex = str.lastIndexOf ('.');
-        let oldValue = str.slice (0, lastIndex);
-        let newValue = parseInt (str.slice (lastIndex+1))+1;
+        const lastIndex = str.lastIndexOf ('.');
+        const oldValue = str.slice (0, lastIndex);
+        const newValue = parseInt (str.slice (lastIndex+1))+1;
         return oldValue+'.'+newValue;
       }
     } catch (err) {
@@ -511,20 +514,20 @@ class Mdtht {
         throw 'catalogForParent()参数类型错误，参数为string';
       }
       //上级目录
-      let ceilCatalog = [];
+      const ceilCatalog = [];
       //判断传入的name的目录等级
       let level = objThis.findStrFre (str, '.')+1; //0级为一级
       if (level > 1) {
         //当前目录的父目录
-        let childArr = objThis.levelTagArr (level-1);
+        const childArr = objThis.levelTagArr (level-1);
         if (childArr.length == 0) {
           return [];
         }
         for (let i = 0, len = childArr.length; i < len; i ++) {
           //父目录
-          let pName = childArr[i].id;
+          const pName = childArr[i].id;
           //当前目录 str 去除最后一段是否和父级相同
-          let hName = str.slice (0, str.lastIndexOf ('.'));
+          const hName = str.slice (0, str.lastIndexOf ('.'));
           if (hName == pName) {
             ceilCatalog.push (childArr[i]);
           }
@@ -551,8 +554,7 @@ class Mdtht {
       let ceilCatalog = objThis.findCeilCatalog (str);
       if (ceilCatalog.length > 0) { //不是1级目录
         let ceilName = ceilCatalog[0].id; //上一级目录class
-        let ceilElement = document.getElementsByClassName (
-            ceilName)[0].parentElement;
+        let ceilElement = document.getElementsByClassName (ceilName)[0].parentElement;
         ceilArr.push (ceilElement);
         this.findAllCeilCatalog (ceilName, ceilArr);
       }
@@ -599,7 +601,7 @@ class Mdtht {
         }
 
         //目录icon
-        let iconStyle = ['A', 'B', 'c']; //样式
+        const iconStyle = ['A', 'B', 'c']; //样式
         //2级及以后的目录
         for (let j = firstLevelNum+1; j <= 6; j ++) {
           let levelOther = this.levelTagArr (j);
@@ -704,23 +706,23 @@ class Mdtht {
     let asideButton = this.asideButton;
     let leftElement = this.leftElement;
     let switchButton = this.switchButton;
-    asideButton.onclick = function () {
+    asideButton.addEventListener ('click', function () {
       leftElement.setAttribute ('class', 'js-width-0');
       switchButton.className = 'js-height-1';
-    };
-    switchButton.onclick = function () {
+    });
+    switchButton.addEventListener ('click', function () {
       switchButton.style.height = switchButton.className = 'js-height-0';
       leftElement.removeAttribute ('class');
       leftElement.style.display = 'block';
-    };
+    });
     //屏幕小于768时，收起目录展开时，点击内容区，收起目录
     let mediaStatus = window.matchMedia ('(max-width: 768px)').matches;
     let asideStatus = leftElement.classList.contains ('js-width-0');
     if (mediaStatus && !asideStatus) {
-      this.rightElement.onclick = function () {
+      this.rightElement.addEventListener ('click', function () {
         leftElement.classList.add ('js-width-0');
         switchButton.className = 'js-height-1';
-      };
+      });
     }
   }
 
@@ -741,10 +743,10 @@ class Mdtht {
         throw 'changeIcon() 调用时参数2类型错误，必须为number,且小于等于 3';
       }
       //改变整体icon风格
-      let arr = ['A', 'B', 'C'];
+      const arr = ['A', 'B', 'C'];
       for (let i = 0, len = iconArr.length; i < len; i ++) {
-        let oldClass = iconArr[i].getAttribute ('class');
-        let newClass = oldClass.slice (0, - 1)+arr[index-1];
+        const oldClass = iconArr[i].getAttribute ('class');
+        const newClass = oldClass.slice (0, - 1)+arr[index-1];
         iconArr[i].setAttribute ('class', newClass);
       }
     } catch (err) {
@@ -764,7 +766,7 @@ class Mdtht {
         throw 'changeIcon() 调用时参数1类型错误，该参数为图标元素的容器';
       }
       //仅改变状态：展开/关闭
-      let oldClass = icon.getAttribute ('class');
+      const oldClass = icon.getAttribute ('class');
       if (oldClass.includes ('launch')) {
         icon.setAttribute ('class', oldClass.replace ('launch', 'retract'));
       }
@@ -782,17 +784,17 @@ class Mdtht {
    * ----------------------------------------
    */
   switchCatalogList () {
-    let switchListButton = this.switchListButton;
+    const switchListButton = this.switchListButton;
     let status = switchListButton.children[0].getAttribute ('value');
-    let allIcon = this.allIcon;
-    let changeSingleIcon = this.changeSingleIcon;
+    const allIcon = this.allIcon;
+    const changeSingleIcon = this.changeSingleIcon;
     switchListButton.addEventListener ('click', function () {
       //清除单个目录点已经过击赋予的样式，避免样式冲突
-      let oldLi = document.querySelectorAll ('.js-item-retract');
+      const oldLi = document.querySelectorAll ('.js-item-retract');
       for (let j = 0, len = oldLi.length; j < len; j ++) {
         oldLi[j].classList.remove ('js-item-retract');
       }
-      let oldLi2 = document.querySelectorAll ('.js-item-launch');
+      const oldLi2 = document.querySelectorAll ('.js-item-launch');
       for (let k = 0, len = oldLi2.length; k < len; k ++) {
         oldLi2[k].classList.remove ('js-item-launch');
       }
@@ -813,9 +815,8 @@ class Mdtht {
       }
       //改变icon状态：展开/关闭
       for (let i = 0, len = allIcon.length; i < len; i ++) {
-        let topClass = document.querySelector ('.list-wrapper').
-            getAttribute ('class');
-        let iconClass = allIcon[i].getAttribute ('class');
+        const topClass = document.querySelector ('.list-wrapper').getAttribute ('class');
+        const iconClass = allIcon[i].getAttribute ('class');
         if (topClass.includes ('js-retract')) { //收起目录
           //更换icon
           allIcon[i].setAttribute ('class',
@@ -830,9 +831,9 @@ class Mdtht {
               setAttribute ('class', 'list-wrapper js-launch');
         }
         //给没有子目录的一级目录单独设置icon
-        let lastChild = allIcon[i].parentElement.lastElementChild;
+        const lastChild = allIcon[i].parentElement.lastElementChild;
         if (lastChild.nodeName == 'A') {
-          let cName = allIcon[i].getAttribute ('class');
+          const cName = allIcon[i].getAttribute ('class');
           //设置新class
           allIcon[i].setAttribute ('class', cName.replace ('retract', 'launch'));
         }
@@ -846,19 +847,19 @@ class Mdtht {
    * ----------------------------------------
    */
   catalogIconClick () {
-    let listElement = document.querySelector ('.list-wrapper');
-    let allIcon = listElement.querySelectorAll ('i');
-    let changeSingleIcon = this.changeSingleIcon;
+    const listElement = document.querySelector ('.list-wrapper');
+    const allIcon = listElement.querySelectorAll ('i');
+    const changeSingleIcon = this.changeSingleIcon;
     for (let i = 0, len = allIcon.length; i < len; i ++) {
-      allIcon[i].onclick = function (event) {
+      allIcon[i].addEventListener ('click', function (event) {
         event.stopPropagation ();
         event.preventDefault ();
         //当前目录下是否有子目录
-        let parCatalog = allIcon[i].parentElement;
+        const parCatalog = allIcon[i].parentElement;
         if (parCatalog.lastElementChild.nodeName == 'UL') { //有子目录
           changeSingleIcon (allIcon[i]); //修改图标样式
           //点击后的icon
-          let iconClass = allIcon[i].getAttribute ('class');
+          const iconClass = allIcon[i].getAttribute ('class');
           if (iconClass.includes ('launch')) { //展开子目录
             allIcon[i].parentElement.classList.add ('js-item-launch');
             allIcon[i].parentElement.classList.remove ('js-item-retract');
@@ -867,7 +868,7 @@ class Mdtht {
             allIcon[i].parentElement.classList.remove ('js-item-launch');
           }
         }
-      }
+      });
     }
   }
 
@@ -882,29 +883,29 @@ class Mdtht {
       if ((typeof catalog) !== 'object') {
         throw 'catalogClickEvent(catalog)参数类型错误，参数：catalog为目录元素';
       }
-      let findCeilCatalog = objThis.findCeilCatalog;
-      catalog.onclick = function (event) {
+      const findCeilCatalog = objThis.findCeilCatalog;
+      catalog.addEventListener ('click', function (event) {
         event.stopPropagation (); //会一直找到其上一级，直到1级目录
         event.preventDefault ();
-        let thisClass = catalog.querySelector ('a').getAttribute ('class');
+        const thisClass = catalog.querySelector ('a').getAttribute ('class');
         //清除已有的active样式
-        let activeArr = document.querySelectorAll ('.js-active');
+        const activeArr = document.querySelectorAll ('.js-active');
         for (let j = 0, len = activeArr.length; j < len; j ++) {
           activeArr[j].classList.remove ('js-active');
         }
         //给当前目录设置 active
         this.classList.add ('js-active');
         //上级目录
-        let ceilCatalog = findCeilCatalog (thisClass);
-        let allCeil = objThis.findAllCeilCatalog (thisClass);
+        const ceilCatalog = findCeilCatalog (thisClass);
+        const allCeil = objThis.findAllCeilCatalog (thisClass);
         if (allCeil.length > 0) {
           for (let k = 0, len = allCeil.length; k < len; k ++) {
             //给上级目录设置 active
             allCeil[k].classList.add ('js-active');
           }
         }
-        document.getElementById(thisClass).scrollIntoView({behavior:'smooth',block:'start',inline:'nearest'});
-      }
+        document.getElementById (thisClass).scrollIntoView ({behavior: 'smooth', block: 'start', inline: 'nearest'});
+      });
     } catch (err) {
       return err;
     }
@@ -916,10 +917,14 @@ class Mdtht {
    * ----------------------------------------
    */
   singleCatalogClick () {
-    let listElement = document.querySelector ('.list-wrapper');
-    let allCatalog = listElement.querySelectorAll ('li');
-    for (let i = 0, len = allCatalog.length; i < len; i ++) {
-      this.catalogClickEvent (allCatalog[i]);
+    try {
+      const listElement = document.querySelector ('.list-wrapper');
+      const allCatalog = listElement.querySelectorAll ('li');
+      for (let i = 0, len = allCatalog.length; i < len; i ++) {
+        this.catalogClickEvent (allCatalog[i]);
+      }
+    } catch (err) {
+      return err;
     }
   }
 
@@ -929,8 +934,8 @@ class Mdtht {
    * ----------------------------------------
    */
   themeChange () {
-    let htmlElement = document.documentElement;
-    let viewModeButton = this.viewModeButton;
+    const htmlElement = document.documentElement;
+    const viewModeButton = this.viewModeButton;
 
     //初始配置
     //let openDark = this.openDark;
@@ -943,21 +948,21 @@ class Mdtht {
     }
 
     //点击按钮切换模式
-    viewModeButton.onclick = function () {
-      let isDarkMode = htmlElement.getAttribute ('theme');
+    viewModeButton.addEventListener ('click', function () {
+      const isDarkMode = htmlElement.getAttribute ('theme');
       if (isDarkMode == 'light') {
         this.children[0].setAttribute ('class', 'iconfont icon-moon');
         htmlElement.setAttribute ('theme', 'dark');
       }
-      if (isDarkMode == 'dark'){
+      if (isDarkMode == 'dark') {
         this.children[0].setAttribute ('class', 'iconfont icon-sun');
         htmlElement.setAttribute ('theme', 'light');
       }
-    }
+    });
 
     // 查询系统是否使用了dark主题 osThemeIsDark => true/false;
     // 开启后优先级高于初始配置 openDark 的设置，是否使用以下设置看个人
-    let osThemeIsDark = matchMedia ('(prefers-color-scheme: dark)').matches;
+    const osThemeIsDark = matchMedia ('(prefers-color-scheme: dark)').matches;
     if (osThemeIsDark) {
       this.openDark = true;
       viewModeButton.children[0].setAttribute ('class', 'iconfont icon-moon');
@@ -991,9 +996,9 @@ class Mdtht {
    * ----------------------------------------
    */
   showCatalogIndex () {
-    let indexStyle = this.indexStyle;
-    let listElement = document.querySelector ('#list-container');
-    let switchIndex = document.querySelector ('.index');
+    const indexStyle = this.indexStyle;
+    const listElement = document.querySelector ('#list-container');
+    const switchIndex = document.querySelector ('.index');
     //配置选择
     if (this.showIndex === false) { //关闭目录序号
       listElement.classList.add ('js-noindex');
@@ -1024,15 +1029,15 @@ class Mdtht {
    */
   choseCatalogStyle () {
     //目录图标样式
-    let allStyle = document.querySelectorAll ('.style-chose');
+    const allStyle = document.querySelectorAll ('.style-chose');
     //所有的目录
-    let allIcon = this.allIcon;
-    let changeIcons = this.changeIcons;
+    const allIcon = this.allIcon;
+    const changeIcons = this.changeIcons;
     //初始化配置目录图标样式
     changeIcons (allIcon, this.indexStyle);
     // 改变icon 图标;
     for (let i = 0, len = allStyle.length; i < len; i ++) {
-      allStyle[i].onclick = function () {
+      allStyle[i].addEventListener ('click', function () {
         //改变icon
         changeIcons (allIcon, i+1);
         //样式按钮选中
@@ -1040,16 +1045,13 @@ class Mdtht {
           allStyle[j].children[0].removeAttribute ('checked');
         }
         this.children[0].setAttribute ('checked', 'checked');
-      };
+      });
     }
 
     //文字阴影显示隐藏
-    let shadowButton = document.querySelector (
-        '[name="textShadow"]').parentElement;
-    shadowButton.onclick = function () {
-      let isShadow = document.querySelector ('body').
-          classList.
-          contains ('js-show-shadow');
+    const shadowButton = document.querySelector ('[name="textShadow"]').parentElement;
+    shadowButton.addEventListener ('click', function () {
+      let isShadow = document.querySelector ('body').classList.contains ('js-show-shadow');
       if (!isShadow) {
         document.querySelector ('body').setAttribute ('class', 'js-show-shadow');
         this.children[0].setAttribute ('checked', 'checked');
@@ -1057,7 +1059,7 @@ class Mdtht {
         document.querySelector ('body').setAttribute ('class', 'js-close-shadow');
         this.children[0].removeAttribute ('checked');
       }
-    };
+    });
     //初始配置
     if (this.openShadow === true) {
       document.querySelector ('body').setAttribute ('class', 'js-show-shadow');
@@ -1068,8 +1070,8 @@ class Mdtht {
     }
 
     //目录树显示隐藏
-    let treeButton = document.querySelector ('[name="showTree"]').parentElement;
-    treeButton.onclick = function () {
+    const treeButton = document.querySelector ('[name="showTree"]').parentElement;
+    treeButton.addEventListener ('click', function () {
       let isTree = document.querySelector ('#body-container').
           classList.
           contains ('js-show-tree');
@@ -1082,7 +1084,7 @@ class Mdtht {
             setAttribute ('class', 'js-close-tree');
         this.children[0].removeAttribute ('checked');
       }
-    };
+    });
     //初始配置
     if (this.showTree === true) {
       document.querySelector ('#body-container').
@@ -1094,10 +1096,10 @@ class Mdtht {
       treeButton.children[0].removeAttribute ('checked');
     }
     //显示正文标题索引
-    let contentBox = document.querySelector ('#content');
-    let titleButton = document.querySelector ('[name="titleIndex"]').parentElement;
-    let titleIndex = document.getElementById ('title-index');
-    titleButton.onclick = function (event) {
+    const contentBox = document.querySelector ('#content');
+    const titleButton = document.querySelector ('[name="titleIndex"]').parentElement;
+    const titleIndex = document.getElementById ('title-index');
+    titleButton.addEventListener ('click', function () {
       if (titleIndex.value == 'true') {
         contentBox.classList.remove ('js-show');
         titleIndex.removeAttribute ('checked');
@@ -1107,7 +1109,7 @@ class Mdtht {
         titleIndex.setAttribute ('checked', 'checked');
         titleIndex.value = 'true';
       }
-    };
+    });
     //初始配置
     if (this.showTitleIndex === false) {
       contentBox.classList.remove ('js-show');
@@ -1157,9 +1159,9 @@ class Mdtht {
    * ----------------------------------------
    */
   searchCatalog () {
-    let searchElement = document.querySelector ('.search');
-    let searchResultElement = document.querySelector ('.search-result');
-    let searchIconElement = searchElement.nextElementSibling;
+    const searchElement = document.querySelector ('.search');
+    const searchResultElement = document.querySelector ('.search-result');
+    const searchIconElement = searchElement.nextElementSibling;
     //键盘抬起
     searchElement.onkeyup = function () {
       let searchNewValue = (searchElement.value).replace (/\s+/g, '');
@@ -1170,26 +1172,26 @@ class Mdtht {
         searchResultElement.innerHTML = '<nav>'+results+'</nav>';
 
         // 记录当前已点选过的搜索结果
-        let newSearch = document.querySelectorAll ('.search-result a');
-        for (let j = 0, len = newSearch.length; j < len; j ++) {
-          newSearch[j].addEventListener ('click', function (event) {
-            event.preventDefault ();
-            document.getElementById (this.href.slice (this.href.indexOf ('#')+1)).scrollIntoView ({behavior: 'smooth',block:'start',inline:'nearest'});
-            newSearch[j].setAttribute ('class', 'search-click');
-          });
-        }
+        let searchContainer = document.querySelector ('.search-result nav');
+        searchContainer.addEventListener ('click', function (e) {
+          if (e.target.nodeName === 'A') {
+            e.preventDefault ();
+            document.getElementById (e.target.href.slice (e.target.href.indexOf ('#')+1)).scrollIntoView ({behavior: 'smooth', block: 'start', inline: 'nearest'});
+            e.target.setAttribute ('class', 'search-click');
+          }
+        });
       } else {
         searchResultElement.classList.remove ('search-click');
         searchIconElement.style.display = 'none';
       }
-    }
+    };
 
     // 点击取消
-    searchIconElement.onclick = function () {
+    searchIconElement.addEventListener ('click', function () {
       this.style.display = 'none';
       searchResultElement.classList.remove ('js-search');
       searchElement.value = '';
-    }
+    });
   }
 
   /*
@@ -1199,37 +1201,37 @@ class Mdtht {
    */
   catalogTrack () {
     //获取内容区所有 h1~h6 标题及它们距离浏览器顶部的距离
-    let allTag = this.handleHarr;
-    let rightElement = this.rightElement;
-    let catalog = document.querySelectorAll ('.list-wrapper li');
-    let allTitleDistance = [];
+    const allTag = this.handleHarr;
+    const rightElement = this.rightElement;
+    const catalog = document.querySelectorAll ('.list-wrapper li');
+    const allTitleDistance = [];
     for (let i = 0, len = allTag.length; i < len; i ++) {
       allTitleDistance.push (allTag[i].offsetTop);
     }
     //滑动正文内容时
     rightElement.onscroll = function (event) {
       event.stopPropagation ();
-      event.preventDefault();
+      event.preventDefault ();
       //滑动到相应区域目录添加active样式
       let roll = rightElement.scrollTop; //滚动距离
       for (let i = 0, len = allTag.length; i < len; i ++) {
         if (roll+30 > allTag[i].offsetTop) {
-          let activeElement = document.querySelectorAll ('.js-active');
+          const activeElement = document.querySelectorAll ('.js-active');
           for (let j = 0, len = activeElement.length; j < len; j ++) {
             activeElement[j].classList.remove ('js-active');
           }
           //当前目录添加激活样式，展开子目录，修改icon图标
           catalog[i].setAttribute ('class', 'js-active js-item-launch');
           if (catalog[i].children[0].nodeName === 'I') {
-            let oldIcon = catalog[i].children[0].getAttribute ('class');
+            const oldIcon = catalog[i].children[0].getAttribute ('class');
             catalog[i].children[0].setAttribute ('class',
                 oldIcon.replace ('retract', 'launch'));
           }
           //前一个同级目录如果有子目录则收起 -->?????
           //父级目录,添加激活样式，展开子目录，修改icon图标
-          let currentClass = catalog[i].querySelector ('a').
+          const currentClass = catalog[i].querySelector ('a').
               getAttribute ('class');
-          let allCeil = objThis.findAllCeilCatalog (currentClass);
+          const allCeil = objThis.findAllCeilCatalog (currentClass);
           if (allCeil.length > 0) {
             for (let k = 0, len = allCeil.length; k < len; k ++) {
               allCeil[k].setAttribute ('class', 'js-active js-item-launch');
@@ -1239,7 +1241,7 @@ class Mdtht {
           catalog[i].setAttribute ('class', 'js-item-retract');
           if (catalog[i].children[0].nodeName === 'I' &&
               catalog[i].lastChild.nodeName === 'UL') {
-            let oldIcon = catalog[i].children[0].getAttribute ('class');
+            const oldIcon = catalog[i].children[0].getAttribute ('class');
             catalog[i].children[0].setAttribute ('class',
                 oldIcon.replace ('launch', 'retract'));
           }
@@ -1250,40 +1252,41 @@ class Mdtht {
         catalog[0].setAttribute ('class', 'js-active js-item-retract');
         if (catalog[0].children[0].nodeName === 'I' &&
             catalog[0].lastChild.nodeName === 'UL') {
-          let oldIcon = catalog[0].children[0].getAttribute ('class');
+          const oldIcon = catalog[0].children[0].getAttribute ('class');
           catalog[0].children[0].setAttribute ('class',
               oldIcon.replace ('launch', 'retract'));
         }
       }
       // 目录内容超出可视区域后，滚动到可视区域中间位置
-      let active = document.querySelectorAll ('.js-active');
-      let originalLastItem = active[active.length-1];
-      let topBoxHeight = document.querySelector ('#list-container').clientHeight;
-      let listBoxHeight = document.querySelector (
+      const active = document.querySelectorAll ('.js-active');
+      const originalLastItem = active[active.length-1];
+      const topBoxHeight = document.querySelector ('#list-container').clientHeight;
+      const listBoxHeight = document.querySelector (
           '.list-wrapper ul').clientHeight;
       if (listBoxHeight > topBoxHeight) {
         originalLastItem.scrollIntoView ({behavior: 'smooth', block: 'center', inline: 'nearest'});
       }
-    }
+    };
   }
+
   /*
    * ----------------------------------------
    * 内部链接跳转方式改变为滑动到相应位置
    * 该功能目前只测试了由 Typora 导出的 html
    * ----------------------------------------
    */
-  internalLinkJump(){
-    let aLink = document.querySelectorAll('#content a');
-    if(aLink.length > 0){
-      for (let i = 0,len=aLink.length;i<len;i++){
-        if(aLink[i].getAttribute('href').slice(0,1) === '#'){
-          let aName = aLink[i].getAttribute('name');
-          let aHref = aLink[i].getAttribute('href');
-          aLink[i].onclick=function (e){
-            e.preventDefault();
-            let targetElement =  document.getElementsByName(aHref.slice(1));
-            document.querySelector('[name="'+aHref.slice(1)+'"]').scrollIntoView({behavior: 'smooth',block:'start',inline:'nearest'});
-          }
+  internalLinkJump () {
+    const aLink = document.querySelectorAll ('#content a');
+    if (aLink.length > 0) {
+      for (let i = 0, len = aLink.length; i < len; i ++) {
+        if (aLink[i].getAttribute ('href').slice (0, 1) === '#') {
+          let aName = aLink[i].getAttribute ('name');
+          let aHref = aLink[i].getAttribute ('href');
+          aLink[i].addEventListener ('click', function (e) {
+            e.preventDefault ();
+            let targetElement = document.getElementsByName (aHref.slice (1));
+            document.querySelector ('[name="'+aHref.slice (1)+'"]').scrollIntoView ({behavior: 'smooth', block: 'start', inline: 'nearest'});
+          });
         }
       }
     }
@@ -1291,7 +1294,7 @@ class Mdtht {
 }
 
 window.addEventListener ('DOMContentLoaded', function () {
- new Mdtht ();
+  new Mdtht ();
 });
 
 

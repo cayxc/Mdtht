@@ -653,7 +653,7 @@ input[type='radio'] {
 .list-wrapper ul li i {
   float: left;
   font-size: 1.4rem;
-  margin-top: .6rem;
+  margin-top: .48rem;
   margin-left: .15rem;
   background: $bg-color;
   @include border-radius(.3rem);
@@ -670,6 +670,7 @@ input[type='radio'] {
   display: block;
   position: relative;
   z-index: 18;
+  font-size: 1.4rem;
   font-weight: normal;
   color: $grey-color-dark;
   padding: .5rem .6rem;
@@ -684,7 +685,7 @@ input[type='radio'] {
     @include pseudo-element($w: 1.5rem, $p: absolute);
     left: -1.2rem;
     margin-right: .2rem;
-    top: 1.34rem;
+    top: 1.2rem;
     background: $border-color;
   }
 
@@ -736,7 +737,7 @@ input[type='radio'] {
 
 .list-wrapper > ul > li:last-child:after {
   @include pseudo-element($w: .3rem, $h: 100%, $p: absolute);
-  top: 1.34rem;
+  top: 1.2rem;
   left: .7rem;
   z-index: 15;
   background: $bg-color;
@@ -745,7 +746,7 @@ input[type='radio'] {
   @include pseudo-element($w: 1.5rem,$h:50%, $p: absolute);
   left: -1.2rem;
   margin-right: .2rem;
-  top: 0;
+  top: -0.1rem;
   border-left: .1rem solid $border-color;
   border-bottom: .1rem solid $border-color;
   border-bottom-left-radius: .3rem;
@@ -772,7 +773,6 @@ input[type='radio'] {
 .list-wrapper ul li ul {
   margin-left: 2.2rem !important;
   margin-top: .24rem;
-
   & li:last-child:before {
     @include pseudo-element($w: .3rem, $h: 100%, $p: absolute);
     top: 1.45rem;
