@@ -7,7 +7,7 @@
 }
 
 :root {
-  font-family: "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Microsoft YaHei", Arial, sans-serif;
   font-size: 62.5%;
   background-color: $bg-color;
   color: $text-color;
@@ -18,14 +18,16 @@
 
 body {
   font-size: $size-16;
-  line-height: 1.5;
+  line-height: 1.6;
   box-sizing: border-box;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 3.6rem 0 1.6rem;
+  position: relative;
+  line-height: 1.5;
+  margin: 32px 0 16px;
   color: $title-color;
-  letter-spacing: .2rem;
+  letter-spacing: 2px;
 }
 
 h1 {
@@ -41,7 +43,7 @@ h3 {
 }
 
 h4 {
-  font-size: 2.1rem;
+  font-size: 2rem;
 }
 
 h5 {
@@ -93,7 +95,7 @@ u {
 }
 
 em {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 del {
@@ -111,7 +113,7 @@ sup, sub {
 sup.md-footnote{
   padding: 0 .2rem;
   &:hover{
-    color: var(--color-2);
+    color: $color-2;
     cursor: pointer;
   }
 }
@@ -146,6 +148,7 @@ img {
   max-width: 100%;
   @include border-radius();
   margin: 0 auto 1.6rem;
+  color: $text-grey;
 }
 
 //列表
@@ -154,7 +157,7 @@ ul li, ol li{
     display: inline-block;
   }
   input {
-    margin-right: 0.8rem !important;
+    margin-right: 1rem !important;
   }
   p {
     margin: 0;
@@ -197,19 +200,19 @@ blockquote,
 }
 blockquote code,
 .md-alert code {
-  background: var(--color-1-0-a);
-  padding: 0.3rem 1rem !important;
+  background: $color-1-0-a;
+  padding: 0.3rem 1rem;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
 blockquote blockquote {
-  background: var(--color-1-0-b);
+  background: $color-1-0-b;
 }
 /*only Typora blockquote*/
 .md-alert.md-alert-note {
   border-left-color: $color-1;
   background: $color-1-0-b;
-  color: $color-1 !important;
+  color: $color-1;
 }
 .md-alert.md-alert-note .md-alert-text-note {
   color: $color-1;
@@ -218,7 +221,7 @@ blockquote blockquote {
 .md-alert.md-alert-caution {
   border-left-color: $color-2;
   background: $color-2-0-b;
-  color: $color-2 !important;;
+  color: $color-2;
 }
 .md-alert.md-alert-caution .md-alert-text-caution {
   color: $color-2;
@@ -227,7 +230,7 @@ blockquote blockquote {
 .md-alert.md-alert-tip {
   border-left-color: $color-3;
   background: $color-3-0-b;
-  color: $color-3 !important;
+  color: $color-3;
 }
 .md-alert.md-alert-tip .md-alert-text-tip{
   color: $color-3;
@@ -236,7 +239,7 @@ blockquote blockquote {
 .md-alert.md-alert-important {
   border-left-color: $color-4;
   background: $color-4-0-b;
-  color: $color-4 !important;
+  color: $color-4;
 }
 .md-alert.md-alert-important .md-alert-text-important{
   color: $color-4;
@@ -245,7 +248,7 @@ blockquote blockquote {
 .md-alert.md-alert-warning {
   border-left-color: $color-5;
   background: $color-5-0-b;
-  color: $color-5 !important;
+  color: $color-5;
 }
 .md-alert.md-alert-warning .md-alert-text-warning,
 {
@@ -253,40 +256,76 @@ blockquote blockquote {
 }
 
 /*code*/
-pre {
-  @include code-box();
-  @include border-radius();
-  overflow: auto;
+code{
+  font-family: monospace;
 }
-
-code {
-  @include code-box();
-  @include border-radius(0.5rem);
+code, tt {
+  margin: 16px 0;
   background: $bg-color2;
-  padding: .3rem 1rem;
-  line-height: 1.8;
+  font-size: 14px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 5px 10px;
   color: $text-code;
-  vertical-align: text-bottom;
-}
-
-pre code {
-  display: inline-block;
-  margin: 1.3rem !important;
-  border: none;
-  vertical-align: middle;
-}
-
-p code,
-blockquote code,
-table code,
-.md-alert code {
-  line-height: 1.5;
-  padding: 0.3rem 1rem;
-  background: $color-1-0-a;
-  vertical-align: top;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
+p code,
+p tt,
+li code,
+li tt,
+blockquote code,
+blockquote tt,
+.md-alert code,
+.md-alert tt,
+table code,
+table tt {
+  padding: 3px 6px !important;
+  background: $color-1-0-a;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+  vertical-align: middle;
+}
+h1 code {
+  font-size: 18px;
+}
+h2 code {
+  font-size: 16px;
+}
+
+.outline-content .outline-item code {
+  font-size: 11px;
+  padding: 2px 6px !important;
+}
+/*
+ * ------------------------
+ * pre
+ * ------------------------
+*/
+pre {
+  margin: 16px 0;
+  padding: 16px;
+  background: $bg-color2;
+  font-size: 14px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  color: $text-code;
+  overflow: auto;
+}
+
+pre pre {
+  background: transparent;
+  padding: 5px 10px;
+  border: none;
+}
+
 /*sup,sub*/
 sup, sub {
   font-size: $size-12;
@@ -295,7 +334,7 @@ sup, sub {
 sup.md-footnote{
   padding: 0 .2rem;
   &:hover{
-    color: var(--color-2);
+    color: $color-2;
   }
 }
 
@@ -312,47 +351,90 @@ table {
   @include table-style;
 }
 
-/*input checketbox*/
-input[type='checkbox'], input[type="radio"] {
-  @extend .input-checkebox;
+/*input*/
+input {
+  border-radius: 5px;
+  line-height: 1.2;
+  position: relative;
+  padding: 0 6px;
+  outline: none;
+  border: 1px solid $border-color;
+}
+input:focus,
+textarea:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus {
+  border-color: $color-1;
+  box-shadow: none;
+  outline: none;
+}
+input::placeholder {
+  font-size: 14px;
+  color: $text-grey;
+}
+/*input checkbox*/
+input[type="checkbox"],
+input[type="radio"] {
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  box-sizing: border-box;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+  list-style: none;
+  background: $bg-color;
+  margin-right: 10px;
+  margin-bottom: -2px;
 }
 
-input[type='checkbox'] {
-  @include border-radius($size: 0.3rem);
-  line-height: 1;
-
-  &:checked {
-    content: '';
-    display: inline-block;
-    background: $color-1;
-    border-color: transparent;
-    font-size: 1.3rem;
-    text-align: center;
-    color: $bg-color;
-
-    &:after {
-      content: '\2713'; /*2713、2714都是勾，一个粗一个细*/
-      vertical-align: text-top;
-    }
-  }
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  background: $color-1 !important;
+  border-color: transparent;
+}
+input[type="checkbox"]:checked::after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 9px;
+  background: transparent;
+  border: 2px solid $bg-color;
+  border-top: none;
+  border-left: none;
+  position: absolute;
+  box-sizing: border-box;
+  bottom: 2.5px;
+  left: 3.5px;
+  transform: rotate(40deg);
+  -webkit-transform: rotate(40deg);
+  -ms-transform: rotate(40deg);
 }
 
-/*input radio*/
-input[type='radio'] {
-  @include border-default($color: $color-1);
-  @include border-radius($size: 50%);
+input[type="radio"] {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border: 1px solid $border-color;
+  margin-bottom: 0 !important;
+}
 
-  &:checked {
-    &:after {
-      content: '';
-      display: block;
-      width: 8px;
-      height: 8px;
-      margin: 3px auto;
-      background: $color-1;
-      @include border-radius($size: 50%);
-    }
-  }
+input[type="radio"]:checked::after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 5px;
+  box-sizing: border-box;
+  margin: 2.5px auto;
+  background: $bg-color !important;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
 }
 
 #body-container {
@@ -406,10 +488,10 @@ input[type='radio'] {
   max-width: 120rem;
   margin: 0 auto;
   box-sizing: border-box;
-  transition: scroll 0.3s linear;
-  -moz-transition: scroll 0.3s linear;
-  -webkit-transition: scroll 0.3s linear;
-  -o-transition: scroll 0.3s linear;
+  transition: scroll 0.2s linear;
+  -moz-transition: scroll 0.2s linear;
+  -webkit-transition: scroll 0.2s linear;
+  -o-transition: scroll 0.2s linear;
 
   & h1 > span,
   & h2 > span,
@@ -433,7 +515,7 @@ input[type='radio'] {
   position: relative;
   box-sizing: border-box;
   z-index: 25;
-  line-height: 3.2rem;
+  line-height: 3.1rem;
   background: $bg-color;
 }
 
@@ -868,8 +950,9 @@ input[type='radio'] {
       input[type="radio"]{
         border-color: $color-2;
       }
-      input[type="radio"]:checked::after{
-        background: $color-2;
+      input[type="radio"]:checked{
+        border-color: $color-2;
+        background: $color-2 !important;
       }
     }
 
@@ -904,7 +987,7 @@ input[type='radio'] {
     cursor: not-allowed;
     margin-left: 0;
 
-    &:checked {
+    /*&:checked {
       &:after {
         content: '';
         display: block;
@@ -914,7 +997,7 @@ input[type='radio'] {
         background: $color-1;
         @include border-radius($size: 50%);
       }
-    }
+    }*/
   }
 }
 
@@ -985,7 +1068,8 @@ input[type='radio'] {
 
 /*scroll style*/
 html {
-  @include custom-scroll();
+  scrollbar-color: $border-color $bg-color2;
+  scrollbar-width: thin;
 }
 
 /*dark style*/
@@ -1021,7 +1105,7 @@ html[theme=dark] {
     height: 4rem;
   }
   .search {
-    width: 75%;
+    width: 82%;
   }
   #content > footer {
     margin-top: 3.2rem;
@@ -1033,7 +1117,7 @@ html[theme=dark] {
     padding: 0 3.2rem;
   }
   .search {
-    width: 75%;
+    width: 78%;
   }
 }
 

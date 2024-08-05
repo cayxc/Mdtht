@@ -108,46 +108,45 @@
 
 /*colors*/
 $bg-color: rgb(250, 250, 250);
-$bg-color2: rgb(240, 240, 242);
+$bg-color2: rgb(237, 237, 239);
 $border-color: #d3d3d3ff;
 $grey-color: #d9d9d9;
 
 $text-color: #000;
 $text-grey: #999;
 $text-code: #2f479f;
-$title-color: #1d2738;
+$title-color: #0b1015;
 $title-color2: rgb(34, 45, 86);
 
-$color-1: #3d68d5;
-$color-1-0-a: rgba(61, 104, 213, 0.15);
-$color-1-0-b: rgba(61, 104, 213, 0.05);
+$color-1: #3e69d7;
+$color-1-0-a: rgba(62, 105, 215, 0.15);
+$color-1-0-b: rgba(62, 105, 215, 0.06);
 
-$color-2: #e38603;
-$color-2-0-a: rgba(227, 134, 3, 0.15);
-$color-2-0-b: rgba(227, 134, 3, 0.05);
-$color-2-0-c: rgba(227, 134, 3, 0.4);
+$color-2: #f59102;
+$color-2-0-a: rgba(245, 145, 2, 0.15);
+$color-2-0-b: rgba(245, 145, 2, 0.06);
+$color-2-0-c: rgba(227, 134, 3, 0.3);
 
 $color-3: #03b736;
 $color-3-0-a: rgba(3, 183, 54, 0.15);
-$color-3-0-b: rgba(3, 183, 54, 0.05);
+$color-3-0-b: rgba(3, 183, 54, 0.06);
 
 $color-4: #8250df;
 $color-4-0-a: rgba(130, 80, 223, 0.15);
-$color-4-0-b: rgba(130, 80, 223, 0.05);
+$color-4-0-b: rgba(130, 80, 223, 0.06);
 
 $color-5: #e30f2e;
 $color-5-0-a: rgba(227, 15, 46, 0.15);
-$color-5-0-b: rgba(227, 15, 46, 0.05);
+$color-5-0-b: rgba(227, 15, 46, 0.06);
 
 $text-dark: #d0d0d0;
-$text-grey-dark: #868686;
+$text-grey-dark: #464b50;
 
 $bg-dark:  #1b1b1f;
 $bg-dark2: rgb(40, 42, 50);
-$code-bg-dark:  rgb(49, 52, 56);
-$grey-color-dark:  rgb(49, 52, 56);
-$text-code-dark: #c9cffd;
-
+$code-bg-dark:  rgb(40, 42, 50);
+$grey-color-dark: rgb(55, 58, 63);
+$text-code-dark: #bbc7fd;
 /*size*/
 $size-32: 3.2rem;
 $size-30: 3.0rem;
@@ -182,7 +181,6 @@ $size-10: 1.0rem;
 @mixin code-box($margin:1.6rem,$padding:1rem,$font-size:1.4rem,$bag:$bg-color2) {
   margin: $margin 0;
   padding: $padding/2 $padding;
-  //border: .1rem solid rgb($border-color, .35);
   background: $bag;
   font-size: $font-size;
   box-sizing: border-box;
@@ -197,48 +195,27 @@ $size-10: 1.0rem;
   border-spacing: 0;
   border-radius: $bor-radius;
   overflow: hidden;
-  thead {
-    tr th {
-      border-top: .1rem solid $bor-color;
-      background: $bag-color;
-    }
-  }
-  tr th, tr td {
-    padding: 0.8rem 1rem;
-    border-right: .1rem solid $bor-color;
-  }
-  tr th:first-child, tr td:first-child {
-    border-left: .1rem solid $bor-color;
-  }
-  tr:first-child th:first-child {
-    border-top-left-radius: $bor-radius;
-    background: $bag-color;
-    white-space: nowrap;
-  }
-  tr:first-child th:last-child {
-    border-top-right-radius: $bor-radius;
+  padding: 0;
+  border: 1px solid $bor-color;
+  thead tr th {
     background: $bag-color;
   }
-  tr:last-child td:last-child {
-    border-bottom-right-radius: $bor-radius;
-    border-bottom: .1rem solid $bor-color;
+  tbody tr:nth-child(even) td {
     background: $bag-color;
   }
-  tr:last-child td:first-child {
-    border-bottom-left-radius: $bor-radius;
-    border-bottom: .1rem solid $bor-color;
+  tbody tr:nth-child(odd) td {
+    background: $bg-color;
   }
-  tbody tr:nth-child(even) td{
-    background: $bag-color !important;
+  tr th,tr td {
+    padding: 10px;
   }
-  tbody tr:nth-child(odd) td{
-    background: $bg-color !important;
+  tr td,
+  thead tr th {
+    border-left: 1px solid $bor-color;
   }
-  tbody tr td{
-    border-top: .1rem solid $bor-color;
-  }
-  tbody tr:last-child td{
-    border-bottom: .1rem solid $bor-color;
+  tbody tr td:first-of-type,
+  thead tr th:first-of-type {
+    border-left: none;
   }
 }
 
@@ -310,38 +287,6 @@ input::-moz-placeholder { /* Mozilla Firefox 19+ */
 
 input:-ms-input-placeholder { /* Internet Explorer 10+ */
   color: $text-grey;
-}
-
-/*  Custom Scroll*/
-@mixin custom-scroll($color:$text-dark) {
-  /*非webkit内核浏览器*/
-  scrollbar-color: rgba($grey-color, 0.8) rgba($grey-color, 0.15);
-  scrollbar-width: thin;
-
-  ::-webkit-scrollbar,
-  ::-webkit-scrollbar-thumb {
-    width: .8rem;
-    height: .8rem;
-    border-radius: .4rem;
-  }
-
-  /* 滑块背景色 */
-  ::-webkit-scrollbar-thumb {
-    background: rgba($grey-color, .8);
-  }
-  /* 其余相关样式设置跟滑块一个背景色 */
-  ::-webkit-scrollbar,
-  ::-webkit-scrollbar-corner,
-  ::-webkit-resizer,
-  ::-webkit-scrollbar-track,
-  ::-webkit-scrollbar-track-piece {
-    background: rgba($grey-color, 0.15);
-  }
-
-  /* 隐藏滚动条按钮 */
-  ::-webkit-scrollbar-button {
-    display: none;
-  }
 }
 
 .text-center {
@@ -539,29 +484,56 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   :root{
     background-color: $bg-dark;
   }
+
+  scrollbar-color: $text-grey-dark $bg-dark2;
+
   strong{
     color: $text-dark;
   }
   kbd {
     background-color: $color-2;
   }
+
+  /*blockquote*/
+  blockquote,
+  .md-alert {
+    background: rgba(62, 105, 215, 0.12);
+  }
+  blockquote code,
+  .md-alert code {
+    background: rgba(62, 105, 215, 0.12);
+  }
+  blockquote blockquote {
+    background: rgba(62, 105, 215, 0.12);
+  }
+  /*only Typora blockquote*/
+  .md-alert.md-alert-note {
+    background: rgba(62, 105, 215, 0.12);
+  }
+
+  .md-alert.md-alert-caution {
+    background: rgba(245, 145, 2, 0.12);
+  }
+  .md-alert.md-alert-tip {
+    background: rgba(3, 183, 54, 0.12);
+  }
+
+  .md-alert.md-alert-important {
+    background: rgba(130, 80, 223, 0.12);
+  }
+
+  .md-alert.md-alert-warning {
+    background: rgba(227, 15, 46, 0.12);
+  }
+
   code, pre {
     @include bag-border-dark($bg-dark2,$bg-dark2);
   }
 
   table {
     @include table-style($bor-color: $grey-color-dark, $bag-color: $bg-dark2);
-    tbody tr:nth-child(even) th{
-      background: $code-bg-dark !important;
-    }
-    tbody tr:nth-child(odd) td{
-      background: rgb($bg-dark2,.2) !important;
-    }
-    tbody tr td{
-      border-top: .1rem solid $grey-color-dark;
-    }
-    tbody tr:last-child td{
-      border-bottom: .1rem solid $grey-color-dark;
+    tbody tr:nth-child(odd) td {
+      background: $bg-dark;
     }
   }
   input {
@@ -572,8 +544,13 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
       color: $text-grey;
     }
   }
+  /*input checkbox*/
+  input[type="checkbox"],
+  input[type="radio"] {
+    background: $bg-dark;
+  }
   .iconfont {
-    color: $bg-dark2;
+    color: $grey-color-dark;
     text-shadow: .1rem .1rem .1rem rgb($bg-dark2, 1);
 
     &:hover {
@@ -730,22 +707,6 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     -moz-text-decoration-color: $text-dark;
   }
 
-
-  /*非webkit内核浏览器*/
-  scrollbar-color: rgba($bg-dark2, .8) rgba($bg-dark2, 0.1);
-
-  //滑块背景色
-  ::-webkit-scrollbar-thumb {
-    background: rgba($bg-dark2, .8);
-  }
-  //其余相关样式设置跟滑块一个背景色
-  ::-webkit-scrollbar,
-  ::-webkit-scrollbar-corner,
-  ::-webkit-resizer,
-  ::-webkit-scrollbar-track,
-  ::-webkit-scrollbar-track-piece {
-    background: rgba($bg-dark2, 0.1);
-  }
 }
 
 
