@@ -590,7 +590,7 @@ class Mdtht {
         for (let i = 0, len = level1.length; i < len; i ++) {
           let liElement = document.createElement ('li');
           liElement.innerHTML =
-              `<a class="${level1[i].id}" href="${window.location.pathname}#${level1[i].id}">
+              `<a class="${level1[i].id}" href="#${level1[i].id}">
                 <div>
                     <p>${level1[i].id.slice (6)}</p>
                     <span>${level1[i].innerText}</span>
@@ -619,7 +619,7 @@ class Mdtht {
                 //子目录内容
                 let content = document.createElement ('li');
                 content.innerHTML =
-                    `<a class="${cName}" href="${window.location.pathname}#${cName}">
+                    `<a class="${cName}" href="#${cName}">
                         <div>
                             <p>${cName.slice (6)}</p>
                             <span>${levelOther[k].innerText}</span>
@@ -1261,30 +1261,33 @@ class Mdtht {
       if (listBoxHeight > topBoxHeight) {
         originalLastItem.scrollIntoView ({behavior: 'smooth', block: 'center', inline: 'nearest'});
       }
-    };
+    }
   }
 
   /*
    * ----------------------------------------
    * 内部链接跳转方式改变为滑动到相应位置
-   * 该功能目前只测试了由 Typora 导出的 html
    * ----------------------------------------
    */
   internalLinkJump () {
-    const aLink = document.querySelectorAll ('#content a');
-    if (aLink.length > 0) {
-      for (let i = 0, len = aLink.length; i < len; i ++) {
-        if (aLink[i].getAttribute ('href').slice (0, 1) === '#') {
-          let aName = aLink[i].getAttribute ('name');
-          let aHref = aLink[i].getAttribute ('href');
-          aLink[i].addEventListener ('click', (e) => {
-            e.preventDefault ();
-            let targetElement = document.getElementsByName (aHref.slice (1));
-            document.querySelector ('[name="'+aHref.slice (1)+'"]').scrollIntoView ({behavior: 'smooth', block: 'start', inline: 'nearest'});
-          });
+    const aLink = document.querySelector ('#content');
+    aLink.addEventListener('click',e => {
+      if(e.target.nodeName === "A"){
+        const hrefLink = e.target.getAttribute ('href');
+        const linkEl = document.getElementById(hrefLink.slice(1));
+        // 单独的A标签
+        if(hrefLink !== null && linkEl !== null){
+          e.preventDefault();
+          document.getElementById(hrefLink.slice(1)).scrollIntoView ({behavior: 'smooth', block: 'start', inline: 'nearest'});
+        }
+        // Typora中的引用的链接
+        const currentName = e.target.getAttribute('name');
+        if(currentName !== null ){
+          e.preventDefault();
+          document.querySelector('[href="#'+currentName+'"]').scrollIntoView ({behavior: 'smooth', block: 'start', inline: 'nearest'});
         }
       }
-    }
+    });
   }
 }
 
