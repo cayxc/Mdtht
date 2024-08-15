@@ -714,14 +714,13 @@ input[type="radio"]:checked::after {
     &:before {
       @include pseudo-element($w: .1rem, $h: 100%, $p: absolute);
       box-sizing: border-box;
-      top: -.5rem;
+      top: -.55rem;
       left: .8rem;
       z-index: 15;
       margin-bottom: .8rem;
       background: $border-color;
     }
   }
-
   ul li {
     width: 100%;
     list-style: none;
@@ -735,7 +734,7 @@ input[type="radio"]:checked::after {
 .list-wrapper ul li i {
   float: left;
   font-size: 1.3rem;
-  margin-top: .55rem;
+  margin-top: .6rem;
   margin-left: .15rem;
   background: $bg-color;
   @include border-radius(.3rem);
@@ -747,7 +746,6 @@ input[type="radio"]:checked::after {
 .list-wrapper ul li .iconfont {
 
 }
-
 .list-wrapper ul li a {
   display: block;
   position: relative;
@@ -755,22 +753,20 @@ input[type="radio"]:checked::after {
   font-size: 1.4rem;
   font-weight: normal;
   color: $grey-color-dark;
-  padding: .5rem .6rem;
+  padding: .6rem;
   margin-bottom: .25rem;
   margin-left: 2rem;
   box-sizing: border-box;
   line-height: 1.1 !important;
   background: transparent;
   @include border-radius(.5rem);
-
   &:before {
     @include pseudo-element($w: 1.5rem, $p: absolute);
     left: -1.2rem;
     margin-right: .2rem;
-    top: 1.2rem;
+    top: 1.28rem;
     background: $border-color;
   }
-
   div {
     position: relative;
     overflow: hidden;
