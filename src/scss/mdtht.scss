@@ -743,9 +743,6 @@ input[type="radio"]:checked::after {
   cursor: pointer;
 }
 
-.list-wrapper ul li .iconfont {
-
-}
 .list-wrapper ul li a {
   display: block;
   position: relative;
@@ -1131,10 +1128,10 @@ html[theme=dark] {
     border: none;
   }
 }
-
 @media screen and (min-width: 1921px) {
   #body-container {
-    width: 178rem;
+    width: 100%;
+    max-width: 192rem;
     margin: 0 auto;
   }
   #left-container {
