@@ -68,6 +68,7 @@ hr {
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
+
 a {
   text-decoration: none;
   color: $color-1;
@@ -110,9 +111,11 @@ sup, sub {
   font-size: 1.2rem;
   padding: 0 .1rem;
 }
-sup.md-footnote{
+
+sup.md-footnote {
   padding: 0 .2rem;
-  &:hover{
+
+  &:hover {
     color: $color-2;
     cursor: pointer;
   }
@@ -152,36 +155,37 @@ img {
 }
 
 //列表
-ul li, ol li{
+ul li, ol li {
   input, p {
     display: inline-block;
   }
-  input {
-    margin-right: 1rem !important;
-  }
+
   p {
     margin: 0;
   }
 }
-li > input{
+
+li > input {
   margin-left: -2rem;
 }
-ul,ol{
+
+ul, ol {
   margin-left: 0;
   padding-left: 3.4rem;
 }
 
 ol > li > ul,
-ul > li > ol{
+ul > li > ol {
   padding-left: 3.4rem;
 }
 
 #content {
-  ul,ol,dl{
+  ul, ol, dl {
     margin: .5rem auto;
   }
+
   ul li,
-  ol li{
+  ol li {
     margin-bottom: .5rem;
   }
 }
@@ -198,6 +202,7 @@ blockquote,
   background: $color-1-0-b;
   overflow: hidden;
 }
+
 blockquote code,
 .md-alert code {
   background: $color-1-0-a;
@@ -205,15 +210,18 @@ blockquote code,
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
+
 blockquote blockquote {
   background: $color-1-0-b;
 }
+
 /*only Typora blockquote*/
 .md-alert.md-alert-note {
   border-left-color: $color-1;
   background: $color-1-0-b;
   color: $color-1;
 }
+
 .md-alert.md-alert-note .md-alert-text-note {
   color: $color-1;
 }
@@ -223,6 +231,7 @@ blockquote blockquote {
   background: $color-2-0-b;
   color: $color-2;
 }
+
 .md-alert.md-alert-caution .md-alert-text-caution {
   color: $color-2;
 }
@@ -232,7 +241,8 @@ blockquote blockquote {
   background: $color-3-0-b;
   color: $color-3;
 }
-.md-alert.md-alert-tip .md-alert-text-tip{
+
+.md-alert.md-alert-tip .md-alert-text-tip {
   color: $color-3;
 }
 
@@ -241,7 +251,8 @@ blockquote blockquote {
   background: $color-4-0-b;
   color: $color-4;
 }
-.md-alert.md-alert-important .md-alert-text-important{
+
+.md-alert.md-alert-important .md-alert-text-important {
   color: $color-4;
 }
 
@@ -250,15 +261,17 @@ blockquote blockquote {
   background: $color-5-0-b;
   color: $color-5;
 }
+
 .md-alert.md-alert-warning .md-alert-text-warning,
 {
   color: $color-5;
 }
 
 /*code*/
-code{
+code {
   font-family: monospace;
 }
+
 code, tt {
   margin: 16px 0;
   background: $bg-color2;
@@ -270,6 +283,7 @@ code, tt {
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
+
 p code,
 p tt,
 li code,
@@ -285,6 +299,7 @@ table tt {
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
+
 h1 code,
 h2 code,
 h3 code,
@@ -293,9 +308,11 @@ h5 code,
 h6 code {
   vertical-align: middle;
 }
+
 h1 code {
   font-size: 18px;
 }
+
 h2 code {
   font-size: 16px;
 }
@@ -304,6 +321,7 @@ h2 code {
   font-size: 11px;
   padding: 2px 6px !important;
 }
+
 /*
  * ------------------------
  * pre
@@ -331,9 +349,11 @@ sup, sub {
   font-size: $size-12;
   padding: 0 .1rem;
 }
-sup.md-footnote{
+
+sup.md-footnote {
   padding: 0 .2rem;
-  &:hover{
+
+  &:hover {
     color: $color-2;
   }
 }
@@ -359,7 +379,9 @@ input {
   padding: 0 6px;
   outline: none;
   border: 1px solid $border-color;
+  margin-right: .8rem;
 }
+
 input:focus,
 textarea:focus,
 input[type="number"]:focus,
@@ -369,6 +391,7 @@ input[type="text"]:focus {
   box-shadow: none;
   outline: none;
 }
+
 input::placeholder {
   font-size: 14px;
   color: $text-grey;
@@ -390,7 +413,6 @@ input[type="radio"] {
   border-radius: 3px;
   list-style: none;
   background: $bg-color;
-  margin-right: 10px;
   margin-bottom: -2px;
 }
 
@@ -399,6 +421,7 @@ input[type="radio"]:checked {
   background: $color-1 !important;
   border-color: transparent;
 }
+
 input[type="checkbox"]:checked::after {
   content: "";
   display: block;
@@ -467,6 +490,7 @@ input[type="radio"]:checked::after {
   -moz-transition: width 0.2s linear, height 0.2s linear;
   -webkit-transition: width 0.2s linear, height 0.2s linear;
   -o-transition: width 0.2s linear, height 0.2s linear;
+
   a {
     line-height: 2rem;
   }
@@ -480,6 +504,7 @@ input[type="radio"]:checked::after {
   padding: 0 10rem 0;
   box-sizing: border-box;
 }
+
 #content > *:first-child {
   margin-top: 3.2rem !important;
 }
@@ -525,6 +550,7 @@ input[type="radio"]:checked::after {
   font-size: 2.8rem;
   cursor: pointer;
   float: left;
+
   &:hover {
     color: $color-2 !important;
     text-shadow: none;
@@ -721,6 +747,7 @@ input[type="radio"]:checked::after {
       background: $border-color;
     }
   }
+
   ul li {
     width: 100%;
     list-style: none;
@@ -757,6 +784,7 @@ input[type="radio"]:checked::after {
   line-height: 1.1 !important;
   background: transparent;
   @include border-radius(.5rem);
+
   &:before {
     @include pseudo-element($w: 1.5rem, $p: absolute);
     left: -1.2rem;
@@ -764,6 +792,7 @@ input[type="radio"]:checked::after {
     top: 1.28rem;
     background: $border-color;
   }
+
   div {
     position: relative;
     overflow: hidden;
@@ -780,6 +809,7 @@ input[type="radio"]:checked::after {
 
   &:hover {
     text-decoration: none;
+
     &:before {
       width: 1.2rem !important;
     }
@@ -817,8 +847,9 @@ input[type="radio"]:checked::after {
   z-index: 15;
   background: $bg-color;
 }
+
 .list-wrapper > ul li:last-child > a:before {
-  @include pseudo-element($w: 1.5rem,$h:50%, $p: absolute);
+  @include pseudo-element($w: 1.5rem, $h: 50%, $p: absolute);
   left: -1.2rem;
   margin-right: .2rem;
   top: -0.1rem;
@@ -848,6 +879,7 @@ input[type="radio"]:checked::after {
 .list-wrapper ul li ul {
   margin-left: 2.2rem !important;
   margin-top: .24rem;
+
   & li:last-child:before {
     @include pseudo-element($w: .3rem, $h: 100%, $p: absolute);
     top: 1.45rem;
@@ -940,10 +972,12 @@ input[type="radio"]:checked::after {
 
     &:hover {
       color: $color-2;
-      input[type="radio"]{
+
+      input[type="radio"] {
         border-color: $color-2;
       }
-      input[type="radio"]:checked{
+
+      input[type="radio"]:checked {
         border-color: $color-2;
         background: $color-2 !important;
       }
@@ -979,18 +1013,6 @@ input[type="radio"]:checked::after {
     @include border-radius($size: 50%);
     cursor: not-allowed;
     margin-left: 0;
-
-    /*&:checked {
-      &:after {
-        content: '';
-        display: block;
-        width: .6rem;
-        height: .6rem;
-        margin: .2rem auto;
-        background: $color-1;
-        @include border-radius($size: 50%);
-      }
-    }*/
   }
 }
 
@@ -1051,7 +1073,8 @@ input[type="radio"]:checked::after {
   color: $text-grey;
   margin: 0;
   text-align: center;
-  &::before{
+
+  &::before {
     content: '\00A9';
     font-size: 1.2rem;
     vertical-align: middle;
@@ -1060,9 +1083,10 @@ input[type="radio"]:checked::after {
 }
 
 /*scroll style*/
-html{
+html {
   scrollbar-color: $border-color $bg-color2;
 }
+
 html,
 html div,
 html aside,
@@ -1071,7 +1095,7 @@ html section,
 html nav,
 html footer,
 html pre,
-html code{
+html code {
   scrollbar-width: thin;
 }
 
@@ -1132,6 +1156,7 @@ html[theme=dark] {
     width: 28rem;
   }
 }
+
 @media screen and (min-width: 1921px) {
   #body-container {
     max-width: 256rem;
