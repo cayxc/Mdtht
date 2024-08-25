@@ -481,8 +481,8 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 
 /*theme dark style*/
 @mixin theme-dark {
-  :root{
-    background-color: $bg-dark;
+  #body-container {
+    background: $bg-dark;
   }
 
   scrollbar-color: $text-grey-dark $bg-dark2;

@@ -164,7 +164,7 @@ ul li, ol li{
   }
 }
 li > input{
-  margin-left: -1.5rem;
+  margin-left: -2.3rem;
 }
 ul,ol{
   margin-left: 0;
@@ -438,6 +438,7 @@ input[type="radio"]:checked::after {
 }
 
 #body-container {
+  background: $bg-color;
   position: relative;
   width: 100vw;
   margin: auto;
@@ -465,7 +466,6 @@ input[type="radio"]:checked::after {
   -moz-transition: width 0.2s linear, height 0.2s linear;
   -webkit-transition: width 0.2s linear, height 0.2s linear;
   -o-transition: width 0.2s linear, height 0.2s linear;
-
   a {
     line-height: 2rem;
   }
@@ -485,7 +485,6 @@ input[type="radio"]:checked::after {
 
 #content {
   width: 100%;
-  max-width: 120rem;
   margin: 0 auto;
   box-sizing: border-box;
   transition: scroll 0.2s linear;
@@ -1074,6 +1073,7 @@ html pre,
 html code{
   scrollbar-width: thin;
 }
+
 /*dark style*/
 html[theme=dark] {
   @include theme-dark;
@@ -1093,7 +1093,7 @@ html[theme=dark] {
 
 @media screen and (max-width: 768px) {
   #left-container {
-    width: 26rem;
+    width: 24rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -1123,7 +1123,7 @@ html[theme=dark] {
   }
 }
 
-@media screen and (min-width: 993px) and (max-width: 1200px) {
+@media screen and (min-width: 993px) and (max-width: 1280px) {
   #right-container {
     padding: 0 6rem;
   }
@@ -1131,28 +1131,10 @@ html[theme=dark] {
     width: 28rem;
   }
 }
-
-@media screen and (min-width: 1201px) and (max-width: 1920px) {
-  #right-container {
-    border: none;
-  }
-}
 @media screen and (min-width: 1921px) {
   #body-container {
-    width: 100%;
-    max-width: 192rem;
+    max-width: 256rem;
     margin: 0 auto;
   }
-  #left-container {
-    border-left-style: solid;
-    border-left-width: .1rem;
-  }
-  #right-container {
-    border-right-style: solid;
-    border-left-style: solid;
-    border-left-width: .1rem;
-  }
-  #content {
-    max-width: 140rem;
-  }
 }
+
