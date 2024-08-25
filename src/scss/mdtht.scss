@@ -164,7 +164,7 @@ ul li, ol li{
   }
 }
 li > input{
-  margin-left: -2.3rem;
+  margin-left: -2rem;
 }
 ul,ol{
   margin-left: 0;
@@ -373,6 +373,7 @@ input::placeholder {
   font-size: 14px;
   color: $text-grey;
 }
+
 /*input checkbox*/
 input[type="checkbox"],
 input[type="radio"] {
@@ -427,10 +428,10 @@ input[type="radio"] {
 input[type="radio"]:checked::after {
   content: "";
   display: block;
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
   box-sizing: border-box;
-  margin: 2.5px auto;
+  margin: 3px auto;
   background: $bg-color !important;
   border-radius: 50%;
   -webkit-border-radius: 50%;
