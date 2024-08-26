@@ -582,6 +582,7 @@ input[type="radio"]:checked::after {
   -moz-transition: width 0.1s linear;
   -webkit-transition: width 0.1s linear;
   -o-transition: width 0.1s linear;
+  margin-right: 0;
 
   &:focus {
     outline: none;
