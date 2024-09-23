@@ -115,7 +115,7 @@ $grey-color: #d9d9d9;
 $text-color: #000;
 $text-grey: #999;
 $text-code: #2f479f;
-$title-color: #0b1015;
+$title-color: #070909;
 $title-color2: rgb(34, 45, 86);
 
 $color-1: #3e69d7;
@@ -488,7 +488,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   scrollbar-color: $text-grey-dark $bg-dark2;
 
   strong{
-    color: $text-dark;
+    color: white;
   }
   kbd {
     background-color: $color-2;
