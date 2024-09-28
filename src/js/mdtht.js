@@ -96,19 +96,17 @@ class Mdtht {
       this.showIndexEl = document.querySelector ('.index');
       this.allIndex = this.listElement.querySelectorAll ('p');
       //样式控制
+      this.themeChange ();
       this.showCatalogIndex ();
       this.choseCatalogStyle ();
       this.switchCatalog ();
       this.switchCatalogList ();
       this.catalogIconClick ();
-      this.singleCatalogClick ();
       this.searchCatalog ();
-      this.catalogTrack ();
+      this.catalogTrack();
       this.internalLinkJump ();
-      //主题随系统变化
-      this.themeChange ();
+      this.singleCatalogClick ();
     }
-
   }
 
   /*
@@ -852,9 +850,10 @@ class Mdtht {
     const allIcon = listElement.querySelectorAll ('i');
     const changeSingleIcon = this.changeSingleIcon;
     for (let i = 0, len = allIcon.length; i < len; i ++) {
-      allIcon[i].addEventListener ('click', event => {
-        event.stopPropagation ();
-        event.preventDefault ();
+      allIcon[i].addEventListener ('click', e => {
+        e = e || window.event;
+        e.stopPropagation ();
+        e.preventDefault ();
         //当前目录下是否有子目录
         const parCatalog = allIcon[i].parentElement;
         if (parCatalog.lastElementChild.nodeName === 'UL') { //有子目录
@@ -873,59 +872,22 @@ class Mdtht {
     }
   }
 
-  /**
-   * ----------------------------------------
-   * 目录点击事件
-   * ----------------------------------------
-   * @param  catalog 需要执行点击事件的目录容器 Li
-   */
-  catalogClickEvent (catalog) {
-    try {
-      if ((typeof catalog) !== 'object') {
-        throw 'catalogClickEvent(catalog)参数类型错误，参数：catalog为目录元素';
-      }
-      const findCeilCatalog = objThis.findCeilCatalog;
-      catalog.addEventListener ('click', function (event) {
-        event.stopPropagation (); //会一直找到其上一级，直到1级目录
-        event.preventDefault ();
-        const thisClass = catalog.querySelector ('a').getAttribute ('class');
-        //清除已有的active样式
-        const activeArr = document.querySelectorAll ('.js-active');
-        for (let j = 0, len = activeArr.length; j < len; j ++) {
-          activeArr[j].classList.remove ('js-active');
-        }
-        //给当前目录设置 active
-        this.classList.add ('js-active');
-        //上级目录
-        const ceilCatalog = findCeilCatalog (thisClass);
-        const allCeil = objThis.findAllCeilCatalog (thisClass);
-        if (allCeil.length > 0) {
-          for (let k = 0, len = allCeil.length; k < len; k ++) {
-            //给上级目录设置 active
-            allCeil[k].classList.add ('js-active');
-          }
-        }
-        document.getElementById (thisClass).scrollIntoView ({behavior: 'smooth', block: 'start', inline: 'nearest'});
-      });
-    } catch (err) {
-      return err;
-    }
-  }
-
   /*
    * ----------------------------------------
    * 单个目录点击
    * ----------------------------------------
    */
   singleCatalogClick () {
-    try {
-      const listElement = document.querySelector ('.list-wrapper');
-      const allCatalog = listElement.querySelectorAll ('li');
-      for (let i = 0, len = allCatalog.length; i < len; i ++) {
-        this.catalogClickEvent (allCatalog[i]);
-      }
-    } catch (err) {
-      return err;
+    const rightElement = this.rightElement;
+    const allCatalog = document.querySelectorAll ('.list-wrapper a');
+    for (let i = 0, len = allCatalog.length; i < len; i ++) {
+      allCatalog[i].addEventListener('click',function (e){
+        e = e || window.event;
+        e.stopPropagation();
+        e.preventDefault();
+        let linkId = allCatalog[i].getAttribute('href').slice(1);
+        rightElement.scrollTo({top: document.getElementById(linkId).offsetTop-10});
+      });
     }
   }
 
@@ -1175,6 +1137,7 @@ class Mdtht {
         // 记录当前已点选过的搜索结果
         let searchContainer = document.querySelector ('.search-result nav');
         searchContainer.addEventListener ('click', function (e) {
+          e = e || window.event;
           if (e.target.nodeName === 'A') {
             e.preventDefault ();
             document.getElementById (e.target.href.slice (e.target.href.indexOf ('#')+1)).scrollIntoView ({behavior: 'smooth', block: 'start', inline: 'nearest'});
@@ -1195,6 +1158,36 @@ class Mdtht {
     });
   }
 
+  /**
+   * ----------------------------------------
+   * 节流函数
+   * ----------------------------------------
+   * @param  fun function 要节流的函数
+   * @param  t   number 需要节流的时间/毫秒
+   * @return {(function(): void)|*}
+   */
+  throttle(fun, t){
+    try{
+      if ((typeof fun) !== 'function') {
+        throw 'fun 参数必须是一个函数';
+      }
+      if ((typeof t) !== 'number' || t < 0) {
+        throw 't 参数必须是 >0 的整数';
+      }
+      let timer = null;
+      return function (){
+        if(!timer){
+          timer = setTimeout(function (){
+            fun();
+            timer = null;
+          }, t);
+        }
+      }
+    }catch (err){
+      this.showError (err);
+    }
+  }
+
   /*
    * ----------------------------------------
    * 根据内容区阅读位置自动追踪目录
@@ -1210,13 +1203,11 @@ class Mdtht {
       allTitleDistance.push (allTag[i].offsetTop);
     }
     //滑动正文内容时
-    rightElement.onscroll = (event) => {
-      event.stopPropagation ();
-      event.preventDefault ();
+    rightElement.addEventListener('scroll',this.throttle(function (){
       //滑动到相应区域目录添加active样式
       let roll = rightElement.scrollTop; //滚动距离
       for (let i = 0, len = allTag.length; i < len; i ++) {
-        if (roll+30 > allTag[i].offsetTop) {
+        if (roll+32 > allTag[i].offsetTop) {
           const activeElement = document.querySelectorAll ('.js-active');
           for (let j = 0, len = activeElement.length; j < len; j ++) {
             activeElement[j].classList.remove ('js-active');
@@ -1245,7 +1236,7 @@ class Mdtht {
           }
         }
       }
-      if (roll+30 <= allTag[0].offsetTop) {
+      if (roll+32 <= allTag[0].offsetTop) {
         //收起子目录，修改icon图标
         catalog[0].setAttribute ('class', 'js-active js-item-retract');
         if (catalog[0].children[0].nodeName === 'I' && catalog[0].lastChild.nodeName === 'UL') {
@@ -1261,7 +1252,7 @@ class Mdtht {
       if (listBoxHeight > topBoxHeight) {
         originalLastItem.scrollIntoView ({behavior: 'smooth', block: 'center', inline: 'nearest'});
       }
-    }
+    },500));
   }
 
   /*
@@ -1272,6 +1263,7 @@ class Mdtht {
   internalLinkJump () {
     const aLink = document.querySelector ('#content');
     aLink.addEventListener('click',e => {
+      e = e || window.event;
       if(e.target.nodeName === "A"){
         const hrefLink = e.target.getAttribute ('href');
         const linkEl = document.getElementById(hrefLink.slice(1));
