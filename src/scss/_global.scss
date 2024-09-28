@@ -142,9 +142,9 @@ $color-5-0-b: rgba(227, 15, 46, 0.06);
 $text-dark: #d0d0d0;
 $text-grey-dark: #464b50;
 
-$bg-dark:  #1b1b1f;
+$bg-dark: #1b1b1f;
 $bg-dark2: rgb(40, 42, 50);
-$code-bg-dark:  rgb(40, 42, 50);
+$code-bg-dark: rgb(40, 42, 50);
 $grey-color-dark: rgb(55, 58, 63);
 $text-code-dark: #bbc7fd;
 /*size*/
@@ -206,7 +206,7 @@ $size-10: 1.0rem;
   tbody tr:nth-child(odd) td {
     background: $bg-color;
   }
-  tr th,tr td {
+  tr th, tr td {
     padding: 10px;
   }
   tr td,
@@ -263,30 +263,12 @@ $size-10: 1.0rem;
 }
 
 /*  Custom input placeholder*/
-input::-webkit-input-placeholder, /* WebKit browsers */
-input:-moz-placeholder, /* Mozilla Firefox 4 to 18 */
-input::-moz-placeholder, /* Mozilla Firefox 19+ */
-input:-ms-input-placeholder /* Internet Explorer 10+ */
-{
+input::-webkit-input-placeholder,
+input:-moz-placeholder,
+input::-moz-placeholder,
+input:-ms-input-placeholder {
   color: $text-grey;
 
-}
-
-/*  Custom input placeholder*/
-input::-webkit-input-placeholder { /* WebKit browsers */
-  color: $text-grey;
-}
-
-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  color: $text-grey;
-}
-
-input::-moz-placeholder { /* Mozilla Firefox 19+ */
-  color: $text-grey;
-}
-
-input:-ms-input-placeholder { /* Internet Explorer 10+ */
-  color: $text-grey;
 }
 
 .text-center {
@@ -423,6 +405,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   color: $color-1 !important;
   background: $bg-color2 !important;
   @include border-radius(.5rem);
+
   &:before {
     width: 1.2rem;
   }
@@ -481,13 +464,27 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 
 /*theme dark style*/
 @mixin theme-dark {
-  #body-container {
-    background: $bg-dark;
+  /*scroll style*/
+  div,
+  aside,
+  article,
+  section,
+  nav,
+  footer,
+  pre,
+  code {
+    ::-webkit-scrollbar-thumb {
+      background: $text-grey-dark;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: $bg-dark2;
+    }
+
+    scrollbar-color: $text-grey-dark $bg-dark2;
   }
 
-  scrollbar-color: $text-grey-dark $bg-dark2;
-
-  strong{
+  strong {
     color: white;
   }
   kbd {
@@ -527,11 +524,12 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   }
 
   code, pre {
-    @include bag-border-dark($bg-dark2,$bg-dark2);
+    @include bag-border-dark($bg-dark2, $bg-dark2);
   }
 
   table {
     @include table-style($bor-color: $grey-color-dark, $bag-color: $bg-dark2);
+
     tbody tr:nth-child(odd) td {
       background: $bg-dark;
     }
@@ -598,7 +596,8 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     & > ul > li:last-child > a:after {
       background: $bg-dark;
     }
-    & > ul li:last-child > a:before{
+
+    & > ul li:last-child > a:before {
       border-color: $grey-color-dark;
     }
   }
@@ -666,8 +665,9 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     .icon-catalog-close {
       color: $text-dark;
     }
+
     .icon-label {
-      text-shadow: 0 0 0.3rem rgb(0,0,0, 0.8);
+      text-shadow: 0 0 0.3rem rgb(0, 0, 0, 0.8);
     }
   }
   .js-close-shadow,

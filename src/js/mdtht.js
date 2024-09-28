@@ -1087,6 +1087,66 @@ class Mdtht {
 
   /**
    * ----------------------------------------
+   * 防抖函数
+   * ----------------------------------------
+   * @param  fun function 要防抖的函数
+   * @param  t   number 需要延迟的毫秒数
+   * @return {(function(): void)|*}
+   */
+  debounce(fun, t=500){
+    try{
+      if ((typeof fun) !== 'function') {
+        throw 'fun 参数必须是一个函数';
+      }
+      if ((typeof t) !== 'number' || t < 0) {
+        throw 't 参数必须是 >0 的整数';
+      }
+      this.t=t;
+      let timer;
+      return function (){
+        if(timer) clearTimeout(timer);
+        timer = setTimeout(function (){
+          fun();
+        }, t);
+      }
+    }catch (err){
+      this.showError (err);
+    }
+  }
+
+  /**
+   * ----------------------------------------
+   * 节流函数
+   * ----------------------------------------
+   * @param  fun function 要节流的函数
+   * @param  t   number 需要节流的时间/毫秒
+   * @return {(function(): void)|*}
+   */
+  throttle(fun, t=500){
+    try{
+      if ((typeof fun) !== 'function') {
+        throw 'fun 参数必须是一个函数';
+      }
+      if ((typeof t) !== 'number' || t < 0) {
+        throw 't 参数必须是 >0 的整数';
+      }
+      this.t = t;
+      let timer = null;
+      return function (){
+        if(!timer){
+          timer = setTimeout(function (){
+            fun();
+            timer = null;
+          }, t);
+        }
+      }
+    }catch (err){
+      this.showError (err);
+    }
+  }
+
+  /**
+   * ----------------------------------------
    * 比对搜索框和所有目录的值
    * ----------------------------------------
    * @param value 要比对的原始值，即 input 输入框的 value 值
@@ -1125,8 +1185,10 @@ class Mdtht {
     const searchElement = document.querySelector ('.search');
     const searchResultElement = document.querySelector ('.search-result');
     const searchIconElement = searchElement.nextElementSibling;
+    const rightElement = this.rightElement;
+
     //键盘抬起
-    searchElement.onkeyup = () => {
+    searchElement.addEventListener('keyup',this.debounce(() => {
       let searchNewValue = (searchElement.value).replace (/\s+/g, '');
       if (searchNewValue) { // 不为空时
         searchResultElement.classList.add ('js-search');
@@ -1140,15 +1202,17 @@ class Mdtht {
           e = e || window.event;
           if (e.target.nodeName === 'A') {
             e.preventDefault ();
-            document.getElementById (e.target.href.slice (e.target.href.indexOf ('#')+1)).scrollIntoView ({behavior: 'smooth', block: 'start', inline: 'nearest'});
+            rightElement.scrollTo({
+              top: document.getElementById (e.target.href.slice (e.target.href.indexOf ('#')+1)).offsetTop-10
+            });
             e.target.setAttribute ('class', 'search-click');
           }
         });
       } else {
-        searchResultElement.classList.remove ('search-click');
         searchIconElement.style.display = 'none';
+        searchResultElement.classList.remove ('js-search');
       }
-    };
+    },500));
 
     // 点击取消
     searchIconElement.addEventListener ('click', function () {
@@ -1156,36 +1220,6 @@ class Mdtht {
       searchResultElement.classList.remove ('js-search');
       searchElement.value = '';
     });
-  }
-
-  /**
-   * ----------------------------------------
-   * 节流函数
-   * ----------------------------------------
-   * @param  fun function 要节流的函数
-   * @param  t   number 需要节流的时间/毫秒
-   * @return {(function(): void)|*}
-   */
-  throttle(fun, t){
-    try{
-      if ((typeof fun) !== 'function') {
-        throw 'fun 参数必须是一个函数';
-      }
-      if ((typeof t) !== 'number' || t < 0) {
-        throw 't 参数必须是 >0 的整数';
-      }
-      let timer = null;
-      return function (){
-        if(!timer){
-          timer = setTimeout(function (){
-            fun();
-            timer = null;
-          }, t);
-        }
-      }
-    }catch (err){
-      this.showError (err);
-    }
   }
 
   /*
