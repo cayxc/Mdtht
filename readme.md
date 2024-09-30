@@ -38,6 +38,8 @@ Can be used in any Markdown editor that supports adding JavaScript and CSS, such
 14. Code highlighting plugin **highlightjs** style beautification，[highlightjs](https://highlightjs.org/)
 15. Personalize configuration styles based on personal preferences.
 
+![功能说明](./img/mdtht-0.png)
+
 # Final effect
 
 **Light mode**

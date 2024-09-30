@@ -38,6 +38,8 @@
 14. 代码高亮插件 highlightjs 样式美化，[highlightjs网址](https://highlightjs.org/)
 15. 根据个人喜好个性化配置样式
 
+![功能说明](./img/mdtht-0.png)
+
 # 最终效果
 
 **亮色模式**
