@@ -26,16 +26,17 @@ Can be used in any Markdown editor that supports adding JavaScript and CSS, such
 2. Automatically generate corresponding hierarchical directories and serial numbers based on the position of h1~h6 tags in the HTML document.
 3. Automatically correct the directory hierarchy based on the position of the h tag
 4. Automatically generate sidebar directory navigation.
-5. Show or hide title numbering.
-6. Directory hierarchical tree view.
-7. 3 types of directory icon styles.
-8. Text Shadow Effect.
-9. One click expansion of storage subdirectories.
-10. One click expansion and collapse of sidebar.
-11. Automatically track the directory based on the content of the reading area.
-12. Catalog search.
-13. Code highlighting plugin **highlightjs** style beautification，[highlightjs](https://highlightjs.org/)
-14. Personalize configuration styles based on personal preferences.
+5. Drag to change the width of the sidebar.
+6. Show or hide title numbering.
+7. Directory hierarchical tree view.
+8. 3 types of directory icon styles.
+9. Text Shadow Effect.
+10. One click expansion of storage subdirectories.
+11. One click expansion and collapse of sidebar.
+12. Automatically track the directory based on the content of the reading area.
+13. Catalog search.
+14. Code highlighting plugin **highlightjs** style beautification，[highlightjs](https://highlightjs.org/)
+15. Personalize configuration styles based on personal preferences.
 
 # Final effect
 
