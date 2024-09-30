@@ -335,7 +335,7 @@ pre {
   box-sizing: border-box;
   border-radius: 8px;
   color: $text-code;
-  overflow: auto;
+  overflow: hidden;
 }
 
 pre pre {
@@ -462,32 +462,24 @@ input[type="radio"]:checked::after {
 }
 
 #body-container {
-  background: $bg-color;
   position: relative;
   width: 100vw;
-  margin: auto;
+  margin: 0 auto;
+  background: $bg-color;
   box-sizing: border-box;
-  display: flex;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: -moz-box;
-  justify-content: space-between;
-  -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
 }
 
 /*left-containe*/
 #left-container {
-  width: 32rem;
-  resize: horizontal;
-  -mpz-resize: horizontal;
+  float: left;
+  position: relative;
+  z-index: 20;
+  width: 28rem;
+  height: 100vh;
   background: $bg-color;
   border-right: 1px solid $border-color;
-  z-index: 20;
-  position: relative;
+  box-sizing: border-box;
   line-height: 2rem;
-  overflow: hidden;
   transition: width 0.2s linear, height 0.2s linear;
   -moz-transition: width 0.2s linear, height 0.2s linear;
   -webkit-transition: width 0.2s linear, height 0.2s linear;
@@ -498,12 +490,28 @@ input[type="radio"]:checked::after {
   }
 }
 
+#resize-control{
+  position: absolute;
+  z-index: 100;
+  width: 0;
+  height: 100vh;
+  background: transparent;
+  border-right: 3px dashed transparent;
+  box-sizing: border-box;
+  right: -2px;
+  top: 0;
+  cursor: col-resize;
+  &:hover{
+    border-color: $color-1;
+  }
+}
+
 /*right-containe*/
 #right-container {
-  width: 100%;
   height: 100vh;
-  overflow: auto;
-  padding: 0 10rem 0;
+  margin-left: 28rem;
+  overflow-x: hidden;
+  padding: 0 9.6rem 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
   scroll-padding: 10px;
@@ -514,8 +522,6 @@ input[type="radio"]:checked::after {
 }
 
 #content {
-  width: 100%;
-  margin: 0 auto;
   box-sizing: border-box;
   transition: scroll 0.2s linear;
   -moz-transition: scroll 0.2s linear;
@@ -912,9 +918,9 @@ input[type="radio"]:checked::after {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: -moz-box;
-    justify-content: space-between;
-    -webkit-justify-content: space-between;
-    -moz-justify-content: space-between;
+    justify-content: space-around;
+    -webkit-justify-content: space-around;
+    -moz-justify-content: space-around;
   }
 
   .mode, .index, .structure, .quit-menu {
@@ -1096,31 +1102,23 @@ input[type="radio"]:checked::after {
 }
 
 /*scroll style*/
-html,
-html div,
-html aside,
-html article,
-html section,
-html nav,
-html footer,
-html pre,
-html code {
+body,
+#right-container,
+#list-container {
+  scrollbar-width: thin;
+  scrollbar-color: $border-color $bg-color2;
   ::-webkit-scrollbar {
     width: 8px;
   }
-
   ::-webkit-scrollbar-thumb {
     background: $border-color;
     border-radius: 4px;
   }
-
   ::-webkit-scrollbar-track {
     background: $bg-color2;
   }
-
-  scrollbar-width: thin;
-  scrollbar-color: $border-color $bg-color2;
 }
+
 
 /*dark style*/
 html[theme=dark] {
@@ -1141,7 +1139,6 @@ html[theme=dark] {
 
 @media screen and (max-width: 768px) {
   #left-container {
-    width: 30rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -1149,6 +1146,7 @@ html[theme=dark] {
     display: none;
   }
   #right-container {
+    margin-left: 0;
     padding: 0 3.2rem;
   }
   #switch-button {
@@ -1160,15 +1158,9 @@ html[theme=dark] {
   }
 }
 
-@media screen and (min-width: 769px) and (max-width: 992px) {
+@media screen and (min-width: 769px) and (max-width: 1280px) {
   #right-container {
-    padding: 0 3.2rem;
-  }
-}
-
-@media screen and (min-width: 993px) and (max-width: 1280px) {
-  #right-container {
-    padding: 0 4.8rem;
+    padding: 0 6.4rem;
   }
 }
 

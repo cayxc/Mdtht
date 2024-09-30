@@ -1,6 +1,7 @@
 /*hljs-style*/
 pre code.hljs {
-  overflow-x: auto;
+  white-space: break-spaces;
+  word-break: break-word;
 }
 
 code.hljs {

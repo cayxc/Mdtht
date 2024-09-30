@@ -208,6 +208,7 @@ $size-10: 1.0rem;
   }
   tr th, tr td {
     padding: 10px;
+    word-break: break-word;
   }
   tr td,
   thead tr th {
@@ -358,6 +359,7 @@ input:-ms-input-placeholder {
 
 .js-width-0 {
   width: 0 !important;
+  overflow: hidden;
 }
 
 .js-height-0 {
@@ -460,28 +462,19 @@ input:-ms-input-placeholder {
   }
 }
 
-//=========================
-
 /*theme dark style*/
 @mixin theme-dark {
   /*scroll style*/
-  div,
-  aside,
-  article,
-  section,
-  nav,
-  footer,
-  pre,
-  code {
+  body,
+  #right-container,
+  #list-container {
+    scrollbar-color: $text-grey-dark $bg-dark2;
     ::-webkit-scrollbar-thumb {
       background: $text-grey-dark;
     }
-
     ::-webkit-scrollbar-track {
       background: $bg-dark2;
     }
-
-    scrollbar-color: $text-grey-dark $bg-dark2;
   }
 
   strong {
