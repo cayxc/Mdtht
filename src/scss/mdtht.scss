@@ -490,7 +490,7 @@ input[type="radio"]:checked::after {
   }
 }
 
-#resize-control{
+#resize-control {
   position: absolute;
   z-index: 100;
   width: 0;
@@ -501,7 +501,8 @@ input[type="radio"]:checked::after {
   right: -2px;
   top: 0;
   cursor: col-resize;
-  &:hover{
+
+  &:hover {
     border-color: $color-1;
   }
 }
@@ -1102,23 +1103,25 @@ input[type="radio"]:checked::after {
 }
 
 /*scroll style*/
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $border-color;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bg-color2;
+}
+
 body,
 #right-container,
 #list-container {
   scrollbar-width: thin;
   scrollbar-color: $border-color $bg-color2;
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: $border-color;
-    border-radius: 4px;
-  }
-  ::-webkit-scrollbar-track {
-    background: $bg-color2;
-  }
 }
-
 
 /*dark style*/
 html[theme=dark] {
@@ -1152,7 +1155,6 @@ html[theme=dark] {
   #switch-button {
     height: 4rem;
   }
-
   #content > footer {
     margin-top: 3.2rem;
   }

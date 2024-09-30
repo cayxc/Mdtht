@@ -109,9 +109,8 @@
 /*colors*/
 $bg-color: rgb(250, 250, 250);
 $bg-color2: rgb(237, 237, 239);
-$border-color: #d3d3d3ff;
+$border-color: #d2d2d2;
 $grey-color: #d9d9d9;
-
 $text-color: #000;
 $text-grey: #999;
 $text-code: #2f479f;
@@ -147,6 +146,7 @@ $bg-dark2: rgb(40, 42, 50);
 $code-bg-dark: rgb(40, 42, 50);
 $grey-color-dark: rgb(55, 58, 63);
 $text-code-dark: #bbc7fd;
+
 /*size*/
 $size-32: 3.2rem;
 $size-30: 3.0rem;
@@ -465,18 +465,16 @@ input:-ms-input-placeholder {
 /*theme dark style*/
 @mixin theme-dark {
   /*scroll style*/
+  ::-webkit-scrollbar-thumb {
+    background: $text-grey-dark;
+  }
+  ::-webkit-scrollbar-track {
+    background: $bg-dark2;
+  }
   body,
   #right-container,
   #list-container {
     scrollbar-color: $text-grey-dark $bg-dark2;
-
-    ::-webkit-scrollbar-thumb {
-      background: $text-grey-dark;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: $bg-dark2;
-    }
   }
   #body-container {
     background: $bg-dark;
