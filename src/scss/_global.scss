@@ -469,12 +469,17 @@ input:-ms-input-placeholder {
   #right-container,
   #list-container {
     scrollbar-color: $text-grey-dark $bg-dark2;
+
     ::-webkit-scrollbar-thumb {
       background: $text-grey-dark;
     }
+
     ::-webkit-scrollbar-track {
       background: $bg-dark2;
     }
+  }
+  #body-container {
+    background: $bg-dark;
   }
 
   strong {
