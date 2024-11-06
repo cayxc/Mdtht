@@ -68,6 +68,10 @@ code.hljs {
 @mixin code-dark {
   code,code.hljs {
     color: #c9cffd;
+    background: rgba(62, 105, 215, 0.3);
+  }
+  pre code,pre code.hljs {
+    color: #c9cffd;
     background: transparent;
   }
   p code,table code,p code.hljs{
