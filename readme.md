@@ -1,7 +1,7 @@
 # About Mdtht
 
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/cayxc/Mdtht?include_prereleases&color=blue&logo=hack-the-box)
-![GitHub issues](https://img.shields.io/github/issues/cayxc/Mdtht?style=flat&logo=github&color=red)
+![GitHub issues](https://img.shields.io/github/issues/cayxc/Mdtht?style=flat&color=red)
 ![GitHub license](https://img.shields.io/github/license/cayxc/Mdtht.svg)
 ![GitHub forks](https://img.shields.io/github/forks/cayxc/Mdtht?style=flat&logo=github&color=turquoise)
 ![GitHub Repo stars](https://img.shields.io/github/stars/cayxc/Mdtht?style=flat&logo=github&color=green)
