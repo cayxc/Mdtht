@@ -1,5 +1,6 @@
 # About Mdtht
 
+![Languages](https://img.shields.io/badge/languages-javascript+sass-F34B7D.svg)
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/cayxc/Mdtht?include_prereleases&color=blue&logo=hack-the-box)
 ![GitHub license](https://img.shields.io/github/license/cayxc/Mdtht.svg)
 ![GitHub issues](https://img.shields.io/github/issues/cayxc/Mdtht?style=flat&color=red)
