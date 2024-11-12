@@ -29,41 +29,42 @@ class Mdtht {
       openDark        = false
   ) {
     try {
-      if ((typeof showIndex) !== 'boolean') {
-        showIndex = true;
-        throw '参数: showIndex 类型有误，已按照默认配置执行，该参数类型为：Boolean';
-      }
       if ((typeof indexStyle) !== 'number' || 1 > indexStyle || indexStyle >
           3) {
         indexStyle = 1;
-        throw '参数: indexStyle 类型有误，已按照默认配置执行，该参数类型为：Number, 1<= Number <=3';
-      }
-      if ((typeof openDark) !== 'boolean') {
-        openDark = false;
-        throw '参数: openDark 类型有误，已按照默认配置执行，该参数类型为：Boolean';
-      }
-      if ((typeof showTree) !== 'boolean') {
-        showTree = true;
-        throw '参数: showTree 类型有误，已按照默认配置执行，该参数类型为：Boolean';
-      }
-      if ((typeof openShadow) !== 'boolean') {
-        openShadow = false;
-        throw '参数: openShadow 类型有误，已按照默认配置执行，该参数类型为：Boolean';
-      }
-      if ((typeof showTitleIndex) !== 'boolean') {
-        showTitleIndex = true;
-        throw '参数: showTitleIndex 类型有误，已按照默认配置执行，该参数类型为：Boolean';
+        throw new Error('参数: indexStyle 类型有误，已按照默认配置执行，该参数类型为：Number, 1<= Number <=3');
       }
       if ((typeof firstTagToTitle) !== 'boolean') {
         firstTagToTitle = false;
-        throw '参数: firstTagToTitle 类型有误，已按照默认配置执行，该参数类型为：Boolean';
+        throw new Error('参数: firstTagToTitle 类型有误，已按照默认配置执行，该参数类型为：Boolean');
       }
       if ((typeof titleCenter) !== 'boolean') {
         titleCenter = false;
-        throw '参数: titleCenter 类型有误，已按照默认配置执行，该参数类型为：Boolean';
+        throw new Error('参数: titleCenter 类型有误，已按照默认配置执行，该参数类型为：Boolean');
+      }
+      if ((typeof showIndex) !== 'boolean') {
+        showIndex = true;
+        throw new Error('参数: showIndex 类型有误，已按照默认配置执行，该参数类型为：Boolean');
+      }
+      if ((typeof showTitleIndex) !== 'boolean') {
+        showTitleIndex = true;
+        throw new Error('参数: showTitleIndex 类型有误，已按照默认配置执行，该参数类型为：Boolean');
+      }
+      if ((typeof showTree) !== 'boolean') {
+        showTree = true;
+        throw new Error('参数: showTree 类型有误，已按照默认配置执行，该参数类型为：Boolean');
+      }
+      if ((typeof openShadow) !== 'boolean') {
+        openShadow = false;
+        throw new Error('参数: openShadow 类型有误，已按照默认配置执行，该参数类型为：Boolean');
+      }
+      if ((typeof openDark) !== 'boolean') {
+        openDark = false;
+        throw new Error('参数: openDark 类型有误，已按照默认配置执行，该参数类型为：Boolean');
       }
     } catch (err) {
       this.showError(err);
+      console.log(err); //打印详细的错误，方便调试
     } finally {
       objThis = this; //当前对象的 this
       this.showIndex = showIndex;
@@ -136,7 +137,7 @@ class Mdtht {
     try {
       if ((typeof tag) !== 'string' || (typeof msg) !== 'string' ||
           (typeof id) !== 'string') {
-        throw 'noteTips() 调用时参数类型错误！';
+        throw new Error('noteTips() 调用时参数类型错误！');
       }
       const exp = document.createElement(tag);
       exp.innerHTML = msg;
@@ -282,7 +283,7 @@ class Mdtht {
   getPrefixIndex(levelStr) {
     try {
       if ((typeof levelStr) !== 'string') {
-        throw 'getPrefixIndex() 需要传入一个字符，且如level-1或level-1.2.2的形式';
+        throw new Error('getPrefixIndex() 需要传入一个字符，且如level-1或level-1.2.2的形式');
       }
       let lastIndex; //上一级的目录索引编号
       let prefixStr; //前缀 level-1.
@@ -384,7 +385,7 @@ class Mdtht {
   getTagNumber(tag) {
     try {
       if ((typeof tag) !== 'object') {
-        throw 'getTagNumber() 调用时参数类型错误，必须是一个h标签的对象集合！';
+        throw new Error('getTagNumber() 调用时参数类型错误，必须是一个h标签的对象集合！');
       }
       return Number(tag.nodeName.slice(1));
     } catch (err) {
@@ -405,7 +406,7 @@ class Mdtht {
   findStrFre(str, char) {
     try {
       if ((typeof str) !== 'string' || (typeof str) !== 'string') {
-        throw 'findStrFre() 调用时参数类型错误！';
+        throw new Error('findStrFre() 调用时参数类型错误！');
       }
       let number = 0;
       let index = str.indexOf(char);
@@ -431,7 +432,7 @@ class Mdtht {
   levelTagArr(level) {
     try {
       if (level < 1 || level > 6 || (typeof level) !== 'number') {
-        throw 'levelTagArr() 调用时参数类型错误！';
+        throw new Error('levelTagArr() 调用时参数类型错误！');
       }
       // 所有目录集合,处理后的
       let allTag = this.handleHarr;
@@ -502,7 +503,7 @@ class Mdtht {
   setLevelNumber(tag) {
     try {
       if ((typeof tag) !== 'object') {
-        throw 'setLevelNumber() 调用时参数类型错误，必须是一个h标签的对象集合！';
+        throw new Error('setLevelNumber() 调用时参数类型错误，必须是一个h标签的对象集合！');
       }
       const str = tag.id;
       if (str.lastIndexOf('.') == -1) { //如果是一级目录形式 level-1000
@@ -529,7 +530,7 @@ class Mdtht {
   findCeilCatalog(str) {
     try {
       if ((typeof str) !== 'string') {
-        throw 'catalogForParent()参数类型错误，参数为string';
+        throw new Error('catalogForParent()参数类型错误，参数为string');
       }
       //上级目录
       const ceilCatalog = [];
@@ -566,7 +567,7 @@ class Mdtht {
   findAllCeilCatalog(str, ceilArr = []) {
     try {
       if ((typeof str) !== 'string') {
-        throw 'findAllCeilCatalog() 参数类型错误，参数类型为string';
+        throw new Error('findAllCeilCatalog() 参数类型错误，参数类型为string');
       }
       //父级目录 h 元素
       let ceilCatalog = objThis.findCeilCatalog(str);
@@ -763,10 +764,10 @@ class Mdtht {
   changeIcons(iconArr, index = 1) {
     try {
       if ((typeof iconArr) !== 'object') {
-        throw 'changeIcon() 调用时参数1类型错误，必须为object';
+        throw new Error('changeIcon() 调用时参数1类型错误，必须为object');
       }
       if ((typeof index) !== 'number' || index > 3) {
-        throw 'changeIcon() 调用时参数2类型错误，必须为number,且小于等于 3';
+        throw new Error('changeIcon() 调用时参数2类型错误，必须为number,且小于等于 3');
       }
       //改变整体icon风格
       const arr = ['A', 'B', 'C'];
@@ -789,7 +790,7 @@ class Mdtht {
   changeSingleIcon(icon) {
     try {
       if ((typeof icon) !== 'object') {
-        throw 'changeIcon() 调用时参数1类型错误，该参数为图标元素的容器';
+        throw new Error('changeIcon() 调用时参数1类型错误，该参数为图标元素的容器');
       }
       //仅改变状态：展开/关闭
       const oldClass = icon.getAttribute('class');
@@ -1135,10 +1136,10 @@ class Mdtht {
   debounce(fun, t = 500) {
     try {
       if ((typeof fun) !== 'function') {
-        throw 'fun 参数必须是一个函数';
+        throw new Error('fun 参数必须是一个函数');
       }
       if ((typeof t) !== 'number' || t < 0) {
-        throw 't 参数必须是 >0 的整数';
+        throw new Error('t 参数必须是 >0 的整数');
       }
       this.t = t;
       let timer;
@@ -1166,10 +1167,10 @@ class Mdtht {
   throttle(fun, t = 500) {
     try {
       if ((typeof fun) !== 'function') {
-        throw 'fun 参数必须是一个函数';
+        throw new Error('fun 参数必须是一个函数');
       }
       if ((typeof t) !== 'number' || t < 0) {
-        throw 't 参数必须是 >0 的整数';
+        throw new Error('t 参数必须是 >0 的整数');
       }
       this.t = t;
       let timer = null;
@@ -1196,7 +1197,7 @@ class Mdtht {
   comparison(value) {
     try {
       if ((typeof value) !== 'string') {
-        throw 'comparison() 参数必须是一个字符串';
+        throw new Error('comparison() 参数必须是一个字符串');
       }
       value = value.toLowerCase();
       let result = '';
