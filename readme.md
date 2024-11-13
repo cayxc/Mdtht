@@ -69,6 +69,12 @@ Can be used in any Markdown editor that supports adding JavaScript and CSS, such
 
 ![搜索功能效果](./img/mdtht-4.png)
 
+# Font selection suggestions
+
+To achieve better text and code display effects, it is recommended to install `PingFang font` and `monospace font` on the computer.
+
+The default font for this theme text is PingFang font, and the default font for code is monospace font. Tip: These two fonts are already built-in on the MAC and do not require additional installation.
+
 # How to use it
 
 ## Use in a separate HTML file
