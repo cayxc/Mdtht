@@ -366,7 +366,10 @@ sup.md-footnote {
     text-shadow: .1rem .1rem .1rem rgb($color-1, .75);
   }
 }
-
+/*md-htmlblock md-mathblock*/
+.md-rawblock{
+  margin: $size-16 0;
+}
 /*table*/
 table {
   @include table-style;
