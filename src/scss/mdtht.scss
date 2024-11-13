@@ -93,6 +93,7 @@ strong {
 u {
   text-decoration-color: $title-color;
   -moz-text-decoration-color: $title-color;
+  text-underline-offset: 5px;
 }
 
 em {
