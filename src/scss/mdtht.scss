@@ -7,7 +7,7 @@
 }
 
 :root {
-  font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Microsoft YaHei", Arial, sans-serif;
+  font-family: "PingFang SC", Helvetica, "Helvetica Neue", "Microsoft YaHei", Arial, sans-serif;
   font-size: 62.5%;
   background-color: $bg-color;
   color: $text-color;
@@ -74,6 +74,7 @@ a {
   color: $color-1;
   cursor: pointer;
   font-weight: 500;
+  text-underline-offset: 5px;
 
   &:hover {
     color: $color-2;
@@ -337,6 +338,7 @@ pre {
   border-radius: 8px;
   color: $text-code;
   overflow: hidden;
+  font-family: monospace;
 }
 
 pre pre {
