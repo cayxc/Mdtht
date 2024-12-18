@@ -159,6 +159,15 @@
 >
 > **注意：**如果要配置第 N 个参数，则第 N 个之前的参数也要依次配置，如要配置第3个参数则第1、第2个参数也要配置。
 
+# 修改字体
+
+如果您对字体不满意，可以在 **mdtht.min.css** 中修改相应的字体，方法如下：
+
+1. 修改正文的字体，找到：`:root{font-family: "PingFang SC", Helvetica, "Helvetica Neue", "Microsoft YaHei", Arial, sans-serif;`,  然后在 `font-family:` 中开头位置添加你想使用的字体，如：`:root{font-family:想使用的字体名称, ..., sans-serif;}`
+4. 修改代码的字体，找到：`code{font-family:monospace}` 和 `pre{font-family:monospace}` 修改font-family，如： `code{font-family:想使用的字体名称}; pre{font-family:想使用的字体名称}`
+
+**注意：更换字体的前提是你电脑上要安装有相应的字体，否则修改无效**。
+
 ---
 
 🐳 如果您喜欢该文档样式风格，还请给一个 star 😄，使用过程中有什么问题请及时提交 issues。

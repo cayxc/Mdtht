@@ -158,6 +158,14 @@ Example of configuration parameter sequence:
 >
 > **Be Careful：**If you want to configure the Nth parameter, the parameters before the Nth parameter must also be configured in sequence. If you want to configure the third parameter, the first and second parameters must also be configured.
 
+# Modify font
+If you are not satisfied with the font, you can modify the corresponding font in **mdtht.min.css** as follows:
+
+1. Modify the font of the main text and find: `:root{font-family: "PingFang SC", Helvetica, "Helvetica Neue", "Microsoft YaHei", Arial, sans-serif;`,   Then add the font you want to use at the beginning of `font-family:`, such as: `:root{font-family: "the name of the font you want to use", ..., sans-serif;}`
+2. Modify the font of the code and find: `code{font-family:monospace}`and `pre{font-family:monospace}` modify the font family, for example: `code{font-family:"the name of the font you want to use"}; pre{font-family:"the name of the font you want to use"}`
+
+**Attention: The prerequisite for changing the font is that the corresponding font is installed on your computer, otherwise the modification is invalid.**
+
 ---
 
 🐳 If you like the style of this document, please provide a star 😄，If there are any issues during use, please submit them in a timely manner.
