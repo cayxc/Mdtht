@@ -4,6 +4,10 @@
 * {
   margin: 0;
   padding: 0;
+  tab-size: 4;
+  -webkit-tab-size: 4;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
 }
 
 :root {
@@ -74,7 +78,7 @@ a {
   color: $color-1;
   cursor: pointer;
   font-weight: 500;
-  text-underline-offset: 5px;
+  text-underline-offset: 4px;
 
   &:hover {
     color: $color-2;
@@ -94,7 +98,7 @@ strong {
 u {
   text-decoration-color: $title-color;
   -moz-text-decoration-color: $title-color;
-  text-underline-offset: 5px;
+  text-underline-offset: 4px;
 }
 
 em {
@@ -149,7 +153,7 @@ kbd {
 }
 
 img {
-  display: block;
+  display: inline-block;
   max-width: 100%;
   @include border-radius();
   margin: 0 auto 1.6rem;
@@ -195,8 +199,9 @@ ul > li > ol {
 /*blockquote*/
 blockquote,
 .md-alert {
-  @include code-box($padding: 1.6rem, $font-size: $size-16);
+  @include code-box($font-size: $size-16);
   @include border-radius();
+  padding: 1.6rem;
   border-left: .4rem solid $color-1;
   border-bottom: none;
   border-top: none;
@@ -215,6 +220,27 @@ blockquote code,
 
 blockquote blockquote {
   background: $color-1-0-b;
+}
+
+.md-alert > p:first-of-type {
+  line-height: 1;
+}
+
+blockquote > *:first-of-type,
+.md-alert > *:first-of-type {
+  margin-top: 0;
+}
+
+blockquote > *:last-of-type,
+.md-alert > *:last-of-type {
+  margin-bottom: 0;
+}
+
+blockquote > blockquote:last-of-type,
+blockquote > .md-alert:last-of-type,
+.md-alert > blockquote:last-of-type,
+.md-alert > .md-alert:last-of-type {
+  margin-top: 1.6rem !important;
 }
 
 /*only Typora blockquote*/
@@ -368,10 +394,12 @@ sup.md-footnote {
     text-shadow: .1rem .1rem .1rem rgb($color-1, .75);
   }
 }
+
 /*md-htmlblock md-mathblock*/
-.md-rawblock{
+.md-rawblock {
   margin: $size-16 0;
 }
+
 /*table*/
 table {
   @include table-style;
@@ -1046,7 +1074,7 @@ input[type="radio"]:checked::after {
 #switch-button {
   position: absolute;
   z-index: 110;
-  width: 3.4rem;
+  width: 3rem;
   height: 0;
   top: 0;
   left: 0;
@@ -1063,19 +1091,19 @@ input[type="radio"]:checked::after {
     display: block;
     position: absolute;
     color: $color-1;
-    font-size: 4rem;
+    font-size: 3.4rem;
   }
 
   .icon-label {
-    top: -1.3rem;
-    left: -.2rem;
+    top: -10px;
+    left: -1px;
     text-shadow: 0 0 .3rem rgb($bg-dark, .5);
   }
 
   .icon-catalog-close {
-    top: .2rem;
-    left: .85rem;
-    font-size: 1.6rem;
+    top: 4px;
+    left: 8px;
+    font-size: 1.3rem;
     font-weight: bold;
     color: $bg-color;
     text-shadow: none;
@@ -1099,13 +1127,6 @@ input[type="radio"]:checked::after {
   color: $text-grey;
   margin: 0;
   text-align: center;
-
-  &::before {
-    content: '\00A9';
-    font-size: 1.2rem;
-    vertical-align: middle;
-    margin-right: .2rem;
-  }
 }
 
 /*scroll style*/
@@ -1134,17 +1155,6 @@ body,
 html[theme=dark] {
   @include theme-dark;
   @include code-dark;
-}
-
-/*@media*/
-@media print {
-  table,
-  pre {
-    page-break-inside: avoid;
-  }
-  pre {
-    word-wrap: break-word;
-  }
 }
 
 @media screen and (max-width: 768px) {
@@ -1178,5 +1188,92 @@ html[theme=dark] {
     max-width: 256rem;
     margin: 0 auto;
   }
+}
+
+/*
+ * ------------------------
+ * @media print
+ * ------------------------
+*/
+@media print {
+  :root,
+  html,
+  body,
+  body #write,
+  body content,
+  body .typora-export-content,
+  #right-container {
+    height: auto !important; /*解决浏览器打印只有一页问题*/
+    padding: 0 !important;
+    margin: 0 !important;
+    background: white;
+    width: 100% !important;
+    max-width: 100% !important;
+    border: none !important;
+  }
+  body .typora-export-sidebar {
+    width: 0 !important;
+    display: none !important;
+  }
+  #left-container,
+  #resize-control,
+  #list-container,
+  #switch-button {
+    width: 0;
+    display: none;
+  }
+  #content > *:first-of-type {
+    margin-top: 0 !important;
+  }
+  ::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+  }
+  body,
+  body div,
+  body pre,
+  body ul,
+  body section,
+  body #write {
+    scrollbar-width: none !important;
+  }
+  table,
+  pre,
+  blockquote,
+  .md-alert, {
+    page-break-inside: avoid;
+  }
+  pre,
+  code,
+  tt {
+    word-wrap: break-word;
+    white-space: normal;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin: 24pt 0 12pt;
+  }
+  h1 {
+    font-size: 24pt;
+  }
+  h2 {
+    font-size: 21pt;
+  }
+  h3 {
+    font-size: 18pt;
+  }
+  h4 {
+    font-size: 15pt;
+  }
+  h5 {
+    font-size: 13.5pt;
+  }
+  h6 {
+    font-size: 12pt;
+  }
+  p {
+    font-size: 12pt;
+    margin: 12pt 0;
+  }
+
 }
 

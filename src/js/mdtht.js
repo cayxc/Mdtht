@@ -1,7 +1,7 @@
 /*
  * ------------------------------------------------------------------------
  * mdtht.js
- * (c) 2022-2024
+ * (c) 2022-2025
  * Author: cayxc
  * Homepage:  https://gitee.com/cayxc/mdtht  https://github.com/cayxc/Mdtht
  * License: BSD-3-Clause
@@ -32,35 +32,43 @@ class Mdtht {
       if ((typeof indexStyle) !== 'number' || 1 > indexStyle || indexStyle >
           3) {
         indexStyle = 1;
-        throw new Error('参数: indexStyle 类型有误，已按照默认配置执行，该参数类型为：Number, 1<= Number <=3');
+        throw new Error(
+            '参数: indexStyle 类型有误，已按照默认配置执行，该参数类型为：Number, 1<= Number <=3');
       }
       if ((typeof firstTagToTitle) !== 'boolean') {
         firstTagToTitle = false;
-        throw new Error('参数: firstTagToTitle 类型有误，已按照默认配置执行，该参数类型为：Boolean');
+        throw new Error(
+            '参数: firstTagToTitle 类型有误，已按照默认配置执行，该参数类型为：Boolean');
       }
       if ((typeof titleCenter) !== 'boolean') {
         titleCenter = false;
-        throw new Error('参数: titleCenter 类型有误，已按照默认配置执行，该参数类型为：Boolean');
+        throw new Error(
+            '参数: titleCenter 类型有误，已按照默认配置执行，该参数类型为：Boolean');
       }
       if ((typeof showIndex) !== 'boolean') {
         showIndex = true;
-        throw new Error('参数: showIndex 类型有误，已按照默认配置执行，该参数类型为：Boolean');
+        throw new Error(
+            '参数: showIndex 类型有误，已按照默认配置执行，该参数类型为：Boolean');
       }
       if ((typeof showTitleIndex) !== 'boolean') {
         showTitleIndex = true;
-        throw new Error('参数: showTitleIndex 类型有误，已按照默认配置执行，该参数类型为：Boolean');
+        throw new Error(
+            '参数: showTitleIndex 类型有误，已按照默认配置执行，该参数类型为：Boolean');
       }
       if ((typeof showTree) !== 'boolean') {
         showTree = true;
-        throw new Error('参数: showTree 类型有误，已按照默认配置执行，该参数类型为：Boolean');
+        throw new Error(
+            '参数: showTree 类型有误，已按照默认配置执行，该参数类型为：Boolean');
       }
       if ((typeof openShadow) !== 'boolean') {
         openShadow = false;
-        throw new Error('参数: openShadow 类型有误，已按照默认配置执行，该参数类型为：Boolean');
+        throw new Error(
+            '参数: openShadow 类型有误，已按照默认配置执行，该参数类型为：Boolean');
       }
       if ((typeof openDark) !== 'boolean') {
         openDark = false;
-        throw new Error('参数: openDark 类型有误，已按照默认配置执行，该参数类型为：Boolean');
+        throw new Error(
+            '参数: openDark 类型有误，已按照默认配置执行，该参数类型为：Boolean');
       }
     } catch (err) {
       this.showError(err);
@@ -109,6 +117,7 @@ class Mdtht {
       this.internalLinkJump();
       this.singleCatalogClick();
       this.sidebarResize();
+      this.printHeaderFooter();
     }
   }
 
@@ -157,6 +166,7 @@ class Mdtht {
   createContent() {
     //获取已有正文内容
     const oldContent = document.body.innerHTML;
+    console.log(oldContent);
     //清空已有内容
     document.body.innerHTML = '';
     //设置主题属性
@@ -267,7 +277,7 @@ class Mdtht {
     bodyBlock.appendChild(rightBlock);
     //6.底部提示
     const msg =
-              `<p class="note-tips">DOCUMENT STYLE CREATED BY Mdtht&nbsp;ABOUT Mdtht：<a href="https://github.com/cayxc/Mdtht" target="_blank">Github</a>&emsp;<a href="https://gitee.com/cayxc/mdtht" target="_blank">Gitee</a>
+              `<p class="note-tips">&copy; DOCUMENT STYLE CREATED BY Mdtht.&nbsp;ABOUT Mdtht：<a href="https://github.com/cayxc/Mdtht" target="_blank">Github</a>&emsp;<a href="https://gitee.com/cayxc/mdtht" target="_blank">Gitee</a>
               </p>`;
     //5.追加结构元素到页面
     this.noteTips('footer', msg, 'content');
@@ -283,7 +293,8 @@ class Mdtht {
   getPrefixIndex(levelStr) {
     try {
       if ((typeof levelStr) !== 'string') {
-        throw new Error('getPrefixIndex() 需要传入一个字符，且如level-1或level-1.2.2的形式');
+        throw new Error(
+            'getPrefixIndex() 需要传入一个字符，且如level-1或level-1.2.2的形式');
       }
       let lastIndex; //上一级的目录索引编号
       let prefixStr; //前缀 level-1.
@@ -385,7 +396,8 @@ class Mdtht {
   getTagNumber(tag) {
     try {
       if ((typeof tag) !== 'object') {
-        throw new Error('getTagNumber() 调用时参数类型错误，必须是一个h标签的对象集合！');
+        throw new Error(
+            'getTagNumber() 调用时参数类型错误，必须是一个h标签的对象集合！');
       }
       return Number(tag.nodeName.slice(1));
     } catch (err) {
@@ -503,7 +515,8 @@ class Mdtht {
   setLevelNumber(tag) {
     try {
       if ((typeof tag) !== 'object') {
-        throw new Error('setLevelNumber() 调用时参数类型错误，必须是一个h标签的对象集合！');
+        throw new Error(
+            'setLevelNumber() 调用时参数类型错误，必须是一个h标签的对象集合！');
       }
       const str = tag.id;
       if (str.lastIndexOf('.') == -1) { //如果是一级目录形式 level-1000
@@ -767,7 +780,8 @@ class Mdtht {
         throw new Error('changeIcon() 调用时参数1类型错误，必须为object');
       }
       if ((typeof index) !== 'number' || index > 3) {
-        throw new Error('changeIcon() 调用时参数2类型错误，必须为number,且小于等于 3');
+        throw new Error(
+            'changeIcon() 调用时参数2类型错误，必须为number,且小于等于 3');
       }
       //改变整体icon风格
       const arr = ['A', 'B', 'C'];
@@ -790,7 +804,8 @@ class Mdtht {
   changeSingleIcon(icon) {
     try {
       if ((typeof icon) !== 'object') {
-        throw new Error('changeIcon() 调用时参数1类型错误，该参数为图标元素的容器');
+        throw new Error(
+            'changeIcon() 调用时参数1类型错误，该参数为图标元素的容器');
       }
       //仅改变状态：展开/关闭
       const oldClass = icon.getAttribute('class');
@@ -1371,6 +1386,7 @@ class Mdtht {
       }
     });
   }
+
   /*
    * ----------------------------------------
    * 侧边栏拖拽宽度
@@ -1381,36 +1397,67 @@ class Mdtht {
     const leftElement = this.leftElement;
     const rightElement = this.rightElement;
     let currentX;
-    let minWidth = 240;  //最小宽度
-    let maxWidth = Math.floor(window.innerWidth * 0.75);  //最大宽度
+    let minWidth = 180;  //最小宽度
+    let maxWidth = Math.floor(window.innerWidth * 0.65);  //最大宽度
     resizeControl.onmousedown = function() {
       document.onmousemove = function(e) {
         e = e || window.event;
         currentX = e.clientX;
         // 侧边栏宽度修改
-        resizeControl.style.left = currentX-2 + 'px';
-        leftElement.style.width = currentX +'px';
-        rightElement.style.marginLeft = currentX +'px';
+        resizeControl.style.left = currentX - 2 + 'px';
+        leftElement.style.width = currentX + 'px';
+        rightElement.style.marginLeft = currentX + 'px';
         // 控制侧边栏宽度拖动范围
         if (currentX <= minWidth) {
-          resizeControl.style.left = minWidth-2 + 'px';
-          leftElement.style.width = minWidth +'px';
-          rightElement.style.marginLeft = minWidth +'px';
+          resizeControl.style.left = minWidth - 2 + 'px';
+          leftElement.style.width = minWidth + 'px';
+          rightElement.style.marginLeft = minWidth + 'px';
         }
         if (currentX > maxWidth) {
-          resizeControl.style.left = maxWidth-2 + 'px';
-          leftElement.style.width = maxWidth +'px';
-          rightElement.style.marginLeft = maxWidth +'px';
+          resizeControl.style.left = maxWidth - 2 + 'px';
+          leftElement.style.width = maxWidth + 'px';
+          rightElement.style.marginLeft = maxWidth + 'px';
         }
-      }
-    }
+      };
+    };
     //拖拽事件解绑
     resizeControl.onmouseup = function() {
       document.onmousemove = null;
-    }
+    };
     document.onmouseup = function() {
       document.onmousemove = null;
-    }
+    };
+  }
+
+  /*
+   * ----------------------------------------
+   * print header/footer
+   * 设置打印和PDF的页眉
+   * ----------------------------------------
+   */
+  printHeaderFooter() {
+    const fileTitle = decodeURIComponent(
+        window.location.href.split('/').slice(-1)[0]);
+    const printTop = document.createElement('style');
+    printTop.innerHTML = `@media print{
+      @page {
+        size: auto;
+        margin: 15mm !important;
+        background: white;
+        /*谷歌浏览器打印设置*/
+        @top-center {
+          content: "${fileTitle}";
+          font-size: 9pt;
+          color: #666
+        }
+        @bottom-center {
+          content: counter(page) '/' counter(pages);
+          font-size: 9pt;
+          color: #666
+        }
+      }
+    }`;
+    document.querySelector('head').appendChild(printTop);
   }
 }
 
