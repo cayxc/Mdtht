@@ -365,8 +365,8 @@ pre {
   color: $text-code;
   overflow: hidden;
   font-family: monospace;
+  white-space: pre-wrap;
 }
-
 pre pre {
   background: transparent;
   padding: 5px 10px;
@@ -1247,7 +1247,7 @@ html[theme=dark] {
   code,
   tt {
     word-wrap: break-word;
-    white-space: normal;
+    white-space: pre-wrap;
   }
   h1, h2, h3, h4, h5, h6 {
     margin: 24pt 0 12pt;
@@ -1274,6 +1274,5 @@ html[theme=dark] {
     font-size: 12pt;
     margin: 12pt 0;
   }
-
 }
 
