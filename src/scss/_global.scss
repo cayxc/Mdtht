@@ -277,13 +277,18 @@ input:-ms-input-placeholder {
 }
 
 .error {
-  margin: 1.6rem;
+  position: absolute;
+  left: 1.6rem;
+  right: 1.6rem;
+  top: 0;
+  z-index: 1000;
   @include border-radius(.6rem);
-  background: rgb($color-5, .5);
+  background: rgb($color-5, 1);
 }
 .error pre{
   color: initial !important;
   background: initial !important;
+  margin: 0;
 }
 
 /*input checkbox no-style*/
@@ -529,7 +534,6 @@ input:-ms-input-placeholder {
 
   table {
     @include table-style($bor-color: $grey-color-dark, $bag-color: $bg-dark2);
-
     tbody tr:nth-child(odd) td {
       background: $bg-dark;
     }
