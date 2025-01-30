@@ -277,9 +277,13 @@ input:-ms-input-placeholder {
 }
 
 .error {
+  margin: 1.6rem;
   @include border-radius(.6rem);
-  padding: 1.6rem;
   background: rgb($color-5, .5);
+}
+.error pre{
+  color: initial !important;
+  background: initial !important;
 }
 
 /*input checkbox no-style*/
