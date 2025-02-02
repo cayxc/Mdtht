@@ -18,16 +18,9 @@ class Mdtht {
   //showTree   是否开启树状线
   //openShadow  是否开启文字阴影
   //openDark   是否开启夜览模式
-  constructor(
-      indexStyle      = 1,
-      firstTagToTitle = false,
-      titleCenter     = true,
-      showIndex       = false,
-      showTitleIndex  = false,
-      showTree        = true,
-      openShadow      = false,
-      openDark        = false
-  ) {
+  constructor(indexStyle                                           = 1, firstTagToTitle                      = false, titleCenter = true,
+      showIndex                                                    = false, showTitleIndex                            = false, showTree = true,
+      openShadow                                                   = false, openDark                                 = false) {
     try {
       if ((typeof indexStyle) !== 'number' || 1 > indexStyle || indexStyle >
           3) {
@@ -71,8 +64,8 @@ class Mdtht {
             '参数: openDark 类型有误，已按照默认配置执行，该参数类型为：Boolean');
       }
     } catch (err) {
-      this.showError(err);
       console.log(err); //打印详细的错误，方便调试
+      this.showError(err);
     } finally {
       objThis = this; //当前对象的 this
       this.showIndex = showIndex;
@@ -121,15 +114,16 @@ class Mdtht {
     }
   }
 
-  /*
+  /**
    * ----------------------------------------
    * 错误提示
    * ----------------------------------------
+   * @param errInfo Object|string 错误信息
    */
-  showError(info) {
+  showError(errInfo) {
     const errorBlock = document.createElement('p');
     errorBlock.setAttribute('class', 'error');
-    errorBlock.innerHTML = info;
+    errorBlock.innerHTML = `<pre>${errInfo.stack}</pre>`;
     const content = document.querySelector('body');
     content.prepend(errorBlock);
   }
@@ -144,8 +138,7 @@ class Mdtht {
    */
   noteTips(tag, msg, id) {
     try {
-      if ((typeof tag) !== 'string' || (typeof msg) !== 'string' ||
-          (typeof id) !== 'string') {
+      if ((typeof tag) !== 'string' || (typeof msg) !== 'string' || (typeof id) !== 'string') {
         throw new Error('noteTips() 调用时参数类型错误！');
       }
       const exp = document.createElement(tag);
@@ -155,7 +148,6 @@ class Mdtht {
     } catch (err) {
       this.showError(err);
     }
-
   }
 
   /*
@@ -166,7 +158,6 @@ class Mdtht {
   createContent() {
     //获取已有正文内容
     const oldContent = document.body.innerHTML;
-    console.log(oldContent);
     //清空已有内容
     document.body.innerHTML = '';
     //设置主题属性
@@ -207,23 +198,20 @@ class Mdtht {
     const styleIndex = ['A', 'B', 'C'];
     for (let i = 1, len = 3; i <= len; i++) {
       if (this.indexStyle == i) {
-        indexStyleElement +=
-            `<li class="style-chose">
+        indexStyleElement += `<li class="style-chose">
                 <input type="radio" name="style${styleIndex[i -
-            1]}" checked="checked" disabled="disabled"><label for="style${styleIndex[i -
-            1]}">图标-${styleIndex[i - 1]}</label>
+        1]}" checked="checked" disabled="disabled"><label for="style${styleIndex[i -
+        1]}">图标-${styleIndex[i - 1]}</label>
             </li>`;
       } else {
-        indexStyleElement +=
-            `<li class="style-chose">
+        indexStyleElement += `<li class="style-chose">
                 <input type="radio" name="style${styleIndex[i -
-            1]}" disabled="disabled"><label for="style${styleIndex[i -
-            1]}">图标-${styleIndex[i - 1]}</label>
+        1]}" disabled="disabled"><label for="style${styleIndex[i -
+        1]}">图标-${styleIndex[i - 1]}</label>
             </li>`;
       }
     }
-    leftBlock.innerHTML =
-        `<div id="resize-control" title="按住鼠标拖动调整侧边栏宽度"></div>
+    leftBlock.innerHTML = `<div id="resize-control" title="按住鼠标拖动调整侧边栏宽度"></div>
         <header class="top-container">
             <i class="catalog-button iconfont icon-catalog-show" title="展开/收起侧边栏"></i>
             <div class="search-container">
@@ -266,8 +254,7 @@ class Mdtht {
         </footer>`;
     //4.设置内容父级元素的内容结构
     rightBlock.innerHTML = `<div id="content">${oldContent}</div></div>`;
-    bodyBlock.innerHTML =
-        `<div id="switch-button">
+    bodyBlock.innerHTML = `<div id="switch-button">
             <i class="iconfont icon-label"></i>
             <i class="iconfont icon-catalog-close"></i>
         </div>`;
@@ -276,8 +263,7 @@ class Mdtht {
     bodyBlock.appendChild(leftBlock);
     bodyBlock.appendChild(rightBlock);
     //6.底部提示
-    const msg =
-              `<p class="note-tips">&copy; DOCUMENT STYLE CREATED BY Mdtht.&nbsp;ABOUT Mdtht：<a href="https://github.com/cayxc/Mdtht" target="_blank">Github</a>&emsp;<a href="https://gitee.com/cayxc/mdtht" target="_blank">Gitee</a>
+    const msg = `<p class="note-tips">&copy; DOCUMENT STYLE CREATED BY Mdtht.&nbsp;ABOUT Mdtht：<a href="https://github.com/cayxc/Mdtht" target="_blank">Github</a>&emsp;<a href="https://gitee.com/cayxc/mdtht" target="_blank">Gitee</a>
               </p>`;
     //5.追加结构元素到页面
     this.noteTips('footer', msg, 'content');
@@ -449,12 +435,7 @@ class Mdtht {
       // 所有目录集合,处理后的
       let allTag = this.handleHarr;
       const [level1, level2, level3, level4, level5, level6] = [
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        [], [], [], [], [], []
       ];
       for (let i = 0, len = allTag.length; i < len; i++) {
         let number = this.findStrFre(allTag[i].id, '.');
@@ -515,8 +496,7 @@ class Mdtht {
   setLevelNumber(tag) {
     try {
       if ((typeof tag) !== 'object') {
-        throw new Error(
-            'setLevelNumber() 调用时参数类型错误，必须是一个h标签的对象集合！');
+        throw new Error('setLevelNumber() 调用时参数类型错误，必须是一个h标签的对象集合！');
       }
       const str = tag.id;
       if (str.lastIndexOf('.') == -1) { //如果是一级目录形式 level-1000
@@ -624,8 +604,7 @@ class Mdtht {
       if (level1.length > 0) { //有目录
         for (let i = 0, len = level1.length; i < len; i++) {
           let liElement = document.createElement('li');
-          liElement.innerHTML =
-              `<a class="${level1[i].id}" href="#${level1[i].id}">
+          liElement.innerHTML = `<a class="${level1[i].id}" href="#${level1[i].id}">
                 <div>
                     <p>${level1[i].id.slice(6)}</p>
                     <span>${level1[i].innerText}</span>
@@ -653,8 +632,7 @@ class Mdtht {
                     ceilElement[0].id)[0].parentElement;
                 //子目录内容
                 let content = document.createElement('li');
-                content.innerHTML =
-                    `<a class="${cName}" href="#${cName}">
+                content.innerHTML = `<a class="${cName}" href="#${cName}">
                         <div>
                             <p>${cName.slice(6)}</p>
                             <span>${levelOther[k].innerText}</span>
@@ -697,8 +675,7 @@ class Mdtht {
     } else {
       let emptyCatalog = document.createElement('div');
       emptyCatalog.setAttribute('class', 'empty-catalog');
-      emptyCatalog.innerHTML =
-          '<i class="iconfont icon-fail"></i><p>哦～～&nbsp;正文中未发现&nbsp;h1~h6&nbsp;标签，无法生成目录</p>';
+      emptyCatalog.innerHTML = '<i class="iconfont icon-fail"></i><p>哦～～&nbsp;正文中未发现&nbsp;h1~h6&nbsp;标签，无法生成目录</p>';
       catalogueBlock.appendChild(emptyCatalog);
       return false;
     }
@@ -1398,7 +1375,7 @@ class Mdtht {
     const rightElement = this.rightElement;
     let currentX;
     let minWidth = 180;  //最小宽度
-    let maxWidth = Math.floor(window.innerWidth * 0.65);  //最大宽度
+    let maxWidth = Math.floor(window.innerWidth * 0.60);  //最大宽度
     resizeControl.onmousedown = function() {
       document.onmousemove = function(e) {
         e = e || window.event;
@@ -1459,8 +1436,45 @@ class Mdtht {
     }`;
     document.querySelector('head').appendChild(printTop);
   }
+
+  /**
+   * ----------------------------------------
+   * 自定义字体
+   * ----------------------------------------
+   * @param textFont string 文本字体
+   * @param codeFont string 代码字体
+   */
+  modifyFont(textFont, codeFont='monospace') {
+    if (arguments.length < 1) return;
+    try {
+      if ((typeof textFont) !== 'string') {
+        throw new Error('modifyFont()调用时参数类型错误，参数1必须为字符串');
+      }
+      if ((typeof codeFont) !== 'string') {
+        throw new Error('modifyFont()调用时参数类型错误，参数2必须为字符串');
+      }
+      const head = document.querySelector('head');
+      let customizedStyle = document.createElement('style');
+      let fontSet = '"PingFang SC", Helvetica, "Helvetica Neue", "Microsoft YaHei", Arial, sans-serif !important';
+      if (textFont !== "") {
+        customizedStyle.innerHTML = `:root{font-family: "${textFont}", ${fontSet};}`;
+      }
+      if (textFont === "default") {
+        customizedStyle.innerHTML = `:root{font-family: ${fontSet};}`;
+      }
+      if (codeFont !== "") {
+        let oldStyle = customizedStyle.innerHTML;
+        customizedStyle.innerHTML = `${oldStyle} code, pre{font-family: "${codeFont}" !important;}`;
+      }
+      head.append(customizedStyle);
+    } catch (err) {
+        this.showError(err);
+    }
+  }
 }
 
-window.addEventListener('DOMContentLoaded', () => new Mdtht());
+window.addEventListener('DOMContentLoaded', () => {
+  let mdthtObj = new Mdtht();
+});
 
 
