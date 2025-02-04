@@ -159,12 +159,30 @@ Example of configuration parameter sequence:
 > **Be Careful：**If you want to configure the Nth parameter, the parameters before the Nth parameter must also be configured in sequence. If you want to configure the third parameter, the first and second parameters must also be configured.
 
 # Modify font
-If you are not satisfied with the font, you can modify the corresponding font in **mdtht.min.css** as follows:
+If you are not satisfied with the font, you can customize the text and code fonts as follows:
 
-1. Modify the font of the main text and find: `:root{font-family: "PingFang SC", Helvetica, "Helvetica Neue", "Microsoft YaHei", Arial, sans-serif;`,   Then add the font you want to use at the beginning of `font-family:`, such as: `:root{font-family: "the name of the font you want to use", ..., sans-serif;}`
-2. Modify the font of the code and find: `code{font-family:monospace}`and `pre{font-family:monospace}` modify the font family, for example: `code{font-family:"the name of the font you want to use"}; pre{font-family:"the name of the font you want to use"}`
+1. Find at the last position of **mdtht.min.js**: ` ()=>{new Mdtht}`
 
-**Attention: The prerequisite for changing the font is that the corresponding font is installed on your computer, otherwise the modification is invalid.**
+2. Replace ` ()=>{new Mdtht} ` as follows:
+
+   1. Only modify the text font:` ()=>{(new Mdtht).modifyFont("Text Font")}`
+
+   2. Only modify the code font:` ()=>{(new Mdtht).modifyFont("default", "code font")}`
+
+   3. Modify text and code fonts:` ()=>{(new Mdtht).modifFont("Text Font", "Code Font")} `, the following is an example:
+
+   ```javascript
+   //1.Only modify the text font to: Times New Roman
+   ()=>{(new Mdtht).modifyFont("Times New Roman")}
+      
+   //2.Only modify the code font to: Helvetica
+   ()=>{(new Mdtht).modifyFont("default", "Helvetica")}
+      
+   //3.Change the text font to Times New Roman and the code font to: Helvetica
+   ()=>{(new Mdtht).modifyFont("Times New Roman", "Helvetica")}
+   ```
+
+**Attention: The prerequisite for changing the font is that the corresponding font is installed on your computer, otherwise the modification is invalid**； If you are not familiar with the font-family property of CSS, you can refer to it here: https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family
 
 ---
 

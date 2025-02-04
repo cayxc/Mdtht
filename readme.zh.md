@@ -161,12 +161,28 @@
 
 # 修改字体
 
-如果您对字体不满意，可以在 **mdtht.min.css** 中修改相应的字体，方法如下：
+如果您对字体不满意，可以自定义文本和代码字体，方法如下：
 
-1. 修改正文的字体，找到：`:root{font-family: "PingFang SC", Helvetica, "Helvetica Neue", "Microsoft YaHei", Arial, sans-serif;`,  然后在 `font-family:` 中开头位置添加你想使用的字体，如：`:root{font-family:想使用的字体名称, ..., sans-serif;}`
-4. 修改代码的字体，找到：`code{font-family:monospace}` 和 `pre{font-family:monospace}` 修改font-family，如： `code{font-family:想使用的字体名称}; pre{font-family:想使用的字体名称}`
+1. 在 **mdtht.min.js** 的最后位置找到：`()=>{new Mdtht}`
 
-**注意：更换字体的前提是你电脑上要安装有相应的字体，否则修改无效**。
+2. 将 `()=>{new Mdtht}` 按如下需求替换：
+
+   1. 只修改文本字体：`()=>{(new Mdtht).modifyFont("文本字体")}`
+   2. 只修改代码字体：`()=>{(new Mdtht).modifyFont("default", "代码字体")}`
+   3. 同时修改文本和代码字体：`()=>{(new Mdtht).modifyFont("文本字体", "代码字体")}`，以下为示例：
+
+   ```javascript
+   //1.只修改文本字体为：Times New Roman
+   ()=>{(new Mdtht).modifyFont("Times New Roman")}
+   
+   //2.只修改代码字体为：Helvetica
+   ()=>{(new Mdtht).modifyFont("default", "Helvetica")}
+   
+   //3.修改文本字体为：Times New Roman 和 代码字体为：Helvetica
+   ()=>{(new Mdtht).modifyFont("Times New Roman", "Helvetica")}
+   ```
+
+**注意：更换字体的前提是你电脑上要安装有相应的字体，否则修改无效**。如果您不了解 CSS 的 font-family 属性，可以参考这里：https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family
 
 ---
 
