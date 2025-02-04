@@ -1472,7 +1472,6 @@ class Mdtht {
     }
   }
 }
-
 window.addEventListener('DOMContentLoaded', () => {
   let mdthtObj = new Mdtht();
 });

@@ -508,7 +508,7 @@ input[type="radio"]:checked::after {
   float: left;
   position: relative;
   z-index: 20;
-  width: 28rem;
+  width: 24rem;
   height: 100vh;
   background: $bg-color;
   border-right: 1px solid $border-color;
@@ -518,7 +518,6 @@ input[type="radio"]:checked::after {
   -moz-transition: width 0.2s linear, height 0.2s linear;
   -webkit-transition: width 0.2s linear, height 0.2s linear;
   -o-transition: width 0.2s linear, height 0.2s linear;
-
   a {
     line-height: 2rem;
   }
@@ -544,7 +543,7 @@ input[type="radio"]:checked::after {
 /*right-containe*/
 #right-container {
   height: 100vh;
-  margin-left: 28rem;
+  margin-left: 24rem;
   overflow-x: hidden;
   padding: 0 9.6rem 0;
   box-sizing: border-box;
