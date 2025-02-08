@@ -366,11 +366,44 @@ pre {
   overflow: hidden;
   font-family: monospace;
   white-space: pre-wrap;
+  position: relative;
 }
+
 pre pre {
   background: transparent;
   padding: 5px 10px;
   border: none;
+}
+
+.code-copy {
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 3px;
+  border: 1px solid $border-color;
+  background: $bg-color2;
+  border-radius: 3px;
+  line-height: 1;
+  font-size: 12px;
+  color: $text-grey;
+  cursor: pointer;
+}
+
+.code-copy:hover {
+  color: $color-2;
+  border-color: $color-2;
+}
+
+.code-copied {
+  color: white;
+  border-color: $color-1;
+  background: $color-1;
+}
+
+.code-copied:hover {
+  color: white;
+  background: $color-2;
 }
 
 /*sup,sub*/
@@ -518,6 +551,7 @@ input[type="radio"]:checked::after {
   -moz-transition: width 0.2s linear, height 0.2s linear;
   -webkit-transition: width 0.2s linear, height 0.2s linear;
   -o-transition: width 0.2s linear, height 0.2s linear;
+
   a {
     line-height: 2rem;
   }

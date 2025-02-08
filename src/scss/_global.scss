@@ -531,6 +531,24 @@ input:-ms-input-placeholder {
   code, pre {
     @include bag-border-dark($bg-dark2, $bg-dark2);
   }
+  .code-copy {
+    background: $bg-dark2;
+    border-color: #667c89;
+    color: #667c89;
+  }
+  .code-copy:hover {
+    border-color: $color-2;
+    color: $color-2;
+  }
+  .code-copied{
+    color: white;
+    background: $color-1;
+    border-color: $color-1;
+  }
+  .code-copied:hover {
+    color: white;
+    background: $color-2;
+  }
 
   table {
     @include table-style($bor-color: $grey-color-dark, $bag-color: $bg-dark2);

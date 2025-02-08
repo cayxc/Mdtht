@@ -18,9 +18,15 @@ class Mdtht {
   //showTree   是否开启树状线
   //openShadow  是否开启文字阴影
   //openDark   是否开启夜览模式
-  constructor(indexStyle                                           = 1, firstTagToTitle                      = false, titleCenter = true,
-      showIndex                                                    = false, showTitleIndex                            = false, showTree = true,
-      openShadow                                                   = false, openDark                                 = false) {
+  constructor(
+      indexStyle= 1,
+      firstTagToTitle= false,
+      titleCenter = true,
+      showIndex= false,
+      showTitleIndex= false,
+      showTree = true,
+      openShadow = false,
+      openDark= false) {
     try {
       if ((typeof indexStyle) !== 'number' || 1 > indexStyle || indexStyle >
           3) {
@@ -111,6 +117,7 @@ class Mdtht {
       this.singleCatalogClick();
       this.sidebarResize();
       this.printHeaderFooter();
+      this.codeCopy();
     }
   }
 
@@ -199,15 +206,13 @@ class Mdtht {
     for (let i = 1, len = 3; i <= len; i++) {
       if (this.indexStyle == i) {
         indexStyleElement += `<li class="style-chose">
-                <input type="radio" name="style${styleIndex[i -
-        1]}" checked="checked" disabled="disabled"><label for="style${styleIndex[i -
-        1]}">图标-${styleIndex[i - 1]}</label>
+                <input type="radio" name="style${styleIndex[i - 1]}" checked="checked" disabled="disabled">
+                <label for="style${styleIndex[i - 1]}">图标-${styleIndex[i - 1]}</label>
             </li>`;
       } else {
         indexStyleElement += `<li class="style-chose">
-                <input type="radio" name="style${styleIndex[i -
-        1]}" disabled="disabled"><label for="style${styleIndex[i -
-        1]}">图标-${styleIndex[i - 1]}</label>
+                <input type="radio" name="style${styleIndex[i - 1]}" disabled="disabled">
+                <label for="style${styleIndex[i - 1]}">图标-${styleIndex[i - 1]}</label>
             </li>`;
       }
     }
@@ -342,11 +347,9 @@ class Mdtht {
           for (let j = i - 1; j >= 0; j--) {
             if (this.getTagNumber(allTag[i]) ==
                 this.getTagNumber(allTag[j - 1])) { //和第j-1个同级
-              allTag[i].id = this.getPrefixIndex(allTag[j - 1].id)[0] +
-                  (this.getPrefixIndex(allTag[j - 1].id)[1] + 1);
+              allTag[i].id = this.getPrefixIndex(allTag[j - 1].id)[0] + (this.getPrefixIndex(allTag[j - 1].id)[1] + 1);
               break;
-            } else if (this.getTagNumber(allTag[i]) >
-                this.getTagNumber(allTag[j - 1])) { //和前一个/第i-1个同级
+            } else if (this.getTagNumber(allTag[i]) > this.getTagNumber(allTag[j - 1])) { //和前一个/第i-1个同级
               allTag[i].id = this.getPrefixIndex(allTag[i - 1].id)[0] +
                   (this.getPrefixIndex(allTag[i - 1].id)[1] + 1);
               break;
@@ -1374,7 +1377,7 @@ class Mdtht {
     const leftElement = this.leftElement;
     const rightElement = this.rightElement;
     let currentX;
-    let minWidth = 180;  //最小宽度
+    let minWidth = 160;  //最小宽度
     let maxWidth = Math.floor(window.innerWidth * 0.60);  //最大宽度
     resizeControl.onmousedown = function() {
       document.onmousemove = function(e) {
@@ -1471,6 +1474,37 @@ class Mdtht {
         this.showError(err);
     }
   }
+
+  /**
+   * ----------------------------------------
+   * 代码块右上角复制功能
+   * ----------------------------------------
+   */
+  codeCopy(){
+    const allPre = document.querySelectorAll('#content>pre');
+    for (let i = 0, len = allPre.length; i < len; i++) {
+      if (allPre[i].innerText.trim() === '') continue;
+      allPre[i].innerHTML += '<span class="code-copy" title="复制">copy</span>';
+      allPre[i].querySelector('.code-copy').addEventListener('click',function(){
+        let text = allPre[i].children[0].innerText;
+        navigator.clipboard.writeText(text).then(function() {
+          let copiedButton = document.querySelectorAll('.code-copied');
+          for (let j = 0, len = copiedButton.length; j < len; j++) {
+            copiedButton[j].innerHTML = 'copy';
+            copiedButton[j].setAttribute('class','code-copy');
+            copiedButton[j].setAttribute('title','复制');
+          }
+          allPre[i].children[1].innerHTML='copied';
+          allPre[i].children[1].setAttribute('class','code-copy code-copied');
+          allPre[i].children[1].setAttribute('title','复制成功');
+        }).catch(function(err) {
+          allPre[i].children[1].setAttribute('title','复制失败');
+          alert('复制失败:'+err);
+        });
+      });
+    }
+  }
+
 }
 window.addEventListener('DOMContentLoaded', () => {
   let mdthtObj = new Mdtht();
